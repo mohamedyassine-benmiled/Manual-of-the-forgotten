@@ -1,15 +1,6 @@
 This was created for a class group project of 1A30 Esprit Tunisia.
 You are allowed to use all the files in this repository as long as you mention the source.
 
-
-
-
-
-
-
-
-
-
 I hope after all of this work We actually get the first place in this contest.
 
 
