@@ -1,0 +1,55 @@
+Buttons (Effects), Background 
+Background : 
+Design Book... Cinematic 1 , Menu (Glowing Insides, Trying to open movement in 3D)
+Old Wooden Table with a Glowing lantern close to the book. ***
+
+
+
+Logo Group / Game company : Zombie Hands under (Zombie Story) font 
+
+Group Name : Nemesis
+
+
+
+Logo Game : 
+
+Game Name : Manual of the forgotten
+
+
+
+Conception Menu : 
+Background with Game logo on top of the Buttons
+3 Buttons : Play (New Game , Load , Exit Menu) / Options (Graphics, Sound, Buttons, Connect your phone) / Quit
+Text : Group Name in the bottom + Version
+Options has a different background than main menu
+Sound Effects : Button Press (On Search)
+                Background (If found)
+Background Music : Historical 8bit
+Buttons with functions : Ctrl + Q = Quit
+                         Ctrl + F = Fullscreen
+                         Ctrl + P = Play
+                         Ctrl + M = Mute
+
+
+
+3 LEVELS : Each level will have a puzzle to unlock the boss room.  
+At each end of level , A cinematic will run showing the end of the character / end of era.
+Each level has its own background and minigame / puzzle.
+
+
+814 BCE : Carthage Creation == LEVEL 1 == Voice of Eternal Bloodlust
+Boss character : Elissa
+End : Elissa dies with her own sword (True ending of elissa) 
+
+
+218 BCE : Second Punic War == LEVEL 2 ==  Ravager of Faded Memories
+Boss character : Hannibal
+End : Suicide by poison
+
+Year 670 : Islamic Conquest == LEVEL 3 == Arab's Conquest
+Boss character : Uqba Ibn Nafi
+End : Arab's conquest of Tunisia 
+
+
+
+This is just a demo ,More details will be packaged with each level in the final game.
