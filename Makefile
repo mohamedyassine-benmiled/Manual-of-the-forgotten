@@ -5,10 +5,10 @@
 # Compiler settings - Can be customized.
 CC = gcc
 CXXFLAGS = -std=c11 -Wall -g
-LDFLAGS = -lSDL2 -lGL -lGLEW
+LDFLAGS = -lSDL -lSDL_ttf -lSDL_image
 
 # Makefile settings - Can be customized.
-APPNAME = game
+APPNAME = Book
 EXT = .c
 SRCDIR = Game
 OBJDIR = obj

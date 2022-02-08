@@ -1,40 +1,39 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
-#include <sdl_image.h>
+#include <SDL/SDL_image.h>
 
-int main (int argc , char *argv)[])
+int main (int argc , char *argv[])
 {
- SDL_Surface *ecran =NULL ; 
+ SDL_Surface *ecran = NULL ; 
  SDL_Surface *menu = NULL ; 
 
  SDL_Rect positionMenu ; 
- int continue = 3 ; 
+ int cont = 3 ; 
  SDL_Event event ; 
 
- SDL_INIT(SDL_INIT_VIDEO);
-        SDL_WM_SetIcon(IMG_Load(),NULL);
-        ecran = SDL_SetVideoMode(,,,,SDL_Surface|SDL_DOUBLEBUF);
+ SDL_Init(SDL_INIT_VIDEO);
+        SDL_WM_SetIcon(IMG_Load("../Menu/Game_Background.png"),NULL);
+        ecran = SDL_SetVideoMode(952,442,32, SDL_HWSURFACE | SDL_DOUBLEBUF);
         SDL_WM_SetCaption("",NULL);
 
-menu = IMG_Load("");
+menu = IMG_Load("../Menu/Game_Background.png");
 positionMenu.x=0;
 positionMenu.y=0;
-while(continue)
+while(cont)
 {
     SDL_WaitEvent(&event);
-    switch (even.type)
+    switch (event.type)
     {
-    case SDL_Quit:
-        continue=0; 
+    case SDL_QUIT:
+        cont=0; 
         break;
      case SDL_KEYDOWN:
      switch (event.key.keysym.sym)
      {
-     case sdlk_escape:
-         continue =0 ; 
+     case SDLK_ESCAPE:
+         cont = 0 ; 
          break;
-     
      }
     
 
@@ -45,13 +44,13 @@ while(continue)
 
 
 
-SDL_BlitSurface( menu,NULL,ecran,&positionMenu);
+SDL_BlitSurface(menu,NULL,ecran,&positionMenu);
 SDL_Flip(ecran);
 
 
 }
 SDL_FreeSurface(menu);
-SDL_quit();
+SDL_Quit();
 return EXIT_SUCCESS;
 
 
@@ -60,5 +59,5 @@ return EXIT_SUCCESS;
 
 
 
-})
+}
 
