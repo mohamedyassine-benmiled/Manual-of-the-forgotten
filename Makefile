@@ -8,7 +8,7 @@ CXXFLAGS = -std=c11 -Wall -g
 LDFLAGS = -lSDL -lSDL_ttf -lSDL_image
 
 # Makefile settings - Can be customized.
-APPNAME = Book
+APPNAME = book
 EXT = .c
 SRCDIR = Game
 OBJDIR = obj
