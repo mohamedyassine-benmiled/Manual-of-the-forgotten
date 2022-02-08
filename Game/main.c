@@ -13,11 +13,11 @@ int main (int argc , char *argv[])
  SDL_Event event ; 
 
  SDL_Init(SDL_INIT_VIDEO);
-        SDL_WM_SetIcon(IMG_Load("../Menu/Game_Background.png"),NULL);
+        SDL_WM_SetIcon(IMG_Load("Menu/Logo.png"),NULL);
         ecran = SDL_SetVideoMode(952,442,32, SDL_HWSURFACE | SDL_DOUBLEBUF);
         SDL_WM_SetCaption("",NULL);
 
-menu = IMG_Load("../Menu/Game_Background.png");
+menu = IMG_Load("Menu/Game_Background.png");
 positionMenu.x=0;
 positionMenu.y=0;
 while(cont)
