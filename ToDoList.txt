@@ -37,7 +37,7 @@ At each end of level , A cinematic will run showing the end of the character / e
 Each level has its own background and minigame / puzzle.
 
 
-814 BCE : Carthage Creation == LEVEL 1 == Voice of Eternal Bloodlust
+814 BCE : Carthage Creation == LEVEL 1 == Voice of Eternal Bloodlust (Qart Hadasht)
 Boss character : Elissa
 End : Elissa dies with her own sword (True ending of elissa) 
 
