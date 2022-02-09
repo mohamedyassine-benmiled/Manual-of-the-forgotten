@@ -2,16 +2,19 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
+#include "menu.h"
 
 int main (int argc , char *argv[])
 {
  SDL_Surface *ecran = NULL ; 
  SDL_Surface *menu = NULL ; 
- SDL_Surface *button1 = NULL ; 
+ SDL_Surface *BUTTON1 = NULL ; 
  SDL_Surface *BUTTON2 = NULL ; 
  SDL_Surface *BUTTON3 = NULL ;
- SDL_Rect positionMenu ; 
- SDL_Rect positionButton1 ; 
+ SDL_Rect positionMenu; 
+ SDL_Rect positionButton1; 
+ SDL_Rect positionButton2; 
+ SDL_Rect positionButton3; 
  int cont = 3 ; 
  SDL_Event event ; 
 
@@ -23,10 +26,10 @@ int main (int argc , char *argv[])
 menu = IMG_Load("Menu/grey_Background.png");
 positionMenu.x=0;
 positionMenu.y=0;
-button1 = IMG_Load("Menu/PlayOnHover.png");
+BUTTON1 = IMG_Load("Menu/PlayFirstTest.png");
 positionButton1.x=129;
 positionButton1.y=374;
-BUTTON3 = IMG_Load("Menu/Options.png");
+BUTTON2 = IMG_Load("Menu/Options.png");
 positionButton2.x=129;
 positionButton2.y=512;
 BUTTON3 = IMG_Load("Menu/Quit.png");
@@ -64,7 +67,7 @@ while(cont)
 
 
 SDL_BlitSurface(menu,NULL,ecran,&positionMenu);
-SDL_BlitSurface(button1,NULL,ecran,&positionButton1);
+SDL_BlitSurface(BUTTON1,NULL,ecran,&positionButton1);
 SDL_BlitSurface(BUTTON2,NULL,ecran,&positionButton2);
 SDL_BlitSurface(BUTTON3,NULL,ecran,&positionButton3);
 SDL_Flip(ecran);
@@ -72,7 +75,7 @@ SDL_Flip(ecran);
 
 }
 SDL_FreeSurface(menu);
-SDL_FreeSurface(button1);
+SDL_FreeSurface(BUTTON1);
 SDL_FreeSurface(BUTTON2);
 SDL_FreeSurface(BUTTON3);
 SDL_Quit();
