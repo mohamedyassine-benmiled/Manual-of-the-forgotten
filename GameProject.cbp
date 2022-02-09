@@ -35,8 +35,30 @@
 		<Linker>
 			<Add option="`sdl-config --libs`" />
 		</Linker>
-		<Unit filename="cb.bmp" />
-		<Unit filename="main.cpp" />
+		<Unit filename="Menu/Full Menu Test.png" />
+		<Unit filename="Menu/Game_Background.png" />
+		<Unit filename="Menu/Logo.png" />
+		<Unit filename="Menu/Options.png" />
+		<Unit filename="Menu/Placeholder_Background.png" />
+		<Unit filename="Menu/Placeholder_Background.psd" />
+		<Unit filename="Menu/Play.png" />
+		<Unit filename="Menu/Play.psd" />
+		<Unit filename="Menu/PlayFirstTest.png" />
+		<Unit filename="Menu/PlayOnHover.png" />
+		<Unit filename="Menu/Quit.png" />
+		<Unit filename="Menu/grey_Background.png" />
+		<Unit filename="README.txt" />
+		<Unit filename="ToDoList.txt" />
+		<Unit filename="include/menu.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/game.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
