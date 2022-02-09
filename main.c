@@ -1,22 +1,22 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include "menu.h"
+#include <SDL.h>
+#include <SDL_image.h>
+#include "include/menu.h"
 
 int main (int argc , char *argv[])
 {
- SDL_Surface *ecran = NULL ; 
- SDL_Surface *menu = NULL ; 
- SDL_Surface *BUTTON1 = NULL ; 
- SDL_Surface *BUTTON2 = NULL ; 
+ SDL_Surface *ecran = NULL ;
+ SDL_Surface *menu = NULL ;
+ SDL_Surface *BUTTON1 = NULL ;
+ SDL_Surface *BUTTON2 = NULL ;
  SDL_Surface *BUTTON3 = NULL ;
- SDL_Rect positionMenu; 
- SDL_Rect positionButton1; 
- SDL_Rect positionButton2; 
- SDL_Rect positionButton3; 
- int cont = 3 ; 
- SDL_Event event ; 
+ SDL_Rect positionMenu;
+ SDL_Rect positionButton1;
+ SDL_Rect positionButton2;
+ SDL_Rect positionButton3;
+ int cont = 3 ;
+ SDL_Event event ;
 
  SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(IMG_Load("Menu/Logo.png"),NULL);
@@ -41,23 +41,23 @@ while(cont)
     switch (event.type)
     {
     case SDL_QUIT:
-        cont=0; 
+        cont=0;
         break;
      case SDL_KEYDOWN:
- 
+
      switch (event.key.keysym.sym)
      {
        case (SDLK_ESCAPE):
-         cont = 0; 
+         cont = 0;
          break;
        case (SDLK_f):
-        cont = 1; 
+        cont = 1;
         break ;
        case (SDLK_o):
-        cont=2; 
-        break ; 
+        cont=2;
+        break ;
      }
-    
+
 
         break;
     }
