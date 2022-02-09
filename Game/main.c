@@ -15,13 +15,13 @@ int main (int argc , char *argv[])
 
  SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(IMG_Load("Menu/Logo.png"),NULL);
-        ecran = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
+        ecran = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF );
         SDL_WM_SetCaption("Manual of the forgotten",NULL);
 
-menu = IMG_Load("Menu/Game_Background.png");
+menu = IMG_Load("Menu/grey_Background.png");
 positionMenu.x=0;
 positionMenu.y=0;
-button1 = IMG_Load("Menu/Play.png");
+button1 = IMG_Load("Menu/PlayFirstTest.png");
 positionButton1.x=129;
 positionButton1.y=374;
 while(cont)
