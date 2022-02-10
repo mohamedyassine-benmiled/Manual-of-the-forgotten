@@ -16,13 +16,17 @@ void screeninit(SDL_Surface *screen)
     screen = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
 }
 
-
-void menu(int cont)
+void menup(SDL_Event event,int run)
 {
-while (cont)
-{
+    int play,options;
 
 }
+
+
+
+void options(int opt)
+{
+
 }
 
 void InitOptions()

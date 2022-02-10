@@ -26,9 +26,8 @@ int main (int argc , char *argv[])
  SDL_Surface *screenoptions = NULL;
  SDL_Surface *screengame = NULL;
 
- int cont = 3 ;
- int options = 0;
- int play = 0;
+ int run = 3 ;
+
  SDL_Event event ;
 //SDL_INIT and game caption and icon
    init();
@@ -62,25 +61,24 @@ LogoGame.pos1.y=74;
 LogoGroup.surface = IMG_Load("Menu/Logo.png");
 LogoGroup.pos1.x=1690;
 LogoGroup.pos1.y=857;
-while(cont)
+while(run)
 {
 
     SDL_WaitEvent(&event);
     switch (event.type)
     {
     case SDL_QUIT:
-        cont=0;
+        run=0;
         break;
-     case SDL_KEYDOWN:
-
-     switch (event.key.keysym.sym)
+    case SDL_KEYDOWN:
+    switch (event.key.keysym.sym)
      {
        case (SDLK_ESCAPE):
-         cont = 0;
+         run = 0;
          break;
        
          case (SDLK_o):
-         cont=2;
+         run=2;
          options = 1;
          while(options)
         {
@@ -90,7 +88,7 @@ while(cont)
         freesurface(BackgroundOptions);
         break;
       case (SDLK_p):
-        cont=2;
+        run=2;
         play=2;
         while (play)
         {
@@ -100,22 +98,17 @@ while(cont)
         freesurface(BackgroundGame);
         break;
      }
-
-
         break;
     }
 
 
 
-
 show(BackgroundMenu,screenmenu);
-
 show(BUTTON1,screenmenu);
 show(BUTTON2,screenmenu);
 show(BUTTON3,screenmenu);
 show(LogoGame,screenmenu);
 show(LogoGroup,screenmenu);
-
 SDL_Flip(screenmenu);
 
 

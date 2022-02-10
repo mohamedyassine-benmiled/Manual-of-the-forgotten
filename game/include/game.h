@@ -6,5 +6,5 @@
 void InitOptions();
 void screeninit(SDL_Surface *screen);
 void init();
-void menu(int cont);
+void menup(SDL_Event event,int run);
 #endif // GAME_H
