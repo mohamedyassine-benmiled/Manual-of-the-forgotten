@@ -1,11 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
-
+#include <stdbool.h>
 #include <SDL/SDL.h>
-typedef struct 
-{
-     SDL_Surface *surface ;
-    SDL_Rect position;
-} screen;
 
+void InitOptions();
+void screeninit(SDL_Surface *screen);
+void init();
+void menu(int cont);
 #endif // GAME_H

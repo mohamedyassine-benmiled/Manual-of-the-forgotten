@@ -3,62 +3,65 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
+#include "include/text.h"
+#include "include/image.h"
+
+
 int main (int argc , char *argv[])
 {
- SDL_Surface *ecran = NULL ;
- SDL_Surface *ecran2 = NULL;
- SDL_Surface *ecran3 = NULL;
- SDL_Surface *menu = NULL ;
- SDL_Surface *BUTTON1 = NULL ;
- SDL_Surface *BUTTON2 = NULL ;
- SDL_Surface *BUTTON3 = NULL ;
- SDL_Surface *LOGO1 = NULL ;
- SDL_Surface *LOGO2 = NULL ;
- SDL_Surface *BackgroundOptions = NULL ;
- SDL_Surface *GameBackground = NULL ;
- SDL_Rect positionMenu ;
- SDL_Rect positionBackgroundOptions;
- SDL_Rect positionGameBackground;
- SDL_Rect positionButton1;
- SDL_Rect positionButton2;
- SDL_Rect positionButton3;
- SDL_Rect positionLogo1;
- SDL_Rect positionLogo2;
+//Definition Background
+  image BackgroundMenu;
+  image BackgroundOptions;
+  image BackgroundGame;
+//Definition Logo
+  image LogoGame;
+  image LogoGroup;
+
+//Definition Buttons
+  image BUTTON1;
+  image BUTTON2;
+  image BUTTON3;
+//Definition Screens
+ SDL_Surface *screenmenu = NULL ;
+ SDL_Surface *screenoptions = NULL;
+ SDL_Surface *screengame = NULL;
+
  int cont = 3 ;
  int options = 0;
  int play = 0;
  SDL_Event event ;
+//SDL_INIT and game caption and icon
+   init();
+   
+//ScreenInit
+  screenmenu = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+  screengame = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+  screenoptions = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+  
 
- SDL_Init(SDL_INIT_VIDEO);
-        SDL_WM_SetIcon(IMG_Load("Menu/Logo.png"),NULL);
-        ecran = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
-        SDL_WM_SetCaption("Manual of the forgotten",NULL);
-        ecran2 = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
-        ecran3 = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
-menu = IMG_Load("Menu/grey_Background.png");
-positionMenu.x=0;
-positionMenu.y=0;
-BackgroundOptions = IMG_Load("Menu/Placeholder_Background.png");
-positionBackgroundOptions.x=0;
-positionBackgroundOptions.y=0;
-GameBackground = IMG_Load("Menu/Game_Background.png");
-positionGameBackground.x=0;
-positionGameBackground.y=0;
-BUTTON1 = IMG_Load("Menu/Play2.png");
-positionButton1.x=129;
-positionButton1.y=374;
-BUTTON2 = IMG_Load("Menu/Options2.png");
-positionButton2.x=129;
-positionButton2.y=512;
-BUTTON3 = IMG_Load("Menu/Quit2.png");
-positionButton3.x=129;
-positionButton3.y=661;
-LOGO1 = IMG_Load("Menu/Logo.png");
-positionLogo1.x=220;
-positionLogo1.y=74;
-LOGO2 = IMG_Load("Menu/Logo.png");
-positionLogo2.x=1690;
-positionLogo2.y=857;
+
+//Initialisation Background
+initBackground(&BackgroundMenu,"Menu/grey_background.png");
+
+initBackground(&BackgroundOptions,"Menu/Placeholder_background.png");
+initBackground(&BackgroundGame,"Menu/Placeholder_background.png");
+
+
+BUTTON1.surface = IMG_Load("Menu/Play2.png");
+BUTTON1.pos1.x=129;
+BUTTON1.pos1.y=374;
+BUTTON2.surface = IMG_Load("Menu/Options2.png");
+BUTTON2.pos1.x=129;
+BUTTON2.pos1.y=512;
+BUTTON3.surface = IMG_Load("Menu/Quit2.png");
+BUTTON3.pos1.x=129;
+BUTTON3.pos1.y=661;
+LogoGame.surface = IMG_Load("Menu/Logo.png");
+LogoGame.pos1.x=220;
+LogoGame.pos1.y=74;
+LogoGroup.surface = IMG_Load("Menu/Logo.png");
+LogoGroup.pos1.x=1690;
+LogoGroup.pos1.y=857;
 while(cont)
 {
 
@@ -81,20 +84,20 @@ while(cont)
          options = 1;
          while(options)
         {
-          SDL_BlitSurface(BackgroundOptions,NULL,ecran2,&positionBackgroundOptions);
-          SDL_Flip(ecran2);
+          show(BackgroundOptions,screenoptions);
+          SDL_Flip(screenoptions);
         }
-        SDL_FreeSurface(BackgroundOptions);
+        freesurface(BackgroundOptions);
         break;
       case (SDLK_p):
         cont=2;
         play=2;
         while (play)
         {
-          SDL_BlitSurface(GameBackground,NULL,ecran3,&positionGameBackground);
-          SDL_Flip(ecran3);
+          show(BackgroundGame,screengame);
+          SDL_Flip(screengame);
         }
-        SDL_FreeSurface(GameBackground);
+        freesurface(BackgroundGame);
         break;
      }
 
@@ -105,25 +108,24 @@ while(cont)
 
 
 
+show(BackgroundMenu,screenmenu);
 
-SDL_BlitSurface(menu,NULL,ecran,&positionMenu);
-SDL_BlitSurface(menu,NULL,ecran,&positionMenu);
-SDL_BlitSurface(BUTTON1,NULL,ecran,&positionButton1);
-SDL_BlitSurface(BUTTON2,NULL,ecran,&positionButton2);
-SDL_BlitSurface(BUTTON3,NULL,ecran,&positionButton3);
-SDL_BlitSurface(LOGO1,NULL,ecran,&positionLogo1);
-SDL_BlitSurface(LOGO2,NULL,ecran,&positionLogo2);
+show(BUTTON1,screenmenu);
+show(BUTTON2,screenmenu);
+show(BUTTON3,screenmenu);
+show(LogoGame,screenmenu);
+show(LogoGroup,screenmenu);
 
-SDL_Flip(ecran);
+SDL_Flip(screenmenu);
 
 
 }
-SDL_FreeSurface(menu);
-SDL_FreeSurface(BUTTON1);
-SDL_FreeSurface(BUTTON2);
-SDL_FreeSurface(BUTTON3);
-SDL_FreeSurface(LOGO1);
-SDL_FreeSurface(LOGO2);
+freesurface(BackgroundMenu);
+freesurface(BUTTON1);
+freesurface(BUTTON2);
+freesurface(BUTTON3);
+freesurface(LogoGame);
+freesurface(LogoGroup);
 SDL_Quit();
 return EXIT_SUCCESS;
 
