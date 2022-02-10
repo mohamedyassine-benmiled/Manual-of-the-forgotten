@@ -16,7 +16,7 @@ int main (int argc , char *argv[])
  SDL_Surface *LOGO2 = NULL ;
  SDL_Surface *BackgroundOptions = NULL ;
  SDL_Surface *GameBackground = NULL ;
- SDL_Rect positionMenu;
+ SDL_Rect positionMenu ;
  SDL_Rect positionBackgroundOptions;
  SDL_Rect positionGameBackground;
  SDL_Rect positionButton1;
@@ -75,16 +75,11 @@ while(cont)
        case (SDLK_ESCAPE):
          cont = 0;
          break;
-       case (SDLK_f):
-        cont = 1;
-        break ;
-       case (SDLK_o):
-        cont=2;
-        break ;
-      case (SDLK_a):
-        cont=2;
-        options = 1;
-        while(options)
+       
+         case (SDLK_o):
+         cont=2;
+         options = 1;
+         while(options)
         {
           SDL_BlitSurface(BackgroundOptions,NULL,ecran2,&positionBackgroundOptions);
           SDL_Flip(ecran2);
