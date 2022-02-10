@@ -40,12 +40,15 @@ all: $(APPNAME)
 $(APPNAME): $(OBJ)
 	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-# Creates the dependecy rules
-%.d: $(SRCDIR)/%$(EXT)
-	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
-
-# Includes all .h files
--include $(DEP)
+obj/main.o: game/main.c
+		gcc -c game/main.c -g
+		mv main.o obj/main.o
+obj/image.o: game/image.c
+		gcc -c game/image.c -g
+		mv image.o obj/image.o
+obj/text.o: game/text.c
+		gcc -c game/text.c -g
+		mv text.o obj/text.o
 
 # Building rule for .o files and its .c/.cpp in combination with all .h
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)

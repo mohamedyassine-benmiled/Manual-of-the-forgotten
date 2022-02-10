@@ -2,10 +2,9 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-
+#include "include/game.h"
 int main (int argc , char *argv[])
 {
-
  SDL_Surface *ecran = NULL ;
  SDL_Surface *ecran2 = NULL;
  SDL_Surface *ecran3 = NULL;
@@ -32,10 +31,10 @@ int main (int argc , char *argv[])
 
  SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(IMG_Load("Menu/Logo.png"),NULL);
-        ecran = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+        ecran = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
         SDL_WM_SetCaption("Manual of the forgotten",NULL);
-        ecran2 = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF);
-        ecran3 = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+        ecran2 = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
+        ecran3 = SDL_SetVideoMode(1920,1080,32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
 menu = IMG_Load("Menu/grey_Background.png");
 positionMenu.x=0;
 positionMenu.y=0;
