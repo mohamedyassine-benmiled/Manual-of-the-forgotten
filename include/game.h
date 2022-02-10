@@ -1,5 +1,5 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <SDL/SDL.h>
 
