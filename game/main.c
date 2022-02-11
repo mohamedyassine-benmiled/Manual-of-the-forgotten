@@ -27,7 +27,8 @@ int main (int argc , char *argv[])
  SDL_Surface *screengame = NULL;
 
  int run = 3 ;
-
+  int play = 0;
+  int options = 0;
  SDL_Event event ;
 //SDL_INIT and game caption and icon
    init();
@@ -63,7 +64,7 @@ LogoGroup.pos1.x=1690;
 LogoGroup.pos1.y=857;
 while(run)
 {
-
+    //waitforinput(run);
     SDL_WaitEvent(&event);
     switch (event.type)
     {
