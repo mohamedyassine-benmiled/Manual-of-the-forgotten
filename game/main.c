@@ -41,10 +41,13 @@ int main (int argc , char *argv[])
 
 
 //Initialisation Background
-initBackground(&BackgroundMenu,"Menu/grey_background.png");
+//initBackground(&BackgroundMenu,"Menu/grey_background.png");
+BackgroundMenu.surface = IMG_Load("Menu/grey_Background.png");
+BUTTON1.pos1.x=0;
+BUTTON1.pos1.y=0;
 
-initBackground(&BackgroundOptions,"Menu/Placeholder_background.png");
-initBackground(&BackgroundGame,"Menu/Placeholder_background.png");
+initBackground(&BackgroundOptions,"Menu/Placeholder_Background.png");
+initBackground(&BackgroundGame,"Menu/Placeholder_Background.png");
 
 
 BUTTON1.surface = IMG_Load("Menu/Play2.png");
@@ -87,6 +90,7 @@ while(run)
           SDL_Flip(screenoptions);
         }
         freesurface(BackgroundOptions);
+      
         break;
       case (SDLK_p):
         run=2;
@@ -103,31 +107,31 @@ while(run)
     }
 
 
+    SDL_BlitSurface(BackgroundMenu.surface,NULL,screenmenu,&BackgroundMenu.pos1);
+   //show(BackgroundMenu,screenmenu);
+   show(BUTTON1,screenmenu);
+   show(BUTTON2,screenmenu);
+   show(BUTTON3,screenmenu);
+   show(LogoGame,screenmenu);
+   show(LogoGroup,screenmenu);
+   SDL_Flip(screenmenu);
+   }
+ freesurface(BackgroundMenu);
+ freesurface(BUTTON1);
+ freesurface(BUTTON2);
+ freesurface(BUTTON3);
+ freesurface(LogoGame);
+ freesurface(LogoGroup);
+ SDL_Quit();
+ return EXIT_SUCCESS;
 
-show(BackgroundMenu,screenmenu);
-show(BUTTON1,screenmenu);
-show(BUTTON2,screenmenu);
-show(BUTTON3,screenmenu);
-show(LogoGame,screenmenu);
-show(LogoGroup,screenmenu);
-SDL_Flip(screenmenu);
-
-
-}
-freesurface(BackgroundMenu);
-freesurface(BUTTON1);
-freesurface(BUTTON2);
-freesurface(BUTTON3);
-freesurface(LogoGame);
-freesurface(LogoGroup);
-SDL_Quit();
-return EXIT_SUCCESS;
-
-
+ }
 
 
 
 
 
-}
+
+
+
 
