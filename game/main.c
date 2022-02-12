@@ -5,7 +5,7 @@
 #include "include/game.h"
 #include "include/text.h"
 #include "include/image.h"
-
+#include "include/sound.h"
 
 int main (int argc , char *argv[])
 {

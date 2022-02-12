@@ -3,6 +3,7 @@
     "files.associations": {
         "sdl.h": "c",
         "game.h": "c",
-        "image.h": "c"
+        "image.h": "c",
+        "text.h": "c"
     }
 }
