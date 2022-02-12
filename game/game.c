@@ -69,7 +69,9 @@ int options(int run)
                     case (SDLK_ESCAPE):
                         run=0;
                     break;
-        
+                    case (SDLK_RIGHT):
+                        run=1;
+                    break;
                     case (SDLK_DOWN):
                         run=2;
                     break;
@@ -105,15 +107,15 @@ int game(int run)
                     case (SDLK_ESCAPE):
                         run=0;
                     break;
-        
+                    case (SDLK_RIGHT):
+                        run=1;
+                    break;
                     case (SDLK_DOWN):
                         run=2;
                     break;
-
                     case (SDLK_UP):
                         run=3;
                     break;
-
                     }
         }
 
