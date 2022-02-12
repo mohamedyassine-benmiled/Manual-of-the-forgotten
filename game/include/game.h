@@ -7,4 +7,8 @@ void InitOptions();
 void screeninit(SDL_Surface *screen);
 void init();
 void menup(SDL_Event event,int run);
+int menu(int run);
+int game(int run);
+int options(int run);
+
 #endif // GAME_H

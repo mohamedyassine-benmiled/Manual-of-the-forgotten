@@ -9,6 +9,7 @@
 
 int main (int argc , char *argv[])
 {
+  
 //Definition Background
   image BackgroundMenu;
   image BackgroundOptions;
@@ -21,15 +22,15 @@ int main (int argc , char *argv[])
   image BUTTON1;
   image BUTTON2;
   image BUTTON3;
+  
 //Definition Screens
  SDL_Surface *screenmenu = NULL ;
  SDL_Surface *screenoptions = NULL;
  SDL_Surface *screengame = NULL;
+  
+ int run = 1 ;
 
- int run = 3 ;
-  int play = 0;
-  int options = 0;
- SDL_Event event ;
+
 //SDL_INIT and game caption and icon
    init();
    
@@ -41,15 +42,11 @@ int main (int argc , char *argv[])
 
 
 //Initialisation Background
-//initBackground(&BackgroundMenu,"Menu/grey_background.png");
-BackgroundMenu.surface = IMG_Load("Menu/grey_Background.png");
-BUTTON1.pos1.x=0;
-BUTTON1.pos1.y=0;
-
+initBackground(&BackgroundMenu,"Menu/grey.png");
 initBackground(&BackgroundOptions,"Menu/Placeholder_Background.png");
-initBackground(&BackgroundGame,"Menu/Placeholder_Background.png");
+initBackground(&BackgroundGame,"Menu/Game_Background.png");
 
-
+//Initialisation Buttons
 BUTTON1.surface = IMG_Load("Menu/Play2.png");
 BUTTON1.pos1.x=129;
 BUTTON1.pos1.y=374;
@@ -67,6 +64,41 @@ LogoGroup.pos1.x=1690;
 LogoGroup.pos1.y=857;
 while(run)
 {
+switch (run)
+  {
+    case 1:
+      show(BackgroundMenu,screenmenu);
+      show(BUTTON1,screenmenu);
+      show(BUTTON2,screenmenu);
+      show(BUTTON3,screenmenu);
+      show(LogoGame,screenmenu);
+      show(LogoGroup,screenmenu);
+      SDL_Flip(screenmenu);
+    break;
+    case 2:
+      show(BackgroundOptions,screenoptions);
+      SDL_Flip(screenoptions);
+    break;
+    case 3:
+      show(BackgroundGame,screengame);
+      SDL_Flip(screengame);
+    break;
+
+  }
+  run=menu(run);
+  run=options(run);
+  run=game(run);
+  /*
+  run=keyboard(run);
+  run=audio(run);
+  run=graphics(run);
+  */
+}
+/*
+while(run)
+{
+
+  
     //waitforinput(run);
     SDL_WaitEvent(&event);
     switch (event.type)
@@ -86,10 +118,9 @@ while(run)
          options = 1;
          while(options)
         {
-          show(BackgroundOptions,screenoptions);
-          SDL_Flip(screenoptions);
+
         }
-        freesurface(BackgroundOptions);
+        
       
         break;
       case (SDLK_p):
@@ -100,22 +131,19 @@ while(run)
           show(BackgroundGame,screengame);
           SDL_Flip(screengame);
         }
-        freesurface(BackgroundGame);
+
         break;
      }
         break;
     }
+  
 
+ 
 
-    SDL_BlitSurface(BackgroundMenu.surface,NULL,screenmenu,&BackgroundMenu.pos1);
-   //show(BackgroundMenu,screenmenu);
-   show(BUTTON1,screenmenu);
-   show(BUTTON2,screenmenu);
-   show(BUTTON3,screenmenu);
-   show(LogoGame,screenmenu);
-   show(LogoGroup,screenmenu);
-   SDL_Flip(screenmenu);
    }
+  */
+ freesurface(BackgroundGame);
+ freesurface(BackgroundOptions);
  freesurface(BackgroundMenu);
  freesurface(BUTTON1);
  freesurface(BUTTON2);

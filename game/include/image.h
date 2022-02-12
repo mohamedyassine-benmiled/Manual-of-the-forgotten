@@ -10,6 +10,9 @@ typedef struct
     SDL_Rect pos2;
 } image;
 
+
+
+
 void initPlayer(image *p);
 void initBackground(image *b,char img[]);
 void freesurface(image a);
