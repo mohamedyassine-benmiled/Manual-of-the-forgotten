@@ -37,7 +37,7 @@ int main (int argc , char *argv[])
 //ScreenInit
   screenmenu = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
   screengame = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
-  screenoptions = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+
   
 
 
@@ -74,20 +74,23 @@ switch (run)
       show(LogoGame,screenmenu);
       show(LogoGroup,screenmenu);
       SDL_Flip(screenmenu);
+        run=menu(run);
     break;
     case 2:
-      show(BackgroundOptions,screenoptions);
-      SDL_Flip(screenoptions);
+      show(BackgroundOptions,screenmenu);
+      SDL_Flip(screenmenu);
+        run=options(run);
     break;
     case 3:
       show(BackgroundGame,screengame);
       SDL_Flip(screengame);
+        run=game(run);
     break;
 
   }
-  run=menu(run);
-  run=options(run);
-  run=game(run);
+
+
+
   /*
   run=keyboard(run);
   run=audio(run);
