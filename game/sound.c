@@ -6,3 +6,7 @@
 #include "include/game.h"
 #include "include/text.h"
 #include "include/image.h"
+void hello()
+{
+    
+}
