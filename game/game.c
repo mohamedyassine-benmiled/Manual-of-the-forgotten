@@ -14,12 +14,35 @@ void init()
 
 
 
-int menu(int run)
+int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
+    initBackground(&menugame->assets.background,"Menu/grey.png");
+    menugame->assets.play.surface = IMG_Load("Menu/Play2.png");
+    menugame->assets.play.pos1.x=129;
+    menugame->assets.play.pos1.y=374;
+    menugame->assets.options.surface = IMG_Load("Menu/Options2.png");
+    menugame->assets.options.pos1.x=129;
+    menugame->assets.options.pos1.y=512;
+    menugame->assets.quit.surface = IMG_Load("Menu/Quit2.png");
+    menugame->assets.quit.pos1.x=129;
+    menugame->assets.quit.pos1.y=661;
+    menugame->assets.logo.surface = IMG_Load("Menu/Logo.png");
+    menugame->assets.logo.pos1.x=220;
+    menugame->assets.logo.pos1.y=74;
+    menugame->assets.logogroup.surface = IMG_Load("Menu/Logo.png");
+    menugame->assets.logogroup.pos1.x=1690;
+    menugame->assets.logogroup.pos1.y=857;
     SDL_Event event;
     while(run==1)
     {
-
+        
+        show(menugame->assets.background,screen);
+      show(menugame->assets.play,screen);
+      show(menugame->assets.options,screen);
+      show(menugame->assets.quit,screen);
+      show(menugame->assets.logo,screen);
+      show(menugame->assets.logogroup,screen);
+      SDL_Flip(screen);
     //Wait for event
     SDL_WaitEvent(&event);
 
@@ -41,6 +64,11 @@ int menu(int run)
                         run=3;
                     break;
                     }
+        case SDL_MOUSEMOTION:
+                break;
+        
+        case SDL_MOUSEBUTTONDOWN:
+                break;
         }
 
 

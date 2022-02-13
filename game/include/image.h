@@ -10,7 +10,37 @@ typedef struct
     SDL_Rect pos2;
 } image;
 
+typedef struct 
+{
+    /* Menu Assets */
+    image play;
+    image options;
+    image quit;
+    image background;
+    image logo;
+    image logogroup;
+} MenuImage;
 
+typedef struct
+{
+    /* Options Assets */
+    image graphics;
+    image sound;
+    image buttons;
+    image window;
+    image buttoncircle;
+    image border;
+} OptionImage;
+
+typedef struct
+{
+    /* Options Assets */
+    image background;
+    image character;
+    image health;
+    image itemholding;
+    image inventory;
+} GameImage;
 
 
 void initPlayer(image *p);

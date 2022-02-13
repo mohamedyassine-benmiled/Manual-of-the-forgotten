@@ -18,13 +18,9 @@ int main (int argc , char *argv[])
   image LogoGame;
   image LogoGroup;
 
-//Definition Buttons
-  image BUTTON1;
-  image BUTTON2;
-  image BUTTON3;
-  image BUTTONA;
-  image BUTTONB;
-  image BUTTONC; 
+//Definition MenuGame
+  MenuGame mainmenu;
+  OptionGame optionmenu;
   
 //Definition Screens
  SDL_Surface *screenmenu = NULL ;
@@ -50,6 +46,7 @@ initBackground(&BackgroundOptions,"Menu/Placeholder_Background.png");
 initBackground(&BackgroundGame,"Menu/Game_Background.png");
 
 //Initialisation Buttons
+/*
 BUTTON1.surface = IMG_Load("Menu/Play2.png");
 BUTTON1.pos1.x=129;
 BUTTON1.pos1.y=374;
@@ -65,19 +62,21 @@ LogoGame.pos1.y=74;
 LogoGroup.surface = IMG_Load("Menu/Logo.png");
 LogoGroup.pos1.x=1690;
 LogoGroup.pos1.y=857;
+
 BUTTONA.surface = IMG_Load("Menu/*******");
 BUTTONA.pos1.x=0;
 BUTTONA.pos1.y=0;
 BUTTONB.surface = IMG_Load("Menu/*******");
 BUTTONB.pos1.x=0;
 BUTTONB.pos1.y=0;
-
+*/
 
 while(run)
 {
 switch (run)
   {
     case 1:
+    /*
       show(BackgroundMenu,screenmenu);
       show(BUTTON1,screenmenu);
       show(BUTTON2,screenmenu);
@@ -85,7 +84,8 @@ switch (run)
       show(LogoGame,screenmenu);
       show(LogoGroup,screenmenu);
       SDL_Flip(screenmenu);
-        run=menu(run);
+    */
+        run=menu(&mainmenu,screenmenu,run);
     break;
     case 2:
       show(BackgroundOptions,screenmenu);
@@ -156,6 +156,7 @@ while(run)
 
    }
   */
+ /*
  freesurface(BackgroundGame);
  freesurface(BackgroundOptions);
  freesurface(BackgroundMenu);
@@ -164,6 +165,7 @@ while(run)
  freesurface(BUTTON3);
  freesurface(LogoGame);
  freesurface(LogoGroup);
+ */
  SDL_Quit();
  return EXIT_SUCCESS;
 
