@@ -22,6 +22,9 @@ int main (int argc , char *argv[])
   image BUTTON1;
   image BUTTON2;
   image BUTTON3;
+  image BUTTONA;
+  image BUTTONB;
+  image BUTTONC; 
   
 //Definition Screens
  SDL_Surface *screenmenu = NULL ;
@@ -62,6 +65,14 @@ LogoGame.pos1.y=74;
 LogoGroup.surface = IMG_Load("Menu/Logo.png");
 LogoGroup.pos1.x=1690;
 LogoGroup.pos1.y=857;
+BUTTONA.surface = IMG_Load("Menu/*******");
+BUTTONA.pos1.x=0;
+BUTTONA.pos1.y=0;
+BUTTONB.surface = IMG_Load("Menu/*******");
+BUTTONB.pos1.x=0;
+BUTTONB.pos1.y=0;
+
+
 while(run)
 {
 switch (run)

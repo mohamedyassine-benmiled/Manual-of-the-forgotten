@@ -48,6 +48,7 @@ obj/image.o: game/image.c
 		mv image.o obj/image.o
 obj/text.o: game/text.c
 		gcc -c game/text.c -g
+		mkdir obj 
 		mv text.o obj/text.o
 obj/sound.o: game/sound.c
 		gcc -c game/sound.c -g
