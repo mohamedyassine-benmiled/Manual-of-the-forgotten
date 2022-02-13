@@ -4,9 +4,14 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 
-typedef struct Music
+typedef struct 
 {
-	Mix_Music *ambient;
+	Mix_Chunk * sound;
 
-}Music;
+}son;
+typedef struct 
+{
+    Mix_Music *musique;
+}music;
+
 #endif // SOUND_H

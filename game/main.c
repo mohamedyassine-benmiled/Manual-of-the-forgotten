@@ -77,6 +77,10 @@ switch (run)
   {
     case 1:
     /*
+    //sound
+       Mix_Chunk *son;
+    son = Mix_LoadWAV("DATA/SFX/wood.ogg");
+    
       show(BackgroundMenu,screenmenu);
       show(BUTTON1,screenmenu);
       show(BUTTON2,screenmenu);
