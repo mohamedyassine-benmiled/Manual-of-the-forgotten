@@ -21,6 +21,8 @@ void initBackground(image *b,char img[])
     b->pos1.y=0;
     b->pos2.x=0;
     b->pos2.y=0;
+    b->pos2.w=1920;
+    b->pos2.h=1080;
 }
 
 

@@ -13,7 +13,7 @@ typedef struct
 typedef struct 
 {
     /* Menu Assets */
-    image play;
+    image play[2];
     image options;
     image quit;
     image background;

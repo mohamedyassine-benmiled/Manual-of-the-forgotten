@@ -17,9 +17,16 @@ void init()
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
     initBackground(&menugame->assets.background,"Menu/grey.png");
-    menugame->assets.play.surface = IMG_Load("Menu/Play2.png");
-    menugame->assets.play.pos1.x=129;
-    menugame->assets.play.pos1.y=374;
+    menugame->assets.play[1].surface = IMG_Load("Menu/Play2.png");
+    menugame->assets.play[1].pos1.x=129;
+    menugame->assets.play[1].pos1.y=374;
+    menugame->assets.play[1].pos2.w=209;
+    menugame->assets.play[1].pos2.h=118;
+    menugame->assets.play[2].surface = IMG_Load("Menu/PlayOnHover.png");
+    menugame->assets.play[2].pos1.x=129;
+    menugame->assets.play[2].pos1.y=374;
+    menugame->assets.play[2].pos2.w=209;
+    menugame->assets.play[2].pos2.h=118;
     menugame->assets.options.surface = IMG_Load("Menu/Options2.png");
     menugame->assets.options.pos1.x=129;
     menugame->assets.options.pos1.y=512;
@@ -33,16 +40,17 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     menugame->assets.logogroup.pos1.x=1690;
     menugame->assets.logogroup.pos1.y=857;
     SDL_Event event;
+        show(menugame->assets.background,screen);
+        show(menugame->assets.play[1],screen);
+        show(menugame->assets.options,screen);
+        show(menugame->assets.quit,screen);
+        show(menugame->assets.logo,screen);
+        show(menugame->assets.logogroup,screen);
+      SDL_Flip(screen);
     while(run==1)
     {
         
-        show(menugame->assets.background,screen);
-      show(menugame->assets.play,screen);
-      show(menugame->assets.options,screen);
-      show(menugame->assets.quit,screen);
-      show(menugame->assets.logo,screen);
-      show(menugame->assets.logogroup,screen);
-      SDL_Flip(screen);
+
     //Wait for event
     SDL_WaitEvent(&event);
 
@@ -65,9 +73,18 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                     break;
                     }
         case SDL_MOUSEMOTION:
+                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
+                {
+
+                }
+
                 break;
         
-        case SDL_MOUSEBUTTONDOWN:
+        case SDL_MOUSEBUTTONUP:
+                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
+                {
+                    run=3;
+                }
                 break;
         }
 
