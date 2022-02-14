@@ -9,6 +9,7 @@
 #include "include/sound.h"
 void initson()
 {
+    /*
   son * sound;
     sound= Mix_LoadWAV("soundeffect.wav"); //Chargement de sound effect
     Mix_PlayChannel(-1,sound, 0); 
@@ -25,4 +26,5 @@ int Mix_OpenAudio()
     Mix_VolumeChunk(son, MIX_MAX_VOLUME/8);
     Mix_VolumeMusic(MIX_MAX_VOLUME/4);
     Mix_PlayMusic(musique, -1);
+    */
 }

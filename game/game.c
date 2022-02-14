@@ -71,6 +71,9 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                     case (SDLK_UP):
                         run=3;
                     break;
+                                        
+                    default:
+                        break;
                     }
         case SDL_MOUSEMOTION:
                 if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
@@ -123,6 +126,9 @@ int options(int run)
                     case (SDLK_UP):
                         run=3;
                     break;
+                                        
+                    default:
+                        break;
                     }
         }
 
@@ -161,6 +167,9 @@ int game(int run)
                     case (SDLK_UP):
                         run=3;
                     break;
+
+                    default:
+                        break;
                     }
         }
 
