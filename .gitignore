@@ -1,0 +1,6 @@
+obj/text.o
+obj/sound.o
+obj/main.o
+obj/image.o
+obj/game.o
+book
