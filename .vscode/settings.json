@@ -4,6 +4,7 @@
         "sdl.h": "c",
         "game.h": "c",
         "image.h": "c",
-        "text.h": "c"
+        "text.h": "c",
+        "stdlib.h": "c"
     }
 }

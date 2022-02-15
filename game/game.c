@@ -99,6 +99,7 @@ return run;
 
 int options(int run)
 {
+    
     SDL_Event event;
     while(run==2)
     {

@@ -53,7 +53,9 @@ obj/text.o: game/text.c
 obj/sound.o: game/sound.c
 		gcc -c game/sound.c -g
 		mv sound.o obj/sound.o
-
+obj/sound.o: game/sound.c
+		gcc -c game/menu.c -g
+		mv menu.o obj/menu.o
 # Building rule for .o files and its .c/.cpp in combination with all .h
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
 	$(CC) $(CXXFLAGS) -o $@ -c $<
