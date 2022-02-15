@@ -6,6 +6,8 @@
 #include "include/text.h"
 #include "include/image.h"
 #include "include/sound.h"
+#include "include/menu.h"
+#include "include/init.h"
 
 int main (int argc , char *argv[])
 {
@@ -20,18 +22,11 @@ int main (int argc , char *argv[])
  int run = 1 ;
 
 //SDL_INIT and game caption and icon
-   init();
+   initvideo();
 //ScreenInit
   screenmenu = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
   screengame = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
-
-  
-
-
-
-
 //Initialisation Buttons
-
 while(run)
 {
 switch (run)
@@ -43,12 +38,10 @@ switch (run)
         run=options(&optionmenu,screenmenu,run);
     break;
     case 3:
-        run=game();
+        //run=game();
     break;
 
   }
-
-
 }
 
  SDL_Quit();

@@ -22,12 +22,15 @@ typedef struct
 typedef struct
 {
     /* Options Assets */
+    image logo;
+    image logogroup;
     image graphics;
     image sound;
     image buttons;
     image window;
     image buttoncircle;
     image border;
+    image background;
 } OptionImage;
 
 typedef struct

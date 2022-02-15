@@ -5,6 +5,7 @@
         "game.h": "c",
         "image.h": "c",
         "text.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "menu.h": "c"
     }
 }

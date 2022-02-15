@@ -42,9 +42,11 @@ $(APPNAME): $(OBJ)
 
 obj/main.o: game/main.c
 		gcc -c game/main.c -g
+		-mkdir obj 
 		mv main.o obj/main.o
 obj/image.o: game/image.c
 		gcc -c game/image.c -g
+		-mkdir obj 
 		mv image.o obj/image.o
 obj/text.o: game/text.c
 		gcc -c game/text.c -g
@@ -52,10 +54,16 @@ obj/text.o: game/text.c
 		mv text.o obj/text.o
 obj/sound.o: game/sound.c
 		gcc -c game/sound.c -g
+		-mkdir obj 
 		mv sound.o obj/sound.o
-obj/sound.o: game/sound.c
+obj/menu.o: game/menu.c
 		gcc -c game/menu.c -g
+		-mkdir obj 
 		mv menu.o obj/menu.o
+obj/init.o: game/init.c
+		gcc -c game/init.c -g
+		-mkdir obj 
+		mv init.o obj/init.o
 # Building rule for .o files and its .c/.cpp in combination with all .h
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
 	$(CC) $(CXXFLAGS) -o $@ -c $<

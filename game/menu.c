@@ -4,4 +4,110 @@
 #include "include/menu.h"
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
+#include "include/init.h"
+#include "include/game.h"
 
+int menu(MenuGame *menugame,SDL_Surface *screen,int run)
+{
+    initmenu(menugame);
+    SDL_Event event;
+        show(menugame->assets.background,screen);
+        show(menugame->assets.play[1],screen);
+        show(menugame->assets.options,screen);
+        show(menugame->assets.quit,screen);
+        show(menugame->assets.logo,screen);
+        show(menugame->assets.logogroup,screen);
+      SDL_Flip(screen);
+    while(run==1)
+    {
+    //Wait for event
+    SDL_WaitEvent(&event);
+
+    switch (event.type)
+        {
+        case SDL_QUIT:
+            run=0;
+            break;
+        case SDL_KEYDOWN:
+                switch (event.key.keysym.sym)
+                    {
+                    case (SDLK_ESCAPE):
+                        run=0;
+                    break;
+                    case (SDLK_DOWN):
+                        run=2;
+                    break;
+                    case (SDLK_UP):
+                        run=3;
+                    break;
+                                        
+                    default:
+                        break;
+                    }
+        case SDL_MOUSEMOTION:
+                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
+                {
+
+                }
+
+                break;
+        
+        case SDL_MOUSEBUTTONUP:
+                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
+                {
+                    run=3;
+                }
+                break;
+        }
+
+
+    }
+return run;
+
+}
+
+int options(OptionGame *optiongame,SDL_Surface *screen,int run)
+{
+    initoption(optiongame);
+        show(optiongame->assets.background,screen);
+        show(optiongame->assets.logo,screen);
+        show(optiongame->assets.logogroup,screen);
+        SDL_Flip(screen);
+    SDL_Event event;
+    while(run==2)
+    {
+
+    //Wait for event
+    SDL_WaitEvent(&event);
+
+    switch (event.type)
+        {
+        case SDL_QUIT:
+            run=0;
+            break;
+        case SDL_KEYDOWN:
+                switch (event.key.keysym.sym)
+                    {
+                    case (SDLK_ESCAPE):
+                        run=0;
+                    break;
+                    case (SDLK_RIGHT):
+                        run=1;
+                    break;
+                    case (SDLK_DOWN):
+                        run=2;
+                    break;
+                    case (SDLK_UP):
+                        run=3;
+                    break;
+                                        
+                    default:
+                        break;
+                    }
+        }
+
+
+    }
+return run;
+
+}
