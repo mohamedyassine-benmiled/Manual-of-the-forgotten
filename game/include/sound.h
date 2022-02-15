@@ -6,12 +6,12 @@
 
 typedef struct 
 {
-	Mix_Chunk * sound;
+	Mix_Chunk *sound;
 
 }son;
-typedef struct 
+typedef struct Music
 {
-    Mix_Music *musique;
-}music;
+	Mix_Music *ambient;
 
+}Music;
 #endif // SOUND_H

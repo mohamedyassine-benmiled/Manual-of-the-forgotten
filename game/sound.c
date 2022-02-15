@@ -9,22 +9,17 @@
 #include "include/sound.h"
 void initson()
 {
-    /*
-  son * sound;
+    
+  son *sound;
     sound= Mix_LoadWAV("soundeffect.wav"); //Chargement de sound effect
     Mix_PlayChannel(-1,sound, 0); 
 }
 void freesound()
-{
+{son sound;
     Mix_FreeChunk(sound);
 }
-int Mix_OpenAudio()
+void play_music(Music *musique)
 {
-    music *musique;
-    musique = Mix_LoadMUS("backgroundmusic.mp3"); //Chargement de la musique
-
-    Mix_VolumeChunk(son, MIX_MAX_VOLUME/8);
-    Mix_VolumeMusic(MIX_MAX_VOLUME/4);
-    Mix_PlayMusic(musique, -1);
-    */
+    Mix_PlayMusic(musique->ambient, -1);
+	Mix_VolumeMusic(MIX_MAX_VOLUME/5);
 }
