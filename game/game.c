@@ -99,7 +99,7 @@ return run;
 
 int options(int run)
 {
-    
+
     SDL_Event event;
     while(run==2)
     {
@@ -153,25 +153,8 @@ int game(int run)
         case SDL_QUIT:
             run=0;
             break;
-        case SDL_KEYDOWN:
-                switch (event.key.keysym.sym)
-                    {
-                    case (SDLK_ESCAPE):
-                        run=0;
-                    break;
-                    case (SDLK_RIGHT):
-                        run=1;
-                    break;
-                    case (SDLK_DOWN):
-                        run=2;
-                    break;
-                    case (SDLK_UP):
-                        run=3;
-                    break;
-
-                    default:
-                        break;
-                    }
+        default:
+            break;
         }
 
 

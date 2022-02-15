@@ -40,14 +40,10 @@ switch (run)
         run=menu(&mainmenu,screenmenu,run);
     break;
     case 2:
-      show(BackgroundOptions,screenmenu);
-      SDL_Flip(screenmenu);
-        run=options(run);
+        run=options(&optionmenu,screenmenu,run);
     break;
     case 3:
-      show(BackgroundGame,screengame);
-      SDL_Flip(screengame);
-        run=game(run);
+        run=game();
     break;
 
   }
