@@ -18,6 +18,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         show(menugame->assets.logo,screen);
         show(menugame->assets.logogroup,screen);
       SDL_Flip(screen);
+    Mix_PlayMusic(menugame->Music, -1);
     while(run==1)
     {
     //Wait for event
@@ -38,7 +39,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                         run=2;
                     break;
                     case (SDLK_UP):
-                        run=3;
+                        run=2;
                     break;
                                         
                     default:
@@ -55,7 +56,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         case SDL_MOUSEBUTTONUP:
                 if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
                 {
-                    run=3;
+                                            Mix_PlayChannel(-1,menugame->soundbutton, 0); 
                 }
                 break;
         }
@@ -98,7 +99,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                         run=2;
                     break;
                     case (SDLK_UP):
-                        run=3;
+                        run=2;
                     break;
                                         
                     default:

@@ -5,7 +5,7 @@
 # Compiler settings - Can be customized.
 CC = gcc
 CXXFLAGS = -std=c11 -Wall -g
-LDFLAGS = -lSDL -lSDL_ttf -lSDL_image
+LDFLAGS = -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer
 
 # Makefile settings - Can be customized.
 APPNAME = book

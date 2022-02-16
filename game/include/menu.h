@@ -15,6 +15,10 @@ typedef struct
     int run;
     int quit;
     int play;
+    Mix_Music *Music;
+    Mix_Chunk *soundbutton;
+    Mix_Chunk *soundbook;
+    Mix_Chunk *soundflip;
 } MenuGame;
 
 typedef struct

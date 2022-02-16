@@ -23,6 +23,11 @@ int main (int argc , char *argv[])
 
 //SDL_INIT and game caption and icon
    initvideo();
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) //SDL_Mixer Init
+    {
+        printf("[-] %s", Mix_GetError());
+    }
+    	Mix_VolumeMusic(MIX_MAX_VOLUME/5);
 //ScreenInit
   screenmenu = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
   screengame = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);

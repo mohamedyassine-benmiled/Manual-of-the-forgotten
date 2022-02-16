@@ -14,9 +14,12 @@ void initson()
     sound= Mix_LoadWAV("soundeffect.wav"); //Chargement de sound effect
     Mix_PlayChannel(-1,sound, 0); 
 }
+
 void freesound()
-{son sound;
+{
     Mix_FreeChunk(sound);
+}
+
 }
 void play_music(Music *musique)
 {

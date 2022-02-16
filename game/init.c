@@ -21,7 +21,9 @@ void initvideo()
 
 void initmenu(MenuGame *menugame)
 {
-    initBackground(&menugame->assets.background,"Menu/grey.png");
+    menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
+    menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
+    initBackground(&menugame->assets.background,"Menu/BackgroundTest1.png");
     menugame->assets.play[1].surface = IMG_Load("Menu/Play2.png");
     menugame->assets.play[1].pos1.x=129;
     menugame->assets.play[1].pos1.y=374;
