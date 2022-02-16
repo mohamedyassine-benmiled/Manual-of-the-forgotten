@@ -4,4 +4,5 @@ obj/main.o
 obj/image.o
 obj/game.o
 obj/menu.o
+obj/init.o
 book
