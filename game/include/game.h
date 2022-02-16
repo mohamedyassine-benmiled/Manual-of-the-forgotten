@@ -3,9 +3,6 @@
 #include <stdbool.h>
 #include <SDL/SDL.h>
 #include "image.h"
-#define true 1
-#define false 0
-
 
 typedef struct
 {
