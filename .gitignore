@@ -6,3 +6,4 @@ obj/game.o
 obj/menu.o
 obj/init.o
 book
+obj/animation.o
