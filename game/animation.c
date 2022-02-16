@@ -30,11 +30,12 @@ int hoverbutton(int x,int y, image img )
         }
         return inside ;
 }
-void  button(int inside)
+/*void  button(int inside )
 {
 SDL_Surface *anim ; 
 if (inside =true)
 {
-    anim = IMG_Load(animation/000000)
+    anim = IMG_Load(Menu/animation/PlayOnHover)
 }
-}
+
+}*/

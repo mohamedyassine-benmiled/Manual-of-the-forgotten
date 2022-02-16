@@ -46,4 +46,5 @@ void initPlayer(image *p);
 void initBackground(image *b,char img[]);
 void freesurface(image a);
 void show (image p,SDL_Surface *screen);
+int hoverbutton(int x,int y, image img );
 #endif // IMAGE_H

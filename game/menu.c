@@ -7,8 +7,11 @@
 #include "include/init.h"
 #include "include/game.h"
 
+
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
+      int x,y,ins ;
+    image Play,PlayOnHover ; 
     initmenu(menugame);
     SDL_Event event;
         show(menugame->assets.background,screen);
@@ -48,22 +51,30 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         case SDL_MOUSEMOTION:
                 if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
                 {
-
                 }
-
+ 
                 break;
         
-        case SDL_MOUSEBUTTONUP:
-                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
-                {
-                                            Mix_PlayChannel(-1,menugame->soundbutton, 0); 
-                }
+         case SDL_MOUSEBUTTONUP:
+         SDL_GetMouseState(&x,&y);
+           ins = hoverbutton(x,y,Play);
+            
+                 if (ins =true)
+                    {
+                        
+                         anim = IMG_Load("PlayOnHover.png") ;
+                         show(PlayOnHover,screen);
+                    }
+
+                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+
+            
                 break;
         }
 
 
     }
-return run;
+ return run;
 
 }
 
