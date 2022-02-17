@@ -21,7 +21,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         show(menugame->assets.quit,screen);
         show(menugame->assets.logo,screen);
         show(menugame->assets.logogroup,screen);
-      SDL_Flip(screen);
+    menugame->hover=0;
     Mix_PlayMusic(menugame->Music, -1);
     while(run==1)
     {
@@ -51,30 +51,34 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                     }
         case SDL_MOUSEMOTION:
          SDL_GetMouseState(&x,&y);
-            
+                if (hoverbutton(x,y,menugame->assets.play[0])&&(menugame->hover==0))
+                {
+             
+                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                }
                  if (hoverbutton(x,y,menugame->assets.play[0]))
                     {
-                        
+                        menugame->hover=1;
                         show(menugame->assets.play[1],screen);
-                        SDL_Flip(screen);
+                        
 
                     }
                     else
                     {
-                        SDL_FreeSurface(menugame->assets.play[0].surface);
+                        menugame->hover=0;
                         show(menugame->assets.play[0],screen);
-                        SDL_Flip(screen);
+
                     }
 
                 break;
-        
+
          case SDL_MOUSEBUTTONUP:
          SDL_GetMouseState(&x,&y);
             
                  if (hoverbutton(x,y,menugame->assets.play[0]))
                     {
 
-                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                        Mix_PlayChannel(1,menugame->soundbutton, 0); 
                     }
 
 
@@ -83,7 +87,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                 break;
         }
 
-
+      SDL_Flip(screen);
     }
  return run;
 

@@ -29,7 +29,7 @@ void initmenu(MenuGame *menugame)
     menugame->assets.play[0].pos1.y=374;
     menugame->assets.play[0].pos2.w=209;
     menugame->assets.play[0].pos2.h=118;
-    menugame->assets.play[1].surface = IMG_Load("Menu/animation/PlayOnHover.png");
+    menugame->assets.play[1].surface = IMG_Load("Menu/PlayRed.png");
     menugame->assets.play[1].pos1.x=129;
     menugame->assets.play[1].pos1.y=374;
     menugame->assets.play[1].pos2.w=209;

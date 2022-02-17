@@ -12,6 +12,7 @@ typedef struct
 {
     /* data */
     MenuImage assets;
+    int hover;
     int run;
     int quit;
     int play;
