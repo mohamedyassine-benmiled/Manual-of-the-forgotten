@@ -6,25 +6,36 @@
 #include <SDL/SDL_audio.h>
 #include "include/init.h"
 #include "include/game.h"
-
+#include "include/fgifsdl.h"
+#include "include/animation.h"
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
       int x,y,ins ;
     initmenu(menugame);
     SDL_Event event;
-        show(menugame->assets.background[0],screen);
+    SDL_Gif *closedbook,*logo;
+
+        closedbook=SDLLoadGif("Menu/Background/ClosedBook.gif");
+        logo=SDLLoadGif("Menu/Background/LogoGame.gif");
+
+        show(menugame->assets.background,screen);
         show(menugame->assets.play[0],screen);
         show(menugame->assets.options[0],screen);
         show(menugame->assets.quit[0],screen);
         show(menugame->assets.logogroup,screen);
-    menugame->hover=0;
+
+    menugame->hover=1;
     menugame->press=0;
     Mix_PlayMusic(menugame->Music, -1);
 
     while(run==1)
     {
 
+    animatebackground(menugame->assets.book,closedbook,screen);
+    animatebackground(menugame->assets.logo,logo,screen);
+    SDL_Flip(screen);
+    
     //Wait for event
     SDL_WaitEvent(&event);
 
@@ -53,16 +64,22 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         case SDL_MOUSEMOTION:
         //Init Motion With Sound
         SDL_GetMouseState(&x,&y);
-            if ((hoverbutton(x,y,menugame->assets.play[1])||hoverbutton(x,y,menugame->assets.options[1])||hoverbutton(x,y,menugame->assets.quit[1]))&&(menugame->hover==0))
-                {
-                //Mix_PlayChannel(-1,menugame->soundbutton, 0); 
-                }
+
         //Play Button
-                menugame->hover=animatehover(x,y,menugame->assets.play[1],menugame->assets.play[0],screen);
+                menugame->hover=menugame->hover+animatehover(x,y,menugame->assets.play[1],menugame->assets.play[0],screen);
         //Options Button
-                menugame->hover=animatehover(x,y,menugame->assets.options[1],menugame->assets.options[0],screen);
+                menugame->hover=menugame->hover+animatehover(x,y,menugame->assets.options[1],menugame->assets.options[0],screen);
         //Quit Button
-                menugame->hover=animatehover(x,y,menugame->assets.quit[1],menugame->assets.quit[0],screen);
+                menugame->hover=menugame->hover+animatehover(x,y,menugame->assets.quit[1],menugame->assets.quit[0],screen);
+                if (!(hoverbutton(x,y,menugame->assets.play[1]) || hoverbutton(x,y,menugame->assets.options[1]) || hoverbutton(x,y,menugame->assets.quit[1])))
+                {
+                    menugame->hover=0;
+
+                }
+                if(menugame->hover==1)
+                {
+                    Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                }
                 break;
          case SDL_MOUSEBUTTONUP:
          menugame->press=true;
@@ -85,6 +102,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 
       SDL_Flip(screen);
     }
+
  return run;
 
 }

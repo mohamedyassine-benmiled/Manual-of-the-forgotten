@@ -36,4 +36,3 @@ void show(image p,SDL_Surface *screen)
 {
     SDL_BlitSurface(p.surface,NULL,screen,&p.pos1);
 }
-

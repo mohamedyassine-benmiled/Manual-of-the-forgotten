@@ -1,6 +1,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 #include <SDL/SDL_image.h>
+
 typedef struct
 {
     SDL_Surface *surface ;
@@ -14,8 +15,8 @@ typedef struct
     image play[3];
     image options[3];
     image quit[3];
-    image background[18];
-    int currentbackground;
+    image background;
+    image book;
     image logo;
     image logogroup;
 } MenuImage;
