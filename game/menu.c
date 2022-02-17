@@ -15,7 +15,8 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     initmenu(menugame);
     SDL_Event event;
         show(menugame->assets.background,screen);
-        show(menugame->assets.play[1],screen);
+                        
+        show(menugame->assets.play[0],screen);
         show(menugame->assets.options,screen);
         show(menugame->assets.quit,screen);
         show(menugame->assets.logo,screen);
@@ -49,24 +50,34 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                         break;
                     }
         case SDL_MOUSEMOTION:
-                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
-                {
-                }
- 
+         SDL_GetMouseState(&x,&y);
+            
+                 if (hoverbutton(x,y,menugame->assets.play[0]))
+                    {
+                        
+                        show(menugame->assets.play[1],screen);
+                        SDL_Flip(screen);
+
+                    }
+                    else
+                    {
+                        SDL_FreeSurface(menugame->assets.play[0].surface);
+                        show(menugame->assets.play[0],screen);
+                        SDL_Flip(screen);
+                    }
+
                 break;
         
          case SDL_MOUSEBUTTONUP:
          SDL_GetMouseState(&x,&y);
-           ins = hoverbutton(x,y,Play);
             
-                 if (ins =true)
+                 if (hoverbutton(x,y,menugame->assets.play[0]))
                     {
-                        
-                         anim = IMG_Load("PlayOnHover.png") ;
-                         show(PlayOnHover,screen);
-                    }
 
                         Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                    }
+
+
 
             
                 break;
