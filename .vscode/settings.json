@@ -6,6 +6,7 @@
         "image.h": "c",
         "text.h": "c",
         "stdlib.h": "c",
-        "menu.h": "c"
+        "menu.h": "c",
+        "sdl_image.h": "c"
     }
 }

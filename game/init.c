@@ -24,39 +24,48 @@ void initmenu(MenuGame *menugame)
     menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
     menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
     initBackground(&menugame->assets.background,"Menu/BackgroundTest1.png");
-    menugame->assets.play[0].surface = IMG_Load("Menu/Play2.png");
-    menugame->assets.play[0].pos1.x=129;
-    menugame->assets.play[0].pos1.y=374;
-    menugame->assets.play[0].pos2.w=209;
-    menugame->assets.play[0].pos2.h=118;
-    menugame->assets.play[1].surface = IMG_Load("Menu/PlayRed.png");
-    menugame->assets.play[1].pos1.x=129;
-    menugame->assets.play[1].pos1.y=374;
-    menugame->assets.play[1].pos2.w=209;
-    menugame->assets.play[1].pos2.h=118;
-    menugame->assets.options[0].surface = IMG_Load("Menu/Options2.png");
-    menugame->assets.options[0].pos1.x=129;
-    menugame->assets.options[0].pos1.y=512;
-     menugame->assets.options[0].pos2.w=209;
-    menugame->assets.options[0].pos2.h=118;
-      menugame->assets.options[1].surface = IMG_Load("Menu/Options2.png");
-    menugame->assets.options[1].pos1.x=129;
-    menugame->assets.options[1].pos1.y=512;
-     menugame->assets.options[1].pos2.w=209;
-    menugame->assets.options[1].pos2.h=118;
-    menugame->assets.quit[0].surface = IMG_Load("Menu/Quit2.png");
-    menugame->assets.quit[0].pos1.x=129;
-    menugame->assets.quit[0].pos1.y=661;
-     menugame->assets.quit[0].pos2.w=209;
-    menugame->assets.quit[0].pos2.h=118;
-      menugame->assets.quit[1].surface = IMG_Load("Menu/Quit2.png");
-    menugame->assets.quit[1].pos1.x=129;
-    menugame->assets.quit[1].pos1.y=661;
-     menugame->assets.quit[1].pos2.w=209;
-    menugame->assets.quit[1].pos2.h=118;
+    
+    //Play Button
+    menugame->assets.play[0].surface = IMG_Load("Menu/Buttons/Play.png");
+    menugame->assets.play[0].pos1.x=0;
+    menugame->assets.play[0].pos1.y=359;
+    menugame->assets.play[0].pos2.x=164;
+    menugame->assets.play[0].pos2.y=381;
+    menugame->assets.play[0].pos2.w=237;
+    menugame->assets.play[0].pos2.h=139;
+    menugame->assets.play[1].surface = IMG_Load("Menu/Buttons/PlayOnHover.png");
+    menugame->assets.play[1].pos1=menugame->assets.play[0].pos1;
+    menugame->assets.play[1].pos2=menugame->assets.play[0].pos2;
+
+    //Options Button
+    menugame->assets.options[0].surface = IMG_Load("Menu/Buttons/Option.png");
+    menugame->assets.options[0].pos1.x=0;
+    menugame->assets.options[0].pos1.y=547;
+    menugame->assets.options[0].pos2.x=164;
+    menugame->assets.options[0].pos2.y=574;
+    menugame->assets.options[0].pos2.w=424;
+    menugame->assets.options[0].pos2.h=142;
+    menugame->assets.options[1].surface = IMG_Load("Menu/Buttons/OptionOnHover.png");
+    menugame->assets.options[1].pos1=menugame->assets.options[0].pos1;
+    menugame->assets.options[1].pos2=menugame->assets.options[0].pos2;
+
+    //Quit Button
+    menugame->assets.quit[0].surface = IMG_Load("Menu/Buttons/Quit.png");
+    menugame->assets.quit[0].pos1.x=0;
+    menugame->assets.quit[0].pos1.y=734;
+    menugame->assets.quit[0].pos2.x=164;
+    menugame->assets.quit[0].pos2.y=771;
+    menugame->assets.quit[0].pos2.w=250;
+    menugame->assets.quit[0].pos2.h=131;
+    menugame->assets.quit[1].surface = IMG_Load("Menu/Buttons/QuitOnHover.png");
+    menugame->assets.quit[1].pos1=menugame->assets.quit[0].pos1;
+    menugame->assets.quit[1].pos2=menugame->assets.quit[0].pos2;
+
+    //Logo Game
     menugame->assets.logo.surface = IMG_Load("Menu/Logo.png");
     menugame->assets.logo.pos1.x=220;
     menugame->assets.logo.pos1.y=74;
+    //Logo Group
     menugame->assets.logogroup.surface = IMG_Load("Menu/Logo.png");
     menugame->assets.logogroup.pos1.x=1690;
     menugame->assets.logogroup.pos1.y=857;

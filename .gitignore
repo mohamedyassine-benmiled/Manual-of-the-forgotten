@@ -7,3 +7,6 @@ obj/menu.o
 obj/init.o
 book
 obj/animation.o
+obj/init.o
+obj/init.o
+*.o

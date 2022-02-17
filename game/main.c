@@ -27,7 +27,7 @@ int main (int argc , char *argv[])
     {
         printf("[-] %s", Mix_GetError());
     }
-    	Mix_VolumeMusic(MIX_MAX_VOLUME/5);
+    	Mix_VolumeMusic(MIX_MAX_VOLUME/8);
 //ScreenInit
   screenmenu = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
   screengame = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
@@ -43,6 +43,7 @@ switch (run)
         run=options(&optionmenu,screenmenu,run);
     break;
     case 3:
+        run=0;
         //run=game();
     break;
 

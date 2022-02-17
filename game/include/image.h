@@ -11,9 +11,9 @@ typedef struct
 typedef struct 
 {
     /* Menu Assets */
-    image play[2];
-    image options[2];
-    image quit[2];
+    image play[3];
+    image options[3];
+    image quit[3];
     image background;
     image logo;
     image logogroup;

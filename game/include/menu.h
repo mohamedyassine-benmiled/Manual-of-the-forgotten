@@ -14,8 +14,7 @@ typedef struct
     MenuImage assets;
     int hover;
     int run;
-    int quit;
-    int play;
+    int press;
     Mix_Music *Music;
     Mix_Chunk *soundbutton;
     Mix_Chunk *soundbook;

@@ -11,7 +11,6 @@
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
       int x,y,ins ;
-    image Play,PlayOnHover ; 
     initmenu(menugame);
     SDL_Event event;
         show(menugame->assets.background,screen);
@@ -22,6 +21,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         show(menugame->assets.logo,screen);
         show(menugame->assets.logogroup,screen);
     menugame->hover=0;
+    menugame->press=0;
     Mix_PlayMusic(menugame->Music, -1);
     while(run==1)
     {
@@ -49,83 +49,37 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                     default:
                         break;
                     }
-        case SDL_MOUSEMOTION:
-         SDL_GetMouseState(&x,&y);
-                if (hoverbutton(x,y,menugame->assets.play[0])&&(menugame->hover==0))
-                {
-             
-                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
-                }
-                 if (hoverbutton(x,y,menugame->assets.play[0]))
-                    {
-                        menugame->hover=1;
-                        show(menugame->assets.play[1],screen);
-                        
-
-                    }
-                    else
-                    {
-                        menugame->hover=0;
-                        show(menugame->assets.play[0],screen);
-
-                    }
-                  
-                    SDL_GetMouseState(&x,&y);
-                if (hoverbutton(x,y,menugame->assets.options[0])&&(menugame->hover==0))
-                {
-             
-                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
-                }
-                 if (hoverbutton(x,y,menugame->assets.options[0]))
-                    {
-                        menugame->hover=1;
-                        show(menugame->assets.options[1],screen);
-                        
-
-                    }
-                    else
-                    {
-                        menugame->hover=0;
-                        show(menugame->assets.options[0],screen);
-
-                    }
-
-                
-            
-                   SDL_GetMouseState(&x,&y);
-                if (hoverbutton(x,y,menugame->assets.quit[0])&&(menugame->hover==0))
-                {
-             
-                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
-                }
-                 if (hoverbutton(x,y,menugame->assets.quit[1]))
-                    {
-                        menugame->hover=1;
-                        show(menugame->assets.quit[1],screen);
-                        
-
-                    }
-                    else
-                    {
-                        menugame->hover=0;
-                        show(menugame->assets.quit[0],screen);
-
-                    }
-
                 break;
-
+        case SDL_MOUSEMOTION:
+        //Init Motion With Sound
+        SDL_GetMouseState(&x,&y);
+            if ((hoverbutton(x,y,menugame->assets.play[1])||hoverbutton(x,y,menugame->assets.options[1])||hoverbutton(x,y,menugame->assets.quit[1]))&&(menugame->hover==0))
+                {
+                //Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                }
+        //Play Button
+                menugame->hover=animatehover(x,y,menugame->assets.play[1],menugame->assets.play[0],screen);
+        //Options Button
+                menugame->hover=animatehover(x,y,menugame->assets.options[1],menugame->assets.options[0],screen);
+        //Quit Button
+                menugame->hover=animatehover(x,y,menugame->assets.quit[1],menugame->assets.quit[0],screen);
+                break;
          case SDL_MOUSEBUTTONUP:
+         menugame->press=true;
          SDL_GetMouseState(&x,&y);
-            
-                 if (hoverbutton(x,y,menugame->assets.play[0]))
-                    {
 
-                        Mix_PlayChannel(1,menugame->soundbutton, 0); 
-                    }
+                    if(hoverbutton(x,y,menugame->assets.play[1]))
+                    run=2;
 
 
+                    if(hoverbutton(x,y,menugame->assets.options[1]))
+                    run=2;
 
-            
+
+                    if (hoverbutton(x,y,menugame->assets.quit[1]))
+                    run=0;
+
+
                 break;
         }
 
