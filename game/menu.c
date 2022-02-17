@@ -17,8 +17,8 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         show(menugame->assets.background,screen);
                         
         show(menugame->assets.play[0],screen);
-        show(menugame->assets.options,screen);
-        show(menugame->assets.quit,screen);
+        show(menugame->assets.options[0],screen);
+        show(menugame->assets.quit[0],screen);
         show(menugame->assets.logo,screen);
         show(menugame->assets.logogroup,screen);
     menugame->hover=0;
@@ -67,6 +67,48 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                     {
                         menugame->hover=0;
                         show(menugame->assets.play[0],screen);
+
+                    }
+                  
+                    SDL_GetMouseState(&x,&y);
+                if (hoverbutton(x,y,menugame->assets.options[0])&&(menugame->hover==0))
+                {
+             
+                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                }
+                 if (hoverbutton(x,y,menugame->assets.options[0]))
+                    {
+                        menugame->hover=1;
+                        show(menugame->assets.options[1],screen);
+                        
+
+                    }
+                    else
+                    {
+                        menugame->hover=0;
+                        show(menugame->assets.options[0],screen);
+
+                    }
+
+                
+            
+                   SDL_GetMouseState(&x,&y);
+                if (hoverbutton(x,y,menugame->assets.quit[0])&&(menugame->hover==0))
+                {
+             
+                        Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                }
+                 if (hoverbutton(x,y,menugame->assets.quit[1]))
+                    {
+                        menugame->hover=1;
+                        show(menugame->assets.quit[1],screen);
+                        
+
+                    }
+                    else
+                    {
+                        menugame->hover=0;
+                        show(menugame->assets.quit[0],screen);
 
                     }
 
