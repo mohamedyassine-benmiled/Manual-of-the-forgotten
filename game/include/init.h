@@ -9,6 +9,17 @@
 #include "game.h"
 #include "menu.h"
 
+typedef struct 
+{
+    /* data */
+    FILE *f;
+    int resolution_w;
+    int resolution_h;
+    int fullscreen;
+    int audio;
+} settings;
+
+
 void initsettings();
 void initvideo();
 void initmenu(MenuGame *menugame);

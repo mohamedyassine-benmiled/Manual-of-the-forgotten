@@ -4,6 +4,7 @@
 #include <SDL/SDL_image.h>
 #include "include/image.h"
 #include "include/game.h"
+#include "include/menu.h"
 
 void initPlayer(image *p)
 {
@@ -30,7 +31,19 @@ void freesurface(image a)
     SDL_FreeSurface(a.surface);
 }
 
-
+void freemenu(MenuGame menu)
+{
+    SDL_FreeSurface(menu.assets.background.surface);
+    SDL_FreeSurface(menu.assets.book.surface);
+    SDL_FreeSurface(menu.assets.logo.surface);
+    SDL_FreeSurface(menu.assets.logogroup.surface);
+    for (int i=0;i<3;i++)
+    {
+        SDL_FreeSurface(menu.assets.play[i].surface);
+        SDL_FreeSurface(menu.assets.options[i].surface);
+        SDL_FreeSurface(menu.assets.quit[i].surface);
+    }
+}
 
 void show(image p,SDL_Surface *screen)
 {

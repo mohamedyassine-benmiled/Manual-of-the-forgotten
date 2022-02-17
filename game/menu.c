@@ -12,7 +12,6 @@
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
       int x,y,ins ;
-    initmenu(menugame);
     SDL_Event event;
     SDL_Gif *closedbook,*logo;
 
@@ -31,7 +30,6 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 
     while(run==1)
     {
-
     animatebackground(menugame->assets.book,closedbook,screen);
     animatebackground(menugame->assets.logo,logo,screen);
     SDL_Flip(screen);
@@ -104,14 +102,14 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 
       SDL_Flip(screen);
     }
-
+SDLFreeGif(closedbook);
+SDLFreeGif(logo);
  return run;
 
 }
 
 int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
-    initoption(optiongame);
         show(optiongame->assets.background,screen);
         show(optiongame->assets.logogroup,screen);
         SDL_Flip(screen);

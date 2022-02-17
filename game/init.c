@@ -89,6 +89,5 @@ void initoption(OptionGame *optiongame)
 void initgame(Game *game)
 {
     initBackground(&game->assets.background,"Menu/Game_Background.png");
-
 }
 
