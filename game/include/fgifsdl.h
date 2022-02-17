@@ -1,6 +1,4 @@
 #include <SDL/SDL.h>
-#pragma comment(lib,"sdl.lib")
-#pragma comment(lib,"sdlmain.lib")
 
 #ifdef __cplusplus
 extern "C" {

@@ -50,13 +50,15 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                     case (SDLK_ESCAPE):
                         run=0;
                     break;
-                    case (SDLK_DOWN):
+                    case (SDLK_o):
                         run=2;
                     break;
-                    case (SDLK_UP):
+                    case (SDLK_p):
                         run=2;
                     break;
-                                        
+                    case (SDLK_f):
+                        SDL_WM_ToggleFullScreen(screen); 
+                    break;                             
                     default:
                         break;
                     }
@@ -111,7 +113,6 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     initoption(optiongame);
         show(optiongame->assets.background,screen);
-        show(optiongame->assets.logo,screen);
         show(optiongame->assets.logogroup,screen);
         SDL_Flip(screen);
     SDL_Event event;
@@ -132,16 +133,15 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     case (SDLK_ESCAPE):
                         run=0;
                     break;
-                    case (SDLK_RIGHT):
+                    case (SDLK_m):
                         run=1;
                     break;
-                    case (SDLK_DOWN):
+                    case (SDLK_p):
                         run=2;
                     break;
-                    case (SDLK_UP):
-                        run=2;
-                    break;
-                                        
+                    case (SDLK_f):
+                        SDL_WM_ToggleFullScreen(screen); 
+                    break;         
                     default:
                         break;
                     }

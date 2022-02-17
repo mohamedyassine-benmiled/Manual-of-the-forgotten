@@ -24,13 +24,12 @@ void initmenu(MenuGame *menugame)
     char background[50]=" ";
     menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
     menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
-    menugame->assets.background.surface = IMG_Load("Menu/Background/Background1.png");
-    menugame->assets.background.pos1.x=0;
-    menugame->assets.background.pos1.y=0;
-
+    //Background
+    initBackground(&menugame->assets.background,"Menu/texture.png");
+    //Logo Game
     menugame->assets.logo.pos1.x=291;
     menugame->assets.logo.pos1.y=0;
-
+    //Book
     menugame->assets.book.pos1.x=941;
     menugame->assets.book.pos1.y=140;
 

@@ -66,11 +66,4 @@ void animateoption()
 
 }
 
-int KeyHit()
-{
-	SDL_Event e;
-	if (SDL_PollEvent(&e))
-		if (e.type == SDL_KEYDOWN)
-			return 1;
-	return 0;
-}
+
