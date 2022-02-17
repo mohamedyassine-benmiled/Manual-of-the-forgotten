@@ -32,8 +32,6 @@ int animatehover(int x,int y,image img,image img2,SDL_Surface *screen)
                     {
                         hover=1;
                         show(img,screen);
-                        
-
                     }
                     else
                     {
@@ -50,5 +48,15 @@ void animateclick(int x,int y,image img,image img2,SDL_Surface *screen)
                         show(img,screen);
                     }
 
+
+}
+
+void animatebackground(Uint32 interval,void *parameter)
+{
+
+}
+
+void animateoption()
+{
 
 }

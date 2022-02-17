@@ -13,18 +13,18 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
       int x,y,ins ;
     initmenu(menugame);
     SDL_Event event;
-        show(menugame->assets.background,screen);
-                        
+        show(menugame->assets.background[0],screen);
         show(menugame->assets.play[0],screen);
         show(menugame->assets.options[0],screen);
         show(menugame->assets.quit[0],screen);
-        show(menugame->assets.logo,screen);
         show(menugame->assets.logogroup,screen);
     menugame->hover=0;
     menugame->press=0;
     Mix_PlayMusic(menugame->Music, -1);
+
     while(run==1)
     {
+
     //Wait for event
     SDL_WaitEvent(&event);
 

@@ -21,10 +21,14 @@ void initvideo()
 
 void initmenu(MenuGame *menugame)
 {
+    char background[50]=" ";
     menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
     menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
-    initBackground(&menugame->assets.background,"Menu/BackgroundTest1.png");
-    
+    for (int i=0;i<12;i++)
+    {
+        sprintf(background,"Menu/Background/Background%d.png",i+1);
+        initBackground(&menugame->assets.background[i],background);
+    }
     //Play Button
     menugame->assets.play[0].surface = IMG_Load("Menu/Buttons/Play.png");
     menugame->assets.play[0].pos1.x=0;

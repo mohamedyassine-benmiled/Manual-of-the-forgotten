@@ -14,7 +14,8 @@ typedef struct
     image play[3];
     image options[3];
     image quit[3];
-    image background;
+    image background[18];
+    int currentbackground;
     image logo;
     image logogroup;
 } MenuImage;
