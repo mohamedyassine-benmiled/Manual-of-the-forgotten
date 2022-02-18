@@ -11,9 +11,9 @@ typedef struct
 typedef struct 
 {
     /* Menu Assets */
-    image play[2];
-    image options;
-    image quit;
+    image play[3];
+    image options[3];
+    image quit[3];
     image background;
     image logo;
     image logogroup;
@@ -46,4 +46,5 @@ void initPlayer(image *p);
 void initBackground(image *b,char img[]);
 void freesurface(image a);
 void show (image p,SDL_Surface *screen);
+int hoverbutton(int x,int y, image img );
 #endif // IMAGE_H

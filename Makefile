@@ -64,6 +64,10 @@ obj/init.o: game/init.c
 		gcc -c game/init.c -g
 		-mkdir obj 
 		mv init.o obj/init.o
+obj/animation.o: game/animation.c
+		gcc -c game/animation.c -g
+		-mkdir obj 
+		mv animation.o obj/animation.o
 # Building rule for .o files and its .c/.cpp in combination with all .h
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
 	$(CC) $(CXXFLAGS) -o $@ -c $<

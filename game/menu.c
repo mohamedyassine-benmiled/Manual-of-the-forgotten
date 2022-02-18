@@ -7,17 +7,21 @@
 #include "include/init.h"
 #include "include/game.h"
 
+
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
+      int x,y,ins ;
     initmenu(menugame);
     SDL_Event event;
         show(menugame->assets.background,screen);
-        show(menugame->assets.play[1],screen);
-        show(menugame->assets.options,screen);
-        show(menugame->assets.quit,screen);
+                        
+        show(menugame->assets.play[0],screen);
+        show(menugame->assets.options[0],screen);
+        show(menugame->assets.quit[0],screen);
         show(menugame->assets.logo,screen);
         show(menugame->assets.logogroup,screen);
-      SDL_Flip(screen);
+    menugame->hover=0;
+    menugame->press=0;
     Mix_PlayMusic(menugame->Music, -1);
     while(run==1)
     {
@@ -45,25 +49,43 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
                     default:
                         break;
                     }
-        case SDL_MOUSEMOTION:
-                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
-                {
-
-                }
-
                 break;
-        
-        case SDL_MOUSEBUTTONUP:
-                if(event.motion.x>=menugame->assets.play[1].pos1.x && event.motion.x<=menugame->assets.play[1].pos1.x+menugame->assets.play[1].pos2.w && event.motion.y>=menugame->assets.play[1].pos1.y&& event.motion.y<=menugame->assets.play[1].pos1.y+menugame->assets.play[1].pos2.h)
+        case SDL_MOUSEMOTION:
+        //Init Motion With Sound
+        SDL_GetMouseState(&x,&y);
+            if ((hoverbutton(x,y,menugame->assets.play[1])||hoverbutton(x,y,menugame->assets.options[1])||hoverbutton(x,y,menugame->assets.quit[1]))&&(menugame->hover==0))
                 {
-                                            Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                //Mix_PlayChannel(-1,menugame->soundbutton, 0); 
                 }
+        //Play Button
+                menugame->hover=animatehover(x,y,menugame->assets.play[1],menugame->assets.play[0],screen);
+        //Options Button
+                menugame->hover=animatehover(x,y,menugame->assets.options[1],menugame->assets.options[0],screen);
+        //Quit Button
+                menugame->hover=animatehover(x,y,menugame->assets.quit[1],menugame->assets.quit[0],screen);
+                break;
+         case SDL_MOUSEBUTTONUP:
+         menugame->press=true;
+         SDL_GetMouseState(&x,&y);
+
+                    if(hoverbutton(x,y,menugame->assets.play[1]))
+                    run=2;
+
+
+                    if(hoverbutton(x,y,menugame->assets.options[1]))
+                    run=2;
+
+
+                    if (hoverbutton(x,y,menugame->assets.quit[1]))
+                    run=0;
+
+
                 break;
         }
 
-
+      SDL_Flip(screen);
     }
-return run;
+ return run;
 
 }
 
