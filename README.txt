@@ -27,7 +27,7 @@ Current Story :
     
     
        STORY OF THE GAME:
-it's time to know our history our country's history Tunisia's history this is what a group of friends decided when they met up to start a new adventure,
+it's time to know our history;this is what a group of friends decided when they met up to start a new adventure,
 what's best to know other then our origin they said. It is clear that thoes four friends are curious about history and passionate about knowing the unknowing,
 so they gathered themselves and went on a discovery trip to the Roman city of Thysdrus or what's called now "EL Djam".
 together they entered The amphitheater at El Djem discovering its amazing beauty while searching for ancient artifacts about "Tunisia" they endup infront 
