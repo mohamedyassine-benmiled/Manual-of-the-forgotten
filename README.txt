@@ -25,3 +25,20 @@ Current Story :
     They found themselves unconscious in a place that looks like carthage but in the old days.
     Feeling confused, the little adventurers look around carefully for clues on where they are.
     
+    
+       STORY OF THE GAME:
+it's time to know our history our country's history Tunisia's history this is what a group of friends decided when they met up to start a new adventure,
+what's best to know other then our origin they said. It is clear that thoes four friends are curious about history and passionate about knowing the unknowing,
+so they gathered themselves and went on a discovery trip to the Roman city of Thysdrus or what's called now "EL Djam".
+together they entered The amphitheater at El Djem discovering its amazing beauty while searching for ancient artifacts about "Tunisia" they endup infront 
+of an old magnificent door that opens itself to them like magic curiosty killed them and they didn't think twice as they entered through the crooked old door 
+all together not knowing what's awaiting for them inside;
+and here they are infront of a huge extraodinary bookshelf filled with Antiquarian books they looked around the what it looked like an old library until something
+unusual caught their attention a light more like sparkels coming from a deffirent glowing book they hurried towards it to unlock it but a puzzel popped out to them to solve
+inorder to open the book and they worked their ways to solve it and suddenly the ground starts shaking and the book open spawning an unknown creature whom absorbs them to
+another dimension where they found themselves unconcious in a place that looks like carthage but in the old days called QartHadasht.
+Feeling confused, the little adventurers look around carefully for clues on where they are until they start hearing someone talking to them challenging them to complete a mission inorder to
+get back to reality this mission's composed of 2 levels to get to last phase where they need to solve something to complete the game each level have a well known person they need to get to 
+after overcoming all the obstacels during their run to find the boss who will give them a key to unlock the next level with a note giving them historical informations about themselves
+until they reach the last level of the game where they'll find themrselves unlocking a mistery with all the informations they gathered in order to get back home and one last thing to add is that everyone
+of them have a special ability or a skill that will help them fight any obstacle they face.
