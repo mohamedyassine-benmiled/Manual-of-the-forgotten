@@ -35,8 +35,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     SDL_Flip(screen);
     
     //Wait for event
-    SDL_WaitEvent(&event);
-
+while (SDL_PollEvent(&event)) {
     switch (event.type)
         {
         case SDL_QUIT:
@@ -99,7 +98,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 
                 break;
         }
-
+}
       SDL_Flip(screen);
     }
 SDLFreeGif(closedbook);
