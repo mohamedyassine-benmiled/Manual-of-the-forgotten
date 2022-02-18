@@ -7,6 +7,9 @@
         "text.h": "c",
         "stdlib.h": "c",
         "menu.h": "c",
-        "sdl_image.h": "c"
+        "sdl_image.h": "c",
+        "init.h": "c",
+        "sdl_audio.h": "c",
+        "animation.h": "c"
     }
 }
