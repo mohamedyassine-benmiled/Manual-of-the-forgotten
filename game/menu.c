@@ -32,7 +32,6 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     {
     animatebackground(menugame->assets.book,closedbook,screen);
     animatebackground(menugame->assets.logo,logo,screen);
-    SDL_Flip(screen);
     
     //Wait for event
 while (SDL_PollEvent(&event)) {
