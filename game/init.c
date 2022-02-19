@@ -25,7 +25,7 @@ void initmenu(MenuGame *menugame)
     menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
     menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
     //Background
-    initBackground(&menugame->assets.background,"Menu/texture.png");
+    initBackground(&menugame->assets.background,"Menu/Texture.png");
     //Logo Game
     menugame->assets.logo.pos1.x=291;
     menugame->assets.logo.pos1.y=0;

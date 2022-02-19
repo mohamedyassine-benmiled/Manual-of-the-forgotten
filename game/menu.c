@@ -24,7 +24,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         show(menugame->assets.quit[0],screen);
         show(menugame->assets.logogroup,screen);
 
-    menugame->hover=1;
+    menugame->hover=0;
     menugame->press=0;
     Mix_PlayMusic(menugame->Music, -1);
 

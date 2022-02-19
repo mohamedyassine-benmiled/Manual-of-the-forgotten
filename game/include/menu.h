@@ -15,10 +15,10 @@ typedef struct
     int hover;
     int run;
     int press;
+    int state;
     Mix_Music *Music;
     Mix_Chunk *soundbutton;
-    Mix_Chunk *soundbook;
-    Mix_Chunk *soundflip;
+
 } MenuGame;
 
 typedef struct
@@ -28,6 +28,8 @@ typedef struct
     int sound;
     int buttons;
     int menu;
+    Mix_Chunk *soundbook;
+    Mix_Chunk *soundflip;
 } OptionGame;
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run);
