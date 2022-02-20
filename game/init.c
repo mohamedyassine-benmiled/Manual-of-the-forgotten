@@ -83,7 +83,11 @@ void initoption(OptionGame *optiongame)
     optiongame->assets.logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
     optiongame->assets.logogroup.pos1.x=1690;
     optiongame->assets.logogroup.pos1.y=857;
+    optiongame->assets.obook.surface = IMG_Load("graphics/1080/Options/openbook.png");
+    optiongame->assets.obook.pos1.x=401;
+    optiongame->assets.obook.pos1.y=-55;
 }
+
 
 void initgame(Game *game)
 {

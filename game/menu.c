@@ -109,7 +109,8 @@ SDLFreeGif(logo);
 int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
         show(optiongame->assets.background,screen);
-        show(optiongame->assets.logogroup,screen);
+        show(optiongame->assets.logogroup,screen); 
+        show(optiongame->assets.obook,screen); 
         SDL_Flip(screen);
     SDL_Event event;
     while(run==2)

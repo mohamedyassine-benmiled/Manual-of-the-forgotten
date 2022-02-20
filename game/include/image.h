@@ -33,6 +33,7 @@ typedef struct
     image buttoncircle;
     image border;
     image background;
+    image obook ; 
 } OptionImage;
 
 typedef struct
