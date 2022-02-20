@@ -14,15 +14,17 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
       int x,y,ins ;
     SDL_Event event;
     SDL_Gif *closedbook,*logo;
-
+        MenuImage assets;
+            menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
+    menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
         closedbook=SDLLoadGif("graphics/1080/Menu/ClosedBook.gif");
         logo=SDLLoadGif("graphics/1080/Menu/LogoGame.gif");
-
-        show(menugame->assets.background,screen);
-        show(menugame->assets.play[0],screen);
-        show(menugame->assets.options[0],screen);
-        show(menugame->assets.quit[0],screen);
-        show(menugame->assets.logogroup,screen);
+        initmenu(&assets);
+        show(assets.background,screen);
+        show(assets.play[0],screen);
+        show(assets.options[0],screen);
+        show(assets.quit[0],screen);
+        show(assets.logogroup,screen);
 
     menugame->hover=0;
     menugame->press=0;
@@ -30,8 +32,8 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 
     while(run==1)
     {
-    animatebackground(menugame->assets.book,closedbook,screen);
-    animatebackground(menugame->assets.logo,logo,screen);
+    animatebackground(assets.book,closedbook,screen);
+    animatebackground(assets.logo,logo,screen);
     
     //Wait for event
 while (SDL_PollEvent(&event)) {
@@ -59,17 +61,18 @@ while (SDL_PollEvent(&event)) {
                         break;
                     }
                 break;
+                
         case SDL_MOUSEMOTION:
         //Init Motion With Sound
         SDL_GetMouseState(&x,&y);
 
         //Play Button
-                menugame->hover=menugame->hover+animatehover(x,y,menugame->assets.play[1],menugame->assets.play[0],screen);
+                menugame->hover=menugame->hover+animatehover(x,y,assets.play[1],assets.play[0],screen);
         //Options Button
-                menugame->hover=menugame->hover+animatehover(x,y,menugame->assets.options[1],menugame->assets.options[0],screen);
+                menugame->hover=menugame->hover+animatehover(x,y,assets.options[1],assets.options[0],screen);
         //Quit Button
-                menugame->hover=menugame->hover+animatehover(x,y,menugame->assets.quit[1],menugame->assets.quit[0],screen);
-                if (!(hoverbutton(x,y,menugame->assets.play[1]) || hoverbutton(x,y,menugame->assets.options[1]) || hoverbutton(x,y,menugame->assets.quit[1])))
+                menugame->hover=menugame->hover+animatehover(x,y,assets.quit[1],assets.quit[0],screen);
+                if (!(hoverbutton(x,y,assets.play[1]) || hoverbutton(x,y,assets.options[1]) || hoverbutton(x,y,assets.quit[1])))
                 {
                     menugame->hover=0;
 
@@ -83,34 +86,36 @@ while (SDL_PollEvent(&event)) {
          menugame->press=true;
          SDL_GetMouseState(&x,&y);
 
-                    if(hoverbutton(x,y,menugame->assets.play[1]))
+                    if(hoverbutton(x,y,assets.play[1]))
+                    run=2;
+                    
+                    if(hoverbutton(x,y,assets.options[1]))
                     run=2;
 
-
-                    if(hoverbutton(x,y,menugame->assets.options[1]))
-                    run=2;
-
-
-                    if (hoverbutton(x,y,menugame->assets.quit[1]))
+                    if (hoverbutton(x,y,assets.quit[1]))
                     run=0;
 
 
                 break;
+        
         }
 }
       SDL_Flip(screen);
     }
 SDLFreeGif(closedbook);
 SDLFreeGif(logo);
+freemenu(assets);
  return run;
 
 }
 
 int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
-        show(optiongame->assets.background,screen);
-        show(optiongame->assets.logogroup,screen); 
-        show(optiongame->assets.obook,screen); 
+    OptionImage assets;
+    initoption(&assets);
+        show(assets.background,screen);
+        show(assets.logogroup,screen); 
+        show(assets.obook,screen); 
         SDL_Flip(screen);
     SDL_Event event;
     while(run==2)
@@ -143,9 +148,8 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                         break;
                     }
         }
-
-
     }
+     freeoption(assets);
 return run;
 
 }

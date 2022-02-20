@@ -90,8 +90,7 @@ else
       screengame = SDL_SetVideoMode(1920,1080,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
 }
 //Initialisation Buttons
-    initmenu(&mainmenu);
-    initoption(&optionmenu);
+
 while(run)
 {
 switch (run)
@@ -109,8 +108,9 @@ switch (run)
 
   }
 }
-  freemenu(mainmenu);
- //freeoptions(optionmenu);
+
+  SDL_FreeSurface(screenmenu);
+  SDL_FreeSurface(screengame);
  SDL_CloseAudio();
  SDL_Quit();
  return EXIT_SUCCESS;

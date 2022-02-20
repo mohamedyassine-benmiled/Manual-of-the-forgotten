@@ -10,6 +10,7 @@
         "sdl_image.h": "c",
         "init.h": "c",
         "sdl_audio.h": "c",
-        "animation.h": "c"
+        "animation.h": "c",
+        "sdl_mixer.h": "c"
     }
 }

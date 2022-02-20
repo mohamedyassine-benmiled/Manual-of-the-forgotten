@@ -31,18 +31,23 @@ void freesurface(image a)
     SDL_FreeSurface(a.surface);
 }
 
-void freemenu(MenuGame menu)
+void freemenu(MenuImage assets)
 {
-    SDL_FreeSurface(menu.assets.background.surface);
-    SDL_FreeSurface(menu.assets.book.surface);
-    SDL_FreeSurface(menu.assets.logo.surface);
-    SDL_FreeSurface(menu.assets.logogroup.surface);
-    for (int i=0;i<3;i++)
-    {
-        SDL_FreeSurface(menu.assets.play[i].surface);
-        SDL_FreeSurface(menu.assets.options[i].surface);
-        SDL_FreeSurface(menu.assets.quit[i].surface);
-    }
+SDL_FreeSurface(assets.play[0].surface);
+SDL_FreeSurface(assets.options[0].surface);
+SDL_FreeSurface(assets.quit[0].surface);
+SDL_FreeSurface(assets.play[1].surface);
+SDL_FreeSurface(assets.options[1].surface);
+SDL_FreeSurface(assets.quit[1].surface);
+SDL_FreeSurface(assets.background.surface);
+SDL_FreeSurface(assets.logogroup.surface);
+}
+
+void freeoption(OptionImage assets)
+{
+SDL_FreeSurface(assets.obook.surface);
+SDL_FreeSurface(assets.background.surface);
+SDL_FreeSurface(assets.logogroup.surface);
 }
 
 void show(image p,SDL_Surface *screen)

@@ -19,78 +19,78 @@ void initvideo()
                 SDL_WM_SetCaption("Manual of the forgotten",NULL);
 }
 
-void initmenu(MenuGame *menugame)
+void initmenu(MenuImage *assets)
 {
-    menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
-    menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
+
     //Background
-    initBackground(&menugame->assets.background,"graphics/1080/Texture.png");
+        assets->background.surface=IMG_Load("graphics/1080/Texture.png");
+        assets->background.pos1.x=0;
+        assets->background.pos1.y=0;
     //Logo Game
-    menugame->assets.logo.pos1.x=291;
-    menugame->assets.logo.pos1.y=0;
+    assets->logo.pos1.x=291;
+    assets->logo.pos1.y=0;
     //Book
-    menugame->assets.book.pos1.x=941;
-    menugame->assets.book.pos1.y=140;
+    assets->book.pos1.x=941;
+    assets->book.pos1.y=140;
 
     //Play Button
-    menugame->assets.play[0].surface = IMG_Load("graphics/1080/Buttons/Play.png");
-    menugame->assets.play[0].pos1.x=0;
-    menugame->assets.play[0].pos1.y=359;
-    menugame->assets.play[0].pos2.x=255;
-    menugame->assets.play[0].pos2.y=381;
-    menugame->assets.play[0].pos2.w=237;
-    menugame->assets.play[0].pos2.h=139;
-    menugame->assets.play[1].surface = IMG_Load("graphics/1080/Buttons/PlayOnHover.png");
-    menugame->assets.play[1].pos1=menugame->assets.play[0].pos1;
-    menugame->assets.play[1].pos2=menugame->assets.play[0].pos2;
+    assets->play[0].surface = IMG_Load("graphics/1080/Buttons/Play.png");
+    assets->play[0].pos1.x=0;
+    assets->play[0].pos1.y=359;
+    assets->play[0].pos2.x=255;
+    assets->play[0].pos2.y=381;
+    assets->play[0].pos2.w=237;
+    assets->play[0].pos2.h=139;
+    assets->play[1].surface = IMG_Load("graphics/1080/Buttons/PlayOnHover.png");
+    assets->play[1].pos1=assets->play[0].pos1;
+    assets->play[1].pos2=assets->play[0].pos2;
 
     //Options Button
-    menugame->assets.options[0].surface = IMG_Load("graphics/1080/Buttons/Option.png");
-    menugame->assets.options[0].pos1.x=0;
-    menugame->assets.options[0].pos1.y=547;
-    menugame->assets.options[0].pos2.x=255;
-    menugame->assets.options[0].pos2.y=574;
-    menugame->assets.options[0].pos2.w=424;
-    menugame->assets.options[0].pos2.h=142;
-    menugame->assets.options[1].surface = IMG_Load("graphics/1080/Buttons/OptionOnHover.png");
-    menugame->assets.options[1].pos1=menugame->assets.options[0].pos1;
-    menugame->assets.options[1].pos2=menugame->assets.options[0].pos2;
+    assets->options[0].surface = IMG_Load("graphics/1080/Buttons/Option.png");
+    assets->options[0].pos1.x=0;
+    assets->options[0].pos1.y=547;
+    assets->options[0].pos2.x=255;
+    assets->options[0].pos2.y=574;
+    assets->options[0].pos2.w=424;
+    assets->options[0].pos2.h=142;
+    assets->options[1].surface = IMG_Load("graphics/1080/Buttons/OptionOnHover.png");
+    assets->options[1].pos1=assets->options[0].pos1;
+    assets->options[1].pos2=assets->options[0].pos2;
 
     //Quit Button
-    menugame->assets.quit[0].surface = IMG_Load("graphics/1080/Buttons/Quit.png");
-    menugame->assets.quit[0].pos1.x=0;
-    menugame->assets.quit[0].pos1.y=734;
-    menugame->assets.quit[0].pos2.x=255;
-    menugame->assets.quit[0].pos2.y=771;
-    menugame->assets.quit[0].pos2.w=250;
-    menugame->assets.quit[0].pos2.h=131;
-    menugame->assets.quit[1].surface = IMG_Load("graphics/1080/Buttons/QuitOnHover.png");
-    menugame->assets.quit[1].pos1=menugame->assets.quit[0].pos1;
-    menugame->assets.quit[1].pos2=menugame->assets.quit[0].pos2;
+    assets->quit[0].surface = IMG_Load("graphics/1080/Buttons/Quit.png");
+    assets->quit[0].pos1.x=0;
+    assets->quit[0].pos1.y=734;
+    assets->quit[0].pos2.x=255;
+    assets->quit[0].pos2.y=771;
+    assets->quit[0].pos2.w=250;
+    assets->quit[0].pos2.h=131;
+    assets->quit[1].surface = IMG_Load("graphics/1080/Buttons/QuitOnHover.png");
+    assets->quit[1].pos1=assets->quit[0].pos1;
+    assets->quit[1].pos2=assets->quit[0].pos2;
 
     //Logo Group
-    menugame->assets.logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
-    menugame->assets.logogroup.pos1.x=1690;
-    menugame->assets.logogroup.pos1.y=857;
+    assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
+    assets->logogroup.pos1.x=1690;
+    assets->logogroup.pos1.y=857;
 }
 
-void initoption(OptionGame *optiongame)
+void initoption(OptionImage *assets)
 {
-    initBackground(&optiongame->assets.background,"graphics/1080/Texture.png");
-    optiongame->assets.logo.surface = IMG_Load("graphics/1080/Logo/Logo.png");
-    optiongame->assets.logo.pos1.x=220;
-    optiongame->assets.logo.pos1.y=74;
-    optiongame->assets.logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
-    optiongame->assets.logogroup.pos1.x=1690;
-    optiongame->assets.logogroup.pos1.y=857;
-    optiongame->assets.obook.surface = IMG_Load("graphics/1080/Options/openbook.png");
-    optiongame->assets.obook.pos1.x=401;
-    optiongame->assets.obook.pos1.y=-55;
+    assets->background.surface=IMG_Load("graphics/1080/Texture.png");
+    assets->background.pos1.x=0;
+    assets->background.pos1.y=0;
+    assets->logo.surface = IMG_Load("graphics/1080/Logo/Logo.png");
+    assets->logo.pos1.x=220;
+    assets->logo.pos1.y=74;
+    assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
+    assets->logogroup.pos1.x=1690;
+    assets->logogroup.pos1.y=857;
+    assets->obook.surface = IMG_Load("graphics/1080/Options/openbook.png");
+    assets->obook.pos1.x=401;
+    assets->obook.pos1.y=-55;
 }
 
 
-void initgame(Game *game)
-{
-    initBackground(&game->assets.background,"graphics/1080/Game_Background.png");
-}
+
 

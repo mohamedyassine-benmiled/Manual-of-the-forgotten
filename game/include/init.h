@@ -22,9 +22,9 @@ typedef struct
 
 void initsettings();
 void initvideo();
-void initmenu(MenuGame *menugame);
-void initoption(OptionGame *optiongame);
-void initgame(Game *game);
+void initmenu(MenuImage *assets);
+void initoption(OptionImage *assets);
+
 
 
 #endif // INIT_H
