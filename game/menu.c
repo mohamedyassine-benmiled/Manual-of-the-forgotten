@@ -15,8 +15,8 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     SDL_Event event;
     SDL_Gif *closedbook,*logo;
 
-        closedbook=SDLLoadGif("Menu/Background/ClosedBook.gif");
-        logo=SDLLoadGif("Menu/Background/LogoGame.gif");
+        closedbook=SDLLoadGif("graphics/1080/Menu/ClosedBook.gif");
+        logo=SDLLoadGif("graphics/1080/Menu/LogoGame.gif");
 
         show(menugame->assets.background,screen);
         show(menugame->assets.play[0],screen);
