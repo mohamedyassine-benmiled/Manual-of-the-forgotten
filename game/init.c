@@ -28,8 +28,14 @@ text t;
         assets->background.pos1.x=0;
         assets->background.pos1.y=0;
     //Logo Game
-    assets->logo.pos1.x=291;
-    assets->logo.pos1.y=0;
+    char logo [50];
+    for(int i=0;i<4;i++)
+    {
+    sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
+    assets->logo[i].surface=IMG_Load(logo);
+    assets->logo[i].pos1.x=291;
+    assets->logo[i].pos1.y=0;
+    }
     //Book
     assets->book.pos1.x=941;
     assets->book.pos1.y=140;
@@ -83,7 +89,7 @@ text t;
 t.textColor.g=0;
 t.textColor.b=0;
 strcpy(t.texte,"TMOF beta version 1.0/2022");
-t.font=TTF_OpenFont("copyright.ttf","30");
+t.font=TTF_OpenFont("copyright.ttf",30);
 assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
 }
 

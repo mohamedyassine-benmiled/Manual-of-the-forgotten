@@ -11,7 +11,7 @@
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
-      int x,y,ins ;
+      int x,y,i;
     SDL_Event event;
     SDL_Gif *closedbook,*logo;
         MenuImage assets;
@@ -34,8 +34,14 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     while(run==1)
     {
     animatebackground(assets.book,closedbook,screen);
-    animatebackground(assets.logo,logo,screen);
-    
+    //animatebackground(assets.logo,logo,screen);
+    i++;
+    if(i==4)
+    {
+        i=0;
+    }
+    show(assets.logo[i],screen);
+    SDL_Delay(50);
     //Wait for event
 while (SDL_PollEvent(&event)) {
     switch (event.type)
