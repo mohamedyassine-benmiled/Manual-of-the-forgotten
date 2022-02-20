@@ -43,19 +43,18 @@ while (SDL_PollEvent(&event)) {
         case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                     {
-                    case (SDLK_ESCAPE):
+                     case (SDLK_ESCAPE):
                         run=0;
-                    break;
-                    case (SDLK_o):
+                     break;
+                     case (SDLK_o):
                         run=2;
-                    break;
-                    case (SDLK_p):
+                     break;
+                     case (SDLK_p):
                         run=2;
-                    break;
-                    case (SDLK_f):
+                     case (SDLK_f):
                         SDL_WM_ToggleFullScreen(screen); 
-                    break;                             
-                    default:
+                     break;                             
+                     efault:
                         break;
                     }
                 break;
@@ -111,7 +110,19 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
         show(optiongame->assets.background,screen);
         show(optiongame->assets.logogroup,screen);
         SDL_Flip(screen);
+    SDL_Gif *gif ; 
     SDL_Event event;
+    gif = SDLLoadGif("Menu/Background/OpeningBook.gif");
+   
+    for (int i =0 ; i<30;i++)
+    {
+        show(optiongame->assets.background,screen);
+        animatebackground(optiongame->assets.obook,gif,screen);
+        optiongame->assets.obook.pos1.x=350;
+        optiongame->assets.obook.pos1.y=-55;
+        SDL_Delay(20);
+        SDL_Flip(screen);
+    }
     while(run==2)
     {
 
@@ -139,12 +150,12 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                         SDL_WM_ToggleFullScreen(screen); 
                     break;         
                     default:
-                        break;
+                    break;
                     }
         }
 
 
     }
-return run;
+ return run;
 
 }

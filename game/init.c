@@ -77,7 +77,7 @@ void initmenu(MenuGame *menugame)
 
 void initoption(OptionGame *optiongame)
 {
-    initBackground(&optiongame->assets.background,"Menu/Placeholder_Background.png");
+    initBackground(&optiongame->assets.background,"Menu/Texture.png");
     optiongame->assets.logo.surface = IMG_Load("Menu/Logo.png");
     optiongame->assets.logo.pos1.x=220;
     optiongame->assets.logo.pos1.y=74;
@@ -85,7 +85,6 @@ void initoption(OptionGame *optiongame)
     optiongame->assets.logogroup.pos1.x=1690;
     optiongame->assets.logogroup.pos1.y=857;
 }
-
 void initgame(Game *game)
 {
     initBackground(&game->assets.background,"Menu/Game_Background.png");
