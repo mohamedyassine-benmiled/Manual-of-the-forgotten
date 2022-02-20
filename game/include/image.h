@@ -19,6 +19,7 @@ typedef struct
     image book;
     image logo;
     image logogroup;
+    image copyright;
 } MenuImage;
 
 typedef struct

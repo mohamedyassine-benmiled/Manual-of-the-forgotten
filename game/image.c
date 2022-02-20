@@ -41,6 +41,7 @@ SDL_FreeSurface(assets.options[1].surface);
 SDL_FreeSurface(assets.quit[1].surface);
 SDL_FreeSurface(assets.background.surface);
 SDL_FreeSurface(assets.logogroup.surface);
+SDL_FreeSurface(assets.copyright.surface);
 }
 
 void freeoption(OptionImage assets)

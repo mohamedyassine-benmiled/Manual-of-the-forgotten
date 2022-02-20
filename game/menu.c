@@ -25,6 +25,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         show(assets.options[0],screen);
         show(assets.quit[0],screen);
         show(assets.logogroup,screen);
+        show(assets.copyright,screen);
 
     menugame->hover=0;
     menugame->press=0;

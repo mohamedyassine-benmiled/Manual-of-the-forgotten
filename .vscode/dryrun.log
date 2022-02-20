@@ -1,0 +1,25 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/osboxes/Documents/GitHub/Game-Project2022'
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/fgif.o -c game/fgif.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/sound.o -c game/sound.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/init.o -c game/init.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/text.o -c game/text.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/game.o -c game/game.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/animation.o -c game/animation.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/menu.o -c game/menu.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/main.o -c game/main.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/fgifdsl.o -c game/fgifdsl.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/image.o -c game/image.c
+gcc -std=c11 -Wall -g -o book obj/fgif.o obj/sound.o obj/init.o obj/text.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/fgifdsl.o obj/image.o -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer
+make: Leaving directory '/home/osboxes/Documents/GitHub/Game-Project2022'
+ 
