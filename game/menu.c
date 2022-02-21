@@ -143,6 +143,68 @@ freemenu(assets);
 
 }
 
+
+
+
+//menu graphics
+
+int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
+{     int x,y;
+    show(assets->selectres,screen);
+    show(assets->windowsettings,screen);
+    show(assets->firstbox[0],screen);
+    show(assets->secondbox[0],screen);
+    show(assets->fullscreen,screen);
+    show(assets->windowed,screen);
+    show(assets->currentresolution,screen);
+    SDL_Flip(screen);
+    optiongame->hover=0;       
+    SDL_Event event;
+     while(optiongame->graphics)
+    {
+     while (SDL_PollEvent(&event)) 
+    {
+    switch (event.type)
+        {case SDL_QUIT:
+        run=0;
+        optiongame->graphics=0;
+        break;
+        case SDL_MOUSEBUTTONUP:
+                     SDL_GetMouseState(&x,&y);
+
+                    
+                    
+                    if(hoverbutton(x,y,assets->audio[1]))
+                    {
+                        optiongame->audio=1;
+                        optiongame->graphics=0;
+                    }
+
+                    if (hoverbutton(x,y,assets->keybinds[1]))
+                   {
+                       optiongame->keybinds=1;
+                       optiongame->graphics=0;
+                   }
+
+                break;
+                    
+        }
+         
+        
+    }
+}SDL_Flip(screen);
+return run;
+
+}
+
+
+
+
+
+
+
+
+
 int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
@@ -230,7 +292,10 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                      SDL_GetMouseState(&x,&y);
 
                     if(hoverbutton(x,y,assets.graphics[1]))
-                    run=1;
+                     {
+                        optiongame->graphics=1;
+                        run=graphics(optiongame,&assets,screen,run);
+                    } 
                     
                     if(hoverbutton(x,y,assets.audio[1]))
                     run=1;
@@ -257,3 +322,50 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 return run;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
