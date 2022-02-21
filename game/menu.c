@@ -154,12 +154,17 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
         show(assets.logogroup,screen); 
         //show(assets.obook,screen);
          for ( i = 0; i < 15; i++)
+
             {
                 show(assets.obook[i],screen);
                 SDL_Delay(50);
                 SDL_Flip(screen);
             } 
-        //SDL_Flip(screen);
+            show(assets.graphics[0],screen);
+            show(assets.audio[0],screen);
+            show(assets.keybinds[0],screen);
+
+        SDL_Flip(screen);
     SDL_Event event;
      
      while(run==2)
@@ -195,6 +200,26 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     break;
                     
 
+
+ case SDL_MOUSEMOTION:
+        //Init Motion With Sound
+        SDL_GetMouseState(&x,&y);
+
+        //Play Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets.graphics[1],assets.graphics[0],screen);
+        //Options Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets.audio[1],assets.audio[0],screen);
+        //Quit Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets.keybinds[1],assets.keybinds[0],screen);
+                if (!(hoverbutton(x,y,assets.graphics[1]) || hoverbutton(x,y,assets.audio[1]) || hoverbutton(x,y,assets.keybinds[1])))
+                {
+                    optiongame->hover=0;
+
+                }
+                break;
+         
+
+
         case SDL_MOUSEBUTTONUP:
                      SDL_GetMouseState(&x,&y);
 
@@ -220,6 +245,8 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                 SDL_Flip(screen);
             } 
      freeoption(assets);
+     SDL_Delay(500);
+
 return run;
 
 }

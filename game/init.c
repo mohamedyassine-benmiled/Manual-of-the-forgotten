@@ -123,8 +123,9 @@ void initoption(OptionImage *assets)
     assets->obook[i].pos1.y=-8;
     }
     
-    t.font=TTF_OpenFont("ttf/alagard.ttf",60);
-    
+    t.font=TTF_OpenFont("ttf/alagard.ttf",65);
+   
+
     strcpy(t.texte,"Graphics");
     t.textColor.r=207;
     t.textColor.g=175;
