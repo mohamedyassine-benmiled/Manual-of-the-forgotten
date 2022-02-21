@@ -27,7 +27,7 @@ void initmenu(MenuImage *assets)
 {
 text t;
 
-    //Background
+     //Background
         assets->background.surface=IMG_Load("graphics/1080/Texture.png");
         assets->background.pos1.x=0;
         assets->background.pos1.y=0;
@@ -37,19 +37,19 @@ text t;
     {
     sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
     assets->logo[i].surface=IMG_Load(logo);
-    assets->logo[i].pos1.x=291;
-    assets->logo[i].pos1.y=0;
+    assets->logo[i].pos1.x=619;
+    assets->logo[i].pos1.y=47;
     }
     //Book
-    assets->book.pos1.x=941;
-    assets->book.pos1.y=140;
+    assets->book.pos1.x=1374;
+    assets->book.pos1.y=408;
 
     //Play Button
     assets->play[0].surface = IMG_Load("graphics/1080/Buttons/Play.png");
-    assets->play[0].pos1.x=0;
-    assets->play[0].pos1.y=359;
-    assets->play[0].pos2.x=255;
-    assets->play[0].pos2.y=381;
+    assets->play[0].pos1.x=181;
+    assets->play[0].pos1.y=477;
+    assets->play[0].pos2.x=316;
+    assets->play[0].pos2.y=417;
     assets->play[0].pos2.w=237;
     assets->play[0].pos2.h=139;
     assets->play[1].surface = IMG_Load("graphics/1080/Buttons/PlayOnHover.png");
@@ -58,10 +58,10 @@ text t;
 
     //Options Button
     assets->options[0].surface = IMG_Load("graphics/1080/Buttons/Option.png");
-    assets->options[0].pos1.x=0;
-    assets->options[0].pos1.y=547;
-    assets->options[0].pos2.x=255;
-    assets->options[0].pos2.y=574;
+    assets->options[0].pos1.x=181;
+    assets->options[0].pos1.y=578;
+    assets->options[0].pos2.x=324;
+    assets->options[0].pos2.y=586;
     assets->options[0].pos2.w=424;
     assets->options[0].pos2.h=142;
     assets->options[1].surface = IMG_Load("graphics/1080/Buttons/OptionOnHover.png");
@@ -70,10 +70,10 @@ text t;
 
     //Quit Button
     assets->quit[0].surface = IMG_Load("graphics/1080/Buttons/Quit.png");
-    assets->quit[0].pos1.x=0;
-    assets->quit[0].pos1.y=734;
-    assets->quit[0].pos2.x=255;
-    assets->quit[0].pos2.y=771;
+    assets->quit[0].pos1.x=181;
+    assets->quit[0].pos1.y=754;
+    assets->quit[0].pos2.x=324;
+    assets->quit[0].pos2.y=765;
     assets->quit[0].pos2.w=250;
     assets->quit[0].pos2.h=131;
     assets->quit[1].surface = IMG_Load("graphics/1080/Buttons/QuitOnHover.png");
@@ -82,8 +82,8 @@ text t;
 
     //Logo Group
     assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
-    assets->logogroup.pos1.x=1690;
-    assets->logogroup.pos1.y=857;
+    assets->logogroup.pos1.x=1658;
+    assets->logogroup.pos1.y=909;
     //Text copyrights
     
     assets->copyright.pos1.x=565;
