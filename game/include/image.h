@@ -62,7 +62,7 @@ typedef struct
 
     //Settings ****
     image background;
-    image obook ; 
+    image obook[15]; 
 } OptionImage;
 
 typedef struct

@@ -54,7 +54,11 @@ for (int i = 0; i < 13; i++)
 
 void freeoption(OptionImage assets)
 {
-SDL_FreeSurface(assets.obook.surface);
+    for (int i = 0; i < 15; i++)
+    {
+    SDL_FreeSurface(assets.obook[i].surface);
+    }
+
 SDL_FreeSurface(assets.background.surface);
 SDL_FreeSurface(assets.logogroup.surface);
 }

@@ -33,11 +33,13 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 
     while(run==1)
     {
+    //Logo Loop
     i++;
     if(i==4)
     {
         i=0;
     }
+    //Book Loop
     if (j==6 || j==12)
     {
         k++;

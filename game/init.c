@@ -108,24 +108,22 @@ if (!(assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor
 void initoption(OptionImage *assets)
 {
     text t;
+    char logo[50];
     assets->background.surface=IMG_Load("graphics/1080/Texture.png");
     assets->background.pos1.x=0;
     assets->background.pos1.y=0;
     assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
     assets->logogroup.pos1.x=1658;
     assets->logogroup.pos1.y=909;
-    /*
-    assets->obook.surface = IMG_Load("graphics/1080/Options/openbook.png");
-    assets->obook.pos1.x=423;
-    assets->obook.pos1.y=-8;
-    */
+    for(int i=0;i<15;i++)
+    {
+    sprintf(logo,"graphics/1080/Kteb/OpeningBook%d.png",i);
+    assets->obook[i].surface=IMG_Load(logo);
+    assets->obook[i].pos1.x=423;
+    assets->obook[i].pos1.y=-8;
+    }
     /*
     t.font=TTF_OpenFont("ttf/alagard.ttf",60);
-    
-    
-    
-    
-    
     
     strcpy(t.texte,"Graphics");
     t.textColor.r=207;
