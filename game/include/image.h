@@ -27,9 +27,9 @@ typedef struct
     /* Options Assets */
     image logo;
     image logogroup;
-    image graphics;
-    image sound;
-    image buttons;
+    image graphics[2];
+    image sound[2];
+    image keybinds[2];
     image window;
     image buttoncircle;
     image border;

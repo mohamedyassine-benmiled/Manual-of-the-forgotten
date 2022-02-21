@@ -16,6 +16,7 @@ void initsettings()
 
 void initvideo()
 {
+    TTF_Init();
      SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(IMG_Load("graphics/1080/Logo.png"),NULL);
                 SDL_WM_SetCaption("Manual of the forgotten",NULL);
@@ -101,6 +102,7 @@ if (!(assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor
 
 void initoption(OptionImage *assets)
 {
+    text t;
     assets->background.surface=IMG_Load("graphics/1080/Texture.png");
     assets->background.pos1.x=0;
     assets->background.pos1.y=0;
@@ -113,6 +115,88 @@ void initoption(OptionImage *assets)
     assets->obook.surface = IMG_Load("graphics/1080/Options/openbook.png");
     assets->obook.pos1.x=401;
     assets->obook.pos1.y=-55;
+    t.font=TTF_OpenFont("ttf/alagard.ttf",60);
+    
+    
+    
+    
+    
+    
+    strcpy(t.texte,"Graphics");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->Graphics[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->Graphics[0].pos1.x=580;
+    assets->Graphics[0].pos1.y=403;
+    assets->Graphics[0].pos2.x=580;
+    assets->Graphics[0].pos2.y=403;  
+    assets->Graphics[0].pos2.w=264;
+    assets->Graphics[0].pos2.h=67; 
+    t.textColor.r=164;
+    t.textColor.g=164;
+    t.textColor.b=164;
+    assets->Graphics[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->Graphics[1].pos1->Graphics[0].pos1;
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    strcpy(t.texte,"Audio");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->Audio[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->Audio[0].pos1.x=620;
+    assets->Audio[0].pos1.y=512;
+    assets->Audio[0].pos2.x=620;
+    assets->Audio[0].pos2.y=512;  
+    assets->Audio[0].pos2.w=159;
+    assets->Audio[0].pos2.h=53;      
+    t.textColor.r=164;
+    t.textColor.g=164;
+    t.textColor.b=164;
+    assets->Audio[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->Audio[1].pos1->Audio[0].pos1;
+
+    
+    
+    strcpy(t.texte,"Keybinds");  
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    
+    assets->Keybinds[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->keybinds[0].pos1.x=580;
+    assets->Keybinds[0].pos1.y=608;
+    assets->keybinds[0].pos2.x=580;
+    assets->Keybinds[0].pos2.y=608;  
+    assets->keybinds[0].pos2.w=246;
+    assets->Keybinds[0].pos2.h=67;       
+    t.textColor.r=164;
+    t.textColor.g=164;
+    t.textColor.b=164;
+    assets->Keybinds[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->keybinds[1].pos1->keybinds[0].pos1
+
+
+
+
+
+
+    
+
+
+    
+    
+  
+ 
 }
 
 
