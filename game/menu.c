@@ -56,12 +56,25 @@ while (SDL_PollEvent(&event)) {
                     break;
                     case (SDLK_f):
                         SDL_WM_ToggleFullScreen(screen); 
-                    break;                             
+                    break;  
+                    case (SDLK_UP):
+                      menugame-> state--;
+                       if (menugame-> state<0)
+                         {
+                            menugame->state=2;
+                         }
+                    break; 
+                    case (SDLK_DOWN):
+                       menugame-> state++;
+                        if (menugame->state<0)
+                          {
+                             menugame->state=0;
+                          }
+                    break;                           
                     default:
                         break;
                     }
-                break;
-                
+                break;        
         case SDL_MOUSEMOTION:
         //Init Motion With Sound
         SDL_GetMouseState(&x,&y);
