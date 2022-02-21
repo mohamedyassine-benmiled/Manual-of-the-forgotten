@@ -308,12 +308,69 @@ void initoption(OptionImage *assets)
 
     TTF_CloseFont(t.font);
 
+//Audio Init
+
+    t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
 
 
+    strcpy(t.texte,"volume");
+    assets->volume.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->volume.pos1.x=1150;
+    assets->volume.pos1.y=427;       
     
+
+
+    strcpy(t.texte,"Audio");
+    assets->audiotext.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->audiotext.pos1.x=1167;
+    assets->audiotext.pos1.y=550;
+
+
+
+    assets->onbox.surface=IMG_Load("graphics/1080/");
+    assets->onbox.pos1.x=1142;
+    assets->onbox.pos1.y=598;
+    assets->onbox.pos2.w=25;
+    assets->onbox.pos2.h=25;    
     
-  
+
+
+
+    assets->offbox.surface=IMG_Load("graphics/1080/");
+    assets->offbox.pos1.x=1265;
+    assets->offbox.pos1.y=598;
+    assets->offbox.pos2.w=25;
+    assets->offbox.pos2.h=25;
+
+
+
+    strcpy(t.texte,"ON");
+    assets->on.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->on.pos1.x=1143;
+    assets->on.pos1.y=625;    
+
+
+
+    strcpy(t.texte,"OFF");
+    assets->off.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->off.pos1.x=1262;
+    assets->off.pos1.y=625;
  
+    strcpy(t.texte,"+");
+    assets->plus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->plus.pos1.x=1262;
+    assets->plus.pos1.y=625;
+
+    strcpy(t.texte,"-");
+    assets->minus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->minus.pos1.x=1262;
+    assets->minus.pos1.y=625;
+
+
+
 }
 
 
