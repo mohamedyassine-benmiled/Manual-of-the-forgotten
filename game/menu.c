@@ -148,15 +148,26 @@ freemenu(assets);
 int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
-    initoption(&assets);
+    int i ;
+    
+     
+     initoption(&assets);
         show(assets.background,screen);
         show(assets.logogroup,screen); 
-        //show(assets.obook,screen); 
-        SDL_Flip(screen);
+        //show(assets.obook,screen);
+         for ( i = 0; i < 15; i++)
+            {
+                show(assets.obook[i],screen);
+                SDL_Delay(50);
+                SDL_Flip(screen);
+            } 
+        //SDL_Flip(screen);
     SDL_Event event;
-    while(run==2)
+     
+     while(run==2)
     {
-
+    
+     
     //Wait for event
     SDL_WaitEvent(&event);
 
