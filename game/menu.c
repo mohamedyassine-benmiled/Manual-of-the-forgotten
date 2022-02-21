@@ -147,8 +147,8 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
     int i,x,y;
-    
-     
+        optiongame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
+
      initoption(&assets);
         show(assets.background,screen);
         show(assets.logogroup,screen); 
@@ -165,6 +165,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
             show(assets.keybinds[0],screen);
 
         SDL_Flip(screen);
+             optiongame->hover=0;
     SDL_Event event;
      
      while(run==2)
@@ -216,6 +217,11 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     optiongame->hover=0;
 
                 }
+                if(optiongame->hover==1)
+                {
+                    Mix_PlayChannel(-1,optiongame->soundbutton, 0); 
+                }
+
                 break;
          
 
@@ -237,6 +243,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     
         }
          }
+        SDL_Flip(screen);
     }
     for ( i = 15; i> -1; i--)
             {

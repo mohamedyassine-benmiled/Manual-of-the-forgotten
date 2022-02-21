@@ -28,6 +28,7 @@ typedef struct
     int sound;
     int buttons;
     int menu;
+    Mix_Chunk *soundbutton;
     Mix_Chunk *soundbook;
     Mix_Chunk *soundflip;
 } OptionGame;

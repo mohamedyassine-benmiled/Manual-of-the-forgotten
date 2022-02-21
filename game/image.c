@@ -58,7 +58,12 @@ void freeoption(OptionImage assets)
     {
     SDL_FreeSurface(assets.obook[i].surface);
     }
-
+    for (int i = 0; i < 2; i++)
+    {
+        SDL_FreeSurface(assets.graphics[i].surface);
+                SDL_FreeSurface(assets.audio[i].surface);
+                        SDL_FreeSurface(assets.keybinds[i].surface);
+    }
 SDL_FreeSurface(assets.background.surface);
 SDL_FreeSurface(assets.logogroup.surface);
 }
