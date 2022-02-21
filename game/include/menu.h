@@ -24,9 +24,10 @@ typedef struct
 {
     OptionImage assets;
     int graphics;
+    int audio;
+    int keybinds;
     int hover;
     int sound;
-    int buttons;
     int menu;
     Mix_Chunk *soundbutton;
     Mix_Chunk *soundbook;
