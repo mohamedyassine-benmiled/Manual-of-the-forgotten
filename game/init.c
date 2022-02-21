@@ -19,12 +19,13 @@ void initvideo()
      SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(IMG_Load("graphics/1080/Logo.png"),NULL);
                 SDL_WM_SetCaption("Manual of the forgotten",NULL);
+                TTF_Init();
 }
 
 void initmenu(MenuImage *assets)
 {
 text t;
-TTF_Init();
+
     //Background
         assets->background.surface=IMG_Load("graphics/1080/Texture.png");
         assets->background.pos1.x=0;
