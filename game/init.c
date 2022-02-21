@@ -27,7 +27,7 @@ void initmenu(MenuImage *assets)
 {
 text t;
 
-    //Background
+     //Background
         assets->background.surface=IMG_Load("graphics/1080/Texture.png");
         assets->background.pos1.x=0;
         assets->background.pos1.y=0;
@@ -37,19 +37,19 @@ text t;
     {
     sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
     assets->logo[i].surface=IMG_Load(logo);
-    assets->logo[i].pos1.x=291;
-    assets->logo[i].pos1.y=0;
+    assets->logo[i].pos1.x=619;
+    assets->logo[i].pos1.y=47;
     }
     //Book
-    assets->book.pos1.x=941;
-    assets->book.pos1.y=140;
+    assets->book.pos1.x=1374;
+    assets->book.pos1.y=408;
 
     //Play Button
     assets->play[0].surface = IMG_Load("graphics/1080/Buttons/Play.png");
-    assets->play[0].pos1.x=0;
-    assets->play[0].pos1.y=359;
-    assets->play[0].pos2.x=255;
-    assets->play[0].pos2.y=381;
+    assets->play[0].pos1.x=181;
+    assets->play[0].pos1.y=477;
+    assets->play[0].pos2.x=316;
+    assets->play[0].pos2.y=417;
     assets->play[0].pos2.w=237;
     assets->play[0].pos2.h=139;
     assets->play[1].surface = IMG_Load("graphics/1080/Buttons/PlayOnHover.png");
@@ -58,10 +58,10 @@ text t;
 
     //Options Button
     assets->options[0].surface = IMG_Load("graphics/1080/Buttons/Option.png");
-    assets->options[0].pos1.x=0;
-    assets->options[0].pos1.y=547;
-    assets->options[0].pos2.x=255;
-    assets->options[0].pos2.y=574;
+    assets->options[0].pos1.x=181;
+    assets->options[0].pos1.y=578;
+    assets->options[0].pos2.x=324;
+    assets->options[0].pos2.y=586;
     assets->options[0].pos2.w=424;
     assets->options[0].pos2.h=142;
     assets->options[1].surface = IMG_Load("graphics/1080/Buttons/OptionOnHover.png");
@@ -70,10 +70,10 @@ text t;
 
     //Quit Button
     assets->quit[0].surface = IMG_Load("graphics/1080/Buttons/Quit.png");
-    assets->quit[0].pos1.x=0;
-    assets->quit[0].pos1.y=734;
-    assets->quit[0].pos2.x=255;
-    assets->quit[0].pos2.y=771;
+    assets->quit[0].pos1.x=181;
+    assets->quit[0].pos1.y=754;
+    assets->quit[0].pos2.x=324;
+    assets->quit[0].pos2.y=765;
     assets->quit[0].pos2.w=250;
     assets->quit[0].pos2.h=131;
     assets->quit[1].surface = IMG_Load("graphics/1080/Buttons/QuitOnHover.png");
@@ -82,8 +82,8 @@ text t;
 
     //Logo Group
     assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
-    assets->logogroup.pos1.x=1690;
-    assets->logogroup.pos1.y=857;
+    assets->logogroup.pos1.x=1658;
+    assets->logogroup.pos1.y=909;
     //Text copyrights
     
     assets->copyright.pos1.x=565;
@@ -184,6 +184,89 @@ void initoption(OptionImage *assets)
     t.textColor.b=164;
     assets->Keybinds[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
     assets->keybinds[1].pos1->keybinds[0].pos1
+
+
+
+//Graphics Init
+    //Graphics Init
+
+    assets->selectres.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->selectres[.pos1.x=1063;
+    assets->selectres[.pos1.y=387;         
+    
+
+    
+    assets->windowsettings.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->windowsettings.pos1.x=1066;
+    assets->windowsettings.pos1.y=566;
+
+
+    assets->firstbox.surface=IMG_Load("");
+    assets->firstbox.pos1.x=1066;
+    assets->firstbox.pos1.y=655;
+    assets->firstbox.pos2.x=25;
+    assets->firstbox.pos2.y=25;
+
+
+
+
+    assets->secondbox.surface=IMG_Load("");
+    assets->secondbox.pos1.x=1235;
+    assets->secondbox.pos1.y=655;
+    assets->secondbox.pos2.x=25;
+    assets->secondbox.pos2.y=25;
+
+
+
+
+
+    assets->fullscreen.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->fullscreen.pos1.x=1092;
+    assets->fullscreen.pos1.y=655;
+
+
+
+
+    assets->windowed.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->windowed.pos1.x=1261;
+    assets->windowed.pos1.y=655;
+
+
+
+
+    assets->boxresolution.surface=IMG_Load("");
+    assets->boxresolution.pos1.x=1060;
+    assets->boxresolution.pos1.y=453;
+    assets->boxresolution.pos2.x=291;
+    assets->boxresolution.pos2.y=65;
+
+
+
+
+
+    assets->currentresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->currentresolution.pos1.x=1101;
+    assets->currentresolution.pos1.y=462;
+    
+
+
+
+
+    assets->listresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    assets->listresolution.pos1.x=1130;
+    assets->listresolution.pos1.y=526;
+
+
+
+
+
+
+    
+    assets->listresolutionbox.surface=IMG_Load("");
+    assets->listresolutionbox.pos1.x=1060;
+    assets->listresolutionbox.pos1.y=518;
+    assets->listresolutionbox.pos2.x=291;
+    assets->listresolutionbox.pos2.y=65;
 
 
 
