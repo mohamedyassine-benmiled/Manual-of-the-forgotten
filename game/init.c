@@ -124,8 +124,7 @@ void initoption(OptionImage *assets)
     }
     
     t.font=TTF_OpenFont("ttf/alagard.ttf",65);
-   
-
+    
     strcpy(t.texte,"Graphics");
     t.textColor.r=207;
     t.textColor.g=175;
@@ -192,11 +191,11 @@ void initoption(OptionImage *assets)
 
 
 
-    TTF_CloseFont(t.font);
 
 
-//Graphics Init
-//Graphics Init
+
+
+    //Graphics Init
     t.font=TTF_OpenFont("ttf/alagard.ttf",30);
     t.textColor.r=207;
     t.textColor.g=175;
@@ -299,12 +298,16 @@ void initoption(OptionImage *assets)
     assets->listresolutionbox[1].pos2.w=291;
     assets->listresolutionbox[1].pos2.h=65;
 
-
-
-
-
-
     
+
+
+
+
+
+
+
+    TTF_CloseFont(t.font);
+
 
 
     
