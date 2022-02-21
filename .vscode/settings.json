@@ -11,6 +11,7 @@
         "init.h": "c",
         "sdl_audio.h": "c",
         "animation.h": "c",
-        "sdl_mixer.h": "c"
+        "sdl_mixer.h": "c",
+        "sdl_ttf.h": "c"
     }
 }

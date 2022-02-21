@@ -4,6 +4,7 @@
 #include "include/menu.h"
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
+#include <SDL/SDL_ttf.h>
 #include "include/init.h"
 #include <string.h>
 
@@ -23,6 +24,7 @@ void initvideo()
 void initmenu(MenuImage *assets)
 {
 text t;
+TTF_Init();
     //Background
         assets->background.surface=IMG_Load("graphics/1080/Texture.png");
         assets->background.pos1.x=0;
@@ -82,15 +84,18 @@ text t;
     assets->logogroup.pos1.y=857;
     //Text copyrights
     
-    assets->copyright.pos1.x=0;
-    assets->copyright.pos1.y=0;
+    assets->copyright.pos1.x=565;
+    assets->copyright.pos1.y=1045;
     //color
-   t.textColor.r=0;
-t.textColor.g=0;
-t.textColor.b=0;
-strcpy(t.texte,"TMOF beta version 1.0/2022");
-t.font=TTF_OpenFont("copyright.ttf",30);
-assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    strcpy(t.texte,"TMOF beta version 1.0/2022||Created by NEMESIS inc.");
+t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+if (!(assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)))
+{
+    printf("Wow an error ? I love this : %s",TTF_GetError());
+};
 }
 
 void initoption(OptionImage *assets)
