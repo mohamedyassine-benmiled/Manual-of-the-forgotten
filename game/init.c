@@ -5,6 +5,7 @@
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
 #include "include/init.h"
+#include <string.h>
 
 //To initialize Everything (What did it cost?)
 void initsettings()
@@ -21,14 +22,20 @@ void initvideo()
 
 void initmenu(MenuImage *assets)
 {
-
+text t;
     //Background
         assets->background.surface=IMG_Load("graphics/1080/Texture.png");
         assets->background.pos1.x=0;
         assets->background.pos1.y=0;
     //Logo Game
-    assets->logo.pos1.x=291;
-    assets->logo.pos1.y=0;
+    char logo [50];
+    for(int i=0;i<4;i++)
+    {
+    sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
+    assets->logo[i].surface=IMG_Load(logo);
+    assets->logo[i].pos1.x=291;
+    assets->logo[i].pos1.y=0;
+    }
     //Book
     assets->book.pos1.x=941;
     assets->book.pos1.y=140;
@@ -73,6 +80,17 @@ void initmenu(MenuImage *assets)
     assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
     assets->logogroup.pos1.x=1690;
     assets->logogroup.pos1.y=857;
+    //Text copyrights
+    
+    assets->copyright.pos1.x=0;
+    assets->copyright.pos1.y=0;
+    //color
+   t.textColor.r=0;
+t.textColor.g=0;
+t.textColor.b=0;
+strcpy(t.texte,"TMOF beta version 1.0/2022");
+t.font=TTF_OpenFont("copyright.ttf",30);
+assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
 }
 
 void initoption(OptionImage *assets)

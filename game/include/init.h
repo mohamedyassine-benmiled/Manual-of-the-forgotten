@@ -8,6 +8,7 @@
 #include <SDL/SDL_audio.h>
 #include "game.h"
 #include "menu.h"
+#include "text.h"
 
 typedef struct 
 {

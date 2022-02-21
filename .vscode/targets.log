@@ -1,0 +1,479 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+ 
+# Built for x86_64-pc-linux-gnu
+ 
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sun Feb 20 07:55:05 2022
+
+# Variables
+
+# 'override' directive
+GNUMAKEFLAGS := 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = ubuntu
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 23)
+OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
+# environment
+XDG_SESSION_CLASS = user
+# makefile (from 'Makefile', line 22)
+SRC = $(wildcard $(SRCDIR)/*$(EXT))
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+IM_CONFIG_PHASE = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /run/user/1000/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /home/osboxes/Documents/GitHub/Game-Project2022
+# makefile
+SHELL = /bin/sh
+# makefile (from 'Makefile', line 26)
+RM = rm
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/share/code/code
+# environment
+JOURNAL_STREAM = 8:35891
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# environment
+USERNAME = osboxes
+# makefile (from 'Makefile', line 7)
+CXXFLAGS = -std=c11 -Wall -g
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 29)
+DEL = del
+# environment
+MANAGERPID = 2362
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /home/osboxes
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# makefile (from 'Makefile', line 24)
+DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
+# environment
+SESSION_MANAGER = local/osboxes:@/tmp/.ICE-unix/2628,unix/osboxes:/tmp/.ICE-unix/2628
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=b4b7d0f0-2d78-4271-ba69-dd8de35921a0&iid=b4b7d0f0-2d78-4271-ba69-dd8de35921a0&sid=b4b7d0f0-2d78-4271-ba69-dd8de35921a0","uploadToServer":true}
+# environment
+INVOCATION_ID = 6af932de262243c79f0138e15d29e263
+# makefile (from 'Makefile', line 8)
+LDFLAGS = -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 33528
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# makefile (from 'Makefile', line 13)
+SRCDIR = game
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/osboxes/Documents/GitHub/Game-Project2022
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 2579
+ 
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /home/osboxes
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CODE_CACHE_PATH = /home/osboxes/.config/Code/CachedData/d6ee99e4c045a6716e5c653d7da8e9ae6f5a8b03
+# environment
+LOGNAME = osboxes
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# makefile (from 'Makefile', line 27)
+DELOBJ = $(OBJ)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+ 
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 6)
+CC = gcc
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7cc95bcb-6de3-4783-86c8-d7a29ac408c4.sock
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = osboxes
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-d353e8ce-1.64.1-main.sock
+# makefile (from 'Makefile', line 12)
+EXT = .c
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+BREAKPAD_DUMP_LOCATION = /home/osboxes/.config/Code/exthost Crash Reports
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# makefile (from 'Makefile', line 11)
+APPNAME = book
+# environment
+QT_ACCESSIBILITY = 1
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from 'Makefile', line 14)
+OBJDIR = obj
+# environment
+LC_ALL = C
+# makefile (from 'Makefile', line 31)
+WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# default
+.RECIPEPREFIX := 
+# makefile (from 'Makefile', line 30)
+EXE = .exe
+# environment
+LANG = C
+# environment
+VSCODE_PID = 33528
+# variable set hash-table stats:
+# Load=114/1024=11%, Rehash=0, Collisions=25/156=16%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2051, inode 2755542): 15 files, no impossibilities.
+# game (device 2051, inode 2883661): 13 files, no impossibilities.
+
+# 28 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+obj/%.o: game/%.c
+#  recipe to execute (from 'Makefile', line 45):
+	-mkdir obj
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+obj/game.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/text.o: game/text.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'text'
+#  Last modified 2022-02-17 03:24:56.282573741
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/text.o
+# automatic
+# % := 
+# automatic
+# * := text
+# automatic
+# + := game/text.c
+# automatic
+# | := 
+# automatic
+# < := game/text.c
+# automatic
+# ^ := game/text.c
+# automatic
+# ? := game/text.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 45):
+	-mkdir obj
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+obj/sound.o: game/sound.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'sound'
+#  Last modified 2022-02-19 12:23:00.242871197
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 45):
+	-mkdir obj
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+book: obj/fgif.o obj/sound.o obj/init.o obj/text.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/fgifdsl.o obj/image.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-02-19 12:24:34.77827828
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 41):
+	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+
+all: book
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+.PHONY: clean cleandep cleanw cleandepw
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+game/init.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-20 07:40:22.306723282
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-19 11:51:04.288515253
+#  File has been updated.
+#  Successfully updated.
+
+obj/fgif.o: game/fgif.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'fgif'
+#  Last modified 2022-02-19 12:23:00.150867952
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 45):
+	-mkdir obj
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+# Not a target:
+obj/animation.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/menu.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+cleanw:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 64):
+	$(DEL) $(WDELOBJ) $(DEP) $(APPNAME)$(EXE)
+
+# Not a target:
+game/text.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-20 07:41:16.629954341
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/image.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+game/sound.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-19 11:51:06.529618106
+#  File has been updated.
+#  Successfully updated.
+
+cleandep:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 58):
+	$(RM) $(DEP)
+
+cleandepw:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 69):
+	$(DEL) $(DEP)
+
+# Not a target:
+obj/fgifdsl.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 52):
+	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
+	
+
+obj/init.o: game/init.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'init'
+#  Last modified 2022-02-20 07:40:25.798674098
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 45):
+	-mkdir obj
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+# Not a target:
+game/fgif.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-19 11:51:06.529618106
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=24/1024=2%, Rehash=0, Collisions=0/70=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 56 / storage = 493 B / avg = 8 B
+# current buf: size = 8162 B / used = 493 B / count = 56 / avg = 8 B
+
+# strcache performance: lookups = 87 / hit rate = 35%
+# hash-table stats:
+# Load=56/8192=1%, Rehash=0, Collisions=3/87=3%
+# Finished Make data base on Sun Feb 20 07:55:05 2022
+
+ 
