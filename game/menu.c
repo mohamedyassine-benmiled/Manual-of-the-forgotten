@@ -6,14 +6,12 @@
 #include <SDL/SDL_audio.h>
 #include "include/init.h"
 #include "include/game.h"
-#include "include/fgifsdl.h"
 #include "include/animation.h"
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
       int x,y,i,j,k;
     SDL_Event event;
-    SDL_Gif *closedbook,*logo;
         MenuImage assets;
             menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
     menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
@@ -215,7 +213,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
         }
          }
     }
-    for ( i = 15; i > 0; i--)
+    for ( i = 15; i> -1; i--)
             {
                 show(assets.obook[i],screen);
                 SDL_Delay(50);

@@ -1,6 +1,5 @@
 
 #include "include/animation.h"
-#include "include/fgifsdl.h"
 
 int hoverbutton(int x,int y, image img )
 {
@@ -55,11 +54,6 @@ void animateclick(int x,int y,image img,image img2,SDL_Surface *screen)
 
 }
 
-void animatebackground(image img,SDL_Gif *gif,SDL_Surface *screen)
-{
-    img.surface = SDLGifAutoFrame(gif);
-    show(img,screen);
-}
 
 void animateoption()
 {
