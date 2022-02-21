@@ -28,11 +28,39 @@ typedef struct
     image logo;
     image logogroup;
     image graphics[2];
-    image sound[2];
+    image audio[2];
     image keybinds[2];
-    image window;
-    image buttoncircle;
-    image border;
+    //image window;
+    //image buttoncircle;
+    //image border;
+    //Graphics ****
+    image selectres;
+    image windowsettings;
+    image firstbox;
+    image secondbox;
+    image fullscreen;
+    image windowed;
+    image boxresolution;
+    image currentresolution;
+    image listresolution;
+    image listresolutionbox;
+    //Audio ****
+    image volume;
+    image audiotext;
+    image onbox;
+    image offbox;
+    image on;
+    image off;
+    image circle[10];
+    image bar;
+    image plus;
+    image minus;
+    //Keybinds ****
+    image table;
+    image textbutton[9];
+    image keybind[9];
+
+    //Settings ****
     image background;
     image obook ; 
 } OptionImage;
