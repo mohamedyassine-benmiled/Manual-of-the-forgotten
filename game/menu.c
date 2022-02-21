@@ -148,7 +148,7 @@ freemenu(assets);
 int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
-    int i ;
+    int i,x,y;
     
      
      initoption(&assets);
@@ -169,8 +169,8 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
     
      
     //Wait for event
-    SDL_WaitEvent(&event);
-
+    
+    while (SDL_PollEvent(&event)) {
     switch (event.type)
         {
         case SDL_QUIT:
@@ -194,7 +194,26 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     default:
                         break;
                     }
+                    break;
+                    
+
+        case SDL_MOUSEBUTTONUP:
+                     SDL_GetMouseState(&x,&y);
+
+                    if(hoverbutton(x,y,assets.graphics[1]))
+                    run=1;
+                    
+                    if(hoverbutton(x,y,assets.audio[1]))
+                    run=1;
+
+                    if (hoverbutton(x,y,assets.keybinds[1]))
+                    run=1;
+
+
+                break;
+                    
         }
+         }
     }
     for ( i = 15; i > 0; i--)
             {
