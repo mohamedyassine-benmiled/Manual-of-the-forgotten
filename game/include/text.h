@@ -7,7 +7,7 @@
 typedef struct {
 TTF_Font *font;
 SDL_Color textColor;
-char texte [50];
+char texte [75];
 }text;
 void initText (text *t);
 void freeText(text t);

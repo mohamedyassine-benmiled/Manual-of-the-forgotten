@@ -47,11 +47,11 @@ text t;
     //Play Button
     assets->play[0].surface = IMG_Load("graphics/1080/Buttons/Play.png");
     assets->play[0].pos1.x=181;
-    assets->play[0].pos1.y=477;
+    assets->play[0].pos1.y=408;
     assets->play[0].pos2.x=316;
     assets->play[0].pos2.y=417;
-    assets->play[0].pos2.w=237;
-    assets->play[0].pos2.h=139;
+    assets->play[0].pos2.w=206;
+    assets->play[0].pos2.h=120;
     assets->play[1].surface = IMG_Load("graphics/1080/Buttons/PlayOnHover.png");
     assets->play[1].pos1=assets->play[0].pos1;
     assets->play[1].pos2=assets->play[0].pos2;
@@ -62,8 +62,8 @@ text t;
     assets->options[0].pos1.y=578;
     assets->options[0].pos2.x=324;
     assets->options[0].pos2.y=586;
-    assets->options[0].pos2.w=424;
-    assets->options[0].pos2.h=142;
+    assets->options[0].pos2.w=350;
+    assets->options[0].pos2.h=122;
     assets->options[1].surface = IMG_Load("graphics/1080/Buttons/OptionOnHover.png");
     assets->options[1].pos1=assets->options[0].pos1;
     assets->options[1].pos2=assets->options[0].pos2;
@@ -86,8 +86,8 @@ text t;
     assets->logogroup.pos1.y=909;
     //Text copyrights
     
-    assets->copyright.pos1.x=565;
-    assets->copyright.pos1.y=1045;
+    assets->copyright.pos1.x=661;
+    assets->copyright.pos1.y=992;
     //color
     t.textColor.r=207;
     t.textColor.g=175;
@@ -106,15 +106,13 @@ void initoption(OptionImage *assets)
     assets->background.surface=IMG_Load("graphics/1080/Texture.png");
     assets->background.pos1.x=0;
     assets->background.pos1.y=0;
-    assets->logo.surface = IMG_Load("graphics/1080/Logo/Logo.png");
-    assets->logo.pos1.x=220;
-    assets->logo.pos1.y=74;
     assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
-    assets->logogroup.pos1.x=1690;
-    assets->logogroup.pos1.y=857;
+    assets->logogroup.pos1.x=1658;
+    assets->logogroup.pos1.y=909;
     assets->obook.surface = IMG_Load("graphics/1080/Options/openbook.png");
-    assets->obook.pos1.x=401;
-    assets->obook.pos1.y=-55;
+    assets->obook.pos1.x=423;
+    assets->obook.pos1.y=-8;
+    /*
     t.font=TTF_OpenFont("ttf/alagard.ttf",60);
     
     
@@ -185,11 +183,11 @@ void initoption(OptionImage *assets)
     assets->Keybinds[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
     assets->keybinds[1].pos1->keybinds[0].pos1
 
-
+*/
 
 //Graphics Init
     //Graphics Init
-
+/*
     assets->selectres.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
     assets->selectres[.pos1.x=1063;
     assets->selectres[.pos1.y=387;         
@@ -268,7 +266,7 @@ void initoption(OptionImage *assets)
     assets->listresolutionbox.pos2.x=291;
     assets->listresolutionbox.pos2.y=65;
 
-
+*/
 
 
 
