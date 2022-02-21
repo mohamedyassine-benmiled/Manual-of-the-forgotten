@@ -41,8 +41,13 @@ text t;
     assets->logo[i].pos1.y=47;
     }
     //Book
-    assets->book.pos1.x=1374;
-    assets->book.pos1.y=408;
+    for(int i=0;i<13;i++)
+    {
+    sprintf(logo,"graphics/1080/Kteb/ClosedBook%d.png",i);
+    assets->cbook[i].surface=IMG_Load(logo);
+    assets->cbook[i].pos1.x=1374;
+    assets->cbook[i].pos1.y=408;
+    }
 
     //Play Button
     assets->play[0].surface = IMG_Load("graphics/1080/Buttons/Play.png");
@@ -109,9 +114,11 @@ void initoption(OptionImage *assets)
     assets->logogroup.surface = IMG_Load("graphics/1080/Logo/Logo.png");
     assets->logogroup.pos1.x=1658;
     assets->logogroup.pos1.y=909;
+    /*
     assets->obook.surface = IMG_Load("graphics/1080/Options/openbook.png");
     assets->obook.pos1.x=423;
     assets->obook.pos1.y=-8;
+    */
     /*
     t.font=TTF_OpenFont("ttf/alagard.ttf",60);
     

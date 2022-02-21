@@ -11,14 +11,12 @@
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
-      int x,y,i;
+      int x,y,i,j,k;
     SDL_Event event;
     SDL_Gif *closedbook,*logo;
         MenuImage assets;
             menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
     menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
-        closedbook=SDLLoadGif("graphics/1080/Menu/ClosedBook.gif");
-        logo=SDLLoadGif("graphics/1080/Menu/LogoGame.gif");
         initmenu(&assets);
         show(assets.background,screen);
         show(assets.play[0],screen);
@@ -26,20 +24,38 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         show(assets.quit[0],screen);
         show(assets.logogroup,screen);
         show(assets.copyright,screen);
-
+    i=0;
+    j=0;
+    k=0;
     menugame->hover=0;
     menugame->press=0;
     Mix_PlayMusic(menugame->Music, -1);
 
     while(run==1)
     {
-    animatebackground(assets.book,closedbook,screen);
-    //animatebackground(assets.logo,logo,screen);
     i++;
     if(i==4)
     {
         i=0;
     }
+    if (j==6 || j==12)
+    {
+        k++;
+        if (k==40)
+        {
+            k=0;
+            if (j==12)
+            j=0;
+            else
+            j++;
+        }
+    }
+    else
+    {
+        j++;
+    }
+
+    show(assets.cbook[j],screen);
     show(assets.logo[i],screen);
     SDL_Delay(50);
     //Wait for event
@@ -122,8 +138,6 @@ while (SDL_PollEvent(&event)) {
 }
       SDL_Flip(screen);
     }
-SDLFreeGif(closedbook);
-SDLFreeGif(logo);
 freemenu(assets);
  return run;
 
@@ -135,7 +149,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
     initoption(&assets);
         show(assets.background,screen);
         show(assets.logogroup,screen); 
-        show(assets.obook,screen); 
+        //show(assets.obook,screen); 
         SDL_Flip(screen);
     SDL_Event event;
     while(run==2)

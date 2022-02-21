@@ -16,7 +16,7 @@ typedef struct
     image options[3];
     image quit[3];
     image background;
-    image book;
+    image cbook[13];
     image logo[4];
     image logogroup;
     image copyright;
