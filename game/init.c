@@ -192,72 +192,93 @@ void initoption(OptionImage *assets)
 
 
 
+    TTF_CloseFont(t.font);
+
+
 //Graphics Init
-    //Graphics Init
-/*
-    assets->selectres.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
-    assets->selectres[.pos1.x=1063;
-    assets->selectres[.pos1.y=387;         
+//Graphics Init
+    t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    strcpy(t.texte,"Select Resolution");
+    assets->selectres.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->selectres.pos1.x=1063;
+    assets->selectres.pos1.y=387;         
     
 
-    
-    assets->windowsettings.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    strcpy(t.texte,"Window Settings");
+    assets->windowsettings.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->windowsettings.pos1.x=1066;
     assets->windowsettings.pos1.y=566;
 
 
-    assets->firstbox.surface=IMG_Load("");
-    assets->firstbox.pos1.x=1066;
-    assets->firstbox.pos1.y=655;
-    assets->firstbox.pos2.x=25;
-    assets->firstbox.pos2.y=25;
+    assets->firstbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
+    assets->firstbox[0].pos1.x=1066;
+    assets->firstbox[0].pos1.y=655;
+    assets->firstbox[0].pos2.w=25;
+    assets->firstbox[0].pos2.h=25;
+    assets->firstbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
+    assets->firstbox[1].pos1.x=1066;
+    assets->firstbox[1].pos1.y=655;
+    assets->firstbox[1].pos2.w=25;
+    assets->firstbox[1].pos2.h=25;
 
 
 
 
-    assets->secondbox.surface=IMG_Load("");
-    assets->secondbox.pos1.x=1235;
-    assets->secondbox.pos1.y=655;
-    assets->secondbox.pos2.x=25;
-    assets->secondbox.pos2.y=25;
+    assets->secondbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
+    assets->secondbox[0].pos1.x=1235;
+    assets->secondbox[0].pos1.y=655;
+    assets->secondbox[0].pos2.w=25;
+    assets->secondbox[0].pos2.h=25;
+    assets->secondbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
+    assets->secondbox[1].pos1.x=1235;
+    assets->secondbox[1].pos1.y=655;
+    assets->secondbox[1].pos2.w=25;
+    assets->secondbox[1].pos2.h=25;
 
 
 
 
-
-    assets->fullscreen.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    strcpy(t.texte,"FullScreen");
+    assets->fullscreen.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->fullscreen.pos1.x=1092;
     assets->fullscreen.pos1.y=655;
 
 
 
-
-    assets->windowed.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    strcpy(t.texte,"Windowed");
+    assets->windowed.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->windowed.pos1.x=1261;
     assets->windowed.pos1.y=655;
 
 
 
 
-    assets->boxresolution.surface=IMG_Load("");
+    assets->boxresolution.surface=IMG_Load("graphics/1080/Options/ResolutionBox.png");
     assets->boxresolution.pos1.x=1060;
     assets->boxresolution.pos1.y=453;
-    assets->boxresolution.pos2.x=291;
-    assets->boxresolution.pos2.y=65;
+    assets->boxresolution.pos2.w=291;
+    assets->boxresolution.pos2.h=65;
 
 
 
-
-
-    assets->currentresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    t.textColor.r=164;
+    t.textColor.g=164;
+    t.textColor.b=164;
+    strcpy(t.texte,"1920x1080");
+    assets->currentresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->currentresolution.pos1.x=1101;
     assets->currentresolution.pos1.y=462;
     
 
 
-
-
-    assets->listresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)));
+    t.textColor.r=164;
+    t.textColor.g=164;
+    t.textColor.b=164;
+    strcpy(t.texte,"1280x720");
+    assets->listresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->listresolution.pos1.x=1130;
     assets->listresolution.pos1.y=526;
 
@@ -267,13 +288,18 @@ void initoption(OptionImage *assets)
 
 
     
-    assets->listresolutionbox.surface=IMG_Load("");
-    assets->listresolutionbox.pos1.x=1060;
-    assets->listresolutionbox.pos1.y=518;
-    assets->listresolutionbox.pos2.x=291;
-    assets->listresolutionbox.pos2.y=65;
+    assets->listresolutionbox[0].surface=IMG_Load("graphics/1080/Options/ListResolution.png");
+    assets->listresolutionbox[0].pos1.x=1060;
+    assets->listresolutionbox[0].pos1.y=518;
+    assets->listresolutionbox[0].pos2.w=291;
+    assets->listresolutionbox[0].pos2.h=65;
+    assets->listresolutionbox[1].surface=IMG_Load("graphics/1080/Options/ListResolutionHover.png");
+    assets->listresolutionbox[1].pos1.x=1060;
+    assets->listresolutionbox[1].pos1.y=518;
+    assets->listresolutionbox[1].pos2.w=291;
+    assets->listresolutionbox[1].pos2.h=65;
 
-*/
+
 
 
 
