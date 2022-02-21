@@ -196,6 +196,12 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     }
         }
     }
+    for ( i = 15; i > 0; i--)
+            {
+                show(assets.obook[i],screen);
+                SDL_Delay(50);
+                SDL_Flip(screen);
+            } 
      freeoption(assets);
 return run;
 
