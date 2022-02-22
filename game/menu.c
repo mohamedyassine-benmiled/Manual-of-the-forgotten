@@ -151,10 +151,12 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
     int list=1;
     int x,y ;
     SDL_Event event;
+        show(assets->listresolutionbox[0],screen);
+        show(assets->listresolution,screen);
+        SDL_Flip(screen);
     while (list)
     {
-        show(assetsg.ListResolution,screen);
-        show(assetsg.listresolution,screen);
+
       SDL_WaitEvent(&event);
       switch(event.type)
       {
@@ -166,17 +168,8 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
           SDL_GetMouseState(&x,&y);
 
 
-          if (!hoverbutton(x,y,assetsg.boxresolution))
+          if (!hoverbutton(x,y,assets->listresolutionbox[0]))
           {
-              show(assetsg->boxresolution,screen);
-              show(assetsg->selectresolution,screen);
-              show(assetsg->windowsettings,screen);
-              show(assetsg->firstbox[0],screen);
-              show(assetsg->secondbox[0],screen);
-              show(assetsg->fullscreen,screen);
-              show(assetsg->windowed,screen);
-              show(assetsg->currentresolution,screen);
-              SDL_Flip(screen); 
               list =0;
           }
           break;
@@ -203,6 +196,10 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
     SDL_Event event;
      while(optiongame->graphics)
     {
+        if (run==0)
+        {
+            optiongame->graphics=0;
+        }
      while (SDL_PollEvent(&event)) 
     {
     switch (event.type)
@@ -252,7 +249,20 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                    {
                  
                     run=listres(optiongame,&assetsg,screen,run);
-
+                    show(assets->background,screen);
+                    show(assets->logogroup,screen); 
+                    show(assets->obook[14],screen);
+                    show(assets->graphics[0],screen);
+                    show(assets->audio[0],screen);
+                    show(assets->keybinds[0],screen);
+                    show(assetsg.boxresolution,screen);
+                    show(assetsg.selectresolution,screen);
+                    show(assetsg.windowsettings,screen);
+                    show(assetsg.firstbox[0],screen);
+                    show(assetsg.secondbox[0],screen);
+                    show(assetsg.fullscreen,screen);
+                    show(assetsg.windowed,screen);
+                    show(assetsg.currentresolution,screen);
                    }
                   
                 break;
