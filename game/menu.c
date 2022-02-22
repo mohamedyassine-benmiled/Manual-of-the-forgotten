@@ -378,7 +378,6 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
         {
                 SDL_FreeSurface(assetsg.currentresolution.surface);
                 SDL_FreeSurface(assetsg.listresolution.surface);     
-                run=0;
                 optiongame->graphics=2;
                              if (previousres==720)
                              {
@@ -632,6 +631,18 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                      {
                         optiongame->graphics=1;
                         run=graphics(optiongame,&assets,screen,run);
+                        get_config(&config);
+                        freeoption(assets);
+                        initoption(&assets);
+
+                        if(optiongame->graphics==2)
+                        {
+                        SDL_FreeSurface(screen);
+                        if (config.fullscreen)
+                        SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
+                        else
+                        SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+                        }
                         show(assets.background,screen);
                         show(assets.logogroup,screen); 
                         show(assets.obook[14],screen);
@@ -654,6 +665,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     
         }
          }
+
         SDL_Flip(screen);
     }
     for ( i = 15; i> -1; i--)
@@ -663,11 +675,9 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                 SDL_Flip(screen);
             } 
      freeoption(assets);
-     if(optiongame->graphics==2)
-     {
-         main();
-     }
-     SDL_Delay(500);
+          SDL_Delay(500);
+ 
+
 
 return run;
 

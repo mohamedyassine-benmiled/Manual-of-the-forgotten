@@ -8,7 +8,6 @@ typedef struct
     SDL_Rect pos1;
     SDL_Rect pos2;
 } image;
-
 typedef struct 
 {
     image Window;
