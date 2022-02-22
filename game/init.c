@@ -181,7 +181,7 @@ if (config.resolution_h==720)
     t.textColor.g=175;
     t.textColor.b=70;
     strcpy(t.texte,"TMOF beta version 1.0/2022||Created by NEMESIS inc.");
-t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+t.font=TTF_OpenFont("ttf/alagard.ttf",20);
 if (!(assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)))
 {
     printf("Wow an error ? I love this : %s",TTF_GetError());
@@ -308,7 +308,7 @@ if (config.resolution_h==720)
     assets->obook[i].pos1.y=-5;
     }
     
-    t.font=TTF_OpenFont("ttf/alagard.ttf",65);
+    t.font=TTF_OpenFont("ttf/alagard.ttf",43);
     
     strcpy(t.texte,"Graphics");
     t.textColor.r=207;
@@ -727,7 +727,7 @@ if (config.resolution_h==1080)
 else
 if (config.resolution_h==720)
 {
-    t.font=TTF_OpenFont("ttf/alagard.ttf",36);
+    t.font=TTF_OpenFont("ttf/alagard.ttf",24);
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
@@ -772,7 +772,7 @@ if (config.resolution_h==720)
     assets->offbox[1].pos2.w=16;
     assets->offbox[1].pos2.h=16;
 
-    t.font=TTF_OpenFont("ttf/alagard.ttf",18);
+    t.font=TTF_OpenFont("ttf/alagard.ttf",12);
     strcpy(t.texte,"on");
     assets->on.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->on.pos1.x=762;
@@ -786,7 +786,7 @@ if (config.resolution_h==720)
     assets->off.pos1.y=416;
 
 
-     t.font=TTF_OpenFont("ttf/alagard.ttf",36);
+     t.font=TTF_OpenFont("ttf/alagard.ttf",24);
     strcpy(t.texte,"+");
     assets->plus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->plus.pos1.x=693;
