@@ -135,7 +135,7 @@ if (config.resolution_h==720)
     //Play Button
     assets->play[0].surface = IMG_Load("graphics/720/Buttons/Play.png");
     assets->play[0].pos1.x=120;
-    assets->play[0].pos1.y=385;
+    assets->play[0].pos1.y=272;
     assets->play[0].pos2.x=210;
     assets->play[0].pos2.y=278;
     assets->play[0].pos2.w=137;
@@ -340,8 +340,8 @@ if (config.resolution_h==720)
     t.textColor.g=175;
     t.textColor.b=70;
     assets->audio[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->audio[0].pos1.x=120;
-    assets->audio[0].pos1.y=385;
+    assets->audio[0].pos1.x=413;
+    assets->audio[0].pos1.y=341;
     assets->audio[0].pos2=assets->audio[0].pos1;
     assets->audio[0].pos2.w=106;
     assets->audio[0].pos2.h=35;      
@@ -511,7 +511,7 @@ void initgraphics(graphicimage *assets)
     if (config.resolution_h==720)
     {
     //Graphics Init
-    t.font=TTF_OpenFont("ttf/alagard.ttf",36);
+    t.font=TTF_OpenFont("ttf/alagard.ttf",24);
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
@@ -583,7 +583,7 @@ void initgraphics(graphicimage *assets)
     assets->listresolution.pos1.x=753;
     assets->listresolution.pos1.y=354;
 
-    t.font=TTF_OpenFont("ttf/alagard.ttf",24);
+    t.font=TTF_OpenFont("ttf/alagard.ttf",16);
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
@@ -811,8 +811,8 @@ if (config.resolution_h==720)
         }
 
     assets->audiobar.surface=IMG_Load("graphics/1080/Options/AudioBar.png");
-            assets->audiobar.pos1.x=1076;
-            assets->audiobar.pos1.y=483;
+            assets->audiobar.pos1.x=713;
+            assets->audiobar.pos1.y=322;
     TTF_CloseFont(t.font);
 }
 else
