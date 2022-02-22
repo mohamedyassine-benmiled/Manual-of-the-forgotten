@@ -28,9 +28,10 @@ int check(SDL_Surface *screen,int *run,int state)
     SDL_Event event;
         int check=3;
 
-        while (check==0)
+        while (check==3)
         {
-            SDL_WaitEvent(&event);
+            while (SDL_PollEvent(&event))
+            {
             switch(event.type)
             {
             case SDL_QUIT:
@@ -66,17 +67,17 @@ int check(SDL_Surface *screen,int *run,int state)
             }
             if (hoverbutton(x,y,assets.No[0]))
             {
-                check=2;
+                check=0;
             }
 
       }  
+            }
+            SDL_Flip(screen);
         }
-        if (check==2)
-        {
-            return 0;
-        }
-        else
-        return 1;
+
+            return check;
+
+
 
 
 }
@@ -189,7 +190,7 @@ while (SDL_PollEvent(&event)) {
                     menugame->hover=0;
 
                 }
-                if(menugame->hover==1)
+                if  (menugame->hover==1)
                 {
                      Mix_PlayChannel(-1,menugame->soundbutton, 0); 
                 }
@@ -263,9 +264,23 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
 
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
 {     int x,y,previousres,newres;
+    text t;
+    t.textColor.r=164;
+    t.textColor.g=164;
+    t.textColor.b=164;
     graphicimage assetsg;
         settings config;
         get_config(&config);
+                    if (config.resolution_h==720)
+                        {
+                            t.font=TTF_OpenFont("ttf/alagard.ttf",24);
+                        }
+                    else
+                    if (config.resolution_h==1080)
+                        {
+                            t.font=TTF_OpenFont("ttf/alagard.ttf",36);
+                        }           
+
     initgraphics(&assetsg);
     show(assetsg.boxresolution,screen);
     show(assetsg.selectresolution,screen);
@@ -277,8 +292,9 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
     show(assetsg.currentresolution,screen);
     SDL_Flip(screen);
     optiongame->hover=0;       
+    newres=0;
     SDL_Event event;
-     while(optiongame->graphics)
+     while(optiongame->graphics==1)
     {
         if (run==0)
         {
@@ -287,7 +303,8 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
      while (SDL_PollEvent(&event)) 
     {
     switch (event.type)
-        {case SDL_QUIT:
+        {
+        case SDL_QUIT:
         run=0;
         optiongame->graphics=0;
         break;
@@ -331,10 +348,10 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                    }
                    if (hoverbutton(x,y,assetsg.boxresolution))
                    {
-                       check(screen,&run,1);
+
                        previousres=config.resolution_h;
                         newres=listres(optiongame,&assetsg,screen,&run);
-                        
+
                         show(assets->background,screen);
                         show(assets->logogroup,screen); 
                         show(assets->obook[14],screen);
@@ -354,14 +371,60 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                 break;
                     
         }
-         
-        
     }
+    if (newres)
+    {
+        if (check(screen,&run,1))
+        {
+                SDL_FreeSurface(assetsg.currentresolution.surface);
+                SDL_FreeSurface(assetsg.listresolution.surface);     
+                run=0;
+                optiongame->graphics=2;
+                             if (previousres==720)
+                             {
+                                 config.resolution_h=1080;
+                                 config.resolution_w=1920;
+                                  strcpy(t.texte,"1920x1080");
+                                  assetsg.currentresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+                                  strcpy(t.texte,"1280x720");
+                                  assetsg.listresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);                                
+                             }
+                             else
+                             if (previousres==1080)
+                             {
+                                 config.resolution_h=720;
+                                 config.resolution_w=1280;
+                                  strcpy(t.texte,"1920x1080");
+                                  assetsg.listresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor); 
+                                  strcpy(t.texte,"1280x720");
+                                  assetsg.currentresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+                             }
 
+
+        }
+        
+                show(assets->background,screen);
+                show(assets->logogroup,screen); 
+                show(assets->obook[14],screen);
+                show(assets->graphics[0],screen);
+                show(assets->audio[0],screen);
+                show(assets->keybinds[0],screen);
+                show(assetsg.boxresolution,screen);
+                show(assetsg.selectresolution,screen);
+                show(assetsg.windowsettings,screen);
+                show(assetsg.firstbox[0],screen);
+                show(assetsg.secondbox[0],screen);
+                show(assetsg.fullscreen,screen);
+                show(assetsg.windowed,screen);
+                show(assetsg.currentresolution,screen);
+                newres=0;
+    }
+    
     SDL_Flip(screen);
 
 }
-
+    write_config(&config);
+    TTF_CloseFont(t.font);
     freegraphics(assetsg);
     show(assets->background,screen);
     show(assets->logogroup,screen); 
@@ -454,7 +517,7 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     SDL_Flip(screen);
 
 }
-    // freegraphics(assetsa);
+    freeaudio(assetsa);
     show(assets->background,screen);
     show(assets->logogroup,screen); 
     show(assets->obook[14],screen);
@@ -475,7 +538,9 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
     int i,x,y;
-
+    int prevres;
+        settings config;
+        get_config(&config);
 
      initoption(&assets);
         show(assets.background,screen);
@@ -498,7 +563,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
      while(run==2)
     {
     
-     if (optiongame->graphics)
+     if (optiongame->graphics==1)
      {
          run=graphics(optiongame,&assets,screen,run);
      }
@@ -567,7 +632,12 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                      {
                         optiongame->graphics=1;
                         run=graphics(optiongame,&assets,screen,run);
-
+                        show(assets.background,screen);
+                        show(assets.logogroup,screen); 
+                        show(assets.obook[14],screen);
+                        show(assets.graphics[0],screen);
+                        show(assets.audio[0],screen);
+                        show(assets.keybinds[0],screen);
                     } 
                     
                     if(hoverbutton(x,y,assets.audio[1]))
@@ -593,6 +663,10 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                 SDL_Flip(screen);
             } 
      freeoption(assets);
+     if(optiongame->graphics==2)
+     {
+         main();
+     }
      SDL_Delay(500);
 
 return run;

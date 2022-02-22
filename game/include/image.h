@@ -94,7 +94,7 @@ void show (image p,SDL_Surface *screen);
 void freemenu(MenuImage assets);
 void freeoption(OptionImage assets);
 void freegraphics(graphicimage assets);
-
+void freeaudio(audioimage assets);
 
 int hoverbutton(int x,int y, image img );
 #endif // IMAGE_H

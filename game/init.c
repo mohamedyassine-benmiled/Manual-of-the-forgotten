@@ -645,14 +645,14 @@ void initgraphics(graphicimage *assets)
     t.textColor.r=164;
     t.textColor.g=164;
     t.textColor.b=164;
-    strcpy(t.texte,"1920x1080");
+    
+    strcpy(t.texte,"1280x720");
     assets->currentresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->currentresolution.pos1.x=734;
     assets->currentresolution.pos1.y=312;
     
 
-
-    strcpy(t.texte,"1280x720");
+    strcpy(t.texte,"1920x1080");
     assets->listresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->listresolution.pos1.x=753;
     assets->listresolution.pos1.y=354;

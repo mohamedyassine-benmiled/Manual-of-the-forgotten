@@ -13,7 +13,7 @@
 
 
 
-void initsettings();
+void initcheck(CheckImage *assets);
 void initvideo();
 void initmenu(MenuImage *assets);
 void initoption(OptionImage *assets);

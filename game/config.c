@@ -13,12 +13,12 @@ int write_config(settings *config)
         fprintf(config->f,"fullscreen=%d\n",config->fullscreen);
         fprintf(config->f,"volume=%d\n",config->volume);
         fprintf(config->f,"audio=%d\n",config->audio);
-        return 0;
         fclose(config->f);
+        return 0;
+
     }
     else
     {
-        fclose(config->f);
         return -1;
     }
 }
@@ -35,6 +35,7 @@ int get_config(settings *config)
         fscanf(config->f,"fullscreen=%d\n",&config->fullscreen);
         fscanf(config->f,"volume=%d\n",&config->volume);
         fscanf(config->f,"audio=%d\n",&config->audio);
+        fclose(config->f);
         return 0;
     }
     else
