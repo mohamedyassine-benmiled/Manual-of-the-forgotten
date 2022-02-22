@@ -84,5 +84,8 @@ void freesurface(image a);
 void show (image p,SDL_Surface *screen);
 void freemenu(MenuImage assets);
 void freeoption(OptionImage assets);
+void freegraphics(graphicimage assets);
+
+
 int hoverbutton(int x,int y, image img );
 #endif // IMAGE_H

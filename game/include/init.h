@@ -25,7 +25,8 @@ void initsettings();
 void initvideo();
 void initmenu(MenuImage *assets);
 void initoption(OptionImage *assets);
-
+void initaudio(audioimage *assets);
+void initgraphics(graphicimage *assets);
 
 
 #endif // INIT_H
