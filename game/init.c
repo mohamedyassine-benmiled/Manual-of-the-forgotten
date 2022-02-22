@@ -305,7 +305,7 @@ if (config.resolution_h==720)
     sprintf(logo,"graphics/720/Kteb/OpeningBook%d.png",i);
     assets->obook[i].surface=IMG_Load(logo);
     assets->obook[i].pos1.x=282;
-    assets->obook[i].pos1.y=-5;
+    assets->obook[i].pos1.y=-3;
     }
     
     t.font=TTF_OpenFont("ttf/alagard.ttf",43);
@@ -527,12 +527,12 @@ void initgraphics(graphicimage *assets)
     assets->windowsettings.pos1.y=382;
 
 
-    assets->firstbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
+    assets->firstbox[0].surface=IMG_Load("graphics/720/Options/unbox.png");
     assets->firstbox[0].pos1.x=710;
     assets->firstbox[0].pos1.y=436;
     assets->firstbox[0].pos2.w=16;
     assets->firstbox[0].pos2.h=16;
-    assets->firstbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
+    assets->firstbox[1].surface=IMG_Load("graphics/720/Options/box.png");
     assets->firstbox[1].pos1.x=710;
     assets->firstbox[1].pos1.y=436;
     assets->firstbox[1].pos2.w=16;
@@ -541,12 +541,12 @@ void initgraphics(graphicimage *assets)
 
 
 
-    assets->secondbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
+    assets->secondbox[0].surface=IMG_Load("graphics/720/Options/unbox.png");
     assets->secondbox[0].pos1.x=823;
     assets->secondbox[0].pos1.y=436;
     assets->secondbox[0].pos2.w=16;
     assets->secondbox[0].pos2.h=16;
-    assets->secondbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
+    assets->secondbox[1].surface=IMG_Load("graphics/720/Options/box.png");
     assets->secondbox[1].pos1.x=823;
     assets->secondbox[1].pos1.y=436;
     assets->secondbox[1].pos2.w=16;
@@ -558,7 +558,7 @@ void initgraphics(graphicimage *assets)
 
 
 
-    assets->boxresolution.surface=IMG_Load("graphics/1080/Options/ResolutionBox.png");
+    assets->boxresolution.surface=IMG_Load("graphics/720/Options/ResolutionBox.png");
     assets->boxresolution.pos1.x=706;
     assets->boxresolution.pos1.y=302;
     assets->boxresolution.pos2.x=706;
@@ -604,13 +604,13 @@ void initgraphics(graphicimage *assets)
 
 
     
-    assets->listresolutionbox[0].surface=IMG_Load("graphics/1080/Options/ListResolution.png");
+    assets->listresolutionbox[0].surface=IMG_Load("graphics/720/Options/ListResolution.png");
     assets->listresolutionbox[0].pos1.x=706;
     assets->listresolutionbox[0].pos1.y=345;
     assets->listresolutionbox[0].pos2= assets->listresolutionbox[0].pos1;
     assets->listresolutionbox[0].pos2.w=194;
     assets->listresolutionbox[0].pos2.h=43;
-    assets->listresolutionbox[1].surface=IMG_Load("graphics/1080/Options/ListResolutionHover.png");
+    assets->listresolutionbox[1].surface=IMG_Load("graphics/720/Options/ListResolutionHover.png");
     assets->listresolutionbox[1].pos1.x=706;
     assets->listresolutionbox[1].pos1.y=345;
     assets->listresolutionbox[1].pos2= assets->listresolutionbox[1].pos1;
@@ -810,7 +810,7 @@ if (config.resolution_h==720)
             assets->circle[i].pos1.y=318;
         }
 
-    assets->audiobar.surface=IMG_Load("graphics/1080/Options/AudioBar.png");
+    assets->audiobar.surface=IMG_Load("graphics/720/Options/AudioBar.png");
             assets->audiobar.pos1.x=713;
             assets->audiobar.pos1.y=322;
     TTF_CloseFont(t.font);
