@@ -12,9 +12,9 @@ typedef struct
 typedef struct 
 {
     /* Menu Assets */
-    image play[3];
-    image options[3];
-    image quit[3];
+    image play[2];
+    image options[2];
+    image quit[2];
     image background;
     image cbook[13];
     image logo[4];
@@ -30,40 +30,44 @@ typedef struct
     image graphics[2];
     image audio[2];
     image keybinds[2];
-    //image window;
-    //image buttoncircle;
-    //image border;
     //Graphics ****
-    image selectres;
-    image windowsettings;
-    image firstbox;
-    image secondbox;
-    image fullscreen;
-    image windowed;
-    image boxresolution;
-    image currentresolution;
-    image listresolution;
-    image listresolutionbox;
-    //Audio ****
-    image volume;
-    image audiotext;
-    image onbox;
-    image offbox;
-    image on;
-    image off;
-    image circle[10];
-    image bar;
-    image plus;
-    image minus;
-    //Keybinds ****
-    image table;
-    image textbutton[9];
-    image keybind[9];
+
 
     //Settings ****
     image background;
     image obook[15]; 
 } OptionImage;
+
+typedef struct 
+{
+    /* data */
+    image selectresolution;
+    image windowsettings;
+    image firstbox[2];
+    image secondbox[2];
+    image fullscreen;
+    image windowed;
+    image boxresolution;
+    image currentresolution;
+    image listresolution;
+    image listresolutionbox[2];
+} graphicimage;
+
+
+typedef struct 
+{
+    /* data */
+    image volume;
+    image audio;
+    image onbox[2];
+    image offbox[2];
+    image on;
+    image off;
+    image circle[10];
+    image audiobar;
+    image plus;
+    image minus;
+} audioimage;
 
 typedef struct
 {

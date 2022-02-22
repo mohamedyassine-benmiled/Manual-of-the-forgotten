@@ -68,6 +68,26 @@ SDL_FreeSurface(assets.background.surface);
 SDL_FreeSurface(assets.logogroup.surface);
 }
 
+void freegraphics(graphicimage assets)
+{
+
+    for (int i = 0; i < 2; i++)
+    {
+        SDL_FreeSurface(assets.firstbox[i].surface);
+                SDL_FreeSurface(assets.secondbox[i].surface);
+                        SDL_FreeSurface(assets.listresolutionbox[i].surface);
+    }
+
+SDL_FreeSurface(assets.selectresolution.surface);
+SDL_FreeSurface(assets.windowsettings.surface);
+SDL_FreeSurface(assets.fullscreen.surface);
+SDL_FreeSurface(assets.windowed.surface);
+SDL_FreeSurface(assets.boxresolution.surface);
+SDL_FreeSurface(assets.currentresolution.surface);
+SDL_FreeSurface(assets.listresolution.surface);
+
+}
+
 void show(image p,SDL_Surface *screen)
 {
     SDL_BlitSurface(p.surface,NULL,screen,&p.pos1);

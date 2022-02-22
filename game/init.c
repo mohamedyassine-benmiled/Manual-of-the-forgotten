@@ -194,22 +194,34 @@ void initoption(OptionImage *assets)
 
 
 
-    /*
+   
+
+
+   TTF_CloseFont(t.font);
+
+}
+
+
+
+
+void initgraphics(graphicimage *assets)
+{
+    text t;
     //Graphics Init
-    t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+    t.font=TTF_OpenFont("ttf/alagard.ttf",36);
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
     strcpy(t.texte,"Select Resolution");
-    assets->selectres.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->selectres.pos1.x=1063;
-    assets->selectres.pos1.y=387;         
+    assets->selectresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->selectresolution.pos1.x=1063;
+    assets->selectresolution.pos1.y=395;         
     
 
     strcpy(t.texte,"Window Settings");
     assets->windowsettings.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->windowsettings.pos1.x=1066;
-    assets->windowsettings.pos1.y=566;
+    assets->windowsettings.pos1.y=574;
 
 
     assets->firstbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
@@ -240,18 +252,6 @@ void initoption(OptionImage *assets)
 
 
 
-    strcpy(t.texte,"FullScreen");
-    assets->fullscreen.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->fullscreen.pos1.x=1092;
-    assets->fullscreen.pos1.y=655;
-
-
-
-    strcpy(t.texte,"Windowed");
-    assets->windowed.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->windowed.pos1.x=1261;
-    assets->windowed.pos1.y=655;
-
 
 
 
@@ -269,19 +269,31 @@ void initoption(OptionImage *assets)
     strcpy(t.texte,"1920x1080");
     assets->currentresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->currentresolution.pos1.x=1101;
-    assets->currentresolution.pos1.y=462;
+    assets->currentresolution.pos1.y=468;
     
 
 
-    t.textColor.r=164;
-    t.textColor.g=164;
-    t.textColor.b=164;
     strcpy(t.texte,"1280x720");
     assets->listresolution.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->listresolution.pos1.x=1130;
-    assets->listresolution.pos1.y=526;
+    assets->listresolution.pos1.y=531;
+
+    t.font=TTF_OpenFont("ttf/alagard.ttf",24);
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+
+    strcpy(t.texte,"Fullscreen");
+    assets->fullscreen.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->fullscreen.pos1.x=1092;
+    assets->fullscreen.pos1.y=657;
 
 
+
+    strcpy(t.texte,"Windowed");
+    assets->windowed.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->windowed.pos1.x=1261;
+    assets->windowed.pos1.y=657;
 
 
 
@@ -300,23 +312,26 @@ void initoption(OptionImage *assets)
 
     
 
-
-
-
-
-
-
     TTF_CloseFont(t.font);
 
-//Audio Init
 
-    t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+
+
+}
+
+
+void initaudio(audioimage *assets)
+{
+    text t;
+    //Audio Init
+
+    t.font=TTF_OpenFont("ttf/alagard.ttf",36);
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
 
 
-    strcpy(t.texte,"volume");
+    strcpy(t.texte,"Volume");
     assets->volume.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->volume.pos1.x=1150;
     assets->volume.pos1.y=427;       
@@ -324,56 +339,78 @@ void initoption(OptionImage *assets)
 
 
     strcpy(t.texte,"Audio");
-    assets->audiotext.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->audiotext.pos1.x=1167;
-    assets->audiotext.pos1.y=550;
+    assets->audio.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->audio.pos1.x=1167;
+    assets->audio.pos1.y=550;
 
 
 
-    assets->onbox.surface=IMG_Load("graphics/1080/");
-    assets->onbox.pos1.x=1142;
-    assets->onbox.pos1.y=598;
-    assets->onbox.pos2.w=25;
-    assets->onbox.pos2.h=25;    
+    assets->onbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
+    assets->onbox[0].pos1.x=1142;
+    assets->onbox[0].pos1.y=598;
+    assets->onbox[0].pos2.w=25;
+    assets->onbox[0].pos2.h=25;    
+    
+    assets->onbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
+    assets->onbox[1].pos1.x=1142;
+    assets->onbox[1].pos1.y=598;
+    assets->onbox[1].pos2.w=25;
+    assets->onbox[1].pos2.h=25;    
     
 
 
+    assets->offbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
+    assets->offbox[0].pos1.x=1265;
+    assets->offbox[0].pos1.y=598;
+    assets->offbox[0].pos2.w=25;
+    assets->offbox[0].pos2.h=25;
+    assets->offbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
+    assets->offbox[1].pos1.x=1265;
+    assets->offbox[1].pos1.y=598;
+    assets->offbox[1].pos2.w=25;
+    assets->offbox[1].pos2.h=25;
 
-    assets->offbox.surface=IMG_Load("graphics/1080/");
-    assets->offbox.pos1.x=1265;
-    assets->offbox.pos1.y=598;
-    assets->offbox.pos2.w=25;
-    assets->offbox.pos2.h=25;
-
-
-
-    strcpy(t.texte,"ON");
+    t.font=TTF_OpenFont("ttf/alagard.ttf",18);
+    strcpy(t.texte,"on");
     assets->on.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->on.pos1.x=1143;
     assets->on.pos1.y=625;    
 
 
 
-    strcpy(t.texte,"OFF");
+    strcpy(t.texte,"off");
     assets->off.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->off.pos1.x=1262;
+    assets->off.pos1.x=1264;
     assets->off.pos1.y=625;
- 
+
+
+     t.font=TTF_OpenFont("ttf/alagard.ttf",36);
     strcpy(t.texte,"+");
     assets->plus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->plus.pos1.x=1262;
-    assets->plus.pos1.y=625;
+    assets->plus.pos1.x=1359;
+    assets->plus.pos1.y=472;
+    assets->plus.pos2.w=30;
+        assets->plus.pos2.h=30;
 
     strcpy(t.texte,"-");
     assets->minus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->minus.pos1.x=1262;
-    assets->minus.pos1.y=625;
+    assets->minus.pos1.x=1044;
+    assets->minus.pos1.y=472;
+    assets->minus.pos2.w=30;
+        assets->minus.pos2.h=30;
+            assets->circle[0].surface=IMG_Load("graphics/1080/Options/Circle.png");
+            assets->circle[0].pos1.x=1060;
+            assets->circle[0].pos1.y=477;
+        for(int i=1;i<10;i++)
+        {
+            assets->circle[i].surface=IMG_Load("graphics/1080/Options/Circle.png");
+            assets->circle[i].pos1.x=assets->circle[i].pos1.x+32;
+            assets->circle[i].pos1.y=477;
+        }
 
-    */
-   TTF_CloseFont(t.font);
-
+    assets->audiobar.surface=IMG_Load("graphics/1080/Options/audiobar.png");
+                assets->audiobar.pos1.x=1076;
+            assets->audiobar.pos1.y=483;
+    TTF_CloseFont(t.font);
+    
 }
-
-
-
-

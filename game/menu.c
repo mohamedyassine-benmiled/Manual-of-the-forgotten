@@ -115,7 +115,7 @@ while (SDL_PollEvent(&event)) {
                 }
                 if(menugame->hover==1)
                 {
-                    Mix_PlayChannel(-1,menugame->soundbutton, 0); 
+                     Mix_PlayChannel(-1,menugame->soundbutton, 0); 
                 }
                 break;
          case SDL_MOUSEBUTTONUP:
@@ -150,13 +150,16 @@ freemenu(assets);
 
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
 {     int x,y;
-    // show(assets->selectres,screen);
-    // show(assets->windowsettings,screen);
-    // show(assets->firstbox[0],screen);
-    // show(assets->secondbox[0],screen);
-    // show(assets->fullscreen,screen);
-    // show(assets->windowed,screen);
-    // show(assets->currentresolution,screen);
+    graphicimage assetsg;
+    initgraphics(&assetsg);
+    show(assetsg.boxresolution,screen);
+    show(assetsg.selectresolution,screen);
+    show(assetsg.windowsettings,screen);
+    show(assetsg.firstbox[0],screen);
+    show(assetsg.secondbox[0],screen);
+    show(assetsg.fullscreen,screen);
+    show(assetsg.windowed,screen);
+    show(assetsg.currentresolution,screen);
     SDL_Flip(screen);
     optiongame->hover=0;       
     SDL_Event event;
@@ -169,6 +172,28 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
         run=0;
         optiongame->graphics=0;
         break;
+                case SDL_KEYDOWN:
+                switch (event.key.keysym.sym)
+                    {
+                    case (SDLK_ESCAPE):
+                    optiongame->graphics=0;
+                        run=0;
+                    break;
+                    case (SDLK_m):
+                    optiongame->graphics=0;
+                        run=1;
+                    break;
+                    case (SDLK_p):
+                    optiongame->graphics=0;
+                        run=2;
+                    break;
+                    case (SDLK_f):
+                        SDL_WM_ToggleFullScreen(screen); 
+                    break;         
+                    default:
+                        break;
+                    }
+                    break;
         case SDL_MOUSEBUTTONUP:
                      SDL_GetMouseState(&x,&y);
 
@@ -192,12 +217,108 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
          
         
     }
-}SDL_Flip(screen);
+
+    SDL_Flip(screen);
+
+}
+    freegraphics(assetsg);
+    show(assets->background,screen);
+    show(assets->logogroup,screen); 
+    show(assets->obook[14],screen);
+    show(assets->graphics[0],screen);
+    show(assets->audio[0],screen);
+    show(assets->keybinds[0],screen);
 return run;
 
 }
 
 
+
+
+int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
+{     int x,y;
+    audioimage assetsa;
+    initaudio(&assetsa);
+    show(assetsa.volume,screen);
+    show(assetsa.audio,screen);
+    show(assetsa.onbox[0],screen);
+    show(assetsa.offbox[0],screen);
+    show(assetsa.on,screen);
+    show(assetsa.off,screen);
+    show(assetsa.minus,screen);
+    show(assetsa.plus,screen);
+    show(assetsa.audiobar,screen);
+    SDL_Flip(screen);
+    optiongame->hover=0;       
+    SDL_Event event;
+     while(optiongame->audio)
+    {
+     while (SDL_PollEvent(&event)) 
+    {
+    switch (event.type)
+        {case SDL_QUIT:
+        run=0;
+        optiongame->audio=0;
+        break;
+                case SDL_KEYDOWN:
+                switch (event.key.keysym.sym)
+                    {
+                    case (SDLK_ESCAPE):
+                    optiongame->audio=0;
+                        run=0;
+                    break;
+                    case (SDLK_m):
+                    optiongame->audio=0;
+                        run=1;
+                    break;
+                    case (SDLK_p):
+                    optiongame->audio=0;
+                        run=2;
+                    break;
+                    case (SDLK_f):
+                        SDL_WM_ToggleFullScreen(screen); 
+                    break;         
+                    default:
+                        break;
+                    }
+                    break;
+        case SDL_MOUSEBUTTONUP:
+                     SDL_GetMouseState(&x,&y);
+
+                    
+                    
+                    if(hoverbutton(x,y,assets->graphics[1]))
+                    {
+                        optiongame->graphics=1;
+                        optiongame->audio=0;
+                    }
+
+                    if (hoverbutton(x,y,assets->keybinds[1]))
+                   {
+                       optiongame->keybinds=1;
+                       optiongame->audio=0;
+                   }
+
+                break;
+                    
+        }
+         
+        
+    }
+
+    SDL_Flip(screen);
+
+}
+    // freegraphics(assetsa);
+    show(assets->background,screen);
+    show(assets->logogroup,screen); 
+    show(assets->obook[14],screen);
+    show(assets->graphics[0],screen);
+    show(assets->audio[0],screen);
+    show(assets->keybinds[0],screen);
+return run;
+
+}
 
 
 
@@ -214,7 +335,6 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
      initoption(&assets);
         show(assets.background,screen);
         show(assets.logogroup,screen); 
-        //show(assets.obook,screen);
          for ( i = 0; i < 15; i++)
 
             {
@@ -233,7 +353,14 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
      while(run==2)
     {
     
-     
+     if (optiongame->graphics)
+     {
+         run=graphics(optiongame,&assets,screen,run);
+     }
+     if (optiongame->audio)
+     {
+         run=audio(optiongame,&assets,screen,run);
+     }
     //Wait for event
     
     while (SDL_PollEvent(&event)) {
@@ -298,7 +425,10 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     } 
                     
                     if(hoverbutton(x,y,assets.audio[1]))
-                    run=1;
+                    {
+                            optiongame->audio=1;
+                        run=audio(optiongame,&assets,screen,run);
+                    }
 
                     if (hoverbutton(x,y,assets.keybinds[1]))
                     run=1;
