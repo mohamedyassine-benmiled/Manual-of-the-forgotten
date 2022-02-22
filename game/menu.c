@@ -244,8 +244,6 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
                break;
           case SDL_MOUSEBUTTONUP:
           SDL_GetMouseState(&x,&y);
-
-
           if (!hoverbutton(x,y,assets->listresolutionbox[0]))
           {
               list =0;
@@ -257,6 +255,7 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
           }
           break;
       }  
+    SDL_Flip(screen);
     }
     return res;
     
@@ -285,8 +284,18 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
     show(assetsg.boxresolution,screen);
     show(assetsg.selectresolution,screen);
     show(assetsg.windowsettings,screen);
-    show(assetsg.firstbox[0],screen);
-    show(assetsg.secondbox[0],screen);
+    show (assets->graphics[1],screen);
+    if (config.fullscreen)
+    {
+        show(assetsg.firstbox[0],screen);
+        show(assetsg.secondbox[1],screen);
+    }
+    else
+    {
+        show(assetsg.firstbox[1],screen);
+        show(assetsg.secondbox[0],screen);
+    }
+
     show(assetsg.fullscreen,screen);
     show(assetsg.windowed,screen);
     show(assetsg.currentresolution,screen);
@@ -322,14 +331,28 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                     case (SDLK_p):
                     optiongame->graphics=0;
                         run=2;
-                    break;
-                    case (SDLK_f):
-                        SDL_WM_ToggleFullScreen(screen); 
-                    break;         
+                    break;       
                     default:
                         break;
                     }
                     break;
+        case SDL_MOUSEMOTION:
+        //Init Motion With Sound
+        SDL_GetMouseState(&x,&y);
+                
+        //Audio Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets->audio[1],assets->audio[0],screen);
+        //Keybinds Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets->keybinds[1],assets->keybinds[0],screen);
+                if (!(hoverbutton(x,y,assets->audio[1]) || hoverbutton(x,y,assets->keybinds[1])))
+                {
+                    optiongame->hover=0;
+                }
+                if  (optiongame->hover==1)
+                {
+                    Mix_PlayChannel(-1,optiongame->soundbutton, 0); 
+                }
+        break;
         case SDL_MOUSEBUTTONUP:
                      SDL_GetMouseState(&x,&y);
 
@@ -346,23 +369,53 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                        optiongame->keybinds=1;
                        optiongame->graphics=0;
                    }
+                   if (hoverbutton(x,y,assetsg.firstbox[0]))
+                   {
+                            if (!config.fullscreen)
+                            {
+                                show(assetsg.firstbox[0],screen);
+                                show(assetsg.secondbox[1],screen);
+                                SDL_Flip(screen);
+                                SDL_WM_ToggleFullScreen(screen); 
+                                config.fullscreen=1;
+                            }
+
+                   }
+                    if (hoverbutton(x,y,assetsg.secondbox[0]))
+                   {
+                            if (config.fullscreen)
+                            {
+                                show(assetsg.firstbox[1],screen);
+                                show(assetsg.secondbox[0],screen);
+                                SDL_Flip(screen);
+                                SDL_WM_ToggleFullScreen(screen); 
+                                config.fullscreen=0;
+                            }
+                   }
                    if (hoverbutton(x,y,assetsg.boxresolution))
                    {
 
                        previousres=config.resolution_h;
                         newres=listres(optiongame,&assetsg,screen,&run);
-
                         show(assets->background,screen);
                         show(assets->logogroup,screen); 
                         show(assets->obook[14],screen);
                         show(assets->graphics[0],screen);
                         show(assets->audio[0],screen);
                         show(assets->keybinds[0],screen);
+                        if (config.fullscreen)
+                            {
+                                show(assetsg.firstbox[0],screen);
+                                show(assetsg.secondbox[1],screen);
+                            }
+                            else
+                            {
+                                show(assetsg.firstbox[1],screen);
+                                show(assetsg.secondbox[0],screen);
+                            }
                         show(assetsg.boxresolution,screen);
                         show(assetsg.selectresolution,screen);
                         show(assetsg.windowsettings,screen);
-                        show(assetsg.firstbox[0],screen);
-                        show(assetsg.secondbox[0],screen);
                         show(assetsg.fullscreen,screen);
                         show(assetsg.windowed,screen);
                         show(assetsg.currentresolution,screen);
@@ -408,11 +461,20 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                 show(assets->graphics[0],screen);
                 show(assets->audio[0],screen);
                 show(assets->keybinds[0],screen);
+                if (config.fullscreen)
+                {
+                    show(assetsg.firstbox[0],screen);
+                    show(assetsg.secondbox[1],screen);
+                }
+                else
+                {
+                    show(assetsg.firstbox[1],screen);
+                    show(assetsg.secondbox[0],screen);
+                }
+
                 show(assetsg.boxresolution,screen);
                 show(assetsg.selectresolution,screen);
                 show(assetsg.windowsettings,screen);
-                show(assetsg.firstbox[0],screen);
-                show(assetsg.secondbox[0],screen);
                 show(assetsg.fullscreen,screen);
                 show(assetsg.windowed,screen);
                 show(assetsg.currentresolution,screen);
@@ -441,6 +503,8 @@ return run;
 int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
 {     int x,y;
     audioimage assetsa;
+    settings config;
+        get_config(&config);
     initaudio(&assetsa);
     show(assetsa.volume,screen);
     show(assetsa.audio,screen);
@@ -483,7 +547,15 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
                         run=2;
                     break;
                     case (SDLK_f):
-                        SDL_WM_ToggleFullScreen(screen); 
+                        SDL_WM_ToggleFullScreen(screen);
+                                    if (config.fullscreen)
+                                        {
+                                            config.fullscreen=0;
+                                        }
+                                        else
+                                        {
+                                            config.fullscreen=1;
+                                        } 
                     break;         
                     default:
                         break;
@@ -516,6 +588,7 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     SDL_Flip(screen);
 
 }
+    write_config(&config);
     freeaudio(assetsa);
     show(assets->background,screen);
     show(assets->logogroup,screen); 
@@ -564,7 +637,26 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
     
      if (optiongame->graphics==1)
      {
-         run=graphics(optiongame,&assets,screen,run);
+                        run=graphics(optiongame,&assets,screen,run);
+                        get_config(&config);
+
+
+                        if(optiongame->graphics==2)
+                        {
+                        freeoption(assets);
+                        initoption(&assets);
+                        SDL_FreeSurface(screen);
+                        if (config.fullscreen)
+                        SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
+                        else
+                        SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+                        }
+                        show(assets.background,screen);
+                        show(assets.logogroup,screen); 
+                        show(assets.obook[14],screen);
+                        show(assets.graphics[0],screen);
+                        show(assets.audio[0],screen);
+                        show(assets.keybinds[0],screen);
      }
      if (optiongame->audio)
      {
@@ -592,6 +684,14 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     break;
                     case (SDLK_f):
                         SDL_WM_ToggleFullScreen(screen); 
+                                if (config.fullscreen)
+                                        {
+                                            config.fullscreen=0;
+                                        }
+                                        else
+                                        {
+                                            config.fullscreen=1;
+                                        } 
                     break;         
                     default:
                         break;
@@ -668,12 +768,14 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 
         SDL_Flip(screen);
     }
+    write_config(&config);
     for ( i = 15; i> -1; i--)
             {
                 show(assets.obook[i],screen);
                 SDL_Delay(50);
                 SDL_Flip(screen);
             } 
+    
      freeoption(assets);
           SDL_Delay(500);
  

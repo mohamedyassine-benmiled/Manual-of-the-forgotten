@@ -8,6 +8,7 @@ typedef struct
     SDL_Rect pos1;
     SDL_Rect pos2;
 } image;
+
 typedef struct 
 {
     image Window;
@@ -86,6 +87,7 @@ typedef struct
     image itemholding;
     image inventory;
 } GameImage;
+
 void initPlayer(image *p);
 void initBackground(image *b,char img[]);
 void freesurface(image a);

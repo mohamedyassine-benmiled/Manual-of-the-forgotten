@@ -490,11 +490,15 @@ void initgraphics(graphicimage *assets)
     assets->firstbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
     assets->firstbox[0].pos1.x=1066;
     assets->firstbox[0].pos1.y=655;
+    assets->firstbox[0].pos2.x=1066;
+    assets->firstbox[0].pos2.y=655;
     assets->firstbox[0].pos2.w=25;
     assets->firstbox[0].pos2.h=25;
     assets->firstbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
     assets->firstbox[1].pos1.x=1066;
     assets->firstbox[1].pos1.y=655;
+    assets->firstbox[1].pos2.x=1066;
+    assets->firstbox[1].pos2.y=655;
     assets->firstbox[1].pos2.w=25;
     assets->firstbox[1].pos2.h=25;
 
@@ -504,11 +508,15 @@ void initgraphics(graphicimage *assets)
     assets->secondbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
     assets->secondbox[0].pos1.x=1235;
     assets->secondbox[0].pos1.y=655;
+    assets->secondbox[0].pos2.x=1235;
+    assets->secondbox[0].pos2.y=655;
     assets->secondbox[0].pos2.w=25;
     assets->secondbox[0].pos2.h=25;
     assets->secondbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
     assets->secondbox[1].pos1.x=1235;
     assets->secondbox[1].pos1.y=655;
+    assets->secondbox[1].pos2.x=1235;
+    assets->secondbox[1].pos2.y=655;
     assets->secondbox[1].pos2.w=25;
     assets->secondbox[1].pos2.h=25;
 
@@ -604,11 +612,15 @@ void initgraphics(graphicimage *assets)
     assets->firstbox[0].surface=IMG_Load("graphics/720/Options/unbox.png");
     assets->firstbox[0].pos1.x=710;
     assets->firstbox[0].pos1.y=436;
+    assets->firstbox[0].pos2.x=710;
+    assets->firstbox[0].pos2.y=436;
     assets->firstbox[0].pos2.w=16;
     assets->firstbox[0].pos2.h=16;
     assets->firstbox[1].surface=IMG_Load("graphics/720/Options/box.png");
     assets->firstbox[1].pos1.x=710;
     assets->firstbox[1].pos1.y=436;
+    assets->firstbox[1].pos2.x=710;
+    assets->firstbox[1].pos2.y=436;
     assets->firstbox[1].pos2.w=16;
     assets->firstbox[1].pos2.h=16;
 
@@ -618,11 +630,15 @@ void initgraphics(graphicimage *assets)
     assets->secondbox[0].surface=IMG_Load("graphics/720/Options/unbox.png");
     assets->secondbox[0].pos1.x=823;
     assets->secondbox[0].pos1.y=436;
+    assets->secondbox[0].pos2.x=823;
+    assets->secondbox[0].pos2.y=436;
     assets->secondbox[0].pos2.w=16;
     assets->secondbox[0].pos2.h=16;
     assets->secondbox[1].surface=IMG_Load("graphics/720/Options/box.png");
     assets->secondbox[1].pos1.x=823;
     assets->secondbox[1].pos1.y=436;
+    assets->secondbox[1].pos2.x=823;
+    assets->secondbox[1].pos2.y=436;
     assets->secondbox[1].pos2.w=16;
     assets->secondbox[1].pos2.h=16;
 

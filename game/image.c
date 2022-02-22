@@ -6,10 +6,7 @@
 #include "include/game.h"
 #include "include/menu.h"
 
-void initPlayer(image *p)
-{
 
-}
 
 
 
