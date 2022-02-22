@@ -210,6 +210,12 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                        optiongame->keybinds=1;
                        optiongame->graphics=0;
                    }
+                   if (hoverbutton(x,y,assetsg.boxresolution))
+                   {
+                    show(assetsg.listresolutionbox[0],screen);
+                    show(assetsg.listresolution,screen);
+                   }
+                   
 
                 break;
                     
@@ -426,6 +432,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                      {
                         optiongame->graphics=1;
                         run=graphics(optiongame,&assets,screen,run);
+
                     } 
                     
                     if(hoverbutton(x,y,assets.audio[1]))
