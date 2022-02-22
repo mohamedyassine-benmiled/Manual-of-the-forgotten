@@ -147,6 +147,45 @@ freemenu(assets);
 
 
 //menu graphics
+int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int run)
+{
+    int list=1;
+    int x,y ;
+    SDL_Event event;
+    while (list)
+    {
+        show(assetsg.ListResolution,screen);
+        show(assetsg.listresolution,screen);
+      SDL_WaitEvent(&event);
+      switch(event.type)
+      {
+          case SDL_QUIT:
+               run=0;
+               list=0;
+               break;
+          case SDL_MOUSEBUTTONUP:
+          SDL_GetMouseState(&x,&y);
+
+
+          if (!hoverbutton(x,y,assetsg.boxresolution))
+          {
+              show(assetsg->boxresolution,screen);
+              show(assetsg->selectresolution,screen);
+              show(assetsg->windowsettings,screen);
+              show(assetsg->firstbox[0],screen);
+              show(assetsg->secondbox[0],screen);
+              show(assetsg->fullscreen,screen);
+              show(assetsg->windowed,screen);
+              show(assetsg->currentresolution,screen);
+              SDL_Flip(screen); 
+              list =0;
+          }
+          break;
+      }  
+    }
+    return run;
+    
+}
 
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
 {     int x,y;
@@ -212,11 +251,11 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                    }
                    if (hoverbutton(x,y,assetsg.boxresolution))
                    {
-                    show(assetsg.listresolutionbox[0],screen);
-                    show(assetsg.listresolution,screen);
-                   }
-                   
+                 
+                    run=listres(optiongame,&assetsg,screen,run);
 
+                   }
+                  
                 break;
                     
         }
