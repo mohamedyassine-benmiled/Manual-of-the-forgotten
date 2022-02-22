@@ -454,7 +454,7 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     SDL_Flip(screen);
 
 }
-    freeaudio(assetsa);
+    // freegraphics(assetsa);
     show(assets->background,screen);
     show(assets->logogroup,screen); 
     show(assets->obook[14],screen);

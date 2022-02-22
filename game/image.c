@@ -92,26 +92,3 @@ void show(image p,SDL_Surface *screen)
 {
     SDL_BlitSurface(p.surface,NULL,screen,&p.pos1);
 }
-void freeaudio(audioimage assets)
-{
-
-    for (int i = 0; i < 2; i++)
-    {
-        SDL_FreeSurface(assets.onbox[i].surface);
-                SDL_FreeSurface(assets.offbox[i].surface);
-                        
-    }
-    for (int i = 0; i < 10; i++)
-    {SDL_FreeSurface(assets.listresolutionbox[i].surface);
-    }
-    
-
-SDL_FreeSurface(assets.volume.surface);
-SDL_FreeSurface(assets.audio.surface);
-SDL_FreeSurface(assets.on.surface);
-SDL_FreeSurface(assets.off.surface);
-SDL_FreeSurface(assets.minus.surface);
-SDL_FreeSurface(assets.plus.surface);
-SDL_FreeSurface(assets.audiobar.surface);
-
-}
