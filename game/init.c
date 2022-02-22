@@ -387,14 +387,14 @@ void initaudio(audioimage *assets)
      t.font=TTF_OpenFont("ttf/alagard.ttf",36);
     strcpy(t.texte,"+");
     assets->plus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->plus.pos1.x=1359;
+    assets->plus.pos1.x=1378;
     assets->plus.pos1.y=472;
     assets->plus.pos2.w=30;
         assets->plus.pos2.h=30;
 
     strcpy(t.texte,"-");
     assets->minus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->minus.pos1.x=1044;
+    assets->minus.pos1.x=1040;
     assets->minus.pos1.y=472;
     assets->minus.pos2.w=30;
         assets->minus.pos2.h=30;
@@ -404,7 +404,7 @@ void initaudio(audioimage *assets)
         for(int i=1;i<10;i++)
         {
             assets->circle[i].surface=IMG_Load("graphics/1080/Options/Circle.png");
-            assets->circle[i].pos1.x=assets->circle[i].pos1.x+32;
+            assets->circle[i].pos1.x=assets->circle[i-1].pos1.x+32;
             assets->circle[i].pos1.y=477;
         }
 

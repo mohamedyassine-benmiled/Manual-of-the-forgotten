@@ -248,6 +248,10 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     show(assetsa.minus,screen);
     show(assetsa.plus,screen);
     show(assetsa.audiobar,screen);
+    for (int i=0;i<10;i++)
+    {
+        show (assetsa.circle[i],screen);
+    }
     SDL_Flip(screen);
     optiongame->hover=0;       
     SDL_Event event;

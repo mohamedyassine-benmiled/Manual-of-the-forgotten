@@ -9,16 +9,8 @@
 #include "game.h"
 #include "menu.h"
 #include "text.h"
+#include "config.h"
 
-typedef struct 
-{
-    /* data */
-    FILE *f;
-    int resolution_w;
-    int resolution_h;
-    int fullscreen;
-    int audio;
-} settings;
 
 
 void initsettings();
