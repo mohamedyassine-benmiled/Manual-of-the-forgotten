@@ -13,6 +13,7 @@ typedef struct
     int resolution_h;
     int fullscreen;
     int audio;
+    int volume;
 } settings;
 int write_config(settings *config);
 int get_config(settings *config);

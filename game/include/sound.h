@@ -14,8 +14,6 @@ typedef struct Music
 	Mix_Music *ambient;
 
 }music;
-void initson();
-void freesound();
-void play_music(music *musique);
+int set_audio(int volume,int audio);
 
 #endif // SOUND_H

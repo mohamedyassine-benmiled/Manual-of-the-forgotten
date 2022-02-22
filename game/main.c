@@ -34,16 +34,25 @@ int main (int argc , char *argv[])
       config.resolution_w=1920;
       config.resolution_h=1080;
       config.fullscreen=0;
+      config.volume=5;
+      config.audio=1;
       write_config(&config);
     }
 
 //SDL_INIT and game caption and icon
    initvideo();
+
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) //SDL_Mixer Init
     {
         printf("[-] %s", Mix_GetError());
     }
-    	Mix_VolumeMusic(MIX_MAX_VOLUME/8);
+   
+    Mix_VolumeMusic(set_audio(config.volume,config.audio));
+            optionmenu.soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
+            mainmenu.Music=Mix_LoadMUS("sfx/menu.ogg");
+            mainmenu.soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
+    	Mix_VolumeChunk(mainmenu.soundbutton,set_audio(config.volume,config.audio));
+          	Mix_VolumeChunk(optionmenu.soundbutton,set_audio(config.volume,config.audio));
 //ScreenInit
 if (config.fullscreen)
 {
