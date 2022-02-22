@@ -408,7 +408,7 @@ void initaudio(audioimage *assets)
             assets->circle[i].pos1.y=477;
         }
 
-    assets->audiobar.surface=IMG_Load("graphics/1080/Options/audiobar.png");
+    assets->audiobar.surface=IMG_Load("graphics/1080/Options/AudioBar.png");
                 assets->audiobar.pos1.x=1076;
             assets->audiobar.pos1.y=483;
     TTF_CloseFont(t.font);

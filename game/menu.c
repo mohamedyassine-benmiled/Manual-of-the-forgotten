@@ -13,8 +13,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
       int x,y,i,j,k;
     SDL_Event event;
         MenuImage assets;
-            menugame->Music=Mix_LoadMUS("sfx/menu.ogg");
-    menugame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
+
         initmenu(&assets);
         show(assets.background,screen);
         show(assets.play[0],screen);
@@ -334,7 +333,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
     int i,x,y;
-        optiongame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
+
 
      initoption(&assets);
         show(assets.background,screen);
