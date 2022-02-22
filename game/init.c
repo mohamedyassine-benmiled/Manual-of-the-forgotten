@@ -194,7 +194,7 @@ void initoption(OptionImage *assets)
 
 
 
-
+    /*
     //Graphics Init
     t.font=TTF_OpenFont("ttf/alagard.ttf",30);
     t.textColor.r=207;
@@ -369,7 +369,8 @@ void initoption(OptionImage *assets)
     assets->minus.pos1.x=1262;
     assets->minus.pos1.y=625;
 
-
+    */
+   TTF_CloseFont(t.font);
 
 }
 

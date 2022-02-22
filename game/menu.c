@@ -150,13 +150,13 @@ freemenu(assets);
 
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
 {     int x,y;
-    show(assets->selectres,screen);
-    show(assets->windowsettings,screen);
-    show(assets->firstbox[0],screen);
-    show(assets->secondbox[0],screen);
-    show(assets->fullscreen,screen);
-    show(assets->windowed,screen);
-    show(assets->currentresolution,screen);
+    // show(assets->selectres,screen);
+    // show(assets->windowsettings,screen);
+    // show(assets->firstbox[0],screen);
+    // show(assets->secondbox[0],screen);
+    // show(assets->fullscreen,screen);
+    // show(assets->windowed,screen);
+    // show(assets->currentresolution,screen);
     SDL_Flip(screen);
     optiongame->hover=0;       
     SDL_Event event;

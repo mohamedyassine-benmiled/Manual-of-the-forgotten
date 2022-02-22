@@ -36,19 +36,19 @@ typedef struct
     //Graphics ****
     image selectres;
     image windowsettings;
-    image firstbox[2];
-    image secondbox[2];
+    image firstbox;
+    image secondbox;
     image fullscreen;
     image windowed;
     image boxresolution;
     image currentresolution;
     image listresolution;
-    image listresolutionbox[2];
+    image listresolutionbox;
     //Audio ****
     image volume;
     image audiotext;
-    image onbox[2];
-    image offbox[2];
+    image onbox;
+    image offbox;
     image on;
     image off;
     image circle[10];
