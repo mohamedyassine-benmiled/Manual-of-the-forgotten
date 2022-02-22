@@ -11,6 +11,15 @@ typedef struct
 
 typedef struct 
 {
+    image Window;
+    image Apply;
+    image Quit;
+    image Yes[2];
+    image No[2];
+} CheckImage;
+
+typedef struct 
+{
     /* Menu Assets */
     image play[2];
     image options[2];

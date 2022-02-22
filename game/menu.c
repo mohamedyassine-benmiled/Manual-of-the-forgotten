@@ -8,6 +8,83 @@
 #include "include/game.h"
 #include "include/animation.h"
 
+int check(SDL_Surface *screen,int *run,int state)
+{
+    int x,y;
+    CheckImage assets;
+    initcheck(&assets);
+    show(assets.Window,screen);
+    if (state)
+        {
+            show(assets.Apply,screen);
+        }
+        else
+        {
+            show(assets.Quit,screen);
+        }
+                show(assets.Yes[0],screen);
+                show(assets.No[0],screen);
+
+    SDL_Event event;
+        int check=3;
+
+        while (check==0)
+        {
+            SDL_WaitEvent(&event);
+            switch(event.type)
+            {
+            case SDL_QUIT:
+                *run=0;
+                check=0;
+                break;
+            case SDL_MOUSEMOTION:
+            SDL_GetMouseState(&x,&y);
+
+
+            if (hoverbutton(x,y,assets.Yes[0]))
+            {
+                show(assets.Yes[1],screen);
+            }
+            else
+            {
+                show(assets.Yes[0],screen);
+            }          
+            if (hoverbutton(x,y,assets.No[0]))
+            {
+                show(assets.No[1],screen);
+            }
+            else
+            {
+                show(assets.No[0],screen);
+            }
+            break;
+            case SDL_MOUSEBUTTONUP:
+            SDL_GetMouseState(&x,&y);
+            if (hoverbutton(x,y,assets.Yes[0]))
+            {
+                check=1;
+            }
+            if (hoverbutton(x,y,assets.No[0]))
+            {
+                check=2;
+            }
+
+      }  
+        }
+        if (check==2)
+        {
+            return 0;
+        }
+        else
+        return 1;
+
+
+}
+
+
+
+
+
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
       int x,y,i,j,k;
@@ -146,17 +223,17 @@ freemenu(assets);
 
 
 //menu graphics
-int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int run)
+int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int *run)
 {
     int list=1;
     int x,y ;
+    int res=0;
     SDL_Event event;
         show(assets->listresolutionbox[0],screen);
         show(assets->listresolution,screen);
         SDL_Flip(screen);
     while (list)
     {
-
       SDL_WaitEvent(&event);
       switch(event.type)
       {
@@ -172,16 +249,23 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
           {
               list =0;
           }
+          else
+          {
+              res=1;
+              list=0;
+          }
           break;
       }  
     }
-    return run;
+    return res;
     
 }
 
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
-{     int x,y;
+{     int x,y,previousres,newres;
     graphicimage assetsg;
+        settings config;
+        get_config(&config);
     initgraphics(&assetsg);
     show(assetsg.boxresolution,screen);
     show(assetsg.selectresolution,screen);
@@ -247,22 +331,24 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                    }
                    if (hoverbutton(x,y,assetsg.boxresolution))
                    {
-                 
-                    run=listres(optiongame,&assetsg,screen,run);
-                    show(assets->background,screen);
-                    show(assets->logogroup,screen); 
-                    show(assets->obook[14],screen);
-                    show(assets->graphics[0],screen);
-                    show(assets->audio[0],screen);
-                    show(assets->keybinds[0],screen);
-                    show(assetsg.boxresolution,screen);
-                    show(assetsg.selectresolution,screen);
-                    show(assetsg.windowsettings,screen);
-                    show(assetsg.firstbox[0],screen);
-                    show(assetsg.secondbox[0],screen);
-                    show(assetsg.fullscreen,screen);
-                    show(assetsg.windowed,screen);
-                    show(assetsg.currentresolution,screen);
+                       check(screen,&run,1);
+                       previousres=config.resolution_h;
+                        newres=listres(optiongame,&assetsg,screen,&run);
+                        
+                        show(assets->background,screen);
+                        show(assets->logogroup,screen); 
+                        show(assets->obook[14],screen);
+                        show(assets->graphics[0],screen);
+                        show(assets->audio[0],screen);
+                        show(assets->keybinds[0],screen);
+                        show(assetsg.boxresolution,screen);
+                        show(assetsg.selectresolution,screen);
+                        show(assetsg.windowsettings,screen);
+                        show(assetsg.firstbox[0],screen);
+                        show(assetsg.secondbox[0],screen);
+                        show(assetsg.fullscreen,screen);
+                        show(assetsg.windowed,screen);
+                        show(assetsg.currentresolution,screen);
                    }
                   
                 break;
@@ -275,6 +361,7 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
     SDL_Flip(screen);
 
 }
+
     freegraphics(assetsg);
     show(assets->background,screen);
     show(assets->logogroup,screen); 
