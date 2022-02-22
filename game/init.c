@@ -9,9 +9,83 @@
 #include <string.h>
 
 //To initialize Everything (What did it cost?)
-void initsettings()
+void initcheck(CheckImage *assets)
 {
+    settings config;
+        get_config(&config);
+if (config.resolution_h==1080)
+{
+        assets->Window.surface=IMG_Load("graphics/1080/Check/Checkwindow.png");
+        assets->Window.pos1.x=460;
+        assets->Window.pos1.y=290;
+        assets->Apply.surface=IMG_Load("graphics/1080/Check/Apply.png");
+        assets->Apply.pos1.x=743;
+        assets->Apply.pos1.y=435;
+        assets->Quit.surface=IMG_Load("graphics/1080/Check/Quit.png");
+        assets->Quit.pos1.x=686;
+        assets->Quit.pos1.y=435;
 
+        assets->Yes[0].surface=IMG_Load("graphics/1080/Check/Yes.png");
+        assets->Yes[0].pos1.x=802;
+        assets->Yes[0].pos1.y=597;
+        assets->Yes[0].pos2=assets->Yes[0].pos1;
+        assets->Yes[0].pos2.w=99;
+        assets->Yes[0].pos2.h=78;
+
+        assets->Yes[1].surface=IMG_Load("graphics/1080/Check/YesHover.png");
+        assets->Yes[1].pos2= assets->Yes[0].pos2;
+        assets->Yes[1].pos1= assets->Yes[0].pos1;
+
+
+        assets->No[0].surface=IMG_Load("graphics/1080/Check/No.png");
+        assets->No[0].pos1.x=1031;
+        assets->No[0].pos1.y=597;
+        assets->No[0].pos2=assets->No[0].pos1;
+        assets->No[0].pos2.w=78;
+        assets->No[0].pos2.h=78;
+        
+        assets->No[1].surface=IMG_Load("graphics/1080/Check/NoHover.png");
+        assets->No[1].pos2= assets->No[0].pos2;
+        assets->No[1].pos1= assets->No[0].pos1;
+        }
+else
+if (config.resolution_h==720)
+{
+        assets->Window.surface=IMG_Load("graphics/720/Check/Checkwindow.png");
+        assets->Window.pos1.x=306;
+        assets->Window.pos1.y=193;
+        assets->Apply.surface=IMG_Load("graphics/720/Check/Apply.png");
+        assets->Apply.pos1.x=495;
+        assets->Apply.pos1.y=290;
+        assets->Quit.surface=IMG_Load("graphics/720/Check/Quit.png");
+        assets->Quit.pos1.x=457;
+        assets->Quit.pos1.y=290;
+
+        assets->Yes[0].surface=IMG_Load("graphics/720/Check/Yes.png");
+        assets->Yes[0].pos1.x=534;
+        assets->Yes[0].pos1.y=398;
+        assets->Yes[0].pos2=assets->Yes[0].pos1;
+        assets->Yes[0].pos2.w=66;
+        assets->Yes[0].pos2.h=52;
+
+        assets->Yes[1].surface=IMG_Load("graphics/720/Check/YesHover.png");
+        assets->Yes[1].pos2= assets->Yes[0].pos2;
+        assets->Yes[1].pos1= assets->Yes[0].pos1;
+
+
+        assets->No[0].surface=IMG_Load("graphics/720/Check/No.png");
+        assets->No[0].pos1.x=687;
+        assets->No[0].pos1.y=398;
+        assets->No[0].pos2=assets->No[0].pos1;
+        assets->No[0].pos2.w=52;
+        assets->No[0].pos2.h=52;
+        
+        assets->No[1].surface=IMG_Load("graphics/720/Check/NoHover.png");
+        assets->No[1].pos2= assets->No[0].pos2;
+        assets->No[1].pos1= assets->No[0].pos1;
+}
+else
+printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
 
 void initvideo()
@@ -817,13 +891,4 @@ if (config.resolution_h==720)
 }
 else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
-}
-void freemusic(MenuGame musique)
-{
-    Mix_FreeMusic(musique); 
-
-}
-void freesound(OptionGame son)
-{
-    Mix_FreeChunk( son);
 }

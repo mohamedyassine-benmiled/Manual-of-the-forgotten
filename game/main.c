@@ -23,6 +23,7 @@ int main (int argc , char *argv[])
  SDL_Surface *screengame = NULL;
   
  int run = 1 ;
+ //Check if config file exits else create it
  f = fopen("config/config.cfg", "r");
     if (f) 
     {
@@ -39,14 +40,14 @@ int main (int argc , char *argv[])
       write_config(&config);
     }
 
-//SDL_INIT and game caption and icon
+//SDL_INIT and game caption and icon and sound
    initvideo();
 
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) //SDL_Mixer Init
     {
         printf("[-] %s", Mix_GetError());
     }
-   
+//Sound Init
     Mix_VolumeMusic(set_audio(config.volume,config.audio));
             optionmenu.soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
             mainmenu.Music=Mix_LoadMUS("sfx/menu.ogg");
