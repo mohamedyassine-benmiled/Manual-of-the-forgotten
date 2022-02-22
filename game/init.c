@@ -818,3 +818,12 @@ if (config.resolution_h==720)
 else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
+void freemusic(MenuGame musique)
+{
+    Mix_FreeMusic(musique); 
+
+}
+void freesound(OptionGame son)
+{
+    Mix_FreeChunk( son);
+}
