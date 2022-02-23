@@ -34,12 +34,6 @@ typedef struct
     Mix_Chunk *soundbook;
     Mix_Chunk *soundflip;
 } OptionGame;
-typedef struct 
-{
-   image gamebackground;
-
-}RunGame;
-
 
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run);

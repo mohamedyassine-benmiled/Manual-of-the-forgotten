@@ -16,7 +16,6 @@ int main (int argc , char *argv[])
   FILE *f;
 //Definition MenuGame
   MenuGame mainmenu;
-  RunGame rungame;
   OptionGame optionmenu;
   settings config;
 //Definition Screens
@@ -73,19 +72,8 @@ switch (run)
     case 2://Menu Option
         run=options(&optionmenu,screenmenu,run);
     break;
-<<<<<<< Updated upstream
     case 3://Game
         run=2;
-=======
-<<<<<<< HEAD
-    case 3:
-        run=game(&rungame,screengame,run);
-        //run=game();
-=======
-    case 3://Game
-        run=2;
->>>>>>> f1b87ea60e20b69ffb22a067614cf97a4693d694
->>>>>>> Stashed changes
     break;
 
   }
