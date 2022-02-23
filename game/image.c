@@ -20,6 +20,36 @@ void initBackground(image *b,char img[])
     b->pos2.w=1920;
     b->pos2.h=1080;
 }
+void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen)
+{
+    show(assets->boxresolution,screen);
+    show(assets->selectresolution,screen);
+    show(assets->windowsettings,screen);
+
+    if (fullscreen)
+    {
+        show(assets->firstbox[0],screen);
+        show(assets->secondbox[1],screen);
+    }
+    else
+    {
+        show(assets->firstbox[1],screen);
+        show(assets->secondbox[0],screen);
+    }
+
+    show(assets->fullscreen,screen);
+    show(assets->windowed,screen);
+    show(assets->currentresolution,screen);
+}
+void menurefresh(MenuImage *assets,SDL_Surface *screen)
+{
+        show(assets->background,screen);
+        show(assets->play[0],screen);
+        show(assets->options[0],screen);
+        show(assets->quit[0],screen);
+        show(assets->logogroup,screen);
+        show(assets->copyright,screen);
+}
 
 void optionrefresh(OptionImage *assets,SDL_Surface *screen)
 {
@@ -27,9 +57,12 @@ void optionrefresh(OptionImage *assets,SDL_Surface *screen)
     show(assets->logogroup,screen); 
     show(assets->obook[14],screen);
     show(assets->arrow[0],screen);
+    show (assets->graphics[0],screen);
+    show (assets->audio[0],screen);
+    show (assets->keybinds[0],screen);
 
 }
-void audiorefresh(audioimage *assets,SDL_Surface *screen)
+void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio)
 {
     show(assets->volume,screen);
     show(assets->audio,screen);
@@ -38,6 +71,16 @@ void audiorefresh(audioimage *assets,SDL_Surface *screen)
     show(assets->minus,screen);
     show(assets->plus,screen);
     show(assets->audiobar,screen);
+    if (audio)
+    {
+        show(assets->onbox[0],screen);
+        show(assets->offbox[1],screen);
+    }
+    else
+    {
+        show(assets->onbox[1],screen);
+        show(assets->offbox[0],screen);
+    }
     
 }
 

@@ -84,8 +84,9 @@ typedef struct
     image itemholding;
     image inventory;
 } GameImage;
-
-void audiorefresh(audioimage *assets,SDL_Surface *screen);
+void menurefresh(MenuImage *assets,SDL_Surface *screen);
+void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);
+void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio);
 void optionrefresh(OptionImage *assets,SDL_Surface *screen);
 void initPlayer(image *p);
 void initBackground(image *b,char img[]);

@@ -7,7 +7,7 @@
 #include "include/init.h"
 #include "include/game.h"
 #include "include/animation.h"
-
+//Check
 int check(SDL_Surface *screen,int *run,int state)
 {
     int x,y;
@@ -82,10 +82,7 @@ int check(SDL_Surface *screen,int *run,int state)
 
 }
 
-
-
-
-
+//Menu
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
     
@@ -96,12 +93,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
         MenuImage assets;
 
         initmenu(&assets);
-        show(assets.background,screen);
-        show(assets.play[0],screen);
-        show(assets.options[0],screen);
-        show(assets.quit[0],screen);
-        show(assets.logogroup,screen);
-        show(assets.copyright,screen);
+        menurefresh(&assets,screen);
     i=0;
     j=0;
     k=0;
@@ -160,7 +152,13 @@ while (SDL_PollEvent(&event)) {
                            run=2;
                            break;
                         case 2 :
-                           run=0;   
+                        if (check(screen,&run,0))
+                           run=0; 
+                           else
+                           {
+                                menurefresh(&assets,screen);
+                                show(assets.quit[1],screen);
+                           }  
                             break ; 
                         default:
                         printf("\nilyes was here");
@@ -168,7 +166,12 @@ while (SDL_PollEvent(&event)) {
                         }
                         break;
                     case (SDLK_ESCAPE):
-                        run=0;
+                        if (check(screen,&run,0))
+                           run=0; 
+                           else
+                           {
+                                menurefresh(&assets,screen);
+                           }  
                     break;
                     case (SDLK_o):
                         run=2;
@@ -251,8 +254,14 @@ while (SDL_PollEvent(&event)) {
                     run=2;
 
                     if (hoverbutton(x,y,assets.quit[1]))
-                    run=0;
-
+                    {
+                        if (check(screen,&run,0))
+                           run=0; 
+                           else
+                           {
+                                menurefresh(&assets,screen);
+                           }  
+                    }
 
                 break;
         
@@ -289,9 +298,7 @@ freemenu(assets);
 }
 
 
-
-
-//menu graphics
+//List Resolution
 int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int *run)
 {
     int list=1;
@@ -329,6 +336,7 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
     
 }
 
+//Graphics
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
 {     int x,y,previousres,newres;
     text t;
@@ -349,24 +357,10 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                         }           
 
     initgraphics(&assetsg);
-    show(assetsg.boxresolution,screen);
-    show(assetsg.selectresolution,screen);
-    show(assetsg.windowsettings,screen);
-    show (assets->graphics[1],screen);
-    if (config.fullscreen)
-    {
-        show(assetsg.firstbox[0],screen);
-        show(assetsg.secondbox[1],screen);
-    }
-    else
-    {
-        show(assetsg.firstbox[1],screen);
-        show(assetsg.secondbox[0],screen);
-    }
+    optionrefresh(assets,screen);
+    graphicsrefresh(&assetsg,screen,config.fullscreen);
 
-    show(assetsg.fullscreen,screen);
-    show(assetsg.windowed,screen);
-    show(assetsg.currentresolution,screen);
+    show (assets->graphics[1],screen);
     SDL_Flip(screen);
     optiongame->hover=0;       
     newres=0;
@@ -389,8 +383,18 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                 switch (event.key.keysym.sym)
                     {
                     case (SDLK_ESCAPE):
-                    optiongame->graphics=0;
-                        run=0;
+                    if (check(screen,&run,0))
+                    {
+                        optiongame->graphics=0;
+                        run=0; 
+                    }
+                    else
+                    {
+                        optionrefresh(assets,screen);
+                        graphicsrefresh(&assetsg,screen,config.fullscreen);
+                        show(assets->graphics[1],screen);
+                    }  
+
                     break;
                     case (SDLK_m):
                     optiongame->graphics=0;
@@ -463,25 +467,8 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                        previousres=config.resolution_h;
                         newres=listres(optiongame,&assetsg,screen,&run);
                         optionrefresh(assets,screen);
-                        show(assets->graphics[0],screen);
-                        show(assets->audio[0],screen);
-                        show(assets->keybinds[0],screen);
-                        if (config.fullscreen)
-                            {
-                                show(assetsg.firstbox[0],screen);
-                                show(assetsg.secondbox[1],screen);
-                            }
-                            else
-                            {
-                                show(assetsg.firstbox[1],screen);
-                                show(assetsg.secondbox[0],screen);
-                            }
-                        show(assetsg.boxresolution,screen);
-                        show(assetsg.selectresolution,screen);
-                        show(assetsg.windowsettings,screen);
-                        show(assetsg.fullscreen,screen);
-                        show(assetsg.windowed,screen);
-                        show(assetsg.currentresolution,screen);
+                        graphicsrefresh(&assetsg,screen,config.fullscreen);
+                        show (assets->graphics[1],screen);
                    }
                 if(hoverbutton(x,y,assets->arrow[0]))
                     {
@@ -523,26 +510,8 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
         }
         
                 optionrefresh(assets,screen);
-                show(assets->graphics[1],screen);
-                show(assets->audio[0],screen);
-                show(assets->keybinds[0],screen);
-                if (config.fullscreen)
-                {
-                    show(assetsg.firstbox[0],screen);
-                    show(assetsg.secondbox[1],screen);
-                }
-                else
-                {
-                    show(assetsg.firstbox[1],screen);
-                    show(assetsg.secondbox[0],screen);
-                }
-
-                show(assetsg.boxresolution,screen);
-                show(assetsg.selectresolution,screen);
-                show(assetsg.windowsettings,screen);
-                show(assetsg.fullscreen,screen);
-                show(assetsg.windowed,screen);
-                show(assetsg.currentresolution,screen);
+                graphicsrefresh(&assetsg,screen,config.fullscreen);
+                show (assets->graphics[1],screen);
                 newres=0;
     }
     
@@ -560,9 +529,7 @@ return run;
 
 }
 
-
-
-
+//Audio
 int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run)
 {     int x,y;
     audioimage assetsa;
@@ -570,17 +537,7 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     get_config(&config);
     initaudio(&assetsa);
     show(assets->audio[1],screen);
-    audiorefresh(&assetsa,screen);
-        if (config.audio)
-    {
-        show(assetsa.onbox[0],screen);
-        show(assetsa.offbox[1],screen);
-    }
-    else
-    {
-        show(assetsa.onbox[1],screen);
-        show(assetsa.offbox[0],screen);
-    }
+    audiorefresh(&assetsa,screen,config.audio);
 
     show(assetsa.circle[config.volume],screen);
 
@@ -589,6 +546,10 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     SDL_Event event;
      while(optiongame->audio)
     {
+        if (run==0)
+        {
+            optiongame->audio=0;
+        }
      while (SDL_PollEvent(&event)) 
     {
     switch (event.type)
@@ -600,8 +561,18 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
                 switch (event.key.keysym.sym)
                     {
                     case (SDLK_ESCAPE):
-                    optiongame->audio=0;
-                        run=0;
+                    if (check(screen,&run,0))
+                    {
+                        optiongame->audio=0;
+                        run=0; 
+                    }
+                    else
+                    {
+                        optionrefresh(assets,screen);
+                        audiorefresh(&assetsa,screen,config.audio);
+                        show(assets->audio[1],screen);
+                        show(assetsa.circle[config.volume],screen);
+                    }  
                     break;
                     case (SDLK_m):
                     optiongame->audio=0;
@@ -705,17 +676,8 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     show(assets->graphics[0],screen);
     show(assets->audio[1],screen);
     show(assets->keybinds[0],screen);
-    audiorefresh(&assetsa,screen);
-        if (config.audio)
-    {
-        show(assetsa.onbox[0],screen);
-        show(assetsa.offbox[1],screen);
-    }
-    else
-    {
-        show(assetsa.onbox[1],screen);
-        show(assetsa.offbox[0],screen);
-    }
+    audiorefresh(&assetsa,screen,config.audio);
+
 
     show(assetsa.circle[config.volume],screen);
     Mix_VolumeMusic(set_audio(config.volume,config.audio));
@@ -736,12 +698,7 @@ return run;
 
 }
 
-
-
-
-
-
-
+//Options
 int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
@@ -785,12 +742,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                         else
                         SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
                         }
-                        show(assets.background,screen);
-                        show(assets.logogroup,screen); 
-                        show(assets.obook[14],screen);
-                        show(assets.graphics[0],screen);
-                        show(assets.audio[0],screen);
-                        show(assets.keybinds[0],screen);
+                            optionrefresh(&assets,screen);
     }
      if (optiongame->audio)
      {
@@ -808,7 +760,12 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                 switch (event.key.keysym.sym)
                     {
                     case (SDLK_ESCAPE):
-                        run=0;
+                        if (check(screen,&run,0))
+                           run=0; 
+                           else
+                           {
+                                optionrefresh(&assets,screen);
+                           }  
                     break;
                     case (SDLK_m):
                         run=1;
@@ -878,12 +835,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                         else
                         SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
                         }
-                        show(assets.background,screen);
-                        show(assets.logogroup,screen); 
-                        show(assets.obook[14],screen);
-                        show(assets.graphics[0],screen);
-                        show(assets.audio[0],screen);
-                        show(assets.keybinds[0],screen);
+                        optionrefresh(&assets,screen);
                     } 
                     if(hoverbutton(x,y,assets.arrow[0]))
                     {
@@ -922,50 +874,3 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 return run;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
