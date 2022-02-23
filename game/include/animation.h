@@ -7,9 +7,8 @@
 #include <string.h>
 #include "game.h"
 #include "image.h"
+
 int hoverbutton(int x,int y, image img );
 int animatehover(int x,int y,image img,image img2,SDL_Surface *screen);
-void animateclick(int x,int y,image img,image img2,SDL_Surface *screen);
-void animateoption();
 
 #endif // ANIMATION_H

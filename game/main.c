@@ -10,7 +10,7 @@
 #include "include/init.h"
 #include "include/config.h"
 
-
+//Main Code
 int main (int argc , char *argv[])
 {
   FILE *f;
@@ -21,16 +21,18 @@ int main (int argc , char *argv[])
 //Definition Screens
  SDL_Surface *screenmenu = NULL ;
  SDL_Surface *screengame = NULL;
-  
+//Initialize on Menu
  int run = 1 ;
  //Check if config file exits else create it
  f = fopen("config/config.cfg", "r");
+    //Get Config Values
     if (f) 
     {
         fclose(f);
         get_config(&config);
     }
     else
+    //Set Default Config and Write it
     {
       config.resolution_w=1920;
       config.resolution_h=1080;
@@ -42,18 +44,12 @@ int main (int argc , char *argv[])
 
 //SDL_INIT and game caption and icon and sound
    initvideo();
-
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) //SDL_Mixer Init
     {
         printf("[-] %s", Mix_GetError());
     }
-//Sound Init
     Mix_VolumeMusic(set_audio(config.volume,config.audio));
-            optionmenu.soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
-            mainmenu.Music=Mix_LoadMUS("sfx/menu.ogg");
-            mainmenu.soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
-    	Mix_VolumeChunk(mainmenu.soundbutton,set_audio(config.volume,config.audio));
-          	Mix_VolumeChunk(optionmenu.soundbutton,set_audio(config.volume,config.audio));
+
 //ScreenInit
 if (config.fullscreen)
 {
@@ -65,39 +61,29 @@ else
     screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
       screengame = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
 }
-//Initialisation Buttons
-
+//Game Loop
 while(run)
 {
 switch (run)
   {
-    case 1:
+    case 1://Menu Run
         run=menu(&mainmenu,screenmenu,run);
     break;
-    case 2:
+    case 2://Menu Option
         run=options(&optionmenu,screenmenu,run);
     break;
-    case 3:
+    case 3://Game
         run=2;
-        //run=game();
     break;
 
   }
 }
-
-  SDL_FreeSurface(screenmenu);
-  SDL_FreeSurface(screengame);
- SDL_CloseAudio();
- SDL_Quit();
+//Freeing Screens
+SDL_FreeSurface(screenmenu);
+SDL_FreeSurface(screengame);
+//Closing Audio
+SDL_CloseAudio();
+//Quitting
+SDL_Quit();
  return EXIT_SUCCESS;
-
  }
-
-
-
-
-
-
-
-
-

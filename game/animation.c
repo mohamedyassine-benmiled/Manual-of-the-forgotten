@@ -1,6 +1,6 @@
 
 #include "include/animation.h"
-
+//Check if mouse on top of button
 int hoverbutton(int x,int y, image img )
 {
 
@@ -25,7 +25,7 @@ int hoverbutton(int x,int y, image img )
         }
         return inside ;
 }
-
+//Show image if mouse is ont top of button
 int animatehover(int x,int y,image img,image img2,SDL_Surface *screen)
 {
     int runsound;
@@ -43,21 +43,6 @@ int animatehover(int x,int y,image img,image img2,SDL_Surface *screen)
 
 
     return runsound;
-}
-void animateclick(int x,int y,image img,image img2,SDL_Surface *screen)
-{
-                    if (hoverbutton(x,y,img))
-                    {
-                        show(img,screen);
-                    }
-
-
-}
-
-
-void animateoption()
-{
-
 }
 
 

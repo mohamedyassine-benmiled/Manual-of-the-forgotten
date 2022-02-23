@@ -8,7 +8,7 @@
 #include "include/init.h"
 #include <string.h>
 
-//To initialize Everything (What did it cost?)
+//Initialize Check positions and Images
 void initcheck(CheckImage *assets)
 {
     settings config;
@@ -87,16 +87,18 @@ if (config.resolution_h==720)
 else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-
+//Initialize Video
 void initvideo()
 {
+    SDL_Surface *icon=SDL_LoadBMP("graphics/1080/Kteb/ClosedBook.bmp");
+
     TTF_Init();
      SDL_Init(SDL_INIT_VIDEO);
-        SDL_WM_SetIcon(IMG_Load("graphics/1080/Logo.png"),NULL);
+        SDL_WM_SetIcon(icon,NULL);
                 SDL_WM_SetCaption("Manual of the forgotten",NULL);
                 TTF_Init();
 }
-
+//Initialize Menu Positions and Images
 void initmenu(MenuImage *assets)
 {
 text t;
@@ -264,7 +266,7 @@ if (!(assets->copyright.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor
 else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-
+//Initialize Options Positions and Images
 void initoption(OptionImage *assets)
 {
     settings config;
@@ -476,10 +478,7 @@ if (config.resolution_h==720)
 else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-
-
-
-
+//Initialize Graphics Positions and Images
 void initgraphics(graphicimage *assets)
 {
     text t;
@@ -734,8 +733,7 @@ void initgraphics(graphicimage *assets)
 
 
 }
-
-
+//Initialize Audio Positions and Images
 void initaudio(audioimage *assets)
 {
     text t;

@@ -7,57 +7,43 @@
 #include "include/text.h"
 #include "include/image.h"
 #include "include/sound.h"
-    /*
-void initson()
-{
 
-  son sound;
-    sound= Mix_LoadWAV("soundeffect.wav"); //Chargement de sound effect
-    Mix_PlayChannel(-1,sound, 0); 
-}
-
-void freesound()
-{
-    Mix_FreeChunk(sound);
-}
-
-}
-void play_music(Music *musique)
-{
-    Mix_PlayMusic(musique->ambient, -1);
-	Mix_VolumeMusic(MIX_MAX_VOLUME/5);
-
-}    */
+//Volume Set
 int set_audio(int volume,int audio)
 {    
+//If audio on
 if (audio)
 {
-switch (volume)
-    {
-        case 0:
-            return(0);
-        case 1:
-            return(13);
-        case 2:
-            return(26);
-        case 3:
-            return(38);
-        case 4:
-            return(51);
-        case 5:
-            return(64);
-        case 6:
-            return(77);
-        case 7:
-            return(90);
-        case 8:
-            return(102);
-        case 9:
-            return(115);
-    }
+    //Return Volume
+    switch (volume)
+        {
+            case 0:
+                return(0);
+            case 1:
+                return(13);
+            case 2:
+                return(26);
+            case 3:
+                return(38);
+            case 4:
+                return(51);
+            case 5:
+                return(64);
+            case 6:
+                return(77);
+            case 7:
+                return(90);
+            case 8:
+                return(102);
+            case 9:
+                return(115);
+        }
 }
-    else
+else
+    {
     return 0;
+    }
+    //Return if no volume
     return 128;
 
 }

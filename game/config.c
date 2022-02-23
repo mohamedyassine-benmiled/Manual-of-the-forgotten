@@ -1,6 +1,6 @@
 #include "include/config.h"
 
-
+//Writing Config Values in config.cfg
 int write_config(settings *config)
 {
     config->f=NULL;
@@ -22,7 +22,7 @@ int write_config(settings *config)
         return -1;
     }
 }
-
+//Reading Config Values from config.cfg
 int get_config(settings *config)
 {
   config->f=NULL;

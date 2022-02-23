@@ -88,14 +88,11 @@ void menurefresh(MenuImage *assets,SDL_Surface *screen);
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);
 void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio);
 void optionrefresh(OptionImage *assets,SDL_Surface *screen);
-void initPlayer(image *p);
-void initBackground(image *b,char img[]);
-void freesurface(image a);
 void show (image p,SDL_Surface *screen);
 void freemenu(MenuImage assets);
 void freeoption(OptionImage assets);
 void freegraphics(graphicimage assets);
 void freeaudio(audioimage assets);
-
+void freecheck(CheckImage assets);
 int hoverbutton(int x,int y, image img );
 #endif // IMAGE_H

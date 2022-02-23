@@ -6,20 +6,7 @@
 #include "include/game.h"
 #include "include/menu.h"
 
-
-
-
-
-void initBackground(image *b,char img[])
-{
-    b->surface= IMG_Load(img);
-    b->pos1.x=0;
-    b->pos1.y=0;
-    b->pos2.x=0;
-    b->pos2.y=0;
-    b->pos2.w=1920;
-    b->pos2.h=1080;
-}
+//Showing Graphics Images to refresh screen
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen)
 {
     show(assets->boxresolution,screen);
@@ -41,6 +28,7 @@ void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen)
     show(assets->windowed,screen);
     show(assets->currentresolution,screen);
 }
+//Showing Menu Images to refresh screen
 void menurefresh(MenuImage *assets,SDL_Surface *screen)
 {
         show(assets->background,screen);
@@ -50,7 +38,7 @@ void menurefresh(MenuImage *assets,SDL_Surface *screen)
         show(assets->logogroup,screen);
         show(assets->copyright,screen);
 }
-
+//Showing Option Images to refresh screen
 void optionrefresh(OptionImage *assets,SDL_Surface *screen)
 {
     show(assets->background,screen);
@@ -62,6 +50,7 @@ void optionrefresh(OptionImage *assets,SDL_Surface *screen)
     show (assets->keybinds[0],screen);
 
 }
+//Showing Audio Images to refresh screen
 void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio)
 {
     show(assets->volume,screen);
@@ -83,12 +72,7 @@ void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio)
     }
     
 }
-
-void freesurface(image a)
-{
-    SDL_FreeSurface(a.surface);
-}
-
+//Freeing Menu Images from memory
 void freemenu(MenuImage assets)
 {
 SDL_FreeSurface(assets.play[0].surface);
@@ -109,7 +93,7 @@ for (int i = 0; i < 13; i++)
     SDL_FreeSurface(assets.cbook[i].surface);
 }
 }
-
+//Freeing Option Images from memory
 void freeoption(OptionImage assets)
 {
     for (int i = 0; i < 15; i++)
@@ -126,7 +110,7 @@ void freeoption(OptionImage assets)
 SDL_FreeSurface(assets.background.surface);
 SDL_FreeSurface(assets.logogroup.surface);
 }
-
+//Freeing Graphics Images from memory
 void freegraphics(graphicimage assets)
 {
 
@@ -146,7 +130,7 @@ SDL_FreeSurface(assets.currentresolution.surface);
 SDL_FreeSurface(assets.listresolution.surface);
 
 }
-
+//Freeing Audio Images from memory
 void freeaudio(audioimage assets)
 {
 
@@ -169,7 +153,23 @@ SDL_FreeSurface(assets.minus.surface);
 SDL_FreeSurface(assets.plus.surface);
 SDL_FreeSurface(assets.audiobar.surface);
 }
+//Freeing Check Images from memory
+void freecheck(CheckImage assets)
+{
+SDL_FreeSurface(assets.Window.surface);
+SDL_FreeSurface(assets.Apply.surface);
+SDL_FreeSurface(assets.Quit.surface);
+for (int i = 0; i < 2; i++)
+{
+
+
+SDL_FreeSurface(assets.No[i].surface);
+SDL_FreeSurface(assets.Yes[i].surface);
+}
+}
+//Showing an image on the screen
 void show(image p,SDL_Surface *screen)
 {
     SDL_BlitSurface(p.surface,NULL,screen,&p.pos1);
 }
+
