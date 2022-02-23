@@ -184,6 +184,8 @@ while (SDL_PollEvent(&event)) {
                            else
                            {
                                 menurefresh(&assets,screen);
+                                show(assets.cbook[j],screen);
+                                show(assets.logo[i],screen);
                            }  
                     break;
                     //On "o" press : Go to option
