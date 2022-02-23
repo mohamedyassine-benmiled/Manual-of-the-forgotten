@@ -26,6 +26,7 @@ void optionrefresh(OptionImage *assets,SDL_Surface *screen)
     show(assets->background,screen);
     show(assets->logogroup,screen); 
     show(assets->obook[14],screen);
+    show(assets->arrow[0],screen);
 
 }
 void audiorefresh(audioimage *assets,SDL_Surface *screen)
@@ -77,6 +78,7 @@ void freeoption(OptionImage assets)
         SDL_FreeSurface(assets.graphics[i].surface);
                 SDL_FreeSurface(assets.audio[i].surface);
                         SDL_FreeSurface(assets.keybinds[i].surface);
+                            SDL_FreeSurface(assets.arrow[i].surface);
     }
 SDL_FreeSurface(assets.background.surface);
 SDL_FreeSurface(assets.logogroup.surface);

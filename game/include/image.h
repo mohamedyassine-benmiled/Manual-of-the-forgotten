@@ -36,13 +36,10 @@ typedef struct
     /* Options Assets */
     image logo;
     image logogroup;
+    image arrow[2];
     image graphics[2];
     image audio[2];
     image keybinds[2];
-    //Graphics ****
-
-
-    //Settings ****
     image background;
     image obook[15]; 
 } OptionImage;

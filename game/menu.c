@@ -356,7 +356,8 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets->audio[1],assets->audio[0],screen);
         //Keybinds Button
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets->keybinds[1],assets->keybinds[0],screen);
-                if (!(hoverbutton(x,y,assets->audio[1]) || hoverbutton(x,y,assets->keybinds[1])))
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets->arrow[1],assets->arrow[0],screen);
+                if (!(hoverbutton(x,y,assets->audio[1]) || hoverbutton(x,y,assets->keybinds[1]) || hoverbutton(x,y,assets->arrow[0])))
                 {
                     optiongame->hover=0;
                 }
@@ -367,15 +368,11 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
         break;
         case SDL_MOUSEBUTTONUP:
                      SDL_GetMouseState(&x,&y);
-
-                    
-                    
                     if(hoverbutton(x,y,assets->audio[1]))
                     {
                         optiongame->audio=1;
                         optiongame->graphics=0;
                     }
-
                     if (hoverbutton(x,y,assets->keybinds[1]))
                    {
                        optiongame->keybinds=1;
@@ -409,9 +406,7 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
 
                        previousres=config.resolution_h;
                         newres=listres(optiongame,&assetsg,screen,&run);
-                        show(assets->background,screen);
-                        show(assets->logogroup,screen); 
-                        show(assets->obook[14],screen);
+                        optionrefresh(assets,screen);
                         show(assets->graphics[0],screen);
                         show(assets->audio[0],screen);
                         show(assets->keybinds[0],screen);
@@ -432,7 +427,11 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                         show(assetsg.windowed,screen);
                         show(assetsg.currentresolution,screen);
                    }
-                  
+                if(hoverbutton(x,y,assets->arrow[0]))
+                    {
+                        optiongame->graphics=0;
+                        run=1;
+                    }
                 break;
                     
         }
@@ -497,9 +496,7 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
     write_config(&config);
     TTF_CloseFont(t.font);
     freegraphics(assetsg);
-    show(assets->background,screen);
-    show(assets->logogroup,screen); 
-    show(assets->obook[14],screen);
+    optionrefresh(assets,screen);
     show(assets->graphics[0],screen);
     show(assets->audio[0],screen);
     show(assets->keybinds[0],screen);
@@ -633,7 +630,11 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
                        optiongame->keybinds=1;
                        optiongame->audio=0;
                    }
-
+                    if(hoverbutton(x,y,assets->arrow[0]))
+                    {
+                        optiongame->audio=0;
+                        run=1;
+                    }
                 break;
                     
         }
@@ -788,7 +789,8 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets.audio[1],assets.audio[0],screen);
         //Quit Button
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets.keybinds[1],assets.keybinds[0],screen);
-                if (!(hoverbutton(x,y,assets.graphics[1]) || hoverbutton(x,y,assets.audio[1]) || hoverbutton(x,y,assets.keybinds[1])))
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets.arrow[1],assets.arrow[0],screen);
+                if (!(hoverbutton(x,y,assets.graphics[1]) || hoverbutton(x,y,assets.audio[1]) || hoverbutton(x,y,assets.keybinds[1]) || hoverbutton(x,y,assets.arrow[0])))
                 {
                     optiongame->hover=0;
 
@@ -828,7 +830,10 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                         show(assets.audio[0],screen);
                         show(assets.keybinds[0],screen);
                     } 
-                    
+                    if(hoverbutton(x,y,assets.arrow[0]))
+                    {
+                        run=1;
+                    }
                     if(hoverbutton(x,y,assets.audio[1]))
                     {
                             optiongame->audio=1;

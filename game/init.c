@@ -286,7 +286,16 @@ if (config.resolution_h==1080)
     assets->obook[i].pos1.x=423;
     assets->obook[i].pos1.y=-8;
     }
-    
+    assets->arrow[0].surface=IMG_Load("graphics/1080/Options/arrow.png");
+    assets->arrow[0].pos1.x=1516;
+    assets->arrow[0].pos1.y=454;
+    assets->arrow[0].pos2.x=1516;
+    assets->arrow[0].pos2.y=454;  
+    assets->arrow[0].pos2.w=180;
+    assets->arrow[0].pos2.h=170; 
+    assets->arrow[1].surface=IMG_Load("graphics/1080/Options/arrow.png");
+    assets->arrow[1].pos1=assets->arrow[0].pos1;
+    assets->arrow[1].pos2=assets->arrow[0].pos2;
     t.font=TTF_OpenFont("ttf/alagard.ttf",65);
     
     strcpy(t.texte,"Graphics");
@@ -381,7 +390,16 @@ if (config.resolution_h==720)
     assets->obook[i].pos1.x=282;
     assets->obook[i].pos1.y=-3;
     }
-    
+    assets->arrow[0].surface=IMG_Load("graphics/720/Options/arrow.png");
+    assets->arrow[0].pos1.x=1010;
+    assets->arrow[0].pos1.y=302;
+    assets->arrow[0].pos2.x=1010;
+    assets->arrow[0].pos2.y=302;  
+    assets->arrow[0].pos2.w=120;
+    assets->arrow[0].pos2.h=113; 
+    assets->arrow[1].surface=IMG_Load("graphics/720/Options/arrow.png");
+    assets->arrow[1].pos1=assets->arrow[0].pos1;
+    assets->arrow[1].pos2=assets->arrow[0].pos2;
     t.font=TTF_OpenFont("ttf/alagard.ttf",43);
     
     strcpy(t.texte,"Graphics");
