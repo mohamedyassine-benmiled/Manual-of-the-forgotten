@@ -88,6 +88,8 @@ int check(SDL_Surface *screen,int *run,int state)
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
+        settings config;
+        get_config(&config);
       int x,y,i,j,k;
     SDL_Event event;
         MenuImage assets;
@@ -104,6 +106,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     k=0;
     menugame->hover=0;
     menugame->press=0;
+    Mix_VolumeMusic(set_audio(config.volume,config.audio));
     Mix_PlayMusic(menugame->Music, -1);
 
     while(run==1)
@@ -156,6 +159,14 @@ while (SDL_PollEvent(&event)) {
                     break;
                     case (SDLK_f):
                         SDL_WM_ToggleFullScreen(screen); 
+                            if (config.fullscreen)
+                                        {
+                                            config.fullscreen=0;
+                                        }
+                                        else
+                                        {
+                                            config.fullscreen=1;
+                                        } 
                     break;  
                     case (SDLK_UP):
                       menugame-> state--;
@@ -215,6 +226,7 @@ while (SDL_PollEvent(&event)) {
 }
       SDL_Flip(screen);
     }
+write_config(&config);
 freemenu(assets);
  return run;
 
@@ -455,10 +467,8 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
 
         }
         
-                show(assets->background,screen);
-                show(assets->logogroup,screen); 
-                show(assets->obook[14],screen);
-                show(assets->graphics[0],screen);
+                optionrefresh(assets,screen);
+                show(assets->graphics[1],screen);
                 show(assets->audio[0],screen);
                 show(assets->keybinds[0],screen);
                 if (config.fullscreen)
@@ -504,21 +514,23 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
 {     int x,y;
     audioimage assetsa;
     settings config;
-        get_config(&config);
+    get_config(&config);
     initaudio(&assetsa);
-    show(assetsa.volume,screen);
-    show(assetsa.audio,screen);
-    show(assetsa.onbox[0],screen);
-    show(assetsa.offbox[0],screen);
-    show(assetsa.on,screen);
-    show(assetsa.off,screen);
-    show(assetsa.minus,screen);
-    show(assetsa.plus,screen);
-    show(assetsa.audiobar,screen);
-    for (int i=0;i<10;i++)
+    show(assets->audio[1],screen);
+    audiorefresh(&assetsa,screen);
+        if (config.audio)
     {
-        show (assetsa.circle[i],screen);
+        show(assetsa.onbox[0],screen);
+        show(assetsa.offbox[1],screen);
     }
+    else
+    {
+        show(assetsa.onbox[1],screen);
+        show(assetsa.offbox[0],screen);
+    }
+
+    show(assetsa.circle[config.volume],screen);
+
     SDL_Flip(screen);
     optiongame->hover=0;       
     SDL_Event event;
@@ -561,11 +573,55 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
                         break;
                     }
                     break;
+        case SDL_MOUSEMOTION:
+        //Init Motion With Sound
+        SDL_GetMouseState(&x,&y);
+                
+        //Graphics Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets->graphics[1],assets->graphics[0],screen);
+        //Keybinds Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets->keybinds[1],assets->keybinds[0],screen);
+                if (!(hoverbutton(x,y,assets->graphics[1]) || hoverbutton(x,y,assets->keybinds[1])))
+                {
+                    optiongame->hover=0;
+                }
+                if  (optiongame->hover==1)
+                {
+                    Mix_PlayChannel(-1,optiongame->soundbutton, 0); 
+                }
+        break;
         case SDL_MOUSEBUTTONUP:
                      SDL_GetMouseState(&x,&y);
+                    if (hoverbutton(x,y,assetsa.plus))
+                    {
+                        optiongame->audio=2;
+                        if (config.volume!=9)
+                        config.volume++;
+                    }
+                    if (hoverbutton(x,y,assetsa.minus))
+                    {
+                        optiongame->audio=2;
+                        if (config.volume!=0)
+                        config.volume--;
 
-                    
-                    
+                    }
+                    if (hoverbutton(x,y,assetsa.onbox[0]))
+                   {
+                            if (!config.audio)
+                            {
+                                optiongame->audio=2;
+                                config.audio=1;
+                            }
+
+                   }
+                    if (hoverbutton(x,y,assetsa.offbox[0]))
+                   {
+                            if (config.audio)
+                            {
+                                optiongame->audio=2;
+                                config.audio=0;
+                            }
+                   }
                     if(hoverbutton(x,y,assets->graphics[1]))
                     {
                         optiongame->graphics=1;
@@ -583,19 +639,42 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
         }
          
         
+    }    
+    //Refresh
+    if (optiongame->audio==2)
+    {
+        optiongame->audio=1;
+    optionrefresh(assets,screen);
+    show(assets->graphics[0],screen);
+    show(assets->audio[1],screen);
+    show(assets->keybinds[0],screen);
+    audiorefresh(&assetsa,screen);
+        if (config.audio)
+    {
+        show(assetsa.onbox[0],screen);
+        show(assetsa.offbox[1],screen);
+    }
+    else
+    {
+        show(assetsa.onbox[1],screen);
+        show(assetsa.offbox[0],screen);
     }
 
+    show(assetsa.circle[config.volume],screen);
+    Mix_VolumeMusic(set_audio(config.volume,config.audio));
+    Mix_VolumeChunk(optiongame->soundbutton,set_audio(config.volume,config.audio));
+    }
     SDL_Flip(screen);
 
 }
     write_config(&config);
     freeaudio(assetsa);
-    show(assets->background,screen);
-    show(assets->logogroup,screen); 
-    show(assets->obook[14],screen);
+
+    optionrefresh(assets,screen);
     show(assets->graphics[0],screen);
     show(assets->audio[0],screen);
     show(assets->keybinds[0],screen);
+
 return run;
 
 }
@@ -610,7 +689,6 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
 {
     OptionImage assets;
     int i,x,y;
-    int prevres;
         settings config;
         get_config(&config);
 
@@ -657,7 +735,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                         show(assets.graphics[0],screen);
                         show(assets.audio[0],screen);
                         show(assets.keybinds[0],screen);
-     }
+    }
      if (optiongame->audio)
      {
          run=audio(optiongame,&assets,screen,run);

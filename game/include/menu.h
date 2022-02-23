@@ -7,6 +7,7 @@
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
 #include "image.h"
+#include "sound.h"
 
 typedef struct
 {

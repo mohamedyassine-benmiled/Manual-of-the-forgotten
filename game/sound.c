@@ -29,29 +29,30 @@ void play_music(Music *musique)
 
 }    */
 int set_audio(int volume,int audio)
-{    if (audio)
+{    
+if (audio)
 {
 switch (volume)
     {
-        case 1:
+        case 0:
             return(0);
-        case 2:
+        case 1:
             return(13);
-        case 3:
+        case 2:
             return(26);
-        case 4:
+        case 3:
             return(38);
-        case 5:
+        case 4:
             return(51);
-        case 6:
+        case 5:
             return(64);
-        case 7:
+        case 6:
             return(77);
-        case 8:
+        case 7:
             return(90);
-        case 9:
+        case 8:
             return(102);
-        case 10:
+        case 9:
             return(115);
     }
 }

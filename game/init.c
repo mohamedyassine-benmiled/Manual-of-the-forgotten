@@ -749,12 +749,14 @@ if (config.resolution_h==1080)
     assets->onbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
     assets->onbox[0].pos1.x=1142;
     assets->onbox[0].pos1.y=598;
+    assets->onbox[0].pos2=assets->onbox[0].pos1;
     assets->onbox[0].pos2.w=25;
     assets->onbox[0].pos2.h=25;    
     
     assets->onbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
     assets->onbox[1].pos1.x=1142;
     assets->onbox[1].pos1.y=598;
+    assets->onbox[1].pos2=assets->onbox[1].pos1;
     assets->onbox[1].pos2.w=25;
     assets->onbox[1].pos2.h=25;    
     
@@ -763,11 +765,13 @@ if (config.resolution_h==1080)
     assets->offbox[0].surface=IMG_Load("graphics/1080/Options/unbox.png");
     assets->offbox[0].pos1.x=1265;
     assets->offbox[0].pos1.y=598;
+    assets->offbox[0].pos2=assets->offbox[0].pos1;
     assets->offbox[0].pos2.w=25;
     assets->offbox[0].pos2.h=25;
     assets->offbox[1].surface=IMG_Load("graphics/1080/Options/box.png");
     assets->offbox[1].pos1.x=1265;
     assets->offbox[1].pos1.y=598;
+    assets->offbox[1].pos2=assets->offbox[1].pos1;
     assets->offbox[1].pos2.w=25;
     assets->offbox[1].pos2.h=25;
 
@@ -790,15 +794,17 @@ if (config.resolution_h==1080)
     assets->plus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->plus.pos1.x=1378;
     assets->plus.pos1.y=472;
+    assets->plus.pos2=assets->plus.pos1;
     assets->plus.pos2.w=30;
-        assets->plus.pos2.h=30;
+    assets->plus.pos2.h=30;
 
     strcpy(t.texte,"-");
     assets->minus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
     assets->minus.pos1.x=1040;
     assets->minus.pos1.y=472;
+    assets->minus.pos2=assets->minus.pos1;
     assets->minus.pos2.w=30;
-        assets->minus.pos2.h=30;
+    assets->minus.pos2.h=30;
             assets->circle[0].surface=IMG_Load("graphics/1080/Options/Circle.png");
             assets->circle[0].pos1.x=1060;
             assets->circle[0].pos1.y=477;
@@ -808,7 +814,9 @@ if (config.resolution_h==1080)
             assets->circle[i].pos1.x=assets->circle[i-1].pos1.x+32;
             assets->circle[i].pos1.y=477;
         }
-
+            assets->circle[10].surface=IMG_Load("graphics/1080/Options/HideCircles.png");
+            assets->circle[10].pos1.x=1062;
+            assets->circle[10].pos1.y=473;
     assets->audiobar.surface=IMG_Load("graphics/1080/Options/AudioBar.png");
             assets->audiobar.pos1.x=1076;
             assets->audiobar.pos1.y=483;
@@ -840,12 +848,14 @@ if (config.resolution_h==720)
     assets->onbox[0].surface=IMG_Load("graphics/720/Options/unbox.png");
     assets->onbox[0].pos1.x=761;
     assets->onbox[0].pos1.y=398;
+    assets->onbox[0].pos2=assets->onbox[0].pos1;
     assets->onbox[0].pos2.w=16;
     assets->onbox[0].pos2.h=16;    
     
     assets->onbox[1].surface=IMG_Load("graphics/720/Options/box.png");
     assets->onbox[1].pos1.x=761;
     assets->onbox[1].pos1.y=398;
+    assets->onbox[1].pos2=assets->onbox[1].pos1;
     assets->onbox[1].pos2.w=16;
     assets->onbox[1].pos2.h=16;    
     
@@ -854,11 +864,13 @@ if (config.resolution_h==720)
     assets->offbox[0].surface=IMG_Load("graphics/720/Options/unbox.png");
     assets->offbox[0].pos1.x=842;
     assets->offbox[0].pos1.y=398;
+    assets->offbox[0].pos2=assets->offbox[0].pos1;
     assets->offbox[0].pos2.w=16;
     assets->offbox[0].pos2.h=16;
     assets->offbox[1].surface=IMG_Load("graphics/720/Options/box.png");
     assets->offbox[1].pos1.x=842;
     assets->offbox[1].pos1.y=398;
+    assets->offbox[1].pos2=assets->offbox[1].pos1;
     assets->offbox[1].pos2.w=16;
     assets->offbox[1].pos2.h=16;
 
@@ -879,17 +891,20 @@ if (config.resolution_h==720)
      t.font=TTF_OpenFont("ttf/alagard.ttf",24);
     strcpy(t.texte,"+");
     assets->plus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->plus.pos1.x=693;
+    assets->plus.pos1.x=918;
     assets->plus.pos1.y=314;
+    assets->plus.pos2=assets->plus.pos1;
     assets->plus.pos2.w=20;
         assets->plus.pos2.h=20;
 
     strcpy(t.texte,"-");
     assets->minus.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->minus.pos1.x=918;
+    assets->minus.pos1.x=693;
     assets->minus.pos1.y=314;
+    assets->minus.pos2=assets->minus.pos1;
     assets->minus.pos2.w=20;
-        assets->minus.pos2.h=20;
+    assets->minus.pos2.h=20;
+
             assets->circle[0].surface=IMG_Load("graphics/720/Options/Circle.png");
             assets->circle[0].pos1.x=706;
             assets->circle[0].pos1.y=318;

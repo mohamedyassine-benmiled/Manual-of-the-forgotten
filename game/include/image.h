@@ -72,7 +72,7 @@ typedef struct
     image offbox[2];
     image on;
     image off;
-    image circle[10];
+    image circle[11];
     image audiobar;
     image plus;
     image minus;
@@ -88,6 +88,8 @@ typedef struct
     image inventory;
 } GameImage;
 
+void audiorefresh(audioimage *assets,SDL_Surface *screen);
+void optionrefresh(OptionImage *assets,SDL_Surface *screen);
 void initPlayer(image *p);
 void initBackground(image *b,char img[]);
 void freesurface(image a);

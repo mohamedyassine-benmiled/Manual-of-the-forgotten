@@ -21,7 +21,24 @@ void initBackground(image *b,char img[])
     b->pos2.h=1080;
 }
 
+void optionrefresh(OptionImage *assets,SDL_Surface *screen)
+{
+    show(assets->background,screen);
+    show(assets->logogroup,screen); 
+    show(assets->obook[14],screen);
 
+}
+void audiorefresh(audioimage *assets,SDL_Surface *screen)
+{
+    show(assets->volume,screen);
+    show(assets->audio,screen);
+    show(assets->on,screen);
+    show(assets->off,screen);
+    show(assets->minus,screen);
+    show(assets->plus,screen);
+    show(assets->audiobar,screen);
+    
+}
 
 void freesurface(image a)
 {
