@@ -939,3 +939,14 @@ if (config.resolution_h==720)
 else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
+void initgame(RunGame *rungame)
+{
+
+     //Background
+        rungame->gamebackground.surface=IMG_Load("graphics/Needed Folder/Game_Background.png");
+        rungame->gamebackground.pos1.x=0;
+        rungame->gamebackground.pos1.y=0;
+
+
+}
+
