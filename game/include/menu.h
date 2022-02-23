@@ -35,9 +35,11 @@ typedef struct
     Mix_Chunk *soundflip;
 } OptionGame;
 
-
+int check(SDL_Surface *screen,int *run,int state);
 int menu(MenuGame *menugame,SDL_Surface *screen,int run);
 int options(OptionGame *optiongame,SDL_Surface *screen,int run);
-
+int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int *run);
+int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run);
+int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run);
 
 #endif // MENU_H

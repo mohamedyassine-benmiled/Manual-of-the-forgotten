@@ -19,6 +19,6 @@ void initmenu(MenuImage *assets);
 void initoption(OptionImage *assets);
 void initaudio(audioimage *assets);
 void initgraphics(graphicimage *assets);
-
+void initgame(GameImage *assets);
 
 #endif // INIT_H

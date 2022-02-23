@@ -3,19 +3,15 @@
 #include <stdbool.h>
 #include <SDL/SDL.h>
 #include "image.h"
-
-typedef struct
-{
-    /* data */
-    GameImage assets;
-    int death;
-    int health;
-} Game;
+#include "init.h"
+#include "menu.h"
+#include "animation.h"
 
 
 
 
-//int game(int run);
+
+int game(SDL_Surface *screen,int run);
 
 
 #endif // GAME_H

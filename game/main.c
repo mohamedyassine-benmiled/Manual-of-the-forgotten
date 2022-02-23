@@ -73,7 +73,7 @@ switch (run)
         run=options(&optionmenu,screenmenu,run);
     break;
     case 3://Game
-        run=2;
+        run=game(screenmenu,run);
     break;
 
   }

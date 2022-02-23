@@ -194,7 +194,7 @@ while (SDL_PollEvent(&event)) {
                     break;
                     //On "p" press : Go to game
                     case (SDLK_p):
-                        run=2;
+                        run=3;
                     break;
                     //On "f" press : Go fullscreen or windowed
                     case (SDLK_f):
@@ -267,7 +267,7 @@ while (SDL_PollEvent(&event)) {
          SDL_GetMouseState(&x,&y);
                 //If click on play go to game
                     if(hoverbutton(x,y,assets.play[1]))
-                    run=2;
+                    run=3;
                 //If click on options go to options
                     if(hoverbutton(x,y,assets.options[1]))
                     run=2;
@@ -440,7 +440,7 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                         //On Press P : Go to play game
                         case (SDLK_p):
                             optiongame->graphics=0;
-                            run=2;
+                            run=3;
                         break;       
                         default:
                         break;
@@ -642,7 +642,7 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
                     //On press "p" : Go to game
                     case (SDLK_p):
                         optiongame->audio=0;
-                        run=2;
+                        run=3;
                     break;
                     //On press "f" : Go to fullscreen
                     case (SDLK_f):
@@ -850,7 +850,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     break;
                     //On Keyboard press p : Go to game
                     case (SDLK_p):
-                        run=2;
+                        run=3;
                     break;
                     //On Keyboard press f : Go fullscreen
                     case (SDLK_f):
