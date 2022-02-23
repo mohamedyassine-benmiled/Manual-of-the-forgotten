@@ -155,13 +155,12 @@ while (SDL_PollEvent(&event)) {
                         {
                         case 0:
                             run=2;
-                    
                             break;
                         case 1:
                            run=2;
                            break;
                         case 2 :
-                           run= 0;   
+                           run=0;   
                             break ; 
                         default:
                         printf("\nilyes was here");
@@ -751,8 +750,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
         get_config(&config);
 
      initoption(&assets);
-        show(assets.background,screen);
-        show(assets.logogroup,screen); 
+        optionrefresh(&assets,screen);
          for ( i = 0; i < 15; i++)
 
             {
@@ -763,7 +761,7 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
             show(assets.graphics[0],screen);
             show(assets.audio[0],screen);
             show(assets.keybinds[0],screen);
-
+        
         SDL_Flip(screen);
              optiongame->hover=0;
     SDL_Event event;
