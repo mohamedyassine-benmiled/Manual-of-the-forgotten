@@ -173,16 +173,3 @@ void show(image p,SDL_Surface *screen)
 {
     SDL_BlitSurface(p.surface,NULL,screen,&p.pos1);
 }
-void freecheck(CheckImage assets)
-{
-SDL_FreeSurface(assets.Window.surface);
-SDL_FreeSurface(assets.Apply.surface);
-SDL_FreeSurface(assets.Quit.surface);
-for (int i = 0; i < 2; i++)
-{
-
-
-SDL_FreeSurface(assets.No[i].surface);
-SDL_FreeSurface(assets.Yes[i].surface);
-}
-}
