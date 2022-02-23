@@ -88,6 +88,7 @@ int check(SDL_Surface *screen,int *run,int state)
 
 int menu(MenuGame *menugame,SDL_Surface *screen,int run)
 {
+    
         settings config;
         get_config(&config);
       int x,y,i,j,k;
@@ -106,6 +107,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     k=0;
     menugame->hover=0;
     menugame->press=0;
+    menugame->state=-1;
     Mix_VolumeMusic(set_audio(config.volume,config.audio));
     Mix_PlayMusic(menugame->Music, -1);
 
@@ -148,6 +150,24 @@ while (SDL_PollEvent(&event)) {
         case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                     {
+                    case(SDLK_RETURN):
+                        switch (menugame->state)
+                        {
+                        case 0:
+                            run=2;
+                    
+                            break;
+                        case 1:
+                           run=2;
+                           break;
+                        case 2 :
+                           run= 0;   
+                            break ; 
+                        default:
+                        printf("\nilyes was here");
+                            break;
+                        }
+                        break;
                     case (SDLK_ESCAPE):
                         run=0;
                     break;
@@ -169,6 +189,9 @@ while (SDL_PollEvent(&event)) {
                                         } 
                     break;  
                     case (SDLK_UP):
+                    if  (menugame->state <0)
+                        menugame->state=2;
+                    else
                       menugame-> state--;
                        if (menugame-> state<0)
                          {
@@ -176,8 +199,12 @@ while (SDL_PollEvent(&event)) {
                          }
                     break; 
                     case (SDLK_DOWN):
-                       menugame-> state++;
-                        if (menugame->state<0)
+                        if (menugame-> state<0)
+                         {
+                            menugame->state=0;
+                         }else
+                        menugame-> state++;
+                        if (menugame->state>2)
                           {
                              menugame->state=0;
                           }
@@ -189,6 +216,14 @@ while (SDL_PollEvent(&event)) {
         case SDL_MOUSEMOTION:
         //Init Motion With Sound
         SDL_GetMouseState(&x,&y);
+        if (menugame->state!=-1)
+        {
+          show(assets.quit[0],screen);
+          show(assets.options[0],screen);
+          show(assets.play[0],screen);
+          menugame->state=-2 ;
+        }
+        
 
         //Play Button
                 menugame->hover=menugame->hover+animatehover(x,y,assets.play[1],assets.play[0],screen);
@@ -224,6 +259,28 @@ while (SDL_PollEvent(&event)) {
         
         }
 }
+      switch(menugame-> state)
+      {
+      case 0:
+          show(assets.quit[0],screen);
+          show(assets.options[0],screen);
+          show(assets.play[1],screen);
+          break;
+      case 1: 
+          show(assets.quit[0],screen);
+          show(assets.options[1],screen);
+          show(assets.play[0],screen); 
+      break;
+      case 2:
+          show(assets.quit[1],screen);
+          show(assets.options[0],screen);
+          show(assets.play[0],screen);
+          break;
+         
+      default:
+        
+          break;
+      }
       SDL_Flip(screen);
     }
 write_config(&config);
