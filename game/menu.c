@@ -140,7 +140,6 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
     //Showing Animation
     show(assets.cbook[j],screen);
     show(assets.logo[i],screen);
-    SDL_Delay(50);
     //While event queue
 while (SDL_PollEvent(&event)) {
     switch (event.type)
@@ -310,8 +309,11 @@ while (SDL_PollEvent(&event)) {
           break;
       }
 
+
       //Screen Refresh
       SDL_Flip(screen);
+        //Animation Delay
+          SDL_Delay(50);
     }
 //Update Config
 write_config(&config);
@@ -331,7 +333,6 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
     //Show Check Images
         show(assets->listresolutionbox[0],screen);
         show(assets->listresolution,screen);
-        SDL_Flip(screen);
     while (list)
     {
       SDL_WaitEvent(&event);
@@ -390,8 +391,6 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
     optionrefresh(assets,screen);
     graphicsrefresh(&assetsg,screen,config.fullscreen);
     show (assets->graphics[1],screen);
-    //Update Screen
-    SDL_Flip(screen);
     //Initializing variables for check
     optiongame->hover=0;       
     newres=0;
@@ -592,8 +591,6 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
     audiorefresh(&assetsa,screen,config.audio);
         //Showing volume level
     show(assetsa.circle[config.volume],screen);
-    //Screen Update
-    SDL_Flip(screen);
     //Initializing Hover
     optiongame->hover=0;       
     SDL_Event event;
@@ -790,8 +787,6 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
     show(assets.graphics[0],screen);
     show(assets.audio[0],screen);
     show(assets.keybinds[0],screen);
-    //Update Screen
-    SDL_Flip(screen);
     //Initiating Hover and Sound Button
     optiongame->hover=0;
     optiongame->soundbutton=Mix_LoadWAV("sfx/button.ogg"); //Chargement de sound effect
