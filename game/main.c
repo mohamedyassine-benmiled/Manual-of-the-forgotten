@@ -20,6 +20,7 @@ int main (int argc , char *argv[])
   settings config;
 //Definition Screens
  SDL_Surface *screenmenu = NULL ;
+ SDL_Surface *screengame = NULL;
 //Initialize on Menu
  int run = 1 ;
  //Check if config file exits else create it
@@ -52,12 +53,13 @@ int main (int argc , char *argv[])
 //ScreenInit
 if (config.fullscreen)
 {
-    screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
-    SDL_WM_ToggleFullScreen(screenmenu);
+  screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
+    screengame = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
 }
 else
 {
     screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+      screengame = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
 }
 //Game Loop
 while(run)
@@ -78,6 +80,7 @@ switch (run)
 }
 //Freeing Screens
 SDL_FreeSurface(screenmenu);
+SDL_FreeSurface(screengame);
 //Closing Audio
 SDL_CloseAudio();
 //Quitting
