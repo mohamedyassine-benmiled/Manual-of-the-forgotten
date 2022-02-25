@@ -904,9 +904,9 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                     {
                         SDL_FreeSurface(screen);
                         if (config.fullscreen)
-                            SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
+                            screen=SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
                         else
-                            SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+                            screen=SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
                     }
                 optionrefresh(&assets,screen);
             }

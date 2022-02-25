@@ -54,6 +54,7 @@ if (config.fullscreen)
 {
     screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
     SDL_WM_ToggleFullScreen(screenmenu);
+    screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
 }
 else
 {
