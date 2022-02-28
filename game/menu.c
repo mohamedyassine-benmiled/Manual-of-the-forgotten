@@ -453,8 +453,10 @@ int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int 
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets->audio[1],assets->audio[0],screen);
         //Keybinds Button
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets->keybinds[1],assets->keybinds[0],screen);
+        //Arrow Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets->arrow[1],assets->arrow[0],screen);
         //Play button sound once
-                if (!(hoverbutton(x,y,assets->audio[1]) || hoverbutton(x,y,assets->keybinds[1])))
+                if (!(hoverbutton(x,y,assets->audio[1]) || hoverbutton(x,y,assets->keybinds[1]) || hoverbutton(x,y,assets->arrow[0])))
                 {
                     optiongame->hover=0;
                 }
@@ -668,7 +670,9 @@ int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets->graphics[1],assets->graphics[0],screen);
             //Keybinds Button
                 optiongame->hover=optiongame->hover+animatehover(x,y,assets->keybinds[1],assets->keybinds[0],screen);
-                if (!(hoverbutton(x,y,assets->graphics[1]) || hoverbutton(x,y,assets->keybinds[1])))
+            //Arrow Button
+                optiongame->hover=optiongame->hover+animatehover(x,y,assets->arrow[1],assets->arrow[0],screen);
+                if (!(hoverbutton(x,y,assets->graphics[1]) || hoverbutton(x,y,assets->keybinds[1]) || hoverbutton(x,y,assets->arrow[0])))
                     {
                         optiongame->hover=0;
                     }
@@ -811,9 +815,9 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
                 initoption(&assets);
                 SDL_FreeSurface(screen);
                 if (config.fullscreen)
-                    SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
+                    screen=SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
                 else
-                    SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
+                    screen=SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
             }
         optionrefresh(&assets,screen);
     }

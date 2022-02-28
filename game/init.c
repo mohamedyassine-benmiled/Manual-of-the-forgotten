@@ -295,7 +295,7 @@ if (config.resolution_h==1080)
     assets->arrow[0].pos2.y=454;  
     assets->arrow[0].pos2.w=180;
     assets->arrow[0].pos2.h=170; 
-    assets->arrow[1].surface=IMG_Load("graphics/1080/Options/arrow.png");
+    assets->arrow[1].surface=IMG_Load("graphics/1080/Options/arrowhover.png");
     assets->arrow[1].pos1=assets->arrow[0].pos1;
     assets->arrow[1].pos2=assets->arrow[0].pos2;
     t.font=TTF_OpenFont("ttf/alagard.ttf",65);
@@ -399,7 +399,7 @@ if (config.resolution_h==720)
     assets->arrow[0].pos2.y=302;  
     assets->arrow[0].pos2.w=120;
     assets->arrow[0].pos2.h=113; 
-    assets->arrow[1].surface=IMG_Load("graphics/720/Options/arrow.png");
+    assets->arrow[1].surface=IMG_Load("graphics/720/Options/arrowhover.png");
     assets->arrow[1].pos1=assets->arrow[0].pos1;
     assets->arrow[1].pos2=assets->arrow[0].pos2;
     t.font=TTF_OpenFont("ttf/alagard.ttf",43);
