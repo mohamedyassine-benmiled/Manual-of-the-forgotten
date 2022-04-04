@@ -1,4 +1,4 @@
-#include"collisionparfaite.h"
+#include"include/collisionparfaite.h"
 
 SDL_Color getpixel(SDL_Surface *pSurface,int x,int y)
 {	
