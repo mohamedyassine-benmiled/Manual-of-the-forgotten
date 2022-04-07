@@ -11,13 +11,13 @@ typedef struct
     int life, died;
     int elapsed;
     /* Variables */
-    int health, direction, speed, atk, hp;
+    int health, direction, speed, atk;
     /* Inputs */
     int cda1; //Cooldown Attack1
     int cda2; //Cooldown Attack2
     int cdsj; //Cooldown Special Jump
     int cdjump; //Cooldown Jump
-    Input input;
+    //Input input;
 }Character;
 
 #endif // CHAR_H_INCLUDED

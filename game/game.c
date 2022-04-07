@@ -9,7 +9,7 @@ int game(SDL_Surface *screen,int run)
     GameImage assets;
     initgame(&assets);
     SDL_Event event;
-    show(assets.background,screen);
+    showgame(assets.background.bg,screen);
     SDL_Flip(screen);
     while(run==3)
     {
@@ -32,7 +32,7 @@ int game(SDL_Surface *screen,int run)
                            run=0; 
                            else
                            {
-                                show(assets.background,screen);
+                                showgame(assets.background.bg,screen);
                            }  
                     break;
                     //On "m" Press : Go back to Menu

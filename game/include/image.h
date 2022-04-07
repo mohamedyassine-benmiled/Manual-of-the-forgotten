@@ -17,6 +17,7 @@ typedef struct
     int scroll_x;
     int scroll_y;
 } Background;
+
 typedef struct
 {
     image bg;

@@ -15,9 +15,9 @@ typedef struct
     int look, spritestate;
     int state;
     /* Variables */
-    int health, direction, speed, atk, health;
+    int health, direction, speed, atk;
     /* Inputs For Developers*/
-    Input input;
+    //Input input;
     /* Behavior */
     Behavior behavior;
 } Enemy;

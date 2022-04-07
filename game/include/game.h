@@ -9,6 +9,7 @@
 #include "collision.h"
 #include "enemy.h"
 #include "animation.h"
+#include "character.h"
 
 typedef struct
 {
