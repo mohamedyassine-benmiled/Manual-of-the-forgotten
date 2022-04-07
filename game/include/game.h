@@ -7,6 +7,8 @@
 #include "menu.h"
 #include "animation.h"
 #include "collision.h"
+#include "enemy.h"
+#include "animation.h"
 
 typedef struct
 {
@@ -24,6 +26,14 @@ typedef struct
     //Cheats for developer testing
     int ih;
     } Input;
+typedef struct
+{
+    Character player[4];
+    Enemy enemy[10];
+    Background bg;
+    Minimap minimap;
+    States global;
+} Game;
 
 int game(SDL_Surface *screen,int run);
 

@@ -2,6 +2,7 @@
 #define IMAGE_H
 #include <SDL/SDL_image.h>
 
+
 typedef struct
 {
     SDL_Surface *surface ;
@@ -16,7 +17,15 @@ typedef struct
     int scroll_x;
     int scroll_y;
 } Background;
-
+typedef struct
+{
+    image bg;
+    image pp[4];
+    image enemy[10];
+    int scroll_x;
+    int scroll_y;
+    int level;
+} Minimap;
 typedef struct 
 {
     image Window;

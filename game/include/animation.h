@@ -8,6 +8,18 @@
 #include "game.h"
 #include "image.h"
 
+typedef struct 
+{
+    /* data */
+    int stopdisplay;
+    int EOL;
+    int level;
+    int cinematic;
+    int dropboss;
+    int movement;
+} States;
+
+
 int hoverbutton(int x,int y, image img );
 int animatehover(int x,int y,image img,image img2,SDL_Surface *screen);
 
