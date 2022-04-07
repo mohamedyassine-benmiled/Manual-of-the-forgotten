@@ -13,9 +13,10 @@ typedef struct
     /* Variables */
     int health, direction, speed, atk, hp;
     /* Inputs */
-    int cda1;
-    int cda2;
-    int cdjump;
+    int cda1; //Cooldown Attack1
+    int cda2; //Cooldown Attack2
+    int cdsj; //Cooldown Special Jump
+    int cdjump; //Cooldown Jump
     Input input;
 }Character;
 
