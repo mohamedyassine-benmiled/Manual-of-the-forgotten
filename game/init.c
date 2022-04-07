@@ -949,8 +949,8 @@ void initgame(GameImage *assets)
         assets->background.pos1.y=0;
         assets->background.pos2.w=1920;
         assets->background.pos2.h=1080;
-        assets->background.pos2.x=1920;
-        assets->background.pos2.y=1080;
+        assets->background.pos2.x=0;
+        assets->background.pos2.y=0;
 
 
 }
