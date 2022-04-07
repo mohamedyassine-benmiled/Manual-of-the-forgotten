@@ -947,6 +947,23 @@ void initgame(GameImage *assets)
         assets->background.surface=IMG_Load("graphics/Needed Folder/Game_Background.png");
         assets->background.pos1.x=0;
         assets->background.pos1.y=0;
+        assets->background.pos2.w=1920;
+        assets->background.pos2.h=1080;
+        assets->background.pos2.x=1920;
+        assets->background.pos2.y=1080;
 
 
+}
+//Initialize Game Character
+void initcharacter(Character player)
+{
+    player->image=IMG_Load("");
+    player->position.x=0;
+    player->position.y=0;
+    player->life=3;
+    player->spritestate=0;
+    player->look=0;
+    player->pos_cercle.r=30;
+    player->speed=12;
+    player->health=100;
 }

@@ -9,6 +9,14 @@ typedef struct
     SDL_Rect pos2;
 } image;
 
+typedef struct
+{
+    image bg;
+    SDL_Surface *collision;
+    int scroll_x;
+    int scroll_y;
+} Background;
+
 typedef struct 
 {
     image Window;
@@ -78,7 +86,7 @@ typedef struct
 typedef struct
 {
     /* Options Assets */
-    image background;
+    Background background;
     image character;
     image health;
     image itemholding;

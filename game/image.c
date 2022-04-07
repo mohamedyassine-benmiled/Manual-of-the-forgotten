@@ -173,3 +173,7 @@ void show(image p,SDL_Surface *screen)
     SDL_BlitSurface(p.surface,NULL,screen,&p.pos1);
 }
 
+void showgame(image p,SDL_Surface *screen)
+{
+    SDL_BlitSurface(p.surface,&p.pos2,screen,&p.pos1);
+}
