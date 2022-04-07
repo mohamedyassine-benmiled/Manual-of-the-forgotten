@@ -6,7 +6,7 @@ typedef enum Behavior
 PATROL, FOLLOW, ATTACK, REFRACT
 }Behavior;
 
-typedef struct Character
+typedef struct 
 {
     SDL_Surface *image;
     SDL_Rect pos, src_pos, relativePos;
@@ -15,7 +15,7 @@ typedef struct Character
     int elapsed;
     int direction, speed;
 
-}Character;
+}Enemy;
 
 
 

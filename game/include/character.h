@@ -3,7 +3,7 @@
 #include "collision.h"
 #include "game.h"
 
-typedef struct Character
+typedef struct
 {
     SDL_Surface *image;
     SDL_Rect position, src_pos, relativePos;

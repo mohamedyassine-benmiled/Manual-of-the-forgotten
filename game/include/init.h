@@ -10,9 +10,10 @@
 #include "menu.h"
 #include "text.h"
 #include "config.h"
+#include "enemy.h"
+#include "character.h"
 
-
-
+void initcharacter(Character *player);
 void initcheck(CheckImage *assets);
 void initvideo();
 void initmenu(MenuImage *assets);
@@ -20,5 +21,6 @@ void initoption(OptionImage *assets);
 void initaudio(audioimage *assets);
 void initgraphics(graphicimage *assets);
 void initgame(GameImage *assets);
+void initenemy(Enemy *enemy);
 
 #endif // INIT_H
