@@ -8,22 +8,22 @@
 #include "animation.h"
 #include "collision.h"
 
-typedef enum Behavior
+typedef struct
 {
-PATROL, FOLLOW, ATTACK, REFRACT
-}Behavior;
-
-typedef struct Character
-{
-    SDL_Surface *image;
-    SDL_Rect pos, src_pos, relativePos;
-    Cercle pos_cercle;
-    int life, died;
-    int elapsed;
-    int direction, speed;
-    Behavior behavior;
-}Character;
-
+    //Movement
+    int up;
+    int down;
+    int right;
+    int left;
+    int startjump;
+    int reset;
+    //Attacks
+    int a1; //ATTACK1
+    int a2; //ATTACK2
+    int sj; //SPECIAL JUMP
+    //Cheats for developer testing
+    int ih;
+    } Input;
 
 int game(SDL_Surface *screen,int run);
 
