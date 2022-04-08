@@ -43,12 +43,6 @@ int main (int argc , char *argv[])
 
 //SDL_INIT and game caption and icon and sound
    initvideo();
-    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) //SDL_Mixer Init
-    {
-        printf("[-] %s", Mix_GetError());
-    }
-    Mix_VolumeMusic(set_audio(config.volume,config.audio));
-
 //ScreenInit
 if (config.fullscreen)
 {
@@ -60,6 +54,13 @@ else
 {
     screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
 }
+
+    if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1) //SDL_Mixer Init
+    {
+        printf("[-] %s", Mix_GetError());
+    }
+    
+    Mix_VolumeMusic(set_audio(config.volume,config.audio));
 //Game Loop
 while(run)
 {
@@ -72,6 +73,13 @@ switch (run)
         run=options(&optionmenu,screenmenu,run);
     break;
     case 3://Game
+        Mix_CloseAudio();
+        SDL_FillRect(screenmenu, NULL, SDL_MapRGB(screenmenu->format, 0, 0, 0));
+        run=intro(screenmenu);
+        if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1) //SDL_Mixer Init
+          {
+        printf("[-] %s", Mix_GetError());
+          }
         run=game(screenmenu,run);
     break;
 

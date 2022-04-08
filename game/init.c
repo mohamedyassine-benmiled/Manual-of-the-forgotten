@@ -942,6 +942,7 @@ printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.
 //Initialize Game Positions and Images
 void initgame(GameImage *assets)
 {
+    
 
      //Background
         assets->background.surface=IMG_Load("graphics/Needed Folder/Game_Background.png");
@@ -950,3 +951,91 @@ void initgame(GameImage *assets)
 
 
 }
+//Initialize Play Menu Positions and Images
+void initplay (playimage *assets)
+{
+        settings config;
+        get_config(&config);
+        text t ;
+if (config.resolution_h==1080)
+{
+    t.font=TTF_OpenFont("ttf/alagard.ttf",65);
+    strcpy(t.texte,"Continue");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->cont[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[0].pos1.x=838;
+    assets->cont[0].pos1.y=355;
+    assets->cont[0].pos2.x=838;
+    assets->cont[0].pos2.y=355;
+    assets->cont[0].pos2.w=303;
+    assets->cont[0].pos2.h=63;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->cont[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[1].pos1=assets->cont[0].pos1;
+    assets->cont[1].pos2=assets->cont[0].pos2;
+    
+     t.textColor.r=162;
+    t.textColor.g=142;
+    t.textColor.b=142;
+    assets->cont[2].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[2].pos1=assets->cont[0].pos1;
+    assets->cont[2].pos2=assets->cont[0].pos2;
+    
+
+
+    assets->playwindow.surface=IMG_Load("graphics/1080/Play/PlayWindow.png");
+        assets->playwindow.pos1.x=710;
+        assets->playwindow.pos1.y=161;
+
+    strcpy(t.texte,"New Game");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->newgame[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[0].pos1.x=816;
+    assets->newgame[0].pos1.y=508;
+    assets->newgame[0].pos2.x=816;
+    assets->newgame[0].pos2.y=508;
+    assets->newgame[0].pos2.w=348;
+    assets->newgame[0].pos2.h=63;
+     t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->newgame[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[1].pos1=assets->newgame[0].pos1;
+    assets->newgame[1].pos2=assets->newgame[0].pos2;
+
+
+     strcpy(t.texte,"Return");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->back[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[0].pos1.x=858;
+    assets->back[0].pos1.y=655;
+    assets->back[0].pos2.x=858;
+    assets->back[0].pos2.y=655;
+    assets->back[0].pos2.w=243;
+    assets->back[0].pos2.h=63;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->back[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[1].pos1=assets->back[0].pos1;
+    assets->back[1].pos2=assets->back[0].pos2;
+       TTF_CloseFont(t.font);
+}
+else
+if (config.resolution_h==720)
+{
+       
+}
+else
+
+printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
+}
+
