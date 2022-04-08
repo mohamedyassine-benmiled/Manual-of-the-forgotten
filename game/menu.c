@@ -198,6 +198,11 @@ while (SDL_PollEvent(&event)) {
                         {
                         run=3;
                         }
+                        else
+                        {
+                            menurefresh(&assets,screen);
+                            show(assets.play[1],screen);
+                        }  
                     break;
                     //On "f" press : Go fullscreen or windowed
                     case (SDLK_f):
