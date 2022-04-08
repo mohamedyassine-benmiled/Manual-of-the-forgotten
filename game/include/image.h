@@ -85,11 +85,11 @@ typedef struct
     image inventory;
 } GameImage;
 typedef struct 
-{   image playwindow ;
+{   
+    image playwindow;
     image newgame[2];
     image cont[3];
-    image back[2] ; 
-
+    image back[2]; 
 }playimage;
 void menurefresh(MenuImage *assets,SDL_Surface *screen);
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);

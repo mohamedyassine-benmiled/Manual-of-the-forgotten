@@ -955,9 +955,10 @@ void initplay (playimage *assets)
 {
         settings config;
         get_config(&config);
+        text t ;
 if (config.resolution_h==1080)
 {
-    text t ;
+    t.font=TTF_OpenFont("ttf/alagard.ttf",65);
     strcpy(t.texte,"Continue");
     t.textColor.r=207;
     t.textColor.g=175;
@@ -1012,19 +1013,20 @@ if (config.resolution_h==1080)
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
-    assets->back [0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->back [0].pos1.x=838;
-    assets->back [0].pos1.y=698;
-    assets->back [0].pos2.x=838;
-    assets->back [0].pos2.y=698;
-    assets->back [0].pos2.w=243;
-    assets->back [0].pos2.h=63;
+    assets->back[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[0].pos1.x=838;
+    assets->back[0].pos1.y=698;
+    assets->back[0].pos2.x=838;
+    assets->back[0].pos2.y=698;
+    assets->back[0].pos2.w=243;
+    assets->back[0].pos2.h=63;
     t.textColor.r=164;
     t.textColor.g=164;
     t.textColor.b=164;
-    assets->back [1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
-    assets->back [1].pos1=assets->back [0].pos1;
-    assets->back [1].pos2=assets->back [0].pos2;
+    assets->back[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[1].pos1=assets->back[0].pos1;
+    assets->back[1].pos2=assets->back[0].pos2;
+       TTF_CloseFont(t.font);
 }
 else
 if (config.resolution_h==720)
