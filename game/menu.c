@@ -275,7 +275,15 @@ while (SDL_PollEvent(&event)) {
          SDL_GetMouseState(&x,&y);
                 //If click on play go to game
                     if(hoverbutton(x,y,assets.play[1]))
-                    run=3;
+                   if (playmenu(screen,&run,0))
+                        {
+                        run=3;
+                        }
+                        else
+                        {
+                            menurefresh(&assets,screen);
+                            show(assets.play[1],screen);
+                        }  
                 //If click on options go to options
                     if(hoverbutton(x,y,assets.options[1]))
                     run=2;
