@@ -194,7 +194,10 @@ while (SDL_PollEvent(&event)) {
                     break;
                     //On "p" press : Go to game
                     case (SDLK_p):
+                        if (playmenu(screen,&run,0))
+                        {
                         run=3;
+                        }
                     break;
                     //On "f" press : Go fullscreen or windowed
                     case (SDLK_f):
@@ -951,4 +954,92 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
     //Delay after running animation
     SDL_Delay(500);
 return run;
+}
+// play 
+int playmenu(SDL_Surface *screen,int *run,int state)
+{
+    //
+    int x,y;
+    playimage assets;
+    initplay(&assets);
+    show(assets.playwindow,screen);
+    //
+    if (state)
+        {
+            show(assets.cont[0],screen);
+        }
+        else
+        {
+            show(assets.cont[2],screen);
+        }
+    //
+    show(assets.newgame[0],screen);
+    show(assets.back[0],screen);
+
+    SDL_Event event;
+        int check=3;
+        //Init Loop
+        while (check==3)
+        {
+            while (SDL_PollEvent(&event))
+            {
+            switch(event.type)
+            {
+            case SDL_QUIT:
+                *run=0;
+                check=0;
+                break;
+            case SDL_MOUSEMOTION:
+            SDL_GetMouseState(&x,&y);
+            //If hover on yes
+            if (hoverbutton(x,y,assets.newgame[0]))
+            {
+                show(assets.newgame[1],screen);
+            }
+            else
+            {
+                show(assets.newgame[0],screen);
+            }          
+            //If hover on no
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                show(assets.back[1],screen);
+            }
+            else
+            {
+                show(assets.back[0],screen);
+            }
+            if (state)
+            {
+                if (hoverbutton(x,y,assets.cont[0]))
+            {
+                show(assets.cont[1],screen);
+            }
+            else
+            {
+                show(assets.cont[0],screen);
+            } 
+            }
+            
+            break;
+            case SDL_MOUSEBUTTONUP:
+            SDL_GetMouseState(&x,&y);
+            //If Click on yes
+            if (hoverbutton(x,y,assets.newgame[0]))
+            {
+                check=1;
+            }
+            //If Click on no
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                check=0;
+            }
+
+      }  
+            }
+            //Update Screen
+            SDL_Flip(screen);
+        }
+            //Return Result
+            return check;
 }

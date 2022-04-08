@@ -34,7 +34,6 @@ typedef struct
     Mix_Chunk *soundbook;
     Mix_Chunk *soundflip;
 } OptionGame;
-
 int check(SDL_Surface *screen,int *run,int state);
 int menu(MenuGame *menugame,SDL_Surface *screen,int run);
 int options(OptionGame *optiongame,SDL_Surface *screen,int run);
