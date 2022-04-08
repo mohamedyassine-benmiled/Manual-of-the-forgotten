@@ -951,6 +951,7 @@ void initgame(GameImage *assets)
 
 
 }
+//Initialize Play Menu Positions and Images
 void initplay (playimage *assets)
 {
         settings config;
