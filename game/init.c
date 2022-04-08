@@ -940,14 +940,18 @@ else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
 //Initialize Game Positions and Images
-void initgame(GameImage *assets)
+void initbackground(Background *assets)
 {
     
 
      //Background
-        assets->background.surface=IMG_Load("graphics/Needed Folder/Game_Background.png");
-        assets->background.pos1.x=0;
-        assets->background.pos1.y=0;
+        assets->img.surface=IMG_Load("graphics/1080/Level/Level1_0.png");
+        assets->img.pos1.x=0;
+        assets->img.pos1.y=0;
+        assets->img.pos2.w=1920;
+        assets->img.pos2.h=1080;
+        assets->img.pos2.x=0;
+        assets->img.pos2.y=0;
 
 
 }
@@ -1038,4 +1042,15 @@ else
 
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-
+//Initialize Game Character
+void initcharacter(Character *player)
+{
+    player->image=IMG_Load("");
+    player->position.x=0;
+    player->position.y=0;
+    player->life=3;
+    player->spritestate=0;
+    player->look=0;
+    player->speed=12;
+    player->health=100;
+}

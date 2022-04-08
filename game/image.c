@@ -167,9 +167,18 @@ SDL_FreeSurface(assets.No[i].surface);
 SDL_FreeSurface(assets.Yes[i].surface);
 }
 }
+//Freeing Background Images from memory
+void freebackground(Background assets)
+{
+    SDL_FreeSurface(assets.img.surface);
+}
 //Showing an image on the screen
 void show(image p,SDL_Surface *screen)
 {
     SDL_BlitSurface(p.surface,NULL,screen,&p.pos1);
 }
-
+//Showing Characters and Enemies in game
+void showgame(image p,SDL_Surface *screen)
+{
+    SDL_BlitSurface(p.surface,&p.pos2,screen,&p.pos1);
+}

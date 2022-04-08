@@ -9,6 +9,23 @@ typedef struct
     SDL_Rect pos2;
 } image;
 
+typedef struct
+{
+    image img;
+    SDL_Surface *collision;
+    int scroll_x;
+    int scroll_y;
+} Background;
+
+typedef struct
+{
+    image bg;
+    image pp[4];
+    image enemy[10];
+    int scroll_x;
+    int scroll_y;
+    int level;
+} Minimap;
 typedef struct 
 {
     image Window;
@@ -75,30 +92,24 @@ typedef struct
     image minus;
 } audioimage;
 
-typedef struct
-{
-    /* Options Assets */
-    image background;
-    image character;
-    image health;
-    image itemholding;
-    image inventory;
-} GameImage;
 typedef struct 
 {   
     image playwindow;
     image newgame[2];
     image cont[3];
     image back[2]; 
-}playimage;
+} playimage;
+
 void menurefresh(MenuImage *assets,SDL_Surface *screen);
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);
 void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio);
 void optionrefresh(OptionImage *assets,SDL_Surface *screen);
 void show (image p,SDL_Surface *screen);
+void showgame (image p,SDL_Surface *screen);
 void freemenu(MenuImage assets);
 void freeoption(OptionImage assets);
 void freegraphics(graphicimage assets);
+void freebackground(Background assets);
 void freeaudio(audioimage assets);
 void freecheck(CheckImage assets);
 int hoverbutton(int x,int y, image img );
