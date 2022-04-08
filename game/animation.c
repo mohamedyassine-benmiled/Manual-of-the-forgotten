@@ -1,5 +1,5 @@
-
 #include "include/animation.h"
+
 //Check if mouse on top of button
 int hoverbutton(int x,int y, image img )
 {

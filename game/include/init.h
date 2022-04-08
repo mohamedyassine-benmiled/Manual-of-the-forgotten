@@ -20,7 +20,7 @@ void initmenu(MenuImage *assets);
 void initoption(OptionImage *assets);
 void initaudio(audioimage *assets);
 void initgraphics(graphicimage *assets);
-void initgame(GameImage *assets);
+void initbackground(Background *assets);
 void initenemy(Enemy *enemy);
 
 #endif // INIT_H

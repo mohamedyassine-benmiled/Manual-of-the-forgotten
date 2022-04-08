@@ -940,17 +940,17 @@ else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
 //Initialize Game Positions and Images
-void initgame(GameImage *assets)
+void initbackground(Background *assets)
 {
 
      //Background
-        assets->background.bg.surface=IMG_Load("graphics/1080/Level/Level1_0.png");
-        assets->background.bg.pos1.x=0;
-        assets->background.bg.pos1.y=0;
-        assets->background.bg.pos2.w=1920;
-        assets->background.bg.pos2.h=1080;
-        assets->background.bg.pos2.x=0;
-        assets->background.bg.pos2.y=0;
+        assets->img.surface=IMG_Load("graphics/1080/Level/Level1_0.png");
+        assets->img.pos1.x=0;
+        assets->img.pos1.y=0;
+        assets->img.pos2.w=1920;
+        assets->img.pos2.h=1080;
+        assets->img.pos2.x=0;
+        assets->img.pos2.y=0;
 
 
 }

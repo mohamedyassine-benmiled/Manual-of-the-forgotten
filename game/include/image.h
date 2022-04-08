@@ -2,7 +2,6 @@
 #define IMAGE_H
 #include <SDL/SDL_image.h>
 
-
 typedef struct
 {
     SDL_Surface *surface ;
@@ -12,7 +11,7 @@ typedef struct
 
 typedef struct
 {
-    image bg;
+    image img;
     SDL_Surface *collision;
     int scroll_x;
     int scroll_y;
@@ -93,23 +92,17 @@ typedef struct
     image minus;
 } audioimage;
 
-typedef struct
-{
-    /* Options Assets */
-    Background background;
-    image character;
-    image health;
-    image itemholding;
-    image inventory;
-} GameImage;
+
 void menurefresh(MenuImage *assets,SDL_Surface *screen);
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);
 void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio);
 void optionrefresh(OptionImage *assets,SDL_Surface *screen);
 void show (image p,SDL_Surface *screen);
+void showgame (image p,SDL_Surface *screen);
 void freemenu(MenuImage assets);
 void freeoption(OptionImage assets);
 void freegraphics(graphicimage assets);
+void freebackground(Background assets);
 void freeaudio(audioimage assets);
 void freecheck(CheckImage assets);
 int hoverbutton(int x,int y, image img );
