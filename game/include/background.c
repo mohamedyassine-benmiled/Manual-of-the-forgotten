@@ -1,113 +1,97 @@
-#include "background.h"
+#include "include/game.h"
 
 
-void initBack (background *b)
+void initBack (Game *b)
 {
 //background
-b->imgback=IMG_Load("prison.bmp");
-b->posback.x=0;
-b->posback.y=0;
+b->bg.img.surface=IMG_Load("level1.png");
+b->bg.img.pos1.x=0;
+b->bg.img.pos1.y=0;
 //camera
-b->camera.x=0;
-b->camera.y=0;
-b->camera.w=SCREEN_W; 
-b->camera.h=SCREEN_H;
+b->bg.img.pos2.x=0;
+b->bg.img.pos2.y=0;
+b->bg.img.pos2.w=1920; 
+b->bg.img.pos2.h=1080;
 //musique
-b->son=Mix_LoadMUS("musique.mp3"); //Chargement de la musique
+b->bg.son=Mix_LoadMUS("musique.mp3"); //Chargement de la musique
 
 }
 
-void initBackMasque (background *b)
+void initBackMasque (Game *b)
 {
 //background
-b->imgback=SDL_LoadBMP("prison mask.bmp");
-b->posback.x=0;
-b->posback.y=0;
+b->bg.img.surface=IMG_Load("level1MASQ.png");
+b->bg.img.pos1.x=0;
+b->bg.img.pos1.y=0;
 
 //camera
-b->camera.x=0;
-b->camera.y=0;
-b->camera.w=SCREEN_W; 
-b->camera.h=SCREEN_H;
-
-}
-
-void initBack2 (background *b)
-{
-//background2
-b->imgback=IMG_Load("prison.bmp");
-b->posback2.x=0;
-b->posback2.y=0;
-//camera2
-b->camera2.x=0;
-b->camera2.y=0;
-b->camera2.w=SCREEN_W; 
-b->camera2.h=SCREEN_H;
-//musique
-b->son=Mix_LoadMUS("musique.mp3"); //Chargement de la musique
+b->bg.img.pos2.x=0;
+b->bg.img.pos2.y=0;
+b->bg.img.pos2.w=1920; 
+b->bg.img.pos2.h=1080;
 
 }
 
 
-void initialisation_back(background *b)
+
+void initialisation_back(Game *b)
 {
 	initBack(b);
-	initBack2(b);
+	initBackMasque(b);
 }
 
 
 
-void afficheBack (background b, SDL_Surface *ecran)
+void afficheBack (Game b, SDL_Surface *ecran)
 {
 
-Mix_PlayMusic(b.son, -1);
-SDL_BlitSurface(b.imgback,&b.camera,ecran,&b.posback);
+Mix_PlayMusic(b.bg.son, -1);
+SDL_BlitSurface(b.bg.img.surface,&b.bg.img.pos2,ecran,&b.bg.img.pos1);
 }
-
-void afficheBack2 (background b, SDL_Surface *ecran)
+void afficheBackM (Game b, SDL_Surface *ecran)
 {
 
-Mix_PlayMusic(b.son, -1); 
-SDL_BlitSurface(b.imgback,&b.camera2,ecran,&b.posback2);
+
+SDL_BlitSurface(b.bg.img.surface,&b.bg.img.pos2,ecran,&b.bg.img.pos1);
 }
-/*void afficher_back(background b, SDL_Surface *ecran)
+
+
+void afficher_back(Game b, SDL_Surface *ecran)
 {
 	afficheBack(b,ecran);
-	afficheBack2(b,ecran);
+	afficheBackM(b,ecran);
 	
-}*/
+	
+}
 
-void scrolling (background *b,int direction)
+void scrolling (Game *b,int direction , int *pas)
 {
- const int speed=5;
-if (direction ==0){
-	b->camera.x+= speed;          
+ 
+if (direction ==0)
+{
+	b->bg.img.pos1.x+=pas;          
 
-	b->camera2.x+= speed;
+	
 	
         }
 else if (direction ==1){          
-	b->camera.x-=speed; 
+	b->bg.img.pos1.x-=pas; 
 
-	b->camera2.x-=speed; 
+	
 	}
-else if (direction ==4){
-        b->camera2.x+= speed;
-	}
-else if (direction ==7){            
-	b->camera2.x-= speed;
-	}
-else if (direction ==2){  
-        b->camera.y-= speed;
 
-         b->camera2.y-= speed;
-	}
-else if (direction ==3){          
-        b->camera.y+= speed;
 
-	 b->camera2.y+= speed;
+
+else if (direction ==2){          
+        b->bg.img.pos1.y+= speed;
+
+	 
 	 }
+else if (direction ==3){  
+        b->bg.img.pos1.y-= speed;
 
+         
+	}
 }
 
 
