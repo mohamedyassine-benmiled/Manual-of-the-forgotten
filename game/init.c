@@ -8,6 +8,28 @@
 #include "include/init.h"
 #include <string.h>
 
+//Initialize Player
+void initplayer(Game *g)
+{
+    settings config;
+    get_config(&config);
+    /* character principal */
+    g->player[0].image=IMG_Load("graphics/1080/Spritesheet/player0.png");
+    g->player[0].position.x=434;
+    g->player[0].position.y=config.resolution_h-600;
+    g->player[0].life=3;
+    g->player[0].spritestate=0;
+    g->player[0].look=0;
+    g->player[0].pos_cercle.r=30;
+    g->player[0].speed=12;
+    g->player[0].input.right=0;
+    g->player[0].input.left=0;
+    g->player[0].input.up=0;
+    g->player[0].input.down=0;
+    g->player[0].input.fix=0;
+    g->player[0].input.startJump=0;
+    g->player[0].input.jumpHeight=0;
+}
 //Initialize Check positions and Images
 void initcheck(CheckImage *assets)
 {
@@ -952,6 +974,8 @@ void initbackground(Background *assets)
         assets->img.pos2.h=1080;
         assets->img.pos2.x=0;
         assets->img.pos2.y=0;
+        assets->scroll_x=0;
+        assets->scroll_y=0;
 
 
 }

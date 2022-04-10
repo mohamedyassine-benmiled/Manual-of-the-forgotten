@@ -4,10 +4,12 @@
 #include <SDL/SDL_image.h>
 #include "include/game.h"
 
+
 int game(SDL_Surface *screen,int run)
 {
     Game g;
     initbackground(&g.bg);
+    initplayer(&g);
     SDL_Event event;
     showgame(g.bg.img,screen);
     SDL_Flip(screen);
@@ -26,6 +28,25 @@ int game(SDL_Surface *screen,int run)
                 case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                     {
+                        case SDLK_RIGHT:
+                        {
+                            g.player[0].input.right=1;
+                            g.player[0].input.left=0;
+                        }
+                        break;
+
+                        case SDLK_LEFT:
+                        {
+                            g.player[0].input.left=1;
+                            g.player[0].input.right=0;
+                        }
+                        break;
+
+                        case SDLK_UP:
+                        {
+                            g.player[0].input.up=1;
+                        }
+                        break;
                     //On Escape Press : Quit Check
                     case (SDLK_ESCAPE):
                         if (check(screen,&run,0))
@@ -54,6 +75,7 @@ int game(SDL_Surface *screen,int run)
 
         }
     }
+    gamerefresh(&g,screen);
     }
     freebackground(g.bg);
 return run;

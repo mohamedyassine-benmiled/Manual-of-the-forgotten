@@ -5,7 +5,40 @@
 #include "include/image.h"
 #include "include/game.h"
 #include "include/menu.h"
+#include "include/declarations.h"
+#include "include/config.h"
 
+//Showing Game Images in the right position
+void gamerefresh(Game *g,SDL_Surface *screen)
+{
+    settings config;
+    get_config(&config);
+    unsigned int elapsed;
+    unsigned int lasttime = SDL_GetTicks();
+    SDL_Rect pos_screen;
+
+    pos_screen.x=0;
+    pos_screen.y=(config.resolution_h-g->bg.img.pos1.h)/2;
+
+    g->bg.img.pos1.x=g->bg.scroll_x;
+    g->bg.img.pos1.y=g->bg.scroll_y;
+    g->bg.img.pos1.h=1920;
+    g->bg.img.pos1.w=1080;
+
+        g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
+        g->player[0].src_pos.y=CHAR_H*g->player[0].look;
+        g->player[0].src_pos.h=CHAR_H;
+        g->player[0].src_pos.w=CHAR_W;
+ 
+   
+  SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+    /* Fixing fps */
+    elapsed = SDL_GetTicks()-lasttime;
+    if (elapsed<1000/FPS)
+        SDL_Delay(1000/FPS-elapsed);
+SDL_BlitSurface(g->bg.img.surface,&g->bg.img.pos1,screen,&pos_screen);
+    SDL_Flip(screen);
+}
 //Showing Graphics Images to refresh screen
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen)
 {

@@ -112,5 +112,6 @@ void freegraphics(graphicimage assets);
 void freebackground(Background assets);
 void freeaudio(audioimage assets);
 void freecheck(CheckImage assets);
+void gamerefresh(Game *g,SDL_Surface *screen);
 int hoverbutton(int x,int y, image img );
 #endif // IMAGE_H
