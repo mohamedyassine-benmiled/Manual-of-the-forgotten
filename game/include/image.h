@@ -15,6 +15,7 @@ typedef struct
     SDL_Surface *collision;
     int scroll_x;
     int scroll_y;
+    Mix_Music *son;
 } Background;
 
 typedef struct
