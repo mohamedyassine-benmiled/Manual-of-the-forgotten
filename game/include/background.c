@@ -58,13 +58,13 @@ void scrolling (Game *b,int direction , int *pas)
  
 if (direction ==0)
 {
-	b->bg.img.pos1.x+=pas;          
+	b->bg.img.pos2.x+=pas;          
 
 	
 	
         }
 else if (direction ==1){          
-	b->bg.img.pos1.x-=pas; 
+	b->bg.img.pos2.x-=pas; 
 
 	
 	}
@@ -72,12 +72,12 @@ else if (direction ==1){
 
 
 else if (direction ==2){          
-        b->bg.img.pos1.y+= pas;
+        b->bg.img.pos2.y+= pas;
 
 	 
 	 }
 else if (direction ==3){  
-        b->bg.img.pos1.y-=pas;
+        b->bg.img.pos2.y-=pas;
 
          
 	}
