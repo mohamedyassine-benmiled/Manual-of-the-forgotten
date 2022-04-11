@@ -1,7 +1,9 @@
 #ifndef CHAR_H_INCLUDED
 #define CHAR_H_INCLUDED
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include "collision.h"
-#include "game.h"
+
 
 typedef struct
 {
