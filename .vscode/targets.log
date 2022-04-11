@@ -6,7 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
+<<<<<<< Updated upstream
 # Make data base, printed on Mon Apr 11 14:41:02 2022
+=======
+# Make data base, printed on Mon Apr 11 16:33:11 2022
+>>>>>>> Stashed changes
 
 # Variables
 
@@ -77,7 +81,11 @@ DEL = del
 # environment
 MANAGERPID = 1406
 # environment
+<<<<<<< Updated upstream
 VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a4dce97d-ac83-4d4d-b56b-46f841b75cc9.sock
+=======
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2da1b4d2-a76e-4b12-97be-872bce5833aa.sock
+>>>>>>> Stashed changes
 # environment
 VSCODE_CWD = /home/osboxes
 # default
@@ -237,7 +245,11 @@ EXE = .exe
 # environment
 LANG = C
 # environment
+<<<<<<< Updated upstream
 VSCODE_PID = 2564
+=======
+VSCODE_PID = 5128
+>>>>>>> Stashed changes
 # variable set hash-table stats:
 # Load=114/1024=11%, Rehash=0, Collisions=27/156=17%
 
@@ -248,9 +260,15 @@ VSCODE_PID = 2564
 # Directories
 
 # . (device 2051, inode 2755542): 16 files, no impossibilities.
+<<<<<<< Updated upstream
 # game (device 2051, inode 2883661): 15 files, no impossibilities.
 
 # 31 files, no impossibilities in 2 directories.
+=======
+# game (device 2051, inode 2883661): 16 files, no impossibilities.
+
+# 32 files, no impossibilities in 2 directories.
+>>>>>>> Stashed changes
 
 # Implicit Rules
 
@@ -277,12 +295,29 @@ obj/text.o:
 #  File has not been updated.
 
 # Not a target:
+<<<<<<< Updated upstream
 obj/sound.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 book: obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o
+=======
+game/enigme.c:
+#  Implicit rule search has been done.
+ 
+#  Last modified 2022-04-11 16:33:10.575742418
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/sound.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+book: obj/enigme.o obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o
+>>>>>>> Stashed changes
 #  Implicit rule search has not been done.
 #  Last modified 2022-03-21 11:12:22.835278181
 #  File has been updated.
@@ -307,11 +342,24 @@ all: book
 #  File has not been updated.
 
 # Not a target:
+<<<<<<< Updated upstream
 game/init.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-04-11 14:40:32.066866658
 #  File has been updated.
 #  Successfully updated.
+=======
+obj/intro.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/collision.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+>>>>>>> Stashed changes
 
 # Not a target:
 obj/intro.o:
@@ -358,6 +406,37 @@ cleanw:
 #  recipe to execute (from 'Makefile', line 64):
 	$(DEL) $(WDELOBJ) $(DEP) $(APPNAME)$(EXE)
 
+<<<<<<< Updated upstream
+=======
+obj/enigme.o: game/enigme.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'enigme'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/enigme.o
+# automatic
+# % := 
+# automatic
+# * := enigme
+# automatic
+# + := game/enigme.c
+# automatic
+# | := 
+# automatic
+# < := game/enigme.c
+# automatic
+# ^ := game/enigme.c
+# automatic
+# ? := game/enigme.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 45):
+	-mkdir obj
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+>>>>>>> Stashed changes
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
@@ -395,6 +474,7 @@ clean:
 	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
 	
 
+<<<<<<< Updated upstream
 obj/init.o: game/init.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'init'
@@ -422,6 +502,13 @@ obj/init.o: game/init.c
 #  recipe to execute (from 'Makefile', line 45):
 	-mkdir obj
 	$(CC) $(CXXFLAGS) -o $@ -c $<
+=======
+# Not a target:
+obj/init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+>>>>>>> Stashed changes
 
 # Not a target:
 obj/config.o:
@@ -430,13 +517,18 @@ obj/config.o:
 #  File has not been updated.
 
 # files hash-table stats:
+<<<<<<< Updated upstream
 # Load=22/1024=2%, Rehash=0, Collisions=0/60=0%
+=======
+# Load=23/1024=2%, Rehash=0, Collisions=0/62=0%
+>>>>>>> Stashed changes
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
+<<<<<<< Updated upstream
 # strcache buffers: 1 (0) / strings = 54 / storage = 482 B / avg = 8 B
 # current buf: size = 8162 B / used = 482 B / count = 54 / avg = 8 B
 
@@ -444,5 +536,14 @@ obj/config.o:
 # hash-table stats:
 # Load=54/8192=1%, Rehash=0, Collisions=2/82=2%
 # Finished Make data base on Mon Apr 11 14:41:02 2022
+=======
+# strcache buffers: 1 (0) / strings = 56 / storage = 508 B / avg = 9 B
+# current buf: size = 8162 B / used = 508 B / count = 56 / avg = 9 B
+
+# strcache performance: lookups = 84 / hit rate = 33%
+# hash-table stats:
+# Load=56/8192=1%, Rehash=0, Collisions=2/84=2%
+# Finished Make data base on Mon Apr 11 16:33:11 2022
+>>>>>>> Stashed changes
 
  
