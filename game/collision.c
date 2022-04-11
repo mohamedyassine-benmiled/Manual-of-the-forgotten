@@ -14,7 +14,7 @@ SDL_Color getpixel(SDL_Surface *pSurface,int x,int y)
 }
 int  collisionparfaite(SDL_Surface *psurface,Game p)
 {	
-	int tabx[7],taby[7],i;
+	int tabx[7],taby[7],i,collision=0;
 	SDL_Color color1,color;
 	color1.r = 0;
 	color1.g = 0;
@@ -41,11 +41,11 @@ int  collisionparfaite(SDL_Surface *psurface,Game p)
 	color=getpixel(psurface,tabx[i],taby[i]);
 	if(color.r==color1.r && color.b==color1.b && color.g==color1.g)
 	{
-		return i;
+		collision=1;
 
 	}
 	}
-	return 10;
+	return collision;
 	
 }	
 
