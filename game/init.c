@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include "include/menu.h"
+#include "include/declarations.h"
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
 #include <SDL/SDL_ttf.h>
@@ -21,7 +22,7 @@ void initplayer(Game *g)
     g->player[0].spritestate=0;
     g->player[0].look=0;
     g->player[0].pos_cercle.r=30;
-    g->player[0].speed=12;
+    g->player[0].speed=SPEED;
     g->player[0].input.right=0;
     g->player[0].input.left=0;
     g->player[0].input.up=0;

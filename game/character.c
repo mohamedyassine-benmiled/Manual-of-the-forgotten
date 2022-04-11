@@ -19,19 +19,14 @@ void movement(Game *g)
     get_config(&config);
         /* Right */
 
-        if ((g->player[0].input.right) && !Collision_PPP(g,g->player[0]))
+        if ((g->player[0].input.right))
         {
-            g->bg.scroll_x+=SPEED;
-
-
-            if (!center_camera(g))
-            {
-                if (g->player[0].position.x<config.resolution_w/2)
+          
+                if (g->player[0].position.x<config.resolution_w)
                 {
                     g->player[0].position.x+=SPEED;
-                    g->bg.scroll_x-=SPEED;
                 }
-            }
+            
 
 
             if (g->player[0].look>5)
@@ -54,25 +49,15 @@ void movement(Game *g)
 
         /* Left */
 
-        else if ((g->player[0].input.left) && !Collision_PPP(g,g->player[0]))
+        else if ((g->player[0].input.left))
         {
-            g->bg.scroll_x-=SPEED;
-            if (g->bg.scroll_x<0)
-            {
-                g->bg.scroll_x+=SPEED;
+
                 g->player[0].position.x-=SPEED;
                 if (g->player[0].position.x<0)
                     g->player[0].position.x+=SPEED;
-            }
 
-            if (!center_camera(g))
-            {
-                if (g->player[0].position.x>config.resolution_w/2)
-                {
-                    g->player[0].position.x-=SPEED;
-                    g->bg.scroll_x+=SPEED;
-                }
-            }
+
+
             if (g->player[0].look<5)
             {
                 g->player[0].look=5;
@@ -106,14 +91,14 @@ void movement(Game *g)
                 g->player[0].spritestate=5;
             }
         }
-
+        
         if ((g->player[0].input.up) && !g->player[0].input.fix)
         {
             g->player[0].input.startJump = 1;
         }
-
+        
         /* JUMP START */
-
+        
         if (g->player[0].input.startJump)
         {
             g->player[0].input.fix=1;
@@ -121,7 +106,7 @@ void movement(Game *g)
             if (g->player[0].input.jumpHeight < maxJmpH)
             {
                 g->player[0].input.jumpHeight += JUMP_POWER;
-                g->player[0].position.y -= JUMP_POWER + 2*GRAVITY;
+                g->player[0].position.y -= JUMP_POWER + GRAVITY;
             }
             else
             {
@@ -129,30 +114,23 @@ void movement(Game *g)
                 g->player[0].input.jumpHeight=0;
             }
         }
-
+        
         /* JUMP END */
 
 
 
         /* GRAVITY */
-        g->player[0].position.y+=GRAVITY;
+        
+        //g->player[0].position.y+=GRAVITY;
 
-        if (onGround(g, g->player[0]))
+        if (g->player[0].position.y!=515)//ONGROUND
         {
             g->player[0].position.y-=GRAVITY;
             g->player[0].input.fix=0;
         }
 
-        g->player[0].position.y+=GRAVITY;
-
-        if (onGround(g, g->player[0]))
-        {
-            g->player[0].position.y-=GRAVITY;
-            g->player[0].input.fix=0;
-        }
-
-
-
+        
+        
     g->player[0].pos_cercle.x=g->player[0].position.x+g->bg.scroll_x;
     g->player[0].pos_cercle.y=g->player[0].position.y+40;
     g->player[0].pos_cercle.r=30;

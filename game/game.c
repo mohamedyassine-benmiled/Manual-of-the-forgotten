@@ -15,7 +15,7 @@ int game(SDL_Surface *screen,int run)
     SDL_Flip(screen);
     while(run==3)
     {
-
+        movement(&g);
     //Wait for event
     while (SDL_PollEvent(&event))
     {
