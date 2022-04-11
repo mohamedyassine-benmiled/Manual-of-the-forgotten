@@ -4,11 +4,15 @@
 void initBack (Game *b)
 {
 //background
-b->bg.img.surface=IMG_Load("level1.png");
+b->bg.img.surface=IMG_Load("graphics/720/Level/Level1_0.png");
 b->bg.img.pos1.x=0;
 b->bg.img.pos1.y=0;
-b->bg.img.pos1.w=6000; 
-b->bg.img.pos1.h=1080;
+b->bg.img.pos2.w=1280;
+b->bg.img.pos2.h=720;
+b->bg.img.pos2.x=0;
+b->bg.img.pos2.y=0;
+b->bg.scroll_x=0;
+b->bg.scroll_y=0;
 //musique
 b->bg.son=Mix_LoadMUS("musique.mp3"); //Chargement de la musique
 
@@ -17,21 +21,13 @@ b->bg.son=Mix_LoadMUS("musique.mp3"); //Chargement de la musique
 void initBackMasque (Game *m)
 {
 //background
-m->bg.img.surface=IMG_Load("level1MASQ.png");
-m->bg.img.pos1.x=0;
-m->bg.img.pos1.y=0;
-m->bg.img.pos1.w=6000; 
-m->bg.img.pos1.h=1080;
+m->bg.collision=IMG_Load("level1MASQ.png");
 
 }
 
 
 
-void initialisation_back(Game *b)
-{
-	initBack(b);
-	
-}
+
 
 
 
