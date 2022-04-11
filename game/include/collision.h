@@ -1,6 +1,8 @@
 #ifndef COLLISION_H_INCLUDED
 #define COLLISION_H_INCLUDED
-
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
+#include "image.h"
 
 typedef struct Box
 {
