@@ -1143,17 +1143,14 @@ void initcharacter(Character *player)
     player->speed=12;
     player->health=100;
 }
-void init_Enemy(Enemy *Enemy)
+void init_characters(Game *game)
 {
-        Enemy->image = IMG_Load("")
-        Enemy[0]->position.x=2500;
-        Enemy[0]->position.y=START_Y+465;
-        Enemy[0]->direction=1;
-        Enemy[0]->fix=0;
-        Enemy[0]->life=1;
-        Enemy[0]->actuel=0;
-        Enemy[0]->look=0;
-        Enemy[0]->speed=1;
-        Enemy[0]->vision_range=350;
-        Enemy[0]->behavior=PATROL;
+
+        game->enemy->image= IMG_Load("");
+        game->enemy[0].position.x=;
+        game->enemy[0].position.y=START_Y+ ;
+        game->enemy[0].direction=1;
+        game->enemy[0].look=0;
+        game->enemy[0].speed=1;
+        game->enemy[0].behavior=PATROL;
 }

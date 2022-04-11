@@ -15,5 +15,6 @@
 #define maxJmpH 95
 #define RELOAD 1000
 #define MAX_ITEMS 4
-
+#define START_y 515
+#define START_x 100
 #endif
