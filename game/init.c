@@ -1006,7 +1006,7 @@ if (config.resolution_h==1080)
     assets->cont[1].pos1=assets->cont[0].pos1;
     assets->cont[1].pos2=assets->cont[0].pos2;
     
-     t.textColor.r=162;
+    t.textColor.r=162;
     t.textColor.g=142;
     t.textColor.b=142;
     assets->cont[2].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
@@ -1060,7 +1060,72 @@ if (config.resolution_h==1080)
 else
 if (config.resolution_h==720)
 {
-       
+           t.font=TTF_OpenFont("ttf/alagard.ttf",43);
+    strcpy(t.texte,"Continue");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->cont[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[0].pos1.x=559;
+    assets->cont[0].pos1.y=236;
+    assets->cont[0].pos2=assets->cont[0].pos1;
+    assets->cont[0].pos2.w=202;
+    assets->cont[0].pos2.h=42;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->cont[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[1].pos1=assets->cont[0].pos1;
+    assets->cont[1].pos2=assets->cont[0].pos2;
+    
+     t.textColor.r=162;
+    t.textColor.g=142;
+    t.textColor.b=142;
+    assets->cont[2].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[2].pos1=assets->cont[0].pos1;
+    assets->cont[2].pos2=assets->cont[0].pos2;
+    
+
+
+    assets->playwindow.surface=IMG_Load("graphics/720/Play/PlayWindow.png");
+        assets->playwindow.pos1.x=473;
+        assets->playwindow.pos1.y=107;
+
+    strcpy(t.texte,"New Game");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->newgame[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[0].pos1.x=544;
+    assets->newgame[0].pos1.y=338;
+    assets->newgame[0].pos2=assets->newgame[0].pos1;
+    assets->newgame[0].pos2.w=162;
+    assets->newgame[0].pos2.h=42;
+     t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->newgame[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[1].pos1=assets->newgame[0].pos1;
+    assets->newgame[1].pos2=assets->newgame[0].pos2;
+
+
+     strcpy(t.texte,"Return");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->back[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[0].pos1.x=572;
+    assets->back[0].pos1.y=436;
+    assets->back[0].pos2=assets->back[0].pos1;
+    assets->back[0].pos2.w=162;
+    assets->back[0].pos2.h=42;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->back[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[1].pos1=assets->back[0].pos1;
+    assets->back[1].pos2=assets->back[0].pos2;
+       TTF_CloseFont(t.font);
 }
 else
 
