@@ -23,14 +23,14 @@ void gamerefresh(Game *g,SDL_Surface *screen)
         g->player[0].src_pos.h=CHAR_H;
         g->player[0].src_pos.w=CHAR_W;
  
-   
+    showgame(g->bg.img,screen);
   SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
         SDL_Delay(1000/FPS-elapsed);
 
-    showgame(g->bg.img,screen);
+
     SDL_Flip(screen);
 }
 //Showing Graphics Images to refresh screen

@@ -4,8 +4,6 @@
 #define true 1
 #define false 0
 
-#define PLAT_H 600
-#define PLAT_W 720
 #define FPS 60
 #define CHAR_H 90
 #define CHAR_W 90
