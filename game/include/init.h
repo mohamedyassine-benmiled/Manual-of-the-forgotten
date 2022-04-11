@@ -12,7 +12,7 @@
 #include "config.h"
 #include "enemy.h"
 #include "character.h"
-
+#include "declarations.h"
 void initcharacter(Character *player);
 void initcheck(CheckImage *assets);
 void initvideo();

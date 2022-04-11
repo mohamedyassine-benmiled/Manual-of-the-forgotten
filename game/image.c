@@ -25,6 +25,8 @@ void gamerefresh(Game *g,SDL_Surface *screen)
  
     showgame(g->bg.img,screen);
   SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+   SDL_BlitSurface(g->enemy[0].image,NULL,screen,&g->enemy[0].position);
+ 
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)

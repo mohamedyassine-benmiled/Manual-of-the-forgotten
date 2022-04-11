@@ -3,32 +3,22 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
-#include "enemy.h"
+#include "include/enemy.h"
 
 
 int spotted(Game *game, int i)
 {
-    return ((game->player->position.x+game->bg.scroll_x < game->enemy->position.x && game->enemy.direction == -1) || (game->player.position.x+game->bg.scroll_x > game->enemy.position.x && game->enemy->direction == 1) ) ;
+    return ((game->player->position.x+game->bg.scroll_x < game->enemy->position.x && game->enemy->behavior == -1) || (game->player->position.x+game->bg.scroll_x > game->enemy->position.x && game->enemy->direction == 1) ) ;
 }
 void movement_enemy(Game *game, int n)
 {
 
-        if (game->enemy.behavior==PATROL || game->enemy.behavior==REFRACT)
+        if (game->enemy[n].behavior==PATROL || game->enemy[n].behavior==REFRACT)
         {
-            if (!game->enemy[n])
-            {
-                game->enemy.=SDL_GetTicks();
-                game->npc[n].fix=1;
-            }
-
-
+            
             game->enemy[n].position.x+=game->enemy[n].speed*game->enemy[n].direction;
 
-            if (SDL_TICKS_PASSED(game->enemy.elapsed, 5000))
-            {
-                game->enemy[n].direction*=(-1);
-                game->enemy[n].fix=0;
-            }
+           
 
             if (game->enemy[n].direction==1)
                 game->enemy[n].look=0;
