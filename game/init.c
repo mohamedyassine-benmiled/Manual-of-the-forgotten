@@ -8,6 +8,28 @@
 #include "include/init.h"
 #include <string.h>
 
+//Initialize Player
+void initplayer(Game *g)
+{
+    settings config;
+    get_config(&config);
+    /* character principal */
+    g->player[0].image=IMG_Load("graphics/720/Spritesheet/player0.png");
+    g->player[0].position.x=100;
+    g->player[0].position.y=515;
+    g->player[0].life=3;
+    g->player[0].spritestate=0;
+    g->player[0].look=0;
+    g->player[0].pos_cercle.r=30;
+    g->player[0].speed=12;
+    g->player[0].input.right=0;
+    g->player[0].input.left=0;
+    g->player[0].input.up=0;
+    g->player[0].input.down=0;
+    g->player[0].input.fix=0;
+    g->player[0].input.startJump=0;
+    g->player[0].input.jumpHeight=0;
+}
 //Initialize Check positions and Images
 void initcheck(CheckImage *assets)
 {
@@ -945,13 +967,15 @@ void initbackground(Background *assets)
     
 
      //Background
-        assets->img.surface=IMG_Load("graphics/1080/Level/Level1_0.png");
+        assets->img.surface=IMG_Load("graphics/720/Level/Level1_0.png");
         assets->img.pos1.x=0;
         assets->img.pos1.y=0;
-        assets->img.pos2.w=1920;
-        assets->img.pos2.h=1080;
+        assets->img.pos2.w=1280;
+        assets->img.pos2.h=720;
         assets->img.pos2.x=0;
         assets->img.pos2.y=0;
+        assets->scroll_x=0;
+        assets->scroll_y=0;
 
 
 }
@@ -982,7 +1006,7 @@ if (config.resolution_h==1080)
     assets->cont[1].pos1=assets->cont[0].pos1;
     assets->cont[1].pos2=assets->cont[0].pos2;
     
-     t.textColor.r=162;
+    t.textColor.r=162;
     t.textColor.g=142;
     t.textColor.b=142;
     assets->cont[2].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
@@ -1036,7 +1060,72 @@ if (config.resolution_h==1080)
 else
 if (config.resolution_h==720)
 {
-       
+           t.font=TTF_OpenFont("ttf/alagard.ttf",43);
+    strcpy(t.texte,"Continue");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->cont[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[0].pos1.x=559;
+    assets->cont[0].pos1.y=236;
+    assets->cont[0].pos2=assets->cont[0].pos1;
+    assets->cont[0].pos2.w=202;
+    assets->cont[0].pos2.h=42;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->cont[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[1].pos1=assets->cont[0].pos1;
+    assets->cont[1].pos2=assets->cont[0].pos2;
+    
+     t.textColor.r=162;
+    t.textColor.g=142;
+    t.textColor.b=142;
+    assets->cont[2].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[2].pos1=assets->cont[0].pos1;
+    assets->cont[2].pos2=assets->cont[0].pos2;
+    
+
+
+    assets->playwindow.surface=IMG_Load("graphics/720/Play/PlayWindow.png");
+        assets->playwindow.pos1.x=473;
+        assets->playwindow.pos1.y=107;
+
+    strcpy(t.texte,"New Game");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->newgame[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[0].pos1.x=544;
+    assets->newgame[0].pos1.y=338;
+    assets->newgame[0].pos2=assets->newgame[0].pos1;
+    assets->newgame[0].pos2.w=162;
+    assets->newgame[0].pos2.h=42;
+     t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->newgame[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[1].pos1=assets->newgame[0].pos1;
+    assets->newgame[1].pos2=assets->newgame[0].pos2;
+
+
+     strcpy(t.texte,"Return");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->back[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[0].pos1.x=572;
+    assets->back[0].pos1.y=436;
+    assets->back[0].pos2=assets->back[0].pos1;
+    assets->back[0].pos2.w=162;
+    assets->back[0].pos2.h=42;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->back[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[1].pos1=assets->back[0].pos1;
+    assets->back[1].pos2=assets->back[0].pos2;
+       TTF_CloseFont(t.font);
 }
 else
 
@@ -1045,7 +1134,7 @@ printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.
 //Initialize Game Character
 void initcharacter(Character *player)
 {
-    player->image=IMG_Load("");
+    player->image=IMG_Load("graphics/720/Spritesheet/player0.png");
     player->position.x=0;
     player->position.y=0;
     player->life=3;
