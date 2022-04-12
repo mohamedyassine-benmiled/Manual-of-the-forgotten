@@ -3,13 +3,17 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
+#include "include/enigme.h"
 
 int game(SDL_Surface *screen,int run)
 {
     Game g;
+    enigme e;
     initbackground(&g.bg);
     SDL_Event event;
     showgame(g.bg.img,screen);
+    init_enigme(&e);
+    afficherenigme(e,screen);
     SDL_Flip(screen);
     while(run==3)
     {

@@ -4,7 +4,7 @@
 #include<SDL/SDL_image.h>
 #include<SDL/SDL_ttf.h>
 #include<SDL/SDL_mixer.h>
-typedef struct enigme
+typedef struct 
 {
 char question[100];
 char rep1[100];
@@ -21,7 +21,7 @@ SDL_Rect posreponse2;
 SDL_Rect posreponse3;
 }enigme;
 void init_enigme(enigme *e);
-void afficherenigme(enigme e,SDL_surface * screen);
+void afficherenigme(enigme e,SDL_Surface * screen);
 void animer (enigme *e);
 //void sauvegarder (personne p,background b,char * f);
 //int charger (personne *p,background *b , char * f);
