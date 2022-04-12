@@ -1142,16 +1142,10 @@ void initcharacter(Character *player)
     player->look=0;
     player->speed=12;
     player->health=100;
-}
-void init_enemy (Game *game)
+/*}
+void init_ennemy (enemy *ennemi)
 {
-
-        game->enemy[0].image= IMG_Load("graphics/720/Spritesheet/player0.png");
-        game->enemy[0].position.x=150 ;
-        game->enemy[0].position.y= START_y+515 ;
-        game->enemy[0].direction=1;
-        game->enemy[0].look=0;
-        game->enemy[0].spritestate=0;
-        game->enemy[0].speed=1;
-        game->enemy[0].behavior=PATROL;
-}
+	ennemi->posennemi.x=100;
+	ennemi->posennemi.y=300;
+	ennemi->ennemi = IMG_Load("graphics/720/Spritesheet/player0.pnglay.png");
+}*/

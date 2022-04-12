@@ -21,6 +21,6 @@ void initoption(OptionImage *assets);
 void initaudio(audioimage *assets);
 void initgraphics(graphicimage *assets);
 void initbackground(Background *assets);
-void initenemy(Enemy *enemy);
+void init_ennemy (enemy *ennemi)
 
 #endif // INIT_H

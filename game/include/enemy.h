@@ -1,25 +1,23 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include "game.h"
-typedef enum Behavior
+typedef struct
 {
-PATROL, FOLLOW, ATTACK, REFRACT
-}Behavior;
-
-
+SDL_Surface *mvt_av[8];
+SDL_Surface *mvt_back[8];
+}mouvement;
 
 typedef struct
 {
-    SDL_Surface *image;
-    SDL_Rect position, src_pos, relativePos;
-    int look, spritestate;
-    int state;
-    /* Variables */
-    int health, direction, speed, atk;
-    /* Inputs For Developers*/
-    //Input input;
-    /* Behavior */
-    Behavior behavior;
-} Enemy;
+SDL_Surface *ennemi;
+SDL_Rect posennemi;
+int direc;
+int i;
+int j;
+int posMax;
+int posMin;
+int actif;
+mouvement mvt;
+}enemy;
 
 #endif // ENEMY_H
