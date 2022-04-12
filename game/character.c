@@ -56,23 +56,11 @@ void movement(Game *g)
 
         }
 
-        else// if (!collision_pente(g))
-        {
-            if (g->global.movement==0)
-            {
-                g->player[0].look=4;
-                g->player[0].spritestate=0;
-            }
-            else
-            {
-                g->player[0].look=9;
-                g->player[0].spritestate=5;
-            }
-        }
         
-        if ((g->player[0].input.up) && !g->player[0].input.fix)
+        if ((g->player[0].input.up) && (g->player[0].input.fix==0))
         {
             g->player[0].input.startJump = 1;
+            g->player[0].input.movement=2;
         }
         
         /* JUMP START */
@@ -90,6 +78,7 @@ void movement(Game *g)
             {
                 g->player[0].input.startJump=0;
                 g->player[0].input.jumpHeight=0;
+                g->player[0].input.movement=3;
             }
         }
         
@@ -100,6 +89,7 @@ void movement(Game *g)
         {
             g->player[0].position.y-=GRAVITY;
             g->player[0].input.fix=0;
+            g->player[0].input.movement=0;
         }
 
         
