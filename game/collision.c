@@ -64,9 +64,5 @@ int Collision_PPP(SDL_Surface *psurface,Character player)
 	
 }	
 
-int onGround(Game *game, int n)
-{
-    return 1;
-   
-}
+
 

@@ -12,7 +12,7 @@
 #define SPEED 12
 #define GRAVITY 9
 #define JUMP_POWER 16
-#define maxJmpH 95
+#define maxJmpH 96
 #define RELOAD 1000
 #define MAX_ITEMS 4
 

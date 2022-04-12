@@ -16,6 +16,7 @@ typedef struct
     int jumpHeight;
     int reset;
     int fix;
+    int movement;
     //Attacks
     int a1; //ATTACK1
     int a2; //ATTACK2

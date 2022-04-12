@@ -10,7 +10,18 @@ int center_camera(Game *g)
     return (g->player[0].position.x+32>config.resolution_w/2 && g->player[0].position.x-32<config.resolution_w/2);
 }
 
-
+int OnGround(Character *player)
+{
+	if (player->position.y>515)
+	{
+		player->position.y = 515;
+		if (player->input.jumpHeight>0)
+			player->input.jumpHeight = 0;
+		player->input.startJump = 0;
+        return 1;
+	}
+    return 0;
+}
 
 
 void movement(Game *g)
@@ -28,23 +39,7 @@ void movement(Game *g)
                 }
             
 
-
-            if (g->player[0].look>5)
-            {
-                g->player[0].look=0;
-                g->player[0].spritestate=0;
-            }
-
-            g->player[0].spritestate++;
-            if (g->player[0].spritestate>5)
-            {
-                g->player[0].spritestate=0;
-                g->player[0].look++;
-            }
-            if (g->player[0].look>3)
-                g->player[0].look=0;
-
-            g->global.movement=0;
+            g->player[0].input.movement=0;
         }
 
         /* Left */
@@ -55,26 +50,9 @@ void movement(Game *g)
                 g->player[0].position.x-=SPEED;
                 if (g->player[0].position.x<0)
                     g->player[0].position.x+=SPEED;
+            g->player[0].input.left=0;
 
-
-
-            if (g->player[0].look<5)
-            {
-                g->player[0].look=5;
-                g->player[0].spritestate=5;
-            }
-
-            g->player[0].spritestate--;
-            if (g->player[0].spritestate<1)
-            {
-                g->player[0].spritestate=5;
-                g->player[0].look++;
-            }
-            if (g->player[0].look>8)
-                g->player[0].look=4;
-
-
-            g->global.movement=1;
+            g->player[0].input.movement=1;
 
         }
 
@@ -106,7 +84,7 @@ void movement(Game *g)
             if (g->player[0].input.jumpHeight < maxJmpH)
             {
                 g->player[0].input.jumpHeight += JUMP_POWER;
-                g->player[0].position.y -= JUMP_POWER + GRAVITY;
+                g->player[0].position.y -= JUMP_POWER + 2*GRAVITY;
             }
             else
             {
@@ -115,19 +93,7 @@ void movement(Game *g)
             }
         }
         
-        /* JUMP END */
 
-
-
-        /* GRAVITY */
-        
-        //g->player[0].position.y+=GRAVITY;
-
-        if (g->player[0].position.y!=515)//ONGROUND
-        {
-            g->player[0].position.y-=GRAVITY;
-            g->player[0].input.fix=0;
-        }
 
         
         
