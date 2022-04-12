@@ -22,7 +22,10 @@ int onGround(Character *player)
 
     return 0;
 }
-
+void animation(game *g)
+{
+    
+}
 
 void movement(Game *g)
 {
