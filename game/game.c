@@ -13,9 +13,10 @@ int game(SDL_Surface *screen,int run)
     SDL_Event event;
     showgame(g.bg.img,screen);
     SDL_Flip(screen);
+    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
     {
-        movement(&g);
+
     //Wait for event
     while (SDL_PollEvent(&event))
     {
@@ -71,10 +72,37 @@ int game(SDL_Surface *screen,int run)
                     default:
                     break;
                     }
+                break;
+                case SDL_KEYUP:
+                switch (event.key.keysym.sym)
+                    {
+                        case SDLK_RIGHT:
+                        {
+                            g.player[0].input.right=0;
+                        }
+                        break;
 
+                        case SDLK_LEFT:
+                        {
+                            g.player[0].input.left=0;
+                        }
+                        break;
+
+                        case SDLK_UP:
+                        {
+                            g.player[0].input.up=0;
+                        }
+                        break;
+
+                    default:
+                    break;
+                    }
+                break;
 
         }
+        
     }
+    movement(&g);
     gamerefresh(&g,screen);
     }
     freebackground(g.bg);

@@ -10,16 +10,16 @@ int center_camera(Game *g)
     return (g->player[0].position.x+32>config.resolution_w/2 && g->player[0].position.x-32<config.resolution_w/2);
 }
 
-int OnGround(Character *player)
+int onGround(Character *player)
 {
-	if (player->position.y>515)
+	if (player->position.y>=515)
 	{
 		player->position.y = 515;
 		if (player->input.jumpHeight>0)
 			player->input.jumpHeight = 0;
-		player->input.startJump = 0;
         return 1;
 	}
+
     return 0;
 }
 
@@ -50,7 +50,7 @@ void movement(Game *g)
                 g->player[0].position.x-=SPEED;
                 if (g->player[0].position.x<0)
                     g->player[0].position.x+=SPEED;
-            g->player[0].input.left=0;
+
 
             g->player[0].input.movement=1;
 
@@ -94,6 +94,13 @@ void movement(Game *g)
         }
         
 
+        g->player[0].position.y+=GRAVITY;
+
+        if (onGround(&g->player[0]))
+        {
+            g->player[0].position.y-=GRAVITY;
+            g->player[0].input.fix=0;
+        }
 
         
         
