@@ -11,6 +11,7 @@ void initbackground(Background *assets)
 
      //Background
         assets->img.surface=IMG_Load("graphics/720/Level/Level1_0.png");
+        assets->collision=IMG_Load("graphics/720/Level/Levelcollision1_0.png");
         assets->img.pos1.x=0;
         assets->img.pos1.y=0;
         assets->img.pos2.w=1280;
@@ -19,17 +20,13 @@ void initbackground(Background *assets)
         assets->img.pos2.y=0;
         assets->scroll_x=0;
         assets->scroll_y=0;
+
 	 //Son
 	 	
 
 }
 
-void initBackMasque (Game *m)
-{
-//background
-m->bg.collision=IMG_Load("graphics/720/Level/Levelcollision1_0.png");
 
-}
 
 
 
