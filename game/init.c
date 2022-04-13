@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include "include/menu.h"
+#include "include/declarations.h"
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
 #include <SDL/SDL_ttf.h>
@@ -14,14 +15,14 @@ void initplayer(Game *g)
     settings config;
     get_config(&config);
     /* character principal */
-    g->player[0].image=IMG_Load("graphics/1080/Spritesheet/player0.png");
-    g->player[0].position.x=434;
-    g->player[0].position.y=config.resolution_h-600;
+    g->player[0].image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
+    g->player[0].position.x=100;
+    g->player[0].position.y=515;
     g->player[0].life=3;
     g->player[0].spritestate=0;
     g->player[0].look=0;
     g->player[0].pos_cercle.r=30;
-    g->player[0].speed=12;
+    g->player[0].speed=SPEED;
     g->player[0].input.right=0;
     g->player[0].input.left=0;
     g->player[0].input.up=0;
@@ -967,11 +968,11 @@ void initbackground(Background *assets)
     
 
      //Background
-        assets->img.surface=IMG_Load("graphics/1080/Level/Level1_0.png");
+        assets->img.surface=IMG_Load("graphics/720/Level/Level1_0.png");
         assets->img.pos1.x=0;
         assets->img.pos1.y=0;
-        assets->img.pos2.w=1920;
-        assets->img.pos2.h=1080;
+        assets->img.pos2.w=1280;
+        assets->img.pos2.h=720;
         assets->img.pos2.x=0;
         assets->img.pos2.y=0;
         assets->scroll_x=0;
@@ -1134,7 +1135,7 @@ printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.
 //Initialize Game Character
 void initcharacter(Character *player)
 {
-    player->image=IMG_Load("");
+    player->image=IMG_Load("graphics/720/Spritesheet/player0.png");
     player->position.x=0;
     player->position.y=0;
     player->life=3;
