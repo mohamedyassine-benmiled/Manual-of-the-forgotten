@@ -23,17 +23,6 @@ int collision_box(Box b1, Box b2)
     return(b1.x > b2.x-8 && b1.x < b2.x+8);
 }
 
-SDL_Color getpixel(SDL_Surface *pSurface,int x,int y)
-{	
-	SDL_Color color;
-	Uint32 col=0;
-	char* pPosition=(char* ) pSurface->pixels;
-	pPosition+= (pSurface->pitch * y);
-	pPosition+= (pSurface->format->BytesPerPixel *x);
-	memcpy(&col ,pPosition ,pSurface->format->BytesPerPixel);
-	SDL_GetRGB(col,pSurface->format, &color.r, &color.g, &color.b);
-	return (color);
-}
 
 
 int Collision_PPP(SDL_Surface *psurface,Character player)

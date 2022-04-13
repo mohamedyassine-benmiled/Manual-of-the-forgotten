@@ -34,7 +34,7 @@ int game(SDL_Surface *screen,int run)
                         case SDLK_RIGHT:
                       direction=0;
                      
-                      scrolling(&b.bg,direction);
+
                             g.player[0].input.right=1;
                             g.player[0].input.left=0;
                         }
@@ -43,7 +43,7 @@ int game(SDL_Surface *screen,int run)
                         case SDLK_LEFT:
                         { direction=1;
                      
-                      scrolling(&b.bg,direction);
+
                             g.player[0].input.left=1;
                             g.player[0].input.right=0;
                         }
@@ -52,7 +52,7 @@ int game(SDL_Surface *screen,int run)
                         case SDLK_UP:
                         { direction=2;
                       
-                      scrolling(&b.bg,direction);
+
                             g.player[0].input.up=1;
                         }
                         break;
