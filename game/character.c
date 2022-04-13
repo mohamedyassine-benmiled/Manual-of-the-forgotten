@@ -164,7 +164,7 @@ void movement(Character *player,SDL_Rect *pos,int x)
                     pos->x-=SPEED;
                 }
             }
-            player->input.movement=0;
+            player->input.movement=1;
         }
 
         /* Left */

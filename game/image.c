@@ -38,9 +38,6 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
         SDL_Delay(1000/FPS-elapsed);
-
-
-
     SDL_Flip(screen);
 }
 //Showing Graphics Images to refresh screen
