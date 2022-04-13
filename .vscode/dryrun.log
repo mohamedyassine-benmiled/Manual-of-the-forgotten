@@ -1,6 +1,11 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/osboxes/Documents/GitHub/Game-Project2022'
 mkdir obj
+<<<<<<< Updated upstream
+=======
+gcc -std=c11 -Wall -g -o obj/enigme.o -c game/enigme.c
+mkdir obj
+>>>>>>> Stashed changes
 gcc -std=c11 -Wall -g -o obj/init.o -c game/init.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/config.o -c game/config.c
@@ -22,6 +27,10 @@ mkdir obj
 gcc -std=c11 -Wall -g -o obj/text.o -c game/text.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/intro.o -c game/intro.c
+<<<<<<< Updated upstream
 gcc -std=c11 -Wall -g -o book obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer -lm -lsmpeg
+=======
+gcc -std=c11 -Wall -g -o book obj/enigme.o obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer -lm -lsmpeg
+>>>>>>> Stashed changes
 make: Leaving directory '/home/osboxes/Documents/GitHub/Game-Project2022'
  
