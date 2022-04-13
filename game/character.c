@@ -150,7 +150,7 @@ void movement(Character *player,SDL_Rect *pos,int x)
         if ((player->input.right))
         {
           
-                if (player->position.x<config.resolution_w)
+                if (player->position.x<config.resolution_w/2)
                 {
                     player->position.x+=SPEED;
                 }
@@ -175,7 +175,7 @@ void movement(Character *player,SDL_Rect *pos,int x)
                 player->position.x-=SPEED;
                 if (player->position.x<0)
                     player->position.x+=SPEED;
-            player->direction=1;
+                    player->direction=1;
 
         if (!center_camera(player,x))
             {
