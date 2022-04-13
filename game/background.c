@@ -35,11 +35,13 @@ m->bg.collision=IMG_Load("level1MASQ.png");
 
 
 
-void showgame(image p,SDL_Surface *screen)
-{
-    SDL_BlitSurface(p.surface,&p.pos2,screen,&p.pos1);
-}
+/*
 
+void showgame(Background assets,SDL_Surface *screen)
+{
+    SDL_BlitSurface(assets.img.surface,&assets.img.pos2,screen,&assets.img.pos1);
+}
+*/
 void scrolling (Game *g)
 {
  
@@ -50,8 +52,7 @@ if (g->player[0].input.right)
 	
 	
         }
-else if(g->player[0].input.left) 
-{          
+else if(g->player[0].input.left) {          
 	g->bg.img.pos2.x-=SPEED; 
 
 	
@@ -71,29 +72,7 @@ else if (direction ==3){
 	}
         */
 }
-void initanimationback()
-{
-char logo [50];
-    for(int i=0;i<4;i++)
-    {
-    sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
-    assets->logo[i].surface=IMG_Load(logo);
-    assets->logo[i].pos1.x=619;
-    assets->logo[i].pos1.y=47;
-    }
 
-
-
-}
-void animationback()
-{
-        i++;
-    if(i==4)
-    {
-        i=0;
-    }
-     show(assets.cbook[j],screen);
-}
 
 
 
