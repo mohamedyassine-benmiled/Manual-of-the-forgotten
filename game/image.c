@@ -16,7 +16,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     unsigned int elapsed;
     unsigned int lasttime = SDL_GetTicks();
 
-    //scrolling(g);
+    scrolling(g);
     animation(&g->player[0]);
 
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
@@ -36,6 +36,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
         SDL_Delay(1000/FPS-elapsed);
+
 
 
     SDL_Flip(screen);

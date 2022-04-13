@@ -3,11 +3,11 @@
 #include "include/declarations.h"
 #include "include/config.h"
 
-int center_camera(Game *g)
+int center_camera(Character *player)
 {
     settings config;
     get_config(&config);
-    return (g->player[0].position.x+32>config.resolution_w/2 && g->player[0].position.x-32<config.resolution_w/2);
+    return (player->position.x+32>config.resolution_w/2 && player->position.x-32<config.resolution_w/2);
 }
 
 int onGround(Character *player)
@@ -134,7 +134,7 @@ void animation(Character *player)
     }
 }
 
-void movement(Character *player,int x)
+void movement(Character *player,SDL_Rect *pos,int x)
 {
         settings config;
     get_config(&config);
@@ -147,9 +147,16 @@ void movement(Character *player,int x)
                 {
                     player->position.x+=SPEED;
                 }
-            player->direction=0;
-
-            player->input.movement=1;
+            
+        if (!center_camera(&g->player[0]))
+            {
+                if (player->position.x<config.resolution_w/2)
+                {
+                    player->position.x+=SPEED;
+                    pos.x-=SPEED;
+                }
+            }
+            player->input.movement=0;
         }
 
         /* Left */
@@ -162,6 +169,14 @@ void movement(Character *player,int x)
                     player->position.x+=SPEED;
             player->direction=1;
 
+        if (!center_camera(&g->player[0]))
+            {
+                if (player->position.x>config.resolution_w/2)
+                {
+                    player->position.x-=SPEED;
+                    pos.x+=SPEED;
+                }
+            }
             player->input.movement=1;
 
         }
