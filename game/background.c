@@ -1,5 +1,9 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include "include/game.h"
-
+#include "include/declarations.h"
 
 void initBack (Game *b)
 {
@@ -53,18 +57,18 @@ void afficher_back(Game b, SDL_Surface *ecran)
 	
 }
 
-void scrolling (Game *b,int direction , int *pas)
+void scrolling (Game *b,int direction )
 {
  
 if (direction ==0)
 {
-	b->bg.img.pos2.x+=pas;          
+	b->bg.img.pos2.x+=SPEED;          
 
 	
 	
         }
 else if (direction ==1){          
-	b->bg.img.pos2.x-=pas; 
+	b->bg.img.pos2.x-=SPEED; 
 
 	
 	}
@@ -72,12 +76,12 @@ else if (direction ==1){
 
 
 else if (direction ==2){          
-        b->bg.img.pos2.y+= pas;
+        b->bg.img.pos2.y+= SPEED;
 
 	 
 	 }
 else if (direction ==3){  
-        b->bg.img.pos2.y-=pas;
+        b->bg.img.pos2.y-=SPEED;
 
          
 	}

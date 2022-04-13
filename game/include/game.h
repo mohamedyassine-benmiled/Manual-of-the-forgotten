@@ -26,5 +26,5 @@ int collisionparfaite(SDL_Surface *psurface,Game p);
 void initBack (Game *b);
 void initBackMasque (Game *m);
 void afficheBack (Game b, SDL_Surface *ecran);
-void scrolling (Game *b,int direction , int *pas);
+
 #endif // GAME_H

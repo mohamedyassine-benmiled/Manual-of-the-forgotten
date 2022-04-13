@@ -14,6 +14,7 @@
         "sdl_mixer.h": "c",
         "sdl_ttf.h": "c",
         "config.h": "c",
-        "collisionparfaite.h": "c"
+        "collisionparfaite.h": "c",
+        "declarations.h": "c"
     }
 }

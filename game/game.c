@@ -3,15 +3,17 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
-
+#include "include/declarations.h"
 
 int game(SDL_Surface *screen,int run)
-{
-    Game g;
-    initbackground(&g.bg);
+{ int direction;
+    Game g,b;
+    initBack(&b.bg);
+    
     initplayer(&g);
     SDL_Event event;
-    showgame(g.bg.img,screen);
+    afficher_back(&b.bg,screen);
+    
     SDL_Flip(screen);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
@@ -30,21 +32,27 @@ int game(SDL_Surface *screen,int run)
                 switch (event.key.keysym.sym)
                     {
                         case SDLK_RIGHT:
-                        {
+                      direction=0;
+                     
+                      scrolling(&b.bg,direction);
                             g.player[0].input.right=1;
                             g.player[0].input.left=0;
                         }
                         break;
 
                         case SDLK_LEFT:
-                        {
+                        { direction=1;
+                     
+                      scrolling(&b.bg,direction);
                             g.player[0].input.left=1;
                             g.player[0].input.right=0;
                         }
                         break;
 
                         case SDLK_UP:
-                        {
+                        { direction=2;
+                      
+                      scrolling(&b.bg,direction);
                             g.player[0].input.up=1;
                         }
                         break;
@@ -104,7 +112,7 @@ int game(SDL_Surface *screen,int run)
     }
     movement(&g);
     gamerefresh(&g,screen);
-    }
+    
     freebackground(g.bg);
 return run;
 
