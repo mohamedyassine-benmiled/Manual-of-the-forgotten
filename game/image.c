@@ -16,7 +16,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     unsigned int elapsed;
     unsigned int lasttime = SDL_GetTicks();
 
-    //scrolling(g);
+    scrolling(g);
 
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;

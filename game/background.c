@@ -35,47 +35,30 @@ m->bg.collision=IMG_Load("level1MASQ.png");
 
 
 
+/*
 
-
-void afficheBack (Game b, SDL_Surface *ecran)
+void showgame(Background assets,SDL_Surface *screen)
 {
-
-Mix_PlayMusic(b.bg.son, -1);
-SDL_BlitSurface(b.bg.img.surface,&b.bg.img.pos1,ecran,NULL);
+    SDL_BlitSurface(assets.img.surface,&assets.img.pos2,screen,&assets.img.pos1);
 }
-void afficheBackM (Game m, SDL_Surface *ecran)
-{
-
-
-SDL_BlitSurface(m.bg.img.surface,&m.bg.img.pos1,ecran,NULL);
-}
-
-
-void afficher_back(Game b, SDL_Surface *ecran)
-{
-	afficheBack(b,ecran);
-	
-	
-	
-}
-
-void scrolling (Game *b,int direction )
+*/
+void scrolling (Game *g)
 {
  
-if (direction ==0)
+if (g->player[0].input.right)
 {
-	b->bg.img.pos2.x+=SPEED;          
+	g->bg.img.pos2.x+=SPEED*2;          
 
 	
 	
         }
-else if (direction ==1){          
-	b->bg.img.pos2.x-=SPEED; 
+else if(g->player[0].input.left) {          
+	g->bg.img.pos2.x-=SPEED*2; 
 
 	
 	}
 
-
+/*
 
 else if (direction ==2){          
         b->bg.img.pos2.y+= SPEED;
@@ -87,6 +70,7 @@ else if (direction ==3){
 
          
 	}
+        */
 }
 
 
