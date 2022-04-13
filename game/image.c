@@ -17,14 +17,21 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     unsigned int lasttime = SDL_GetTicks();
 
     scrolling(g);
+    animation(&g->player[0]);
 
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;
         g->player[0].src_pos.h=CHAR_H;
         g->player[0].src_pos.w=CHAR_W;
- 
+        animation(&g->player[1]);
+        g->player[1].src_pos.x=CHAR_W*g->player[1].spritestate;
+        g->player[1].src_pos.y=CHAR_H*g->player[1].look;
+        g->player[1].src_pos.h=CHAR_H;
+        g->player[1].src_pos.w=CHAR_W;
     showgame(g->bg.img,screen);
+
   SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+    SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
@@ -121,6 +128,14 @@ for (int i = 0; i < 13; i++)
     SDL_FreeSurface(assets.cbook[i].surface);
 }
 }
+//Freeing Game Images from memory
+
+void freegame(Game assets)
+{
+SDL_FreeSurface(assets.player[0].image);
+SDL_FreeSurface(assets.player[1].image);
+}
+
 //Freeing Option Images from memory
 void freeoption(OptionImage assets)
 {

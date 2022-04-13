@@ -3,11 +3,18 @@
 #include "include/declarations.h"
 #include "include/config.h"
 
-int center_camera(Character *player)
+int center_camera(Character *player,int x)
 {
     settings config;
     get_config(&config);
+    if (x)
+    {
     return (player->position.x+32>config.resolution_w/2 && player->position.x-32<config.resolution_w/2);
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 int onGround(Character *player)
@@ -22,98 +29,210 @@ int onGround(Character *player)
 
     return 0;
 }
-void animation(Game *g)
+void animation(Character *player)
 {
-    
+    //Jump Right
+    if ((player->input.fix) && (player->direction==0))
+    {
+        if (!(player->look==SPRITEX_Jump))
+            player->animation=0;
+        player->look=SPRITEX_Jump;
+        player->animation++;
+
+        if (player->animation>=(SPRITEY_Jump/2)+1)
+        {
+        player->animation=0;
+        }
+        player->spritestate=player->animation;
+        return;
+    }
+    else
+    //Jump Left
+    if ((player->input.fix) && (player->direction==1))
+    {
+        if (!(player->look==SPRITEX_Jump))
+            player->animation=0;
+        player->look=SPRITEX_Jump;
+        player->animation--;
+        if (player->animation<(SPRITEY_Jump/2)+1)
+        {
+        player->animation=SPRITEY_Jump;
+        }
+        player->spritestate=player->animation;
+        return;
+    }
+    else
+    //Jump Idle
+    if (player->input.fix)
+    {
+        if (!(player->look==SPRITEX_Jump))
+            player->animation=0;
+        player->look=SPRITEX_Jump;
+        player->animation++;
+
+        if (player->animation>=(SPRITEY_Jump/2)+1)
+        {
+        player->animation=0;
+        }
+        player->spritestate=player->animation;
+        return;
+    }
+    //Idle Right
+    if ((player->input.movement==0) && (player->direction==0))
+    {
+        if (!(player->look==SPRITEX_Idle))
+            player->animation=0;
+        player->look=SPRITEX_Idle;
+        player->animation++;
+        
+        if (player->animation>=(SPRITEY_Idle/2)+1)
+        {
+            player->animation=0;
+        }
+            player->spritestate=player->animation;
+            return;
+    }
+    else
+    //Idle Left
+    if ((player->input.movement==0) && (player->direction==1))
+    {
+        if (!(player->look==SPRITEX_Idle))
+            player->animation=0;
+        player->look=SPRITEX_Idle;
+        player->animation--;
+
+        if (player->animation<(SPRITEY_Idle/2)+1)
+        {
+        player->animation=SPRITEY_Idle;
+        }
+            player->spritestate=player->animation;
+            return;
+    }
+    else
+    //Run Right
+    if ((player->input.right) && (player->input.movement==1))
+    {
+        if (!(player->look==SPRITEX_Run))
+            player->animation=0;
+        player->look=SPRITEX_Run;
+        player->animation++;
+
+        if (player->animation>=(SPRITEY_Run/2)+1)
+        {
+        player->animation=0;
+        }
+        player->spritestate=player->animation;
+        return;
+    }
+    else
+    //Run Left
+    if ((player->input.left) && (player->input.movement==1))
+    {
+        if (!(player->look==SPRITEX_Run))
+            player->animation=0;
+        player->look=SPRITEX_Run;
+        player->animation--;
+        if (player->animation<(SPRITEY_Run/2)+1)
+        {
+        player->animation=SPRITEY_Run;
+        }
+        player->spritestate=player->animation;
+        return;
+    }
 }
 
-void movement(Game *g)
+void movement(Character *player,SDL_Rect *pos,int x)
 {
         settings config;
     get_config(&config);
         /* Right */
 
-        if ((g->player[0].input.right))
+        if ((player->input.right))
         {
           
-                if (g->player[0].position.x<config.resolution_w/2)
+                if (player->position.x<config.resolution_w)
                 {
-                    g->player[0].position.x+=SPEED;
+                    player->position.x+=SPEED;
                 }
+                            player->direction=0;
             
-        if (!center_camera(&g->player[0]))
+        if (!center_camera(player,x))
             {
-                if (g->player[0].position.x<config.resolution_w/2)
+                if (player->position.x<config.resolution_w/2)
                 {
-                    g->player[0].position.x+=SPEED;
-                    g->bg.img.pos2.x-=SPEED;
+                    player->position.x+=SPEED;
+                    pos->x-=SPEED;
                 }
             }
-            g->player[0].input.movement=0;
+            player->input.movement=0;
         }
 
         /* Left */
 
-        else if ((g->player[0].input.left))
+        else if ((player->input.left))
         {
 
-                g->player[0].position.x-=SPEED;
-                if (g->player[0].position.x<0)
-                    g->player[0].position.x+=SPEED;
+                player->position.x-=SPEED;
+                if (player->position.x<0)
+                    player->position.x+=SPEED;
+            player->direction=1;
 
-        if (!center_camera(&g->player[0]))
+        if (!center_camera(player,x))
             {
-                if (g->player[0].position.x>config.resolution_w/2)
+                if (player->position.x>config.resolution_w/2)
                 {
-                    g->player[0].position.x-=SPEED;
-                    g->bg.img.pos2.x+=SPEED;
+                    player->position.x-=SPEED;
+                    pos->x+=SPEED;
                 }
             }
-            g->player[0].input.movement=1;
+            player->input.movement=1;
 
         }
-
-        
-        if ((g->player[0].input.up) && (g->player[0].input.fix==0))
+        else
         {
-            g->player[0].input.startJump = 1;
-            g->player[0].input.movement=2;
+            player->input.movement=0;
+        }
+        
+        if ((player->input.up) && (player->input.fix==0))
+        {
+            player->input.startJump = 1;
+            player->input.movement=2;
         }
         
         /* JUMP START */
         
-        if (g->player[0].input.startJump)
+        if (player->input.startJump)
         {
-            g->player[0].input.fix=1;
+            player->input.fix=1;
 
-            if (g->player[0].input.jumpHeight < maxJmpH)
+            if (player->input.jumpHeight < maxJmpH)
             {
-                g->player[0].input.jumpHeight += JUMP_POWER;
-                g->player[0].position.y -= JUMP_POWER + 2*GRAVITY;
+                player->input.jumpHeight += JUMP_POWER;
+                player->position.y -= JUMP_POWER + 2*GRAVITY;
             }
             else
             {
-                g->player[0].input.startJump=0;
-                g->player[0].input.jumpHeight=0;
-                g->player[0].input.movement=3;
+                player->input.startJump=0;
+                player->input.jumpHeight=0;
+                player->input.movement=3;
             }
         }
         
 
-        g->player[0].position.y+=GRAVITY;
+        player->position.y+=GRAVITY;
 
-        if (onGround(&g->player[0]))
+        if (onGround(player))
         {
-            g->player[0].position.y-=GRAVITY;
-            g->player[0].input.fix=0;
-            g->player[0].input.movement=0;
+            player->position.y-=GRAVITY;
+            player->input.fix=0;
+
         }
 
         
         
-    g->player[0].pos_cercle.x=g->player[0].position.x+g->bg.scroll_x;
-    g->player[0].pos_cercle.y=g->player[0].position.y+40;
-    g->player[0].pos_cercle.r=30;
+    player->pos_cercle.x=player->position.x;
+    player->pos_cercle.y=player->position.y+40;
+    player->pos_cercle.r=30;
 
 }
 
