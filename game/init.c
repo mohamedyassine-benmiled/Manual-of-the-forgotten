@@ -70,6 +70,7 @@ if (config.resolution_h==1080)
         assets->No[1].pos2= assets->No[0].pos2;
         assets->No[1].pos1= assets->No[0].pos1;
         }
+
 else
 if (config.resolution_h==720)
 {
@@ -1131,21 +1132,13 @@ else
 
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-//Initialize Game Character
-void initcharacter(Character *player)
+
+
+
+void initennemy (Game *g)
 {
-    player->image=IMG_Load("graphics/720/Spritesheet/player0.png");
-    player->position.x=0;
-    player->position.y=0;
-    player->life=3;
-    player->spritestate=0;
-    player->look=0;
-    player->speed=12;
-    player->health=100;
-/*}
-void init_ennemy (enemy *ennemi)
-{
-	ennemi->posennemi.x=100;
-	ennemi->posennemi.y=300;
-	ennemi->ennemi = IMG_Load("graphics/720/Spritesheet/player0.pnglay.png");
-}*/
+    g->enemy->image = IMG_Load("graphics/720/Spritesheet/player0.pnglay.png");
+	g->enemy->position.x=100;
+	g->enemy->position.y=300;
+	
+}

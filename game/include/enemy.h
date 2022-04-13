@@ -9,8 +9,8 @@ SDL_Surface *mvt_back[8];
 
 typedef struct
 {
-SDL_Surface *ennemi;
-SDL_Rect posennemi;
+SDL_Surface *image;
+SDL_Rect position;
 int direc;
 int i;
 int j;
