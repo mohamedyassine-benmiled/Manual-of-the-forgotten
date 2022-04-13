@@ -24,37 +24,96 @@ int onGround(Character *player)
 }
 void animation(Game *g)
 {
-    //Idle Left
-    if ((g->player[0].input.movement==0) && (g->player[0].direction==1))
+    //Jump Right
+    if ((g->player[0].input.fix) && (g->player[0].direction==0))
     {
-        g->player[0].look=SPRITEX_Idle;
-        g->player[0].animation--;
-        
-        if (g->player[0].animation<(SPRITEY_Idle/2)+1)
-            g->player[0].animation=SPRITEY_Idle;
-    g->player[0].spritestate=g->player[0].animation;
-            return;
+        if (!(g->player[0].look==SPRITEX_Jump))
+            g->player[0].animation=0;
+        g->player[0].look=SPRITEX_Jump;
+        g->player[0].animation++;
+
+        if (g->player[0].animation>=(SPRITEY_Jump/2)+1)
+        {
+        g->player[0].animation=0;
+        }
+        g->player[0].spritestate=g->player[0].animation;
+        return;
     }
     else
+    //Jump Left
+    if ((g->player[0].input.fix) && (g->player[0].direction==1))
+    {
+        if (!(g->player[0].look==SPRITEX_Jump))
+            g->player[0].animation=0;
+        g->player[0].look=SPRITEX_Jump;
+        g->player[0].animation--;
+        if (g->player[0].animation<(SPRITEY_Jump/2)+1)
+        {
+        g->player[0].animation=SPRITEY_Jump;
+        }
+        g->player[0].spritestate=g->player[0].animation;
+        return;
+    }
+    else
+    //Jump Idle
+    if (g->player[0].input.fix)
+    {
+                if (!(g->player[0].look==SPRITEX_Jump))
+            g->player[0].animation=0;
+        g->player[0].look=SPRITEX_Jump;
+        g->player[0].animation++;
+
+        if (g->player[0].animation>=(SPRITEY_Jump/2)+1)
+        {
+        g->player[0].animation=0;
+        }
+        g->player[0].spritestate=g->player[0].animation;
+        return;
+    }
     //Idle Right
     if ((g->player[0].input.movement==0) && (g->player[0].direction==0))
     {
+        if (!(g->player[0].look==SPRITEX_Idle))
+            g->player[0].animation=0;
         g->player[0].look=SPRITEX_Idle;
         g->player[0].animation++;
         
         if (g->player[0].animation>=(SPRITEY_Idle/2)+1)
+        {
             g->player[0].animation=0;
-    g->player[0].spritestate=g->player[0].animation;
+        }
+            g->player[0].spritestate=g->player[0].animation;
+            return;
+    }
+    else
+    //Idle Left
+    if ((g->player[0].input.movement==0) && (g->player[0].direction==1))
+    {
+        if (!(g->player[0].look==SPRITEX_Idle))
+            g->player[0].animation=0;
+        g->player[0].look=SPRITEX_Idle;
+        g->player[0].animation--;
+
+        if (g->player[0].animation<(SPRITEY_Idle/2)+1)
+        {
+        g->player[0].animation=SPRITEY_Idle;
+        }
+            g->player[0].spritestate=g->player[0].animation;
             return;
     }
     else
     //Run Right
     if ((g->player[0].input.right) && (g->player[0].input.movement==1))
     {
+        if (!(g->player[0].look==SPRITEX_Run))
+            g->player[0].animation=0;
         g->player[0].look=SPRITEX_Run;
         g->player[0].animation++;
+
         if (g->player[0].animation>=(SPRITEY_Run/2)+1)
+        {
         g->player[0].animation=0;
+        }
         g->player[0].spritestate=g->player[0].animation;
         return;
     }
@@ -62,17 +121,18 @@ void animation(Game *g)
     //Run Left
     if ((g->player[0].input.left) && (g->player[0].input.movement==1))
     {
+        if (!(g->player[0].look==SPRITEX_Run))
+            g->player[0].animation=0;
         g->player[0].look=SPRITEX_Run;
-
         g->player[0].animation--;
-        
         if (g->player[0].animation<(SPRITEY_Run/2)+1)
+        {
         g->player[0].animation=SPRITEY_Run;
-
+        }
         g->player[0].spritestate=g->player[0].animation;
-                return;
+        return;
     }
-    
+
 
 }
 
@@ -109,7 +169,7 @@ void movement(Game *g)
         }
         else
         {
-                        g->player[0].input.movement=0;
+            g->player[0].input.movement=0;
         }
         
         if ((g->player[0].input.up) && (g->player[0].input.fix==0))
@@ -144,6 +204,7 @@ void movement(Game *g)
         {
             g->player[0].position.y-=GRAVITY;
             g->player[0].input.fix=0;
+
         }
 
         

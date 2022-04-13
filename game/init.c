@@ -22,6 +22,8 @@ void initplayer(Game *g)
     g->player[0].spritestate=0;
     g->player[0].look=0;
     g->player[0].animation=0;
+    g->player[0].direction=0;
+    g->player[0].input.movement=0;
     g->player[0].pos_cercle.r=30;
     g->player[0].speed=SPEED;
     g->player[0].input.right=0;
