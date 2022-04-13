@@ -34,11 +34,12 @@ m->bg.collision=IMG_Load("level1MASQ.png");
 
 
 
-
+/* Moved to image.c
 void showgame(image p,SDL_Surface *screen)
 {
     SDL_BlitSurface(p.surface,&p.pos2,screen,&p.pos1);
 }
+*/
 
 void scrolling (Game *g)
 {
