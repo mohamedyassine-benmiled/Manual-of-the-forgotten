@@ -71,6 +71,7 @@ else if (direction ==3){
 	}
         */
 }
+/*
 void initanimationback()
 {
 char logo [50];
@@ -96,7 +97,7 @@ void animationback()
 }
 
 
-
+*/
 
 
 
