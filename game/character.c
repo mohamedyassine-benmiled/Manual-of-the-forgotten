@@ -141,13 +141,13 @@ void animation(Character *player)
     }
 }
 
-void movement(Character *player,SDL_Rect *pos,int x)
+void movement(Character *player,SDL_Surface *collision,SDL_Rect *pos,int x)
 {
         settings config;
     get_config(&config);
         /* Right */
 
-        if ((player->input.right))
+        if ((player->input.right)&&(!Collision_PPP(collision,player[0])))
         {
           
                 if (player->position.x<config.resolution_w/2)
@@ -169,7 +169,7 @@ void movement(Character *player,SDL_Rect *pos,int x)
 
         /* Left */
 
-        else if ((player->input.left))
+        else if ((player->input.left)&&(!Collision_PPP(collision,player[0])))
         {
 
                 player->position.x-=SPEED;

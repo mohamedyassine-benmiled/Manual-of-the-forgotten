@@ -29,9 +29,9 @@ int Collision_PPP(SDL_Surface *psurface,Character player)
 {	
 	int tabx[7],taby[7],i,collision=0;
 	SDL_Color color1,color;
-	color1.r = 0;
-	color1.g = 0;
-	color1.b = 0;
+	color1.r = 255;
+	color1.g = 255;
+	color1.b = 255;
 	tabx[0]=player.position.x;
 	tabx[1]=(player.position.x)+((player.position.w)/2);
 	tabx[2]=(player.position.x+player.position.w);

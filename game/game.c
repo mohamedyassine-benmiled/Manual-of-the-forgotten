@@ -11,6 +11,7 @@ int game(SDL_Surface *screen,int run)
     initbackground(&g.bg);
     initplayer(&g.player[0]);
     initplayer(&g.player[1]);
+    initBackMasque(&g.bg.collision);
     SDL_Event event;
     showgame(g.bg.img,screen);
     SDL_Flip(screen);
@@ -18,8 +19,8 @@ int game(SDL_Surface *screen,int run)
     while(run==3)
     {
         run=handlegame(&g,&event,screen,run);
-        movement(&g.player[0],&g.bg.img.pos2,1);
-        movement(&g.player[1],&g.bg.img.pos2,0);
+        movement(&g.player[0],&g.bg.collision,&g.bg.img.pos2,1);
+        movement(&g.player[1],&g.bg.collision,&g.bg.img.pos2,0);
         gamerefresh(&g,screen);
     }
     freegame(g);

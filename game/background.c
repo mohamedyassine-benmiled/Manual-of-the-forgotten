@@ -27,7 +27,7 @@ void initbackground(Background *assets)
 void initBackMasque (Game *m)
 {
 //background
-m->bg.collision=IMG_Load("level1MASQ.png");
+m->bg.collision=IMG_Load("graphics/720/Level/Levelcollision1_0.png");
 
 }
 
