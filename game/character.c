@@ -3,11 +3,18 @@
 #include "include/declarations.h"
 #include "include/config.h"
 
-int center_camera(Character *player)
+int center_camera(Character *player,int x)
 {
     settings config;
     get_config(&config);
+    if (x)
+    {
     return (player->position.x+32>config.resolution_w/2 && player->position.x-32<config.resolution_w/2);
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 int onGround(Character *player)
@@ -58,7 +65,7 @@ void animation(Character *player)
     //Jump Idle
     if (player->input.fix)
     {
-                if (!(player->look==SPRITEX_Jump))
+        if (!(player->look==SPRITEX_Jump))
             player->animation=0;
         player->look=SPRITEX_Jump;
         player->animation++;
@@ -147,8 +154,9 @@ void movement(Character *player,SDL_Rect *pos,int x)
                 {
                     player->position.x+=SPEED;
                 }
+                            player->direction=0;
             
-        if (!center_camera(player))
+        if (!center_camera(player,x))
             {
                 if (player->position.x<config.resolution_w/2)
                 {
@@ -169,7 +177,7 @@ void movement(Character *player,SDL_Rect *pos,int x)
                     player->position.x+=SPEED;
             player->direction=1;
 
-        if (!center_camera(player))
+        if (!center_camera(player,x))
             {
                 if (player->position.x>config.resolution_w/2)
                 {
