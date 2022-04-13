@@ -148,12 +148,12 @@ void movement(Character *player,SDL_Rect *pos,int x)
                     player->position.x+=SPEED;
                 }
             
-        if (!center_camera(&g->player[0]))
+        if (!center_camera(player))
             {
                 if (player->position.x<config.resolution_w/2)
                 {
                     player->position.x+=SPEED;
-                    pos.x-=SPEED;
+                    pos->x-=SPEED;
                 }
             }
             player->input.movement=0;
@@ -169,12 +169,12 @@ void movement(Character *player,SDL_Rect *pos,int x)
                     player->position.x+=SPEED;
             player->direction=1;
 
-        if (!center_camera(&g->player[0]))
+        if (!center_camera(player))
             {
                 if (player->position.x>config.resolution_w/2)
                 {
                     player->position.x-=SPEED;
-                    pos.x+=SPEED;
+                    pos->x+=SPEED;
                 }
             }
             player->input.movement=1;

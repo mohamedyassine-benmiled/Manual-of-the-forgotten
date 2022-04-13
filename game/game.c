@@ -18,8 +18,8 @@ int game(SDL_Surface *screen,int run)
     while(run==3)
     {
         run=handlegame(&g,&event,screen,run);
-        movement(&g.player[0]);
-        movement(&g.player[1]);
+        movement(&g.player[0],&g.bg.img.pos2);
+        movement(&g.player[1],&g.bg.img.pos2);
         gamerefresh(&g,screen);
     }
     freegame(g);
