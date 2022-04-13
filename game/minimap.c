@@ -3,6 +3,15 @@
 #include "include/game.h"
 #include "include/declarations.h"
 
+/* MOVED TO image.c
+    Fixing fps
+    elapsed = SDL_GetTicks()-lasttime;
+    if (elapsed<1000/FPS)
+        SDL_Delay(1000/FPS-elapsed);
+*/
+
+
+
 void updateminimap(Game *g)
 {
 g->minimap.bg.pos2.w=g->bg.img.pos2.w*MINIMAP/100;
