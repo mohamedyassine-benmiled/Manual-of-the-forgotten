@@ -15,7 +15,7 @@
 #define maxJmpH 96
 #define RELOAD 1000
 #define MAX_ITEMS 4
-#define minimap 20
+#define MINIMAP 20
 //Sprites
 #define SPRITEX_Run 3
 #define SPRITEX_Walk 1
