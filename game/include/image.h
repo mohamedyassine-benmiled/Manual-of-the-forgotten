@@ -1,7 +1,8 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 #include <SDL/SDL_image.h>
-
+#include <SDL/SDL_mixer.h>
+#include <SDL/SDL_audio.h>
 typedef struct
 {
     SDL_Surface *surface ;
@@ -15,6 +16,7 @@ typedef struct
     SDL_Surface *collision;
     int scroll_x;
     int scroll_y;
+    Mix_Music *son;
 } Background;
 
 typedef struct

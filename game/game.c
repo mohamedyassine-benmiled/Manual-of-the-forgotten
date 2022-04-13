@@ -101,6 +101,7 @@ int game(SDL_Surface *screen,int run)
 
         }
         
+        
     }
     movement(&g);
     gamerefresh(&g,screen);

@@ -21,6 +21,10 @@ typedef struct
 } Game;
 
 int game(SDL_Surface *screen,int run);
-
+SDL_Color getpixel(SDL_Surface *psurface,int x,int y);
+int collisionparfaite(SDL_Surface *psurface,Game p);
+void initBack (Game *b);
+void initBackMasque (Game *m);
+void afficheBack (Game b, SDL_Surface *ecran);
 
 #endif // GAME_H
