@@ -47,13 +47,13 @@ void scrolling (Game *g)
  
 if (g->player[0].input.right)
 {
-	g->bg.img.pos2.x+=SPEED*2;          
+	g->bg.img.pos2.x+=SPEED;          
 
 	
 	
         }
 else if(g->player[0].input.left) {          
-	g->bg.img.pos2.x-=SPEED*2; 
+	g->bg.img.pos2.x-=SPEED; 
 
 	
 	}
