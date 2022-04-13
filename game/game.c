@@ -22,6 +22,7 @@ int game(SDL_Surface *screen,int run)
         movement(&g.player[1]);
         gamerefresh(&g,screen);
     }
+    freegame(g);
     freebackground(g.bg);
 return run;
 

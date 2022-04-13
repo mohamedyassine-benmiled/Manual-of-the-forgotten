@@ -127,6 +127,14 @@ for (int i = 0; i < 13; i++)
     SDL_FreeSurface(assets.cbook[i].surface);
 }
 }
+//Freeing Game Images from memory
+
+void freegame(Game assets)
+{
+SDL_FreeSurface(assets.player[0].image);
+SDL_FreeSurface(assets.player[1].image);
+}
+
 //Freeing Option Images from memory
 void freeoption(OptionImage assets)
 {
