@@ -19,9 +19,9 @@ int center_camera(Character *player,int x)
 
 int onGround(Character *player)
 {
-	if (player->position.y>=515)
+	if (player->position.y>=499)
 	{
-		player->position.y = 515;
+		player->position.y = 499;
 		if (player->input.jumpHeight>0)
 			player->input.jumpHeight = 0;
         return 1;
@@ -34,12 +34,12 @@ void animation(Character *player)
     //Jump Right
     if ((player->input.fix) && (player->direction==0))
     {
-        if (!(player->look==SPRITEX_Jump))
+        if (!(player->look==SPRITEXP0_Jump))
             player->animation=0;
-        player->look=SPRITEX_Jump;
+        player->look=SPRITEXP0_Jump;
         player->animation++;
 
-        if (player->animation>=(SPRITEY_Jump/2)+1)
+        if (player->animation>=(SPRITEYP0_Jump/2)+1)
         {
         player->animation=0;
         }
@@ -50,13 +50,13 @@ void animation(Character *player)
     //Jump Left
     if ((player->input.fix) && (player->direction==1))
     {
-        if (!(player->look==SPRITEX_Jump))
+        if (!(player->look==SPRITEXP0_Jump))
             player->animation=0;
-        player->look=SPRITEX_Jump;
+        player->look=SPRITEXP0_Jump;
         player->animation--;
-        if (player->animation<(SPRITEY_Jump/2)+1)
+        if (player->animation<(SPRITEYP0_Jump/2)+1)
         {
-        player->animation=SPRITEY_Jump;
+        player->animation=SPRITEYP0_Jump;
         }
         player->spritestate=player->animation;
         return;
@@ -65,12 +65,12 @@ void animation(Character *player)
     //Jump Idle
     if (player->input.fix)
     {
-        if (!(player->look==SPRITEX_Jump))
+        if (!(player->look==SPRITEXP0_Jump))
             player->animation=0;
-        player->look=SPRITEX_Jump;
+        player->look=SPRITEXP0_Jump;
         player->animation++;
 
-        if (player->animation>=(SPRITEY_Jump/2)+1)
+        if (player->animation>=(SPRITEYP0_Jump/2)+1)
         {
         player->animation=0;
         }
@@ -80,12 +80,12 @@ void animation(Character *player)
     //Idle Right
     if ((player->input.movement==0) && (player->direction==0))
     {
-        if (!(player->look==SPRITEX_Idle))
+        if (!(player->look==SPRITEXP0_Idle))
             player->animation=0;
-        player->look=SPRITEX_Idle;
+        player->look=SPRITEXP0_Idle;
         player->animation++;
         
-        if (player->animation>=(SPRITEY_Idle/2)+1)
+        if (player->animation>=(SPRITEYP0_Idle/2)+1)
         {
             player->animation=0;
         }
@@ -96,14 +96,14 @@ void animation(Character *player)
     //Idle Left
     if ((player->input.movement==0) && (player->direction==1))
     {
-        if (!(player->look==SPRITEX_Idle))
+        if (!(player->look==SPRITEXP0_Idle))
             player->animation=0;
-        player->look=SPRITEX_Idle;
+        player->look=SPRITEXP0_Idle;
         player->animation--;
 
-        if (player->animation<(SPRITEY_Idle/2)+1)
+        if (player->animation<(SPRITEYP0_Idle/2)+1)
         {
-        player->animation=SPRITEY_Idle;
+        player->animation=SPRITEYP0_Idle;
         }
             player->spritestate=player->animation;
             return;
@@ -112,12 +112,12 @@ void animation(Character *player)
     //Run Right
     if ((player->input.right) && (player->input.movement==1))
     {
-        if (!(player->look==SPRITEX_Run))
+        if (!(player->look==SPRITEXP0_Run))
             player->animation=0;
-        player->look=SPRITEX_Run;
+        player->look=SPRITEXP0_Run;
         player->animation++;
 
-        if (player->animation>=(SPRITEY_Run/2)+1)
+        if (player->animation>=(SPRITEYP0_Run/2)+1)
         {
         player->animation=0;
         }
@@ -128,13 +128,13 @@ void animation(Character *player)
     //Run Left
     if ((player->input.left) && (player->input.movement==1))
     {
-        if (!(player->look==SPRITEX_Run))
+        if (!(player->look==SPRITEXP0_Run))
             player->animation=0;
-        player->look=SPRITEX_Run;
+        player->look=SPRITEXP0_Run;
         player->animation--;
-        if (player->animation<(SPRITEY_Run/2)+1)
+        if (player->animation<(SPRITEYP0_Run/2)+1)
         {
-        player->animation=SPRITEY_Run;
+        player->animation=SPRITEYP0_Run;
         }
         player->spritestate=player->animation;
         return;

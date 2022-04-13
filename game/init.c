@@ -17,7 +17,7 @@ void initplayer(Game *g)
     /* character principal */
     g->player[0].image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
     g->player[0].position.x=100;
-    g->player[0].position.y=515;
+    g->player[0].position.y=499;
     g->player[0].life=3;
     g->player[0].spritestate=0;
     g->player[0].look=0;
