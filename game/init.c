@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include "include/menu.h"
+#include "include/declarations.h"
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
 #include <SDL/SDL_ttf.h>
@@ -14,14 +15,14 @@ void initplayer(Game *g)
     settings config;
     get_config(&config);
     /* character principal */
-    g->player[0].image=IMG_Load("graphics/720/Spritesheet/player0.png");
+    g->player[0].image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
     g->player[0].position.x=100;
     g->player[0].position.y=515;
     g->player[0].life=3;
     g->player[0].spritestate=0;
     g->player[0].look=0;
     g->player[0].pos_cercle.r=30;
-    g->player[0].speed=12;
+    g->player[0].speed=SPEED;
     g->player[0].input.right=0;
     g->player[0].input.left=0;
     g->player[0].input.up=0;

@@ -1,7 +1,9 @@
 #ifndef CHAR_H_INCLUDED
 #define CHAR_H_INCLUDED
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include "collision.h"
-#include "game.h"
+
 
 typedef struct
 {
@@ -14,6 +16,7 @@ typedef struct
     int jumpHeight;
     int reset;
     int fix;
+    int movement;
     //Attacks
     int a1; //ATTACK1
     int a2; //ATTACK2

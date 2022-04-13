@@ -3,18 +3,27 @@
 
 #define true 1
 #define false 0
-
+//Fps Count
 #define FPS 60
-#define CHAR_H 90
-#define CHAR_W 90
-#define CHAR_BIG_H 170
-#define CHAR_BIG_W 170
+//Character Size
+#define CHAR_H 62
+#define CHAR_W 62
+//Variables
 #define SPEED 12
 #define GRAVITY 9
 #define JUMP_POWER 16
-#define maxJmpH 95
+#define maxJmpH 96
 #define RELOAD 1000
 #define MAX_ITEMS 4
 #define START_y 515
 #define START_x 100
+//Sprites
+#define SPRITEX_Run 3
+#define SPRITEX_Walk 1
+#define SPRITEX_Jump 2
+#define SPRITEX_Idle 0
+#define SPRITEY_Run 15
+#define SPRITEY_Walk 11
+#define SPRITEY_Jump 3
+#define SPRITEY_Idle 7
 #endif
