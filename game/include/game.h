@@ -11,6 +11,17 @@
 #include "animation.h"
 #include "character.h"
 
+
+typedef struct
+{
+    image bg;
+    Character player[4];
+    Enemy enemy[10];
+    int scroll_x;
+    int scroll_y;
+    int level;
+} Minimap;
+
 typedef struct
 {
     Character player[4];

@@ -57,7 +57,7 @@ else if(g->player[0].input.left) {
 
 	
 	}
-
+        
 /*
 
 else if (direction ==2){          

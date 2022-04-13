@@ -1,6 +1,6 @@
 #ifndef ENEMY_H
 #define ENEMY_H
-#include "game.h"
+#include "image.h"
 typedef enum Behavior
 {
 PATROL, FOLLOW, ATTACK, REFRACT

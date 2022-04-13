@@ -19,15 +19,7 @@ typedef struct
     Mix_Music *son;
 } Background;
 
-typedef struct
-{
-    image bg;
-    image pp[4];
-    image enemy[10];
-    int scroll_x;
-    int scroll_y;
-    int level;
-} Minimap;
+
 typedef struct 
 {
     image Window;

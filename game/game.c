@@ -10,6 +10,7 @@ int game(SDL_Surface *screen,int run)
     Game g;
     initbackground(&g.bg);
     initplayer(&g);
+    initminimap(&g.minimap);
     SDL_Event event;
     showgame(g.bg.img,screen);
     SDL_Flip(screen);

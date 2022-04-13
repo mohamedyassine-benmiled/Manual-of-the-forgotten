@@ -7,6 +7,7 @@
 #include "include/menu.h"
 #include "include/declarations.h"
 #include "include/config.h"
+#include "include/minimap.h"
 
 //Showing Game Images in the right position
 void gamerefresh(Game *g,SDL_Surface *screen)
@@ -23,13 +24,16 @@ void gamerefresh(Game *g,SDL_Surface *screen)
         g->player[0].src_pos.h=CHAR_H;
         g->player[0].src_pos.w=CHAR_W;
  
+    updateminimap(g);
     showgame(g->bg.img,screen);
   SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+    
+    showgame(g->minimap.bg,screen);
+
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
         SDL_Delay(1000/FPS-elapsed);
-
 
 
     SDL_Flip(screen);

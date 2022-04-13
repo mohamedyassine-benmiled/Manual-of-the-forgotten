@@ -1,24 +1,14 @@
+#ifndef MINIMAP_H
+#define MINIMAP_H
+
+#include "enemy.h"
+#include "character.h"
+#include "declarations.h"
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Moved to game.h
 
 typedef struct
 {
@@ -30,9 +20,15 @@ typedef struct
     int level;
 } Minimap;
 
+*/
 
 
 
+
+
+
+
+#endif // MINIMAP_H
 
 
 
