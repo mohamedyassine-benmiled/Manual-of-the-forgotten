@@ -1,6 +1,6 @@
 #ifndef ENEMY_H
 #define ENEMY_H
-#include "game.h"
+#include "collision.h"
 typedef struct
 {
 SDL_Surface *mvt_av[8];
@@ -11,6 +11,7 @@ typedef struct
 {
 SDL_Surface *image;
 SDL_Rect position;
+SDL_Rect position2;
 int direc;
 int i;
 int j;
@@ -18,6 +19,6 @@ int posMax;
 int posMin;
 int actif;
 mouvement mvt;
-}enemy;
+}Enemy;
 
 #endif // ENEMY_H

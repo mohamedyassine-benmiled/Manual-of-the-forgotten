@@ -14,7 +14,7 @@
 typedef struct
 {
     Character player[4];
-    enemy enemy[10];
+    Enemy enemy[10];
     Background bg;
     Minimap minimap;
     States global;

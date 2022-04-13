@@ -8,9 +8,10 @@
 int game(SDL_Surface *screen,int run)
 {
     Game g;
+    
     initbackground(&g.bg);
     initplayer(&g);
-    init_enemy(&g);
+    initennemy (&g.enemy[0]);
     SDL_Event event;
     showgame(g.bg.img,screen);
     SDL_Flip(screen);

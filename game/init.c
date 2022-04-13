@@ -1136,10 +1136,13 @@ printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.
 
 
 
-void initennemy (Game *g)
+void initennemy (Enemy *enemi)
 {
-    g->enemy->image = IMG_Load("graphics/720/Spritesheet/player0.pnglay.png");
-	g->enemy->position.x=100;
-	g->enemy->position.y=300;
-	
+    enemi->image = IMG_Load("graphics/720/Spritesheet/player0.png");
+	enemi->position.x=100;
+	enemi->position.y=300;
+    enemi->position2.x=0;
+    enemi->position2.y=0;
+    enemi->position2.w=90;
+    enemi->position2.h=90;
 }
