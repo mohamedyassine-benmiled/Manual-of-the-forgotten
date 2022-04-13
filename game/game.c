@@ -32,7 +32,6 @@ int game(SDL_Surface *screen,int run)
                 switch (event.key.keysym.sym)
                     {
                         case SDLK_RIGHT:
-                      direction=0;
                      
 
                             g.player[0].input.right=1;
@@ -41,7 +40,7 @@ int game(SDL_Surface *screen,int run)
                         break;
 
                         case SDLK_LEFT:
-                        { direction=1;
+                        {
                      
 
                             g.player[0].input.left=1;
@@ -50,7 +49,7 @@ int game(SDL_Surface *screen,int run)
                         break;
 
                         case SDLK_UP:
-                        { direction=2;
+                        { 
                       
 
                             g.player[0].input.up=1;
@@ -81,7 +80,7 @@ int game(SDL_Surface *screen,int run)
                     break;
                     }
                 break;
-                case SDL_KEYUP:
+                
                 switch (event.key.keysym.sym)
                     {
                         case SDLK_RIGHT:
