@@ -13,7 +13,9 @@ int mouvement ;
 int posMax ;
 int posMin ;
 int reset ; 
+int look, spritestate;
+int animation ;  
 }Enemy;
 void deplacement_enemy (Enemy *enemi );
-
+void animationenemy(Enemy *enemi);
 #endif // ENEMY_H

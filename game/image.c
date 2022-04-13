@@ -21,17 +21,24 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     scrolling(g);
     animation(&g->player[0]);
-
+   
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;
         g->player[0].src_pos.h=CHAR_H;
         g->player[0].src_pos.w=CHAR_W;
         
-        animation(&g->player[1]);
+    animation(&g->player[1]);
         g->player[1].src_pos.x=CHAR_W*g->player[1].spritestate;
         g->player[1].src_pos.y=CHAR_H*g->player[1].look;
         g->player[1].src_pos.h=CHAR_H;
         g->player[1].src_pos.w=CHAR_W;
+
+    animationenemy(&g->enemy[0]);
+       g->enemy[0].position2.x=CHAR_W*g->enemy[0].spritestate;
+        g->enemy[0].position2.y=CHAR_H*g->enemy[0].look;
+        g->enemy[0].position2.h=CHAR_H;
+        g->enemy[0].position2.w=CHAR_W;
+
         
     showgame(g->bg.img,screen);
 
