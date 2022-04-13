@@ -7,6 +7,7 @@
 #include "include/menu.h"
 #include "include/declarations.h"
 #include "include/config.h"
+#include "include/enemy.h"
 
 //Showing Game Images in the right position
 void gamerefresh(Game *g,SDL_Surface *screen)
@@ -15,6 +16,8 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     get_config(&config);
     unsigned int elapsed;
     unsigned int lasttime = SDL_GetTicks();
+    deplacement_enemy(&g->enemy[0]);
+    
 
     //scrolling(g);
 
@@ -25,7 +28,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
  
     showgame(g->bg.img,screen);
   SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
-SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].position);	
+  SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].position);	
  
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;

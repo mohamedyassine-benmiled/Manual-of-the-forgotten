@@ -18,3 +18,24 @@ int deplacement_alea (int posmax,int posmin)
 	pos=rand()%(posmax-posmin+1)+posmin;
 	return pos;
 }
+
+void deplacement_enemy (Enemy *enemi )
+{
+	if(enemi->position.x<=enemi->posMax)
+	{
+			(enemi->position.x)+=10;
+			enemi->right=1;
+			enemi->left=0;
+	}
+	else
+	{
+		if(enemi->position.x>enemi->posMin)
+		(enemi->position.x)-=10;
+			enemi->right=0;
+			enemi->left=1;
+
+	}
+
+
+
+}
