@@ -17,13 +17,14 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     unsigned int lasttime = SDL_GetTicks();
 
     //scrolling(g);
-
+    animation(g);
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;
         g->player[0].src_pos.h=CHAR_H;
         g->player[0].src_pos.w=CHAR_W;
  
     showgame(g->bg.img,screen);
+
   SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;

@@ -24,7 +24,44 @@ int onGround(Character *player)
 }
 void animation(Game *g)
 {
+
+    if (g->player[0].input.right)
+    {
+        g->player[0].look=SPRITEX_Run;
+        g->player[0].animation++;
+        
+        if (g->player[0].animation>=(SPRITEY_Run/2)+1)
+        g->player[0].animation=0;
+        g->player[0].spritestate=g->player[0].animation;
+        return;
+    }
     
+    if (g->player[0].input.left)
+    {
+        g->player[0].look=SPRITEX_Run;
+        if (g->player[0].animation<8)
+        {
+            g->player[0].animation=8;
+        }
+        g->player[0].animation++;
+        
+        if (g->player[0].animation>=(SPRITEY_Run+1))
+        g->player[0].animation=8;
+
+        g->player[0].spritestate=g->player[0].animation;
+                return;
+    }
+    g->player[0].animation=0;
+    if ((!g->player[0].input.left) && (!g->player[0].input.right))
+    {
+        g->player[0].look=SPRITEX_Idle;
+        g->player[0].animation++;
+        
+        if (g->player[0].animation>=(SPRITEY_Idle+1))
+            g->player[0].animation=0;
+    g->player[0].spritestate=g->player[0].animation;
+            return;
+    }
 }
 
 void movement(Game *g)
