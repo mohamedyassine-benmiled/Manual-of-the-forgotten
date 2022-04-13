@@ -16,8 +16,8 @@ void initplayer(Game *g)
     get_config(&config);
     /* character principal */
     g->player[0].image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
-    g->player[0].position.x=100;
-    g->player[0].position.y=499;
+    g->player[0].position.x=START_x;
+    g->player[0].position.y=START_y;
     g->player[0].life=3;
     g->player[0].spritestate=0;
     g->player[0].look=0;
@@ -1123,3 +1123,19 @@ printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.
 
 
 
+void initennemy (Enemy *enemi)
+{
+    enemi->image = IMG_Load("graphics/720/Spritesheet/Enemy.png");
+	enemi->position.x=400;
+	enemi->position.y=START_y-10;
+    enemi->position2.x=0;
+    enemi->position2.y=0;
+    enemi->position2.w=CHAR_W;
+    enemi->position2.h=CHAR_H;
+    enemi->right=0;
+    enemi->left=0;
+    enemi->posMax=600;
+    enemi->posMin=400;
+    enemi->mouvement=1;
+    enemi->reset=0;
+    }
