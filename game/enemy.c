@@ -21,21 +21,31 @@ int deplacement_alea (int posmax,int posmin)
 
 void deplacement_enemy (Enemy *enemi )
 {
+	if(enemi->position.x==enemi->posMax)
+	{
+		enemi->right=0;
+		enemi->left=1;
+	}
+		if(enemi->position.x==enemi->posMin)
+	{
+		enemi->right=1;
+		enemi->left=0;
+
+	}
+	if(enemi->right)
 	if(enemi->position.x<=enemi->posMax)
 	{
-			(enemi->position.x)+=10;
-			enemi->right=1;
-			enemi->left=0;
+			(enemi->position.x)+=5;
+		
 	}
-	else
-	{
+	
+	if(enemi->left)
 		if(enemi->position.x>enemi->posMin)
-		(enemi->position.x)-=10;
-			enemi->right=0;
-			enemi->left=1;
+		{
 
-	}
-
-
+		(enemi->position.x)-=5;
+			
+		}
+	
 
 }
