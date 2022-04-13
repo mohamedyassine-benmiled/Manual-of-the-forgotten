@@ -5,20 +5,22 @@
 #include "include/game.h"
 #include "include/declarations.h"
 
-void initBack (Game *b)
+void initbackground(Background *assets)
 {
-//background
-b->bg.img.surface=IMG_Load("graphics/720/Level/Level1_0.png");
-b->bg.img.pos1.x=0;
-b->bg.img.pos1.y=0;
-b->bg.img.pos2.w=1280;
-b->bg.img.pos2.h=720;
-b->bg.img.pos2.x=0;
-b->bg.img.pos2.y=0;
-b->bg.scroll_x=0;
-b->bg.scroll_y=0;
-//musique
-b->bg.son=Mix_LoadMUS("musique.mp3"); //Chargement de la musique
+    
+
+     //Background
+        assets->img.surface=IMG_Load("graphics/720/Level/Level1_0.png");
+        assets->img.pos1.x=0;
+        assets->img.pos1.y=0;
+        assets->img.pos2.w=1280;
+        assets->img.pos2.h=720;
+        assets->img.pos2.x=0;
+        assets->img.pos2.y=0;
+        assets->scroll_x=0;
+        assets->scroll_y=0;
+	 //Son
+	 	
 
 }
 
