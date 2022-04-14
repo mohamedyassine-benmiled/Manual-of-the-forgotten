@@ -14,9 +14,9 @@ typedef struct
 {
     image img;
     image an[2];
+    image an2[2];
     SDL_Surface *collision;
-    int scroll_x;
-    int scroll_y;
+    int i;
     int elapsed;
     Mix_Music *son;
 } Background;

@@ -107,7 +107,23 @@ void animationback(Background *bg)
                 bg->elapsed==0;
         }
 }
+void animationback(Background *bg)
+{
+        bg->elapsed++;
+        if (bg->elapsed!=100)
+        {
+                bg->i=0;
+        }
+        if ((bg->elapsed!=100) && (bg->elapsed>=200))
+        {
+                int bg->i=1;
+        }
+        if (bg->elapsed==1000)
+        {
 
+                bg->elapsed==0;
+        }
+}
 
 
 
