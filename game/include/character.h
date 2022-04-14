@@ -31,6 +31,7 @@ typedef struct
     SDL_Rect position, src_pos, relativePos;
     Cercle pos_cercle;
     int look, spritestate;
+    int animation;
     int life, died;
     int elapsed;
     /* Variables */
