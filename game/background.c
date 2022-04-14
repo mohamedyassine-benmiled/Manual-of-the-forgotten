@@ -4,6 +4,7 @@
 #include <SDL/SDL_image.h>
 #include "include/game.h"
 #include "include/declarations.h"
+#include "include/collision.h"
 
 void initbackground(Background *assets)
 {
@@ -11,6 +12,7 @@ void initbackground(Background *assets)
 
      //Background
         assets->img.surface=IMG_Load("graphics/720/Level/Level1_0.png");
+        assets->collision=IMG_Load("graphics/720/Level/Levelcollision1_0.png");
         assets->img.pos1.x=0;
         assets->img.pos1.y=0;
         assets->img.pos2.w=1280;
@@ -19,17 +21,13 @@ void initbackground(Background *assets)
         assets->img.pos2.y=0;
         assets->scroll_x=0;
         assets->scroll_y=0;
+
 	 //Son
 	 	
 
 }
 
-void initBackMasque (Game *m)
-{
-//background
-m->bg.collision=IMG_Load("level1MASQ.png");
 
-}
 
 
 
@@ -43,15 +41,18 @@ void showgame(image p,SDL_Surface *screen)
 
 void scrolling (Game *g)
 {
- 
-if (g->player[0].input.right)
+     SDL_Color rgb;
+     rgb.r=255;
+    rgb.g=255;
+    rgb.b=255;
+if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          
 
 	
 	
         }
-else if(g->player[0].input.left) 
+else if((g->player[0].input.left) &&(!CollisionLeft(&g->player[0],&g->bg,rgb)))
 {          
 	g->bg.img.pos2.x-=SPEED; 
 
