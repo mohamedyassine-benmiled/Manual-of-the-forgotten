@@ -18,9 +18,10 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     scrolling(g);
     animation(&g->player[0]);
-    animationback2(&g->bg);
-   animationback(&g->bg);
     
+        
+   animationback(&g->bg);
+    animationback2(&g->bg);
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;
         g->player[0].src_pos.h=CHAR_H;
