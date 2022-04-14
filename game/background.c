@@ -35,7 +35,7 @@ void initbackground(Background *assets)
         assets->an2.pos1.y=356;
 
 	 //Son
-	 	assets->son=Mix_LoadMUS("sfx/WeAreTheChampions.mp3");
+	 	assets->son=Mix_LoadMUS("sfx/game.ogg");
 
 }
 
@@ -60,12 +60,10 @@ void scrolling (Game *g)
 if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          
-        g->bg.an2.pos1.x+=SPEED;
 }
 else if((g->player[0].input.left) &&(!CollisionLeft(&g->player[0],&g->bg,rgb)))
 {          
 	g->bg.img.pos2.x-=SPEED; 
-        g->bg.an2.pos1.x-=SPEED;
 }
         
 /*
