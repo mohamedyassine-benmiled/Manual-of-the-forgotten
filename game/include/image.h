@@ -14,7 +14,7 @@ typedef struct
 {
     image img;
     image an[2];
-    image an2[2];
+    image an2;
     SDL_Surface *collision;
     int i;
     int elapsed;

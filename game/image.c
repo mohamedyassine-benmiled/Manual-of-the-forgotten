@@ -18,7 +18,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     scrolling(g);
     animation(&g->player[0]);
-    
+    animationback2(&g->bg);
    animationback(&g->bg);
     
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
@@ -36,6 +36,9 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
 show(g->bg.an[0],screen);
 show(g->bg.an[1],screen);
+if (g->bg.i)
+show(g->bg.an2,screen);
+
   SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
     /* Fixing fps */

@@ -19,14 +19,15 @@ void initbackground(Background *assets)
         assets->img.pos2.h=720;
         assets->img.pos2.x=0;
         assets->img.pos2.y=0;
-        assets->scroll_x=0;
-        assets->scroll_y=0;
         assets->elapsed=0;
         assets->an[0].surface=IMG_Load("graphics/720/Gameanimation/bird.png");
         assets->an[0].pos1.x=1280;
         assets->an[0].pos1.y=150;
         assets->an[1].surface=IMG_Load("graphics/720/Gameanimation/second_bird.png");
         assets->an[1].pos1=assets->an[0].pos1;
+        assets->an2.surface=IMG_Load("graphics/720/Gameanimation/pointdex.png");
+        assets->an2.pos1.x=1046;
+        assets->an2.pos1.y=356;
 
 	 //Son
 	 	
@@ -54,15 +55,13 @@ void scrolling (Game *g)
 if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          
-
-	
-	
+        g->bg.an2.pos1.x+=SPEED;
         }
 else if((g->player[0].input.left) &&(!CollisionLeft(&g->player[0],&g->bg,rgb)))
 {          
 	g->bg.img.pos2.x-=SPEED; 
+        g->bg.an2.pos1.x-=SPEED;
 
-	
 	}
 
 /*
@@ -107,21 +106,16 @@ void animationback(Background *bg)
                 bg->elapsed==0;
         }
 }
-void animationback(Background *bg)
+void animationback2(Background *bg)
 {
-        bg->elapsed++;
+
         if (bg->elapsed!=100)
         {
                 bg->i=0;
         }
         if ((bg->elapsed!=100) && (bg->elapsed>=200))
         {
-                int bg->i=1;
-        }
-        if (bg->elapsed==1000)
-        {
-
-                bg->elapsed==0;
+                bg->i=1;
         }
 }
 
