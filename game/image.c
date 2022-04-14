@@ -33,22 +33,20 @@ void gamerefresh(Game *g,SDL_Surface *screen)
         g->player[1].src_pos.h=CHAR_H;
         g->player[1].src_pos.w=CHAR_W;
 
-    animationenemy(&g->enemy[0]);
-       g->enemy[0].position2.x=CHAR_W*g->enemy[0].spritestate;
+    animationenemy (&g->enemy[0]);
+        g->enemy[0].position2.x=CHAR_W*g->enemy[0].spritestate;
         g->enemy[0].position2.y=CHAR_H*g->enemy[0].look;
         g->enemy[0].position2.h=CHAR_H;
         g->enemy[0].position2.w=CHAR_W;
-
-        
     showgame(g->bg.img,screen);
 
-  SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+    SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
     SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].position);	
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
-        SDL_Delay(1000/FPS-elapsed);
+    SDL_Delay(1000/FPS-elapsed);
     SDL_Flip(screen);
 }
 //Showing Graphics Images to refresh screen
