@@ -14,11 +14,10 @@
 
 typedef struct
 {
-    image bg;
+    image bg,score;
     Character player[4];
     Enemy enemy[10];
-    int scroll_x;
-    int scroll_y;
+    int elapsed;
     int level;
 } Minimap;
 

@@ -17,6 +17,7 @@
 #define MAX_ITEMS 4
 #define START_y 499
 #define START_x 100
+#define MINIMAP 20
 //Sprites Player[0]
 #define SPRITEXP0_Run 3
 #define SPRITEXP0_Walk 1

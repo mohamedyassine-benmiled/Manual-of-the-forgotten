@@ -42,13 +42,18 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     showgame(g->bg.img,screen);
     updateminimap(g);
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
-    
+
     showgame(g->minimap.bg,screen);
+    SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
+    SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
+    SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].position);
+
 
 
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
     SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].position);	
+        show(g->minimap.score,screen);
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
