@@ -16,8 +16,8 @@ void initplayer(Game *g)
     get_config(&config);
     /* character principal */
     g->player[0].image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
-    g->player[0].position.x=100;
-    g->player[0].position.y=499;
+    g->player[0].position.x=START_x;
+    g->player[0].position.y=START_y;
     g->player[0].life=3;
     g->player[0].spritestate=0;
     g->player[0].look=0;
@@ -74,6 +74,7 @@ if (config.resolution_h==1080)
         assets->No[1].pos2= assets->No[0].pos2;
         assets->No[1].pos1= assets->No[0].pos1;
         }
+
 else
 if (config.resolution_h==720)
 {
@@ -1119,15 +1120,6 @@ else
 
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-//Initialize Game Character
-void initcharacter(Character *player)
-{
-    player->image=IMG_Load("graphics/720/Spritesheet/player0.png");
-    player->position.x=0;
-    player->position.y=0;
-    player->life=3;
-    player->spritestate=0;
-    player->look=0;
-    player->speed=12;
-    player->health=100;
-}
+
+
+

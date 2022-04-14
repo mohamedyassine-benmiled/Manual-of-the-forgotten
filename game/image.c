@@ -7,6 +7,7 @@
 #include "include/menu.h"
 #include "include/declarations.h"
 #include "include/config.h"
+#include "include/enemy.h"
 
 //Showing Game Images in the right position
 void gamerefresh(Game *g,SDL_Surface *screen)
@@ -15,29 +16,37 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     get_config(&config);
     unsigned int elapsed;
     unsigned int lasttime = SDL_GetTicks();
+    deplacement_enemy(&g->enemy[0]);
+    
 
     scrolling(g);
     animation(&g->player[0]);
-
+   
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;
         g->player[0].src_pos.h=CHAR_H;
         g->player[0].src_pos.w=CHAR_W;
         
-        animation(&g->player[1]);
+    animation(&g->player[1]);
         g->player[1].src_pos.x=CHAR_W*g->player[1].spritestate;
         g->player[1].src_pos.y=CHAR_H*g->player[1].look;
         g->player[1].src_pos.h=CHAR_H;
         g->player[1].src_pos.w=CHAR_W;
-        
+
+    animationenemy (&g->enemy[0]);
+        g->enemy[0].position2.x=CHAR_W*g->enemy[0].spritestate;
+        g->enemy[0].position2.y=CHAR_H*g->enemy[0].look;
+        g->enemy[0].position2.h=CHAR_H;
+        g->enemy[0].position2.w=CHAR_W;
     showgame(g->bg.img,screen);
-  
-  SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+
+    SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
+    SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].position);	
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
-        SDL_Delay(1000/FPS-elapsed);
+    SDL_Delay(1000/FPS-elapsed);
     SDL_Flip(screen);
 }
 //Showing Graphics Images to refresh screen
