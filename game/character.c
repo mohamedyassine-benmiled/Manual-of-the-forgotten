@@ -141,13 +141,16 @@ void animation(Character *player)
     }
 }
 
-void movement(Character *player,SDL_Surface *collision,SDL_Rect *pos,int x)
+void movement(Character *player,Background *bg,int x)
 {
+    SDL_Color rgb;
         settings config;
     get_config(&config);
         /* Right */
-
-        if ((player->input.right)&&(!Collision_PPP(collision,player)))
+    rgb.r=255;
+    rgb.g=255;
+    rgb.b=255;
+        if ((player->input.right)&&(!CollisionRight(player,bg,rgb)))
         {
           
                 if (player->position.x<config.resolution_w/2)
@@ -161,7 +164,7 @@ void movement(Character *player,SDL_Surface *collision,SDL_Rect *pos,int x)
                 if (player->position.x<config.resolution_w/2)
                 {
                     player->position.x+=SPEED;
-                    pos->x-=SPEED;
+                    bg->img.pos2.x-=SPEED;
                 }
             }
             player->input.movement=1;
@@ -169,7 +172,7 @@ void movement(Character *player,SDL_Surface *collision,SDL_Rect *pos,int x)
 
         /* Left */
 
-        else if ((player->input.left)&&(!Collision_PPP(collision,player)))
+        else if ((player->input.left)&&(!CollisionLeft(player,bg,rgb)))
         {
 
                 player->position.x-=SPEED;
@@ -182,7 +185,7 @@ void movement(Character *player,SDL_Surface *collision,SDL_Rect *pos,int x)
                 if (player->position.x>config.resolution_w/2)
                 {
                     player->position.x-=SPEED;
-                    pos->x+=SPEED;
+                    bg->img.pos2.x+=SPEED;
                 }
             }
             player->input.movement=1;
@@ -218,7 +221,9 @@ void movement(Character *player,SDL_Surface *collision,SDL_Rect *pos,int x)
             }
         }
         
-
+    rgb.r=100;
+    rgb.g=100;
+    rgb.b=100;
         player->position.y+=GRAVITY;
 
         if (onGround(player))

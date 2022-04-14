@@ -4,6 +4,7 @@
 #include <SDL/SDL_image.h>
 #include "include/game.h"
 #include "include/declarations.h"
+#include "include/collision.h"
 
 void initbackground(Background *assets)
 {
@@ -40,15 +41,18 @@ void showgame(image p,SDL_Surface *screen)
 
 void scrolling (Game *g)
 {
- 
-if (g->player[0].input.right)
+     SDL_Color rgb;
+     rgb.r=255;
+    rgb.g=255;
+    rgb.b=255;
+if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          
 
 	
 	
         }
-else if(g->player[0].input.left) 
+else if((g->player[0].input.left) &&(!CollisionLeft(&g->player[0],&g->bg,rgb)))
 {          
 	g->bg.img.pos2.x-=SPEED; 
 
