@@ -13,10 +13,11 @@ typedef struct
 typedef struct
 {
     image img;
-    image an;
+    image an[2];
     SDL_Surface *collision;
     int scroll_x;
     int scroll_y;
+    int elapsed;
     Mix_Music *son;
 } Background;
 

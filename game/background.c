@@ -21,6 +21,12 @@ void initbackground(Background *assets)
         assets->img.pos2.y=0;
         assets->scroll_x=0;
         assets->scroll_y=0;
+        assets->elapsed=0;
+        assets->an[0].surface=IMG_Load("graphics/720/Gameanimation/bird.png");
+        assets->an[0].pos1.x=1280;
+        assets->an[0].pos1.y=150;
+        assets->an[1].surface=IMG_Load("graphics/720/Gameanimation/second_bird.png");
+        assets->an[1].pos1=assets->an[0].pos1;
 
 	 //Son
 	 	
@@ -74,24 +80,32 @@ else if (direction ==3){
         */
 }
 
-void initanimationback(Game *e)
+
+void animationback(Background *bg)
 {
-
-    
-    e->bg.an.surface=IMG_Load("graphics/720/Gameanimation/bird.png");
-    e->bg.an.pos1.x=0;
-    e->bg.an.pos1.y=150;
-    
-
-
-
-}
-void animationback(Game *e)
-{
-    if(e->bg.an.pos1.x!=1280)
-     {
-             e->bg.an.pos1.x+=10;
-     }e->bg.an.pos1.x=400;
+        bg->elapsed++;
+        if (bg->elapsed!=500)
+        {
+                if(bg->an[0].pos1.x!=-500)
+                {
+                        bg->an[0].pos1.x-=10;
+                }
+        }
+        if ((bg->elapsed!=1000) && (bg->elapsed>=500))
+        {
+                if(bg->an[1].pos1.x!=-500)
+                {
+                        bg->an[1].pos1.x-=10;
+                }
+        }
+        if (bg->elapsed==1000)
+        {
+                bg->an[0].pos1.x=1280;
+                bg->an[0].pos1.y=150;
+                bg->an[1].pos1.x=1280;
+                bg->an[1].pos1.y=150;
+                bg->elapsed==0;
+        }
 }
 
 

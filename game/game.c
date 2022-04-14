@@ -9,7 +9,6 @@ int game(SDL_Surface *screen,int run)
 {
     Game g;
     initbackground(&g.bg);
-    initanimationback(&g.bg);
     initplayer(&g.player[0]);
     initplayer(&g.player[1]);
     SDL_Event event;
