@@ -37,5 +37,24 @@
 #define SPRITEYE0_Jump 0
 #define SPRITEYE0_Idle 0
 
+typedef struct
+{
+    //Movement
+    int up;
+    int down;
+    int right;
+    int left;
+    int startJump;
+    int jumpHeight;
+    int reset;
+    int fix;
+    int movement;
+    //Attacks
+    int a1; //ATTACK1
+    int a2; //ATTACK2
+    int sj; //SPECIAL JUMP
+    //Cheats for developer testing
+    int ih;
+    } Input;
 
 #endif

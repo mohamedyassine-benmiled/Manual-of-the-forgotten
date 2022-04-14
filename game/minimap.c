@@ -28,7 +28,6 @@ g->minimap.player[1].position.y=g->player[1].position.y*20/100+g->minimap.bg.pos
 g->minimap.enemy[0].position.x=g->enemy[0].position.x*20/100+g->minimap.bg.pos1.x;
 g->minimap.enemy[0].position.y=g->enemy[0].position.y*20/100+g->minimap.bg.pos1.y;
 g->minimap.elapsed++;
-    printf("%d\n",g->minimap.elapsed);
     //color
     sprintf(c,"Score : %d",g->minimap.elapsed);
     t.textColor.r=207;

@@ -9,6 +9,7 @@ SDL_Surface *image;
 SDL_Rect position;
 SDL_Rect position2;
 int right , left ;
+int elapsed;
 int mouvement ;
 int posMax ;
 int posMin ;

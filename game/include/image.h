@@ -96,6 +96,7 @@ typedef struct
     image back[2]; 
 } playimage;
 
+
 void menurefresh(MenuImage *assets,SDL_Surface *screen);
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);
 void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio);
@@ -109,4 +110,5 @@ void freebackground(Background assets);
 void freeaudio(audioimage assets);
 void freecheck(CheckImage assets);
 int hoverbutton(int x,int y, image img );
+
 #endif // IMAGE_H

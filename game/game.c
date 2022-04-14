@@ -3,7 +3,15 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
-
+//Init to remove warnings
+void initbackground(Background *assets);
+void initminimap(Minimap *assets);
+void initplayer(Character *player);
+void updateminimap(Game *g);
+int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run);
+void movement(Character *player,Background *bg,int x);
+void gamerefresh(Game *g,SDL_Surface *screen);
+void freegame(Game assets);
 
 int game(SDL_Surface *screen,int run)
 {

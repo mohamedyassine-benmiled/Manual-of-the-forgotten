@@ -5,6 +5,11 @@
 #include "include/game.h"
 #include "include/declarations.h"
 #include "include/collision.h"
+//Init to remove warnings
+int CollisionRight(Character *player,Background *bg,SDL_Color rgb);
+int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
+int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
+
 
 void initbackground(Background *assets)
 {
@@ -56,13 +61,12 @@ if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          
         g->bg.an2.pos1.x+=SPEED;
-        }
+}
 else if((g->player[0].input.left) &&(!CollisionLeft(&g->player[0],&g->bg,rgb)))
 {          
 	g->bg.img.pos2.x-=SPEED; 
         g->bg.an2.pos1.x-=SPEED;
-
-	}
+}
         
 /*
 
@@ -103,7 +107,7 @@ void animationback(Background *bg)
                 bg->an[0].pos1.y=150;
                 bg->an[1].pos1.x=1280;
                 bg->an[1].pos1.y=150;
-                bg->elapsed==0;
+                bg->elapsed=0;
         }
 }
 void animationback2(Background *bg)

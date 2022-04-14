@@ -3,6 +3,11 @@
 #include "include/declarations.h"
 #include "include/config.h"
 
+//Init to remove warnings
+int CollisionRight(Character *player,Background *bg,SDL_Color rgb);
+int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
+int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
+
 int center_camera(Character *player,int x)
 {
     settings config;
@@ -31,114 +36,123 @@ int onGround(Character *player)
 }
 void animation(Character *player)
 {
-    //Jump Right
-    if ((player->input.fix) && (player->direction==0))
+    player->elapsed++;
+    if (player->elapsed==5)
     {
-        if (!(player->look==SPRITEXP0_Jump))
-            player->animation=0;
-        player->look=SPRITEXP0_Jump;
-        player->animation++;
+        //Jump Right
+        if ((player->input.fix) && (player->direction==0))
+        {
+            if (!(player->look==SPRITEXP0_Jump))
+                player->animation=0;
+            player->look=SPRITEXP0_Jump;
+            player->animation++;
 
-        if (player->animation>=(SPRITEYP0_Jump/2)+1)
-        {
-        player->animation=0;
-        }
-        player->spritestate=player->animation;
-        return;
-    }
-    else
-    //Jump Left
-    if ((player->input.fix) && (player->direction==1))
-    {
-        if (!(player->look==SPRITEXP0_Jump))
+            if (player->animation>=(SPRITEYP0_Jump/2)+1)
+            {
             player->animation=0;
-        player->look=SPRITEXP0_Jump;
-        player->animation--;
-        if (player->animation<(SPRITEYP0_Jump/2)+1)
-        {
-        player->animation=SPRITEYP0_Jump;
-        }
-        player->spritestate=player->animation;
-        return;
-    }
-    else
-    //Jump Idle
-    if (player->input.fix)
-    {
-        if (!(player->look==SPRITEXP0_Jump))
-            player->animation=0;
-        player->look=SPRITEXP0_Jump;
-        player->animation++;
-
-        if (player->animation>=(SPRITEYP0_Jump/2)+1)
-        {
-        player->animation=0;
-        }
-        player->spritestate=player->animation;
-        return;
-    }
-    //Idle Right
-    if ((player->input.movement==0) && (player->direction==0))
-    {
-        if (!(player->look==SPRITEXP0_Idle))
-            player->animation=0;
-        player->look=SPRITEXP0_Idle;
-        player->animation++;
-        
-        if (player->animation>=(SPRITEYP0_Idle/2)+1)
-        {
-            player->animation=0;
-        }
+            }
             player->spritestate=player->animation;
             return;
-    }
-    else
-    //Idle Left
-    if ((player->input.movement==0) && (player->direction==1))
-    {
-        if (!(player->look==SPRITEXP0_Idle))
-            player->animation=0;
-        player->look=SPRITEXP0_Idle;
-        player->animation--;
-
-        if (player->animation<(SPRITEYP0_Idle/2)+1)
-        {
-        player->animation=SPRITEYP0_Idle;
         }
+        else
+        //Jump Left
+        if ((player->input.fix) && (player->direction==1))
+        {
+            if (!(player->look==SPRITEXP0_Jump))
+                player->animation=0;
+            player->look=SPRITEXP0_Jump;
+            player->animation--;
+            if (player->animation<(SPRITEYP0_Jump/2)+1)
+            {
+            player->animation=SPRITEYP0_Jump;
+            }
             player->spritestate=player->animation;
             return;
-    }
-    else
-    //Run Right
-    if ((player->input.right) && (player->input.movement==1))
-    {
-        if (!(player->look==SPRITEXP0_Run))
-            player->animation=0;
-        player->look=SPRITEXP0_Run;
-        player->animation++;
+        }
+        else
+        //Jump Idle
+        if (player->input.fix)
+        {
+            if (!(player->look==SPRITEXP0_Jump))
+                player->animation=0;
+            player->look=SPRITEXP0_Jump;
+            player->animation++;
 
-        if (player->animation>=(SPRITEYP0_Run/2)+1)
-        {
-        player->animation=0;
-        }
-        player->spritestate=player->animation;
-        return;
-    }
-    else
-    //Run Left
-    if ((player->input.left) && (player->input.movement==1))
-    {
-        if (!(player->look==SPRITEXP0_Run))
+            if (player->animation>=(SPRITEYP0_Jump/2)+1)
+            {
             player->animation=0;
-        player->look=SPRITEXP0_Run;
-        player->animation--;
-        if (player->animation<(SPRITEYP0_Run/2)+1)
-        {
-        player->animation=SPRITEYP0_Run;
+            }
+            player->spritestate=player->animation;
+            return;
         }
-        player->spritestate=player->animation;
-        return;
+        //Idle Right
+        if ((player->input.movement==0) && (player->direction==0))
+        {
+            if (!(player->look==SPRITEXP0_Idle))
+                player->animation=0;
+            player->look=SPRITEXP0_Idle;
+            player->animation++;
+            
+            if (player->animation>=(SPRITEYP0_Idle/2)+1)
+            {
+                player->animation=0;
+            }
+                player->spritestate=player->animation;
+                return;
+        }
+        else
+        //Idle Left
+        if ((player->input.movement==0) && (player->direction==1))
+        {
+            if (!(player->look==SPRITEXP0_Idle))
+                player->animation=0;
+            player->look=SPRITEXP0_Idle;
+            player->animation--;
+
+            if (player->animation<(SPRITEYP0_Idle/2)+1)
+            {
+            player->animation=SPRITEYP0_Idle;
+            }
+                player->spritestate=player->animation;
+                return;
+        }
+        else
+        //Run Right
+        if ((player->input.right) && (player->input.movement==1))
+        {
+            if (!(player->look==SPRITEXP0_Run))
+                player->animation=0;
+            player->look=SPRITEXP0_Run;
+            player->animation++;
+
+            if (player->animation>=(SPRITEYP0_Run/2)+1)
+            {
+            player->animation=0;
+            }
+            player->spritestate=player->animation;
+            return;
+        }
+        else
+        //Run Left
+        if ((player->input.left) && (player->input.movement==1))
+        {
+            if (!(player->look==SPRITEXP0_Run))
+                player->animation=0;
+            player->look=SPRITEXP0_Run;
+            player->animation--;
+            if (player->animation<(SPRITEYP0_Run/2)+1)
+            {
+            player->animation=SPRITEYP0_Run;
+            }
+            player->spritestate=player->animation;
+            return;
+        }
     }
+    if (player->elapsed>=5)
+    {
+        player->elapsed=0;
+    }
+
 }
 
 void movement(Character *player,Background *bg,int x)
@@ -157,7 +171,7 @@ void movement(Character *player,Background *bg,int x)
                 {
                     player->position.x+=SPEED;
                 }
-                            player->direction=0;
+                player->direction=0;
             
         if (!center_camera(player,x))
             {
@@ -177,8 +191,10 @@ void movement(Character *player,Background *bg,int x)
 
                 player->position.x-=SPEED;
                 if (player->position.x<0)
+                {
                     player->position.x+=SPEED;
-                    player->direction=1;
+                }
+                player->direction=1;
 
         if (!center_camera(player,x))
             {

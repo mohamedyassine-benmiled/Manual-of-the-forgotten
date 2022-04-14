@@ -9,6 +9,14 @@
 #include "include/config.h"
 #include "include/enemy.h"
 #include "include/minimap.h"
+//Init to remove warnings
+void gamerefresh(Game *g,SDL_Surface *screen);
+void animationback(Background *bg);
+void scrolling (Game *g);
+void initminimap(Minimap *assets);
+void updateminimap(Game *g);
+void animation(Character *player);
+void animationback2(Background *bg);
 
 //Showing Game Images in the right position
 void gamerefresh(Game *g,SDL_Surface *screen)

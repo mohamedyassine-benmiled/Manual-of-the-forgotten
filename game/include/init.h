@@ -23,4 +23,5 @@ void initaudio(audioimage *assets);
 void initgraphics(graphicimage *assets);
 void initbackground(Background *assets);
 void initennemy (Enemy *enemi);
+void initplay (playimage *assets);
 #endif // INIT_H

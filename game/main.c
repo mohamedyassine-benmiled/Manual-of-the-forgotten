@@ -9,6 +9,8 @@
 #include "include/menu.h"
 #include "include/init.h"
 #include "include/config.h"
+//Init to remove warnings
+int intro(SDL_Surface *screen);
 
 //Main Code
 int main (int argc , char *argv[])
