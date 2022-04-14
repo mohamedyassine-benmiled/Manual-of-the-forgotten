@@ -13,7 +13,7 @@ int game(SDL_Surface *screen,int run)
     initplayer(&g.player[1]);
     SDL_Event event;
     showgame(g.bg.img,screen);
-    
+    Mix_PlayMusic(g.bg.son, -1);
     SDL_Flip(screen);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
