@@ -55,6 +55,8 @@ typedef struct
     int sj; //SPECIAL JUMP
     //Cheats for developer testing
     int ih;
+    int fast;
     } Input;
+
 
 #endif

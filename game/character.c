@@ -160,6 +160,47 @@ void movement(Character *player,Background *bg,int x)
     SDL_Color rgb;
         settings config;
     get_config(&config);
+    /* Right Fast */
+        if (((player->input.right)&&(player->input.fast))&&(!CollisionRight(player,bg,rgb)))
+        {
+          
+                if (player->position.x<config.resolution_w/2)
+                {
+                    player->position.x+=SPEED*2;
+                }
+                            player->direction=0;
+            
+        if (!center_camera(player,x))
+            {
+                if (player->position.x<config.resolution_w/2)
+                {
+                    player->position.x+=SPEED*2;
+                    bg->img.pos2.x-=SPEED*2;
+                }
+            }
+            player->input.movement=1;
+        }
+        /* Left Fast */
+        else if (((player->input.left)&&(player->input.fast))&&(!CollisionLeft(player,bg,rgb)))
+        {
+
+                player->position.x-=2*SPEED;
+                if (player->position.x<0)
+                    player->position.x+=2*SPEED;
+                    player->direction=1;
+
+        if (!center_camera(player,x))
+            {
+                if (player->position.x>config.resolution_w/2)
+                {
+                    player->position.x-=2*SPEED;
+                    bg->img.pos2.x+=2*SPEED;
+                }
+            }
+            player->input.movement=1;
+
+        }
+        else 
         /* Right */
     rgb.r=255;
     rgb.g=255;
@@ -183,7 +224,7 @@ void movement(Character *player,Background *bg,int x)
             }
             player->input.movement=1;
         }
-
+        
         /* Left */
 
         else if ((player->input.left)&&(!CollisionLeft(player,bg,rgb)))

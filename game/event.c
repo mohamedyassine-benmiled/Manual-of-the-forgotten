@@ -55,6 +55,12 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             g->player[0].input.up=1;
                                         }
                                         break;
+
+                                        case SDLK_RSHIFT:
+                                        {
+                                            g->player[0].input.fast=1;
+                                        }
+                                        break;
                                         /*** Player[1] Handling ***/
                                         case SDLK_d:
                                         {
@@ -73,6 +79,11 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                         case SDLK_w:
                                         {
                                             g->player[1].input.up=1;
+                                        }
+                                        break;
+                                        case SDLK_LSHIFT:
+                                        {
+                                            g->player[1].input.fast=1;
                                         }
                                         break;
                                         default:
@@ -100,24 +111,32 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             g->player[0].input.up=0;
                                         }
                                         break;
+                                        case SDLK_RSHIFT:
+                                        {
+                                            g->player[0].input.fast=0;
+                                        }
+                                        break;
                                         /*** Player[1] Handling ***/
                                         case SDLK_d:
                                         {
                                             g->player[1].input.right=0;
                                         }
                                         break;
-
                                         case SDLK_a:
                                         {
                                             g->player[1].input.left=0;
                                         }
                                         break;
-
                                         case SDLK_w:
                                         {
                                             g->player[1].input.up=0;
                                         }
-                                        break;                                        
+                                        break;    
+                                        case SDLK_LSHIFT:
+                                        {
+                                            g->player[1].input.fast=0;
+                                        }
+                                        break;                                    
                                     default:
                                     break;
                                     }
