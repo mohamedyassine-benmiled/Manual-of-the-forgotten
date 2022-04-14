@@ -15,7 +15,6 @@
 
 void updateminimap(Game *g)
 {
-        TTF_Init();
         text t;
         char c[50];
 g->minimap.bg.pos2.w=g->bg.img.pos2.w*MINIMAP/100;
@@ -60,8 +59,8 @@ void initminimap(Minimap *assets)
 	assets->player[1].image=IMG_Load("graphics/720/Minimap/player.png");	
 	assets->enemy[0].image=IMG_Load("graphics/720/Minimap/enemy.png");
     //Score
-    assets->score.pos1.x=600;
-    assets->score.pos1.x=200;
+    assets->score.pos1.x=5;
+    assets->score.pos1.y=0;
 
 }
 

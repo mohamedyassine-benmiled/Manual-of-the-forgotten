@@ -123,7 +123,7 @@ void initvideo()
      SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(icon,NULL);
                 SDL_WM_SetCaption("Manual of the forgotten",NULL);
-                TTF_Init();
+
 }
 //Initialize Menu Positions and Images
 void initmenu(MenuImage *assets)
