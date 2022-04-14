@@ -13,6 +13,7 @@ typedef struct
 typedef struct
 {
     image img;
+    image an;
     SDL_Surface *collision;
     int scroll_x;
     int scroll_y;

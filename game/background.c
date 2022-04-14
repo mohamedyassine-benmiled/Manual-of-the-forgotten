@@ -73,33 +73,29 @@ else if (direction ==3){
 	}
         */
 }
-/*
-void initanimationback()
+
+void initanimationback(Game *e)
 {
-char logo [50];
-    for(int i=0;i<4;i++)
-    {
-    sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
-    assets->logo[i].surface=IMG_Load(logo);
-    assets->logo[i].pos1.x=619;
-    assets->logo[i].pos1.y=47;
-    }
+
+    
+    e->bg.an.surface=IMG_Load("graphics/720/Gameanimation/bird.png");
+    e->bg.an.pos1.x=0;
+    e->bg.an.pos1.y=150;
+    
 
 
 
 }
-void animationback()
+void animationback(Game *e)
 {
-        i++;
-    if(i==4)
-    {
-        i=0;
-    }
-     show(assets.cbook[j],screen);
+    if(e->bg.an.pos1.x!=1280)
+     {
+             e->bg.an.pos1.x+=10;
+     }e->bg.an.pos1.x=400;
 }
 
 
-*/
+
 
 
 
