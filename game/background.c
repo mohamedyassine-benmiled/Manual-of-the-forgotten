@@ -19,11 +19,18 @@ void initbackground(Background *assets)
         assets->img.pos2.h=720;
         assets->img.pos2.x=0;
         assets->img.pos2.y=0;
-        assets->scroll_x=0;
-        assets->scroll_y=0;
+        assets->elapsed=0;
+        assets->an[0].surface=IMG_Load("graphics/720/Gameanimation/bird.png");
+        assets->an[0].pos1.x=1280;
+        assets->an[0].pos1.y=150;
+        assets->an[1].surface=IMG_Load("graphics/720/Gameanimation/second_bird.png");
+        assets->an[1].pos1=assets->an[0].pos1;
+        assets->an2.surface=IMG_Load("graphics/720/Gameanimation/pointdex.png");
+        assets->an2.pos1.x=1046;
+        assets->an2.pos1.y=356;
 
 	 //Son
-	 	
+	 	assets->son=Mix_LoadMUS("sfx/WeAreTheChampions.mp3");
 
 }
 
@@ -48,15 +55,13 @@ void scrolling (Game *g)
 if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          
-
-	
-	
+        g->bg.an2.pos1.x+=SPEED;
         }
 else if((g->player[0].input.left) &&(!CollisionLeft(&g->player[0],&g->bg,rgb)))
 {          
 	g->bg.img.pos2.x-=SPEED; 
+        g->bg.an2.pos1.x-=SPEED;
 
-	
 	}
         
 /*
@@ -73,33 +78,48 @@ else if (direction ==3){
 	}
         */
 }
-/*
-void initanimationback()
+
+
+void animationback(Background *bg)
 {
-char logo [50];
-    for(int i=0;i<4;i++)
-    {
-    sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
-    assets->logo[i].surface=IMG_Load(logo);
-    assets->logo[i].pos1.x=619;
-    assets->logo[i].pos1.y=47;
-    }
-
-
-
+        bg->elapsed++;
+        if (bg->elapsed!=500)
+        {
+                if(bg->an[0].pos1.x!=-500)
+                {
+                        bg->an[0].pos1.x-=10;
+                }
+        }
+        if ((bg->elapsed!=1000) && (bg->elapsed>=500))
+        {
+                if(bg->an[1].pos1.x!=-500)
+                {
+                        bg->an[1].pos1.x-=10;
+                }
+        }
+        if (bg->elapsed==1000)
+        {
+                bg->an[0].pos1.x=1280;
+                bg->an[0].pos1.y=150;
+                bg->an[1].pos1.x=1280;
+                bg->an[1].pos1.y=150;
+                bg->elapsed==0;
+        }
 }
-void animationback()
+void animationback2(Background *bg)
 {
-        i++;
-    if(i==4)
-    {
-        i=0;
-    }
-     show(assets.cbook[j],screen);
+
+        if (bg->elapsed!=100)
+        {
+                bg->i=0;
+        }
+        if ((bg->elapsed!=100) && (bg->elapsed>=200))
+        {
+                bg->i=1;
+        }
 }
 
 
-*/
 
 
 

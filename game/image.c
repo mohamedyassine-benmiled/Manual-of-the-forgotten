@@ -22,7 +22,8 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     scrolling(g);
     animation(&g->player[0]);
-   
+   animationback(&g->bg);
+    animationback2(&g->bg);
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;
         g->player[0].src_pos.h=CHAR_H;
@@ -47,6 +48,10 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
     SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
     SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].position);
+show(g->bg.an[0],screen);
+show(g->bg.an[1],screen);
+if (g->bg.i)
+show(g->bg.an2,screen);
 
 
 
