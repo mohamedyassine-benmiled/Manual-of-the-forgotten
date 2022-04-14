@@ -81,7 +81,7 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             g->player[1].input.up=1;
                                         }
                                         break;
-                                        case SDLK_LSHIFT:
+                                        case SDLK_x:
                                         {
                                             g->player[1].input.fast=1;
                                         }
@@ -132,7 +132,7 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             g->player[1].input.up=0;
                                         }
                                         break;    
-                                        case SDLK_LSHIFT:
+                                        case SDLK_x:
                                         {
                                             g->player[1].input.fast=0;
                                         }

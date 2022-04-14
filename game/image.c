@@ -56,10 +56,10 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
     SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
     SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].position);
-show(g->bg.an[0],screen);
-show(g->bg.an[1],screen);
-if (g->bg.i)
-show(g->bg.an2,screen);
+    show(g->bg.an[0],screen);
+    show(g->bg.an[1],screen);
+    if (g->bg.i)
+    show(g->bg.an2,screen);
 
 
 

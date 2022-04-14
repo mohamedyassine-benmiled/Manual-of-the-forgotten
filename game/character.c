@@ -160,6 +160,9 @@ void movement(Character *player,Background *bg,int x)
     SDL_Color rgb;
         settings config;
     get_config(&config);
+    rgb.r=255;
+    rgb.g=255;
+    rgb.b=255;
     /* Right Fast */
         if (((player->input.right)&&(player->input.fast))&&(!CollisionRight(player,bg,rgb)))
         {
@@ -202,9 +205,7 @@ void movement(Character *player,Background *bg,int x)
         }
         else 
         /* Right */
-    rgb.r=255;
-    rgb.g=255;
-    rgb.b=255;
+
         if ((player->input.right)&&(!CollisionRight(player,bg,rgb)))
         {
           

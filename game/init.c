@@ -23,6 +23,7 @@ void initplayer(Character *player)
     player->look=0;
     player->animation=0;
     player->direction=0;
+    player->input.fast=0;
     player->elapsed=0;
     player->input.movement=0;
     player->pos_cercle.r=30;
