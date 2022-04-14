@@ -29,7 +29,7 @@ void initbackground(Background *assets)
         assets->an[1].pos1=assets->an[0].pos1;
 
 	 //Son
-	 	
+	 	assets->son=Mix_LoadMUS("WeAreTheChampions .mp3");
 
 }
 
