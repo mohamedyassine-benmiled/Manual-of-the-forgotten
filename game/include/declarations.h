@@ -11,8 +11,8 @@
 //Variables
 #define SPEED 12
 #define GRAVITY 9
-#define JUMP_POWER 16
-#define maxJmpH 96
+#define JUMP_POWER 40
+#define maxJmpH 400
 #define RELOAD 1000
 #define MAX_ITEMS 4
 #define START_y 499

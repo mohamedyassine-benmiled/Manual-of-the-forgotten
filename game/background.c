@@ -54,9 +54,9 @@ void showgame(image p,SDL_Surface *screen)
 void scrolling (Game *g)
 {
      SDL_Color rgb;
-     rgb.r=255;
-    rgb.g=255;
-    rgb.b=255;
+     rgb.r=0;
+    rgb.g=0;
+    rgb.b=0;
 if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          

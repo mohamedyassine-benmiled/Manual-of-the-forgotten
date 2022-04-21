@@ -36,9 +36,6 @@ int onGround(Character *player)
 }
 void animation(Character *player)
 {
-    player->elapsed++;
-    if (player->elapsed==5)
-    {
         //Jump Right
         if ((player->input.fix) && (player->direction==0))
         {
@@ -147,11 +144,7 @@ void animation(Character *player)
             player->spritestate=player->animation;
             return;
         }
-    }
-    if (player->elapsed>=5)
-    {
-        player->elapsed=0;
-    }
+
 
 }
 
@@ -160,9 +153,9 @@ void movement(Character *player,Background *bg,int x)
     SDL_Color rgb;
         settings config;
     get_config(&config);
-    rgb.r=255;
-    rgb.g=255;
-    rgb.b=255;
+    rgb.r=0;
+    rgb.g=0;
+    rgb.b=0;
     /* Right Fast */
         if (((player->input.right)&&(player->input.fast))&&(!CollisionRight(player,bg,rgb)))
         {
@@ -279,9 +272,7 @@ void movement(Character *player,Background *bg,int x)
             }
         }
         
-    rgb.r=100;
-    rgb.g=100;
-    rgb.b=100;
+
         player->position.y+=GRAVITY;
 
         if (onGround(player))
