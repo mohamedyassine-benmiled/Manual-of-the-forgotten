@@ -19,6 +19,8 @@ void initennemy (Enemy *enemi)
     enemi->position2.y=0;
     enemi->position2.w=90;
     enemi->position2.h=90;
+    enemi->rect.x=500;
+    enemi->rect.y=320;
     enemi->right =0;
     enemi->left=0;
     enemi->posMax=600;
@@ -101,4 +103,17 @@ void animationenemy(Enemy *enemi)
         return;
     }
      
+}
+int collision(box *b,Enemy *e){
+b->x=698;
+b->y=600;
+b->w=60;
+b->h=75;
+
+if(e->rect.x > b->x+b->w|| e->rect.x + e->rect.w < b->x || e->rect.y + e->rect.h < b->y || e->rect.y > b->y+b->h)
+{
+return 0;
+}
+else
+return 1;
 }
