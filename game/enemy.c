@@ -13,18 +13,16 @@
 void initennemy (Enemy *enemi)
 {
     enemi->image = IMG_Load("graphics/720/Spritesheet/Enemy.png");
-	enemi->position.x=400;
+	enemi->position.x=2500;
 	enemi->position.y=START_y-10;
     enemi->position2.x=0;
     enemi->position2.y=0;
     enemi->position2.w=90;
     enemi->position2.h=90;
-    enemi->rect.x=500;
-    enemi->rect.y=320;
     enemi->right =0;
     enemi->left=0;
-    enemi->posMax=600;
-    enemi->posMin=400;
+    enemi->posMax=3000;
+    enemi->posMin=2500;
     enemi->mouvement=1;
     enemi->reset=0;
     enemi->look=0;
@@ -32,13 +30,13 @@ void initennemy (Enemy *enemi)
     enemi->animation=0;
     }
 
-int deplacement_alea (int posmax,int posmin)
+/*int deplacement_alea (int posmax,int posmin)
 {
 	int pos;
 	srand(time(NULL));
 	pos=rand()%(posmax-posmin+1)+posmin;
 	return pos;
-}
+}*/
 
 void deplacement_enemy (Enemy *enemi )
 {
@@ -104,16 +102,12 @@ void animationenemy(Enemy *enemi)
     }
      
 }
-int collision(box *b,Enemy *e){
-b->x=698;
-b->y=600;
-b->w=60;
-b->h=75;
-
-if(e->rect.x > b->x+b->w|| e->rect.x + e->rect.w < b->x || e->rect.y + e->rect.h < b->y || e->rect.y > b->y+b->h)
+int relative_x( Background *bg , SDL_Rect position)
 {
-return 0;
+    return (position.x-bg->img.pos2.x);
 }
-else
-return 1;
+void rpos_enemy (Enemy *enemi , Background *bg )
+{
+    enemi->rpos.x=relative_x(bg,enemi->position); 
+    enemi->rpos.y=enemi->position.y; 
 }
