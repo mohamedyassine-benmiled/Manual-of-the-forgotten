@@ -7,6 +7,8 @@
 int CollisionRight(Character *player,Background *bg,SDL_Color rgb);
 int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
+int CollisionTop(Character *player,Background *bg,SDL_Color rgb);
+
 
 int center_camera(Character *player,int x)
 {
@@ -247,7 +249,7 @@ void movement(Character *player,Background *bg,int x)
             player->input.movement=0;
         }
         
-        if ((player->input.up) && (player->input.fix==0))
+        if ((player->input.up) && (player->input.fix==0) && (!CollisionTop(player,bg,rgb)))
         {
             player->input.startJump = 1;
             player->input.movement=2;
@@ -272,14 +274,12 @@ void movement(Character *player,Background *bg,int x)
             }
         }
         
-
         player->position.y+=GRAVITY;
 
-        if (onGround(player))
+        if (CollisionGround(player,bg,rgb))
         {
             player->position.y-=GRAVITY;
             player->input.fix=0;
-
         }
 
         

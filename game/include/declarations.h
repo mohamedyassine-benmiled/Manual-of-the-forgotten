@@ -10,12 +10,12 @@
 #define CHAR_W 124
 //Variables
 #define SPEED 12
-#define GRAVITY 9
+#define GRAVITY 16
 #define JUMP_POWER 40
 #define maxJmpH 400
 #define RELOAD 1000
 #define MAX_ITEMS 4
-#define START_y 499
+#define START_y 400
 #define START_x 100
 #define MINIMAP 20
 //Sprites Player[0]
