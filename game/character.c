@@ -24,18 +24,21 @@ int center_camera(Character *player,int x)
     }
 }
 
-int onGround(Character *player)
-{
-	if (player->position.y>=499)
-	{
-		player->position.y = 499;
-		if (player->input.jumpHeight>0)
-			player->input.jumpHeight = 0;
-        return 1;
-	}
+int bordercheck(Background *bg)
+{ 
+    if(bg->img.pos2.x<=0)
+    {
+        return 0;
+    }
 
-    return 0;
+    if (bg->img.pos2.x>=6395-1280)
+    {
+        return -1;
+    }
+
+    return 1;
 }
+
 void animation(Character *player)
 {
         //Jump Right
@@ -158,6 +161,10 @@ void movement(Character *player,Background *bg,int x)
     rgb.r=0;
     rgb.g=0;
     rgb.b=0;
+    if (x==1)
+    {
+        x=bordercheck(bg);
+    }
     /* Right Fast */
         if (((player->input.right)&&(player->input.fast))&&(!CollisionRight(player,bg,rgb)))
         {
@@ -249,19 +256,18 @@ void movement(Character *player,Background *bg,int x)
             player->input.movement=0;
         }
         
-        if ((player->input.up) && (player->input.fix==0) && (!CollisionTop(player,bg,rgb)))
+        if ((player->input.up) && (player->input.fix==0))
         {
             player->input.startJump = 1;
             player->input.movement=2;
         }
         
         /* JUMP START */
-        
         if (player->input.startJump)
         {
             player->input.fix=1;
 
-            if (player->input.jumpHeight < maxJmpH)
+            if ((player->input.jumpHeight < maxJmpH))
             {
                 player->input.jumpHeight += JUMP_POWER;
                 player->position.y -= JUMP_POWER + 2*GRAVITY;
@@ -273,15 +279,14 @@ void movement(Character *player,Background *bg,int x)
                 player->input.movement=3;
             }
         }
-        
         player->position.y+=GRAVITY;
-
-        if (CollisionGround(player,bg,rgb))
+        
+        if ((CollisionGround(player,bg,rgb)))
         {
             player->position.y-=GRAVITY;
             player->input.fix=0;
         }
-
+        
         
         
     player->pos_cercle.x=player->position.x;
