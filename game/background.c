@@ -58,17 +58,18 @@ void scrolling (Game *g)
     rgb.g=0;
     rgb.b=0;
     int x = bordercheck(&g->bg);
+    int i = g->global.firstplayer;
     printf("\n%d",x);
 if (x!=-1)
 {
-if ((g->player[0].input.right)&&(!CollisionRight(&g->player[0],&g->bg,rgb)))
+if ((g->player[i].input.right)&&(!CollisionRight(&g->player[i],&g->bg,rgb)))
 {
 	g->bg.img.pos2.x+=SPEED;          
 }
 }
 if (x!=0)
 {
-if((g->player[0].input.left) &&(!CollisionLeft(&g->player[0],&g->bg,rgb)))
+if((g->player[i].input.left) &&(!CollisionLeft(&g->player[i],&g->bg,rgb)))
 {          
 	g->bg.img.pos2.x-=SPEED; 
 }
