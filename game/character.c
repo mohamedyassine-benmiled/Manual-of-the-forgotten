@@ -8,7 +8,20 @@ int CollisionRight(Character *player,Background *bg,SDL_Color rgb);
 int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb);
-
+int arduinocollision()
+{
+    if (collisionleft)
+    {
+        return 0;
+    }
+    else
+    if (collisionright)
+    {
+        return -1;
+    }
+    else
+    return 1;
+}
 
 int center_camera(Character *player,int x)
 {
@@ -24,17 +37,25 @@ int center_camera(Character *player,int x)
     }
 }
 
-int onGround(Character *player)
-{
-	if (player->position.y>=499)
-	{
-		player->position.y = 499;
-		if (player->input.jumpHeight>0)
-			player->input.jumpHeight = 0;
-        return 1;
-	}
+int bordercheck(Background *bg)
+{ 
+    if(bg->img.pos2.x<=0)
+    {
+        collisionleft=1;
+        collisionright=0;
+        return 0;
+        
+    }
 
-    return 0;
+    if (bg->img.pos2.x>=6395-1280)
+    {
+        collisionleft=0;
+        collisionright=1;
+        return -1;
+    }
+    collisionleft=0;
+    collisionright=0;
+    return 1;
 }
 void animation(Character *player)
 {
