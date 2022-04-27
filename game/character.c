@@ -9,7 +9,6 @@ int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb);
 
-
 int center_camera(Character *player,int x)
 {
     settings config;

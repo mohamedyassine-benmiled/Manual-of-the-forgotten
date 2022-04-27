@@ -25,8 +25,8 @@ g->minimap.player[0].position.x=g->player[0].position.x*20/100+g->minimap.bg.pos
 g->minimap.player[0].position.y=g->player[0].position.y*20/100+g->minimap.bg.pos1.y;
 g->minimap.player[1].position.x=g->player[1].position.x*20/100+g->minimap.bg.pos1.x;
 g->minimap.player[1].position.y=g->player[1].position.y*20/100+g->minimap.bg.pos1.y;
-g->minimap.enemy[0].position.x=g->enemy[0].position.x*20/100+g->minimap.bg.pos1.x;
-g->minimap.enemy[0].position.y=g->enemy[0].position.y*20/100+g->minimap.bg.pos1.y;
+g->minimap.enemy[0].rpos.x=g->enemy[0].rpos.x*20/100+g->minimap.bg.pos1.x;
+g->minimap.enemy[0].rpos.y=g->enemy[0].rpos.y*20/100+g->minimap.bg.pos1.y;
 g->minimap.elapsed++;
     //color
     sprintf(c,"Score : %d",g->minimap.elapsed);
