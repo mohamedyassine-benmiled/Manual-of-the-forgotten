@@ -56,6 +56,7 @@ int game(SDL_Surface *screen,int run)
     
     initbackground(&g.bg);
     g.global.firstplayer=0;
+    g.global.lastplayer=1;
     initplayer(&g.player[0]);
     initplayer(&g.player[1]);
     initminimap(&g.minimap);
@@ -72,14 +73,7 @@ int game(SDL_Surface *screen,int run)
         handlemovement(&g);
         gamerefresh(&g,screen);
         handlescrolling(&g);
-        if (g.player[0].position.x>g.player[1].position.x)
-        {
-                g.global.firstplayer=0;
-        }
-        if (g.player[1].position.x>g.player[0].position.x)
-        {
-                g.global.firstplayer=1;
-        }
+
     }
     freegame(g);
     freebackground(g.bg);
@@ -88,3 +82,7 @@ return run;
 }
 
 
+int relative_x( Background *bg , SDL_Rect position)
+{
+    return (position.x-bg->img.pos2.x);
+}

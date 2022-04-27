@@ -10,9 +10,9 @@
 #define CHAR_W 124
 //Variables
 #define SPEED 12
-#define GRAVITY 16
+#define GRAVITY 10
 #define JUMP_POWER 40
-#define maxJmpH 400
+#define maxJmpH 200
 #define RELOAD 1000
 #define MAX_ITEMS 4
 #define START_y 499

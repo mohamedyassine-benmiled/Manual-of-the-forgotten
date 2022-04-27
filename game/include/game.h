@@ -35,5 +35,5 @@ SDL_Color getpixel(SDL_Surface *psurface,int x,int y);
 int collisionparfaite(SDL_Surface *psurface,Game p);
 void initBack (Game *b);
 void afficheBack (Game b, SDL_Surface *ecran);
-
+int relative_x( Background *bg , SDL_Rect position);
 #endif // GAME_H

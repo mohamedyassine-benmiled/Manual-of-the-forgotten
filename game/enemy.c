@@ -111,10 +111,7 @@ void animationenemy(Enemy *enemi)
     }
      
 }
-int relative_x( Background *bg , SDL_Rect position)
-{
-    return (position.x-bg->img.pos2.x);
-}
+
 void rpos_enemy (Enemy *enemi , Background *bg )
 {
     enemi->rpos.x=relative_x(bg,enemi->position); 
