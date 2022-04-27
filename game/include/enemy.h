@@ -1,5 +1,5 @@
 /**
- * @file enemy.c
+ * @file enemy.h
  * @author Ilyes Chaabani
  * @brief Enemy Animation and Movement
  * @version 0.5
@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
 #ifndef ENEMY_H
 #define ENEMY_H
 #include "collision.h"

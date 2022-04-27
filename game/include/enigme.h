@@ -1,5 +1,5 @@
 /**
- * @file enigme.c
+ * @file enigme.h
  * @author Eya Nehdi
  * @brief Enigmes
  * @version 0.5
@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<SDL/SDL.h>

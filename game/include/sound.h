@@ -1,5 +1,5 @@
 /**
- * @file sound.c
+ * @file sound.h
  * @author TMOF Team
  * @brief Sound Functions
  * @version 0.5
@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
 #ifndef SOUND_H
 #define SOUND_H
 #include <stdbool.h>

@@ -1,5 +1,5 @@
 /**
- * @file config.c
+ * @file config.h
  * @author TMOF Team
  * @brief Config file
  * @version 0.5

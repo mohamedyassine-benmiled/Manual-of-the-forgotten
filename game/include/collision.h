@@ -1,5 +1,5 @@
 /**
- * @file collision.c
+ * @file collision.h
  * @author Wael Bechraoui
  * @brief Collision Structures
  * @version 0.5
@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
 #ifndef COLLISION_H_INCLUDED
 #define COLLISION_H_INCLUDED
 #include <SDL/SDL.h>

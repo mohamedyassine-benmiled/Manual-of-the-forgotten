@@ -1,5 +1,5 @@
 /**
- * @file menu.c
+ * @file menu.h
  * @author TMOF Team
  * @brief Menu Functions
  * @version 0.1
@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
 #ifndef MENU_H
 #define MENU_H
 

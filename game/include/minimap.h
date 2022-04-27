@@ -1,5 +1,5 @@
 /**
- * @file minimap.c
+ * @file minimap.h
  * @author Raed Bedouihch
  * @brief Minimap Functions
  * @version 0.1
@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
 #ifndef MINIMAP_H
 #define MINIMAP_H
 

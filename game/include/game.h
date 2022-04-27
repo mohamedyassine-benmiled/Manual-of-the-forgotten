@@ -1,5 +1,5 @@
 /**
- * @file game.c
+ * @file game.h
  * @author TMOF Team
  * @brief Game Management
  * @version 0.5
@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
 #ifndef GAME_H
 #define GAME_H
 #include <stdbool.h>
