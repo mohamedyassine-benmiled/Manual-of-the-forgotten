@@ -10,29 +10,31 @@
 #include <string.h>
 
 //Initialize Player
-void initplayer(Game *g)
+void initplayer(Character *player)
 {
     settings config;
     get_config(&config);
     /* character principal */
-    g->player[0].image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
-    g->player[0].position.x=START_x;
-    g->player[0].position.y=START_y;
-    g->player[0].life=3;
-    g->player[0].spritestate=0;
-    g->player[0].look=0;
-    g->player[0].animation=0;
-    g->player[0].direction=0;
-    g->player[0].input.movement=0;
-    g->player[0].pos_cercle.r=30;
-    g->player[0].speed=SPEED;
-    g->player[0].input.right=0;
-    g->player[0].input.left=0;
-    g->player[0].input.up=0;
-    g->player[0].input.down=0;
-    g->player[0].input.fix=0;
-    g->player[0].input.startJump=0;
-    g->player[0].input.jumpHeight=0;
+    player->image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
+    player->position.x=START_x;
+    player->position.y=START_y;
+    player->life=3;
+    player->spritestate=0;
+    player->look=0;
+    player->animation=0;
+    player->direction=0;
+    player->input.movement=0;
+    player->pos_cercle.r=30;
+    player->pos_box.w=CHAR_W;
+    player->pos_box.h=CHAR_H;
+    player->speed=SPEED;
+    player->input.right=0;
+    player->input.left=0;
+    player->input.up=0;
+    player->input.down=0;
+    player->input.fix=0;
+    player->input.startJump=0;
+    player->input.jumpHeight=0;
 }
 //Initialize Check positions and Images
 void initcheck(CheckImage *assets)

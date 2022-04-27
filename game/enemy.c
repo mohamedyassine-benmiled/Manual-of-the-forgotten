@@ -19,6 +19,8 @@ void initennemy (Enemy *enemi)
     enemi->position2.y=0;
     enemi->position2.w=90;
     enemi->position2.h=90;
+    enemi->pos_box.w=90;
+    enemi->pos_box.h=90;
     enemi->right =0;
     enemi->left=0;
     enemi->posMax=3000;

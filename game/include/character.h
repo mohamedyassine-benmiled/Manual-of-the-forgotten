@@ -29,6 +29,7 @@ typedef struct
 {
     SDL_Surface *image;
     SDL_Rect position, src_pos, relativePos;
+    Box pos_box;
     Cercle pos_cercle;
     int look, spritestate;
     int animation;
