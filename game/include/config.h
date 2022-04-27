@@ -1,3 +1,13 @@
+/**
+ * @file config.c
+ * @author TMOF Team
+ * @brief Config file
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef CONFIG_H
 #define CONFIG_H
 #include <stdbool.h>

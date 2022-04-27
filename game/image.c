@@ -1,3 +1,13 @@
+/**
+ * @file image.c
+ * @author TMOF Team
+ * @brief Image Functions
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -55,7 +65,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     showgame(g->minimap.bg,screen);
     SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
     SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
-    SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].position);
+    SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos);
     show(g->bg.an[0],screen);
     show(g->bg.an[1],screen);
     if (g->bg.i)
@@ -63,9 +73,10 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
 
 
+    rpos_enemy (&g->enemy[0],&g->bg) ;
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
-    SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].position);	
+    SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos);	
         show(g->minimap.score,screen);
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;

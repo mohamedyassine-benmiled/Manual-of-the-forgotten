@@ -1,4 +1,13 @@
-
+/**
+ * @file collision.c
+ * @author Wael Bechraoui
+ * @brief Collision Perfect Pixel
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "include/collision.h"
 #include "include/game.h"
 #include "include/config.h"
@@ -75,24 +84,18 @@ int x,y,w,h;
 	y=player->position.y-17;
 	w=player->src_pos.w;
 	h=player->src_pos.h;
-SDL_Rect pos[3];
+SDL_Rect pos;
 
-pos[0].x=x;
-pos[0].y=y;
-pos[1].x=x+w/2;
-pos[1].y=y;
-pos[2].x=x+w;
-pos[2].y=y;
+
+pos.x=x+w/2;
+pos.y=y;
 
 int collision=0;
 int i=0;
-while((i<3) && (collision==0))
-{
-obstacle=GetPixel(bg->collision,pos[i].x+bg->img.pos2.x,pos[i].y);
+obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
 if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
 collision=1;
-i++;
-}
+
 return collision;
 }
 

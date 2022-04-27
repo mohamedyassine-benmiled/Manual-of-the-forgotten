@@ -1,3 +1,14 @@
+/**
+ * @file event.c
+ * @author TMOF Team
+ * @brief Handling game events
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "include/game.h"
 
 int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)

@@ -1,3 +1,15 @@
+/**
+ * @file character.c
+ * 
+ * @author Mohamed Yassine Ben Miled
+ * @brief Character Movement and Animation
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "include/character.h"
 #include "include/game.h"
 #include "include/declarations.h"
@@ -8,20 +20,6 @@ int CollisionRight(Character *player,Background *bg,SDL_Color rgb);
 int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb);
-int arduinocollision()
-{
-    if (collisionleft)
-    {
-        return 0;
-    }
-    else
-    if (collisionright)
-    {
-        return -1;
-    }
-    else
-    return 1;
-}
 
 int center_camera(Character *player,int x)
 {
@@ -57,6 +55,7 @@ int bordercheck(Background *bg)
     collisionright=0;
     return 1;
 }
+
 void animation(Character *player)
 {
         //Jump Right
@@ -179,6 +178,10 @@ void movement(Character *player,Background *bg,int x)
     rgb.r=0;
     rgb.g=0;
     rgb.b=0;
+    if (x==1)
+    {
+        x=bordercheck(bg);
+    }
     /* Right Fast */
         if (((player->input.right)&&(player->input.fast))&&(!CollisionRight(player,bg,rgb)))
         {
@@ -270,19 +273,18 @@ void movement(Character *player,Background *bg,int x)
             player->input.movement=0;
         }
         
-        if ((player->input.up) && (player->input.fix==0) && (!CollisionTop(player,bg,rgb)))
+        if ((player->input.up) && (player->input.fix==0))
         {
             player->input.startJump = 1;
             player->input.movement=2;
         }
         
         /* JUMP START */
-        
         if (player->input.startJump)
         {
             player->input.fix=1;
 
-            if (player->input.jumpHeight < maxJmpH)
+            if ((player->input.jumpHeight < maxJmpH))
             {
                 player->input.jumpHeight += JUMP_POWER;
                 player->position.y -= JUMP_POWER + 2*GRAVITY;
@@ -294,15 +296,14 @@ void movement(Character *player,Background *bg,int x)
                 player->input.movement=3;
             }
         }
-        
         player->position.y+=GRAVITY;
-
-        if (CollisionGround(player,bg,rgb))
+        
+        if ((CollisionGround(player,bg,rgb)))
         {
             player->position.y-=GRAVITY;
             player->input.fix=0;
         }
-
+        
         
         
     player->pos_cercle.x=player->position.x;

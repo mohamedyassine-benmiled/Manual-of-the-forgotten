@@ -1,3 +1,14 @@
+/**
+ * @file intro.c
+ * @author Mohamed Yassine Ben Miled
+ * @brief Cinematic Video Introduction
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "include/config.h"
 #include "smpeg/smpeg.h"
 
