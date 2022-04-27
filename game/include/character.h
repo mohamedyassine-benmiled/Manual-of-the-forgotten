@@ -1,13 +1,19 @@
 #ifndef CHAR_H_INCLUDED
 #define CHAR_H_INCLUDED
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include "collision.h"
-#include "game.h"
+#include "declarations.h"
+
+
 
 typedef struct
 {
     SDL_Surface *image;
     SDL_Rect position, src_pos, relativePos;
+    Cercle pos_cercle;
     int look, spritestate;
+    int animation;
     int life, died;
     int elapsed;
     /* Variables */
@@ -18,6 +24,7 @@ typedef struct
     int cdsj; //Cooldown Special Jump
     int cdjump; //Cooldown Jump
     //Input input;
+    Input input;
 }Character;
 
 #endif // CHAR_H_INCLUDED

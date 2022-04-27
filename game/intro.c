@@ -1,17 +1,12 @@
 #include "include/config.h"
-#include <smpeg/smpeg.h>
+#include "smpeg/smpeg.h"
 
-void get_out()
-{
-    //TTF_Quit();
-    Mix_CloseAudio();
-    SDL_Quit();
-}
+
 int play_video(SDL_Surface *screen, char filename[30]);
 
 int intro(SDL_Surface *screen)
 {
-    int x=play_video(screen,"cinematic.mpg");
+    int x=play_video(screen,"Cinematic.mpg");
     if ((x==0)||(x==2))
     {
         return 3;

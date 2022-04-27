@@ -2,12 +2,40 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include "include/menu.h"
+#include "include/declarations.h"
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_audio.h>
 #include <SDL/SDL_ttf.h>
 #include "include/init.h"
 #include <string.h>
 
+//Initialize Player
+void initplayer(Character *player)
+{
+    settings config;
+    get_config(&config);
+    /* character principal */
+    player->image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
+    player->position.x=START_x;
+    player->position.y=START_y;
+    player->life=3;
+    player->spritestate=0;
+    player->look=0;
+    player->animation=0;
+    player->direction=0;
+    player->input.fast=0;
+    player->elapsed=0;
+    player->input.movement=0;
+    player->pos_cercle.r=30;
+    player->speed=SPEED;
+    player->input.right=0;
+    player->input.left=0;
+    player->input.up=0;
+    player->input.down=0;
+    player->input.fix=0;
+    player->input.startJump=0;
+    player->input.jumpHeight=0;
+}
 //Initialize Check positions and Images
 void initcheck(CheckImage *assets)
 {
@@ -48,6 +76,7 @@ if (config.resolution_h==1080)
         assets->No[1].pos2= assets->No[0].pos2;
         assets->No[1].pos1= assets->No[0].pos1;
         }
+
 else
 if (config.resolution_h==720)
 {
@@ -96,7 +125,7 @@ void initvideo()
      SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(icon,NULL);
                 SDL_WM_SetCaption("Manual of the forgotten",NULL);
-                TTF_Init();
+
 }
 //Initialize Menu Positions and Images
 void initmenu(MenuImage *assets)
@@ -939,22 +968,8 @@ if (config.resolution_h==720)
 else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-//Initialize Game Positions and Images
-void initbackground(Background *assets)
-{
-    
-
-     //Background
-        assets->img.surface=IMG_Load("graphics/1080/Level/Level1_0.png");
-        assets->img.pos1.x=0;
-        assets->img.pos1.y=0;
-        assets->img.pos2.w=1920;
-        assets->img.pos2.h=1080;
-        assets->img.pos2.x=0;
-        assets->img.pos2.y=0;
 
 
-}
 //Initialize Play Menu Positions and Images
 void initplay (playimage *assets)
 {
@@ -982,7 +997,7 @@ if (config.resolution_h==1080)
     assets->cont[1].pos1=assets->cont[0].pos1;
     assets->cont[1].pos2=assets->cont[0].pos2;
     
-     t.textColor.r=162;
+    t.textColor.r=162;
     t.textColor.g=142;
     t.textColor.b=142;
     assets->cont[2].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
@@ -1036,21 +1051,77 @@ if (config.resolution_h==1080)
 else
 if (config.resolution_h==720)
 {
-       
+           t.font=TTF_OpenFont("ttf/alagard.ttf",43);
+    strcpy(t.texte,"Continue");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->cont[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[0].pos1.x=559;
+    assets->cont[0].pos1.y=236;
+    assets->cont[0].pos2=assets->cont[0].pos1;
+    assets->cont[0].pos2.w=202;
+    assets->cont[0].pos2.h=42;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->cont[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[1].pos1=assets->cont[0].pos1;
+    assets->cont[1].pos2=assets->cont[0].pos2;
+    
+     t.textColor.r=162;
+    t.textColor.g=142;
+    t.textColor.b=142;
+    assets->cont[2].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->cont[2].pos1=assets->cont[0].pos1;
+    assets->cont[2].pos2=assets->cont[0].pos2;
+    
+
+
+    assets->playwindow.surface=IMG_Load("graphics/720/Play/PlayWindow.png");
+        assets->playwindow.pos1.x=473;
+        assets->playwindow.pos1.y=107;
+
+    strcpy(t.texte,"New Game");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->newgame[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[0].pos1.x=544;
+    assets->newgame[0].pos1.y=338;
+    assets->newgame[0].pos2=assets->newgame[0].pos1;
+    assets->newgame[0].pos2.w=162;
+    assets->newgame[0].pos2.h=42;
+     t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->newgame[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->newgame[1].pos1=assets->newgame[0].pos1;
+    assets->newgame[1].pos2=assets->newgame[0].pos2;
+
+
+     strcpy(t.texte,"Return");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->back[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[0].pos1.x=572;
+    assets->back[0].pos1.y=436;
+    assets->back[0].pos2=assets->back[0].pos1;
+    assets->back[0].pos2.w=162;
+    assets->back[0].pos2.h=42;
+    t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->back[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[1].pos1=assets->back[0].pos1;
+    assets->back[1].pos2=assets->back[0].pos2;
+       TTF_CloseFont(t.font);
 }
 else
 
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
-//Initialize Game Character
-void initcharacter(Character *player)
-{
-    player->image=IMG_Load("");
-    player->position.x=0;
-    player->position.y=0;
-    player->life=3;
-    player->spritestate=0;
-    player->look=0;
-    player->speed=12;
-    player->health=100;
-}
+
+
+

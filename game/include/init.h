@@ -12,6 +12,7 @@
 #include "config.h"
 #include "enemy.h"
 #include "character.h"
+#include "declarations.h"
 
 void initcharacter(Character *player);
 void initcheck(CheckImage *assets);
@@ -21,6 +22,6 @@ void initoption(OptionImage *assets);
 void initaudio(audioimage *assets);
 void initgraphics(graphicimage *assets);
 void initbackground(Background *assets);
-void initenemy(Enemy *enemy);
-
+void initennemy (Enemy *enemi);
+void initplay (playimage *assets);
 #endif // INIT_H

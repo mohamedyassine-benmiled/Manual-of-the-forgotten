@@ -1,4 +1,5 @@
 #include "include/animation.h"
+#include"include/enemy.h"
 
 //Check if mouse on top of button
 int hoverbutton(int x,int y, image img )
@@ -44,5 +45,3 @@ int animatehover(int x,int y,image img,image img2,SDL_Surface *screen)
 
     return runsound;
 }
-
-

@@ -13,6 +13,7 @@
         "animation.h": "c",
         "sdl_mixer.h": "c",
         "sdl_ttf.h": "c",
-        "config.h": "c"
+        "config.h": "c",
+        "declarations.h": "c"
     }
 }

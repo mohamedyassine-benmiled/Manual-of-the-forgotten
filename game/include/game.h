@@ -11,22 +11,16 @@
 #include "animation.h"
 #include "character.h"
 
+
 typedef struct
 {
-    //Movement
-    int up;
-    int down;
-    int right;
-    int left;
-    int startjump;
-    int reset;
-    //Attacks
-    int a1; //ATTACK1
-    int a2; //ATTACK2
-    int sj; //SPECIAL JUMP
-    //Cheats for developer testing
-    int ih;
-    } Input;
+    image bg,score;
+    Character player[4];
+    Enemy enemy[10];
+    int elapsed;
+    int level;
+} Minimap;
+
 typedef struct
 {
     Character player[4];
@@ -37,6 +31,9 @@ typedef struct
 } Game;
 
 int game(SDL_Surface *screen,int run);
-
+SDL_Color getpixel(SDL_Surface *psurface,int x,int y);
+int collisionparfaite(SDL_Surface *psurface,Game p);
+void initBack (Game *b);
+void afficheBack (Game b, SDL_Surface *ecran);
 
 #endif // GAME_H
