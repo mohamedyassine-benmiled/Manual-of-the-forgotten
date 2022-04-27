@@ -15,7 +15,7 @@
 #define maxJmpH 400
 #define RELOAD 1000
 #define MAX_ITEMS 4
-#define START_y 400
+#define START_y 499
 #define START_x 100
 #define MINIMAP 20
 //Sprites Player[0]
