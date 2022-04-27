@@ -63,6 +63,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
 
 
+    rpos_enemy (&g->enemy[0],&g->bg) ;
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
     SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].position);	
