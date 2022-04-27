@@ -23,6 +23,8 @@ void initplayer(Character *player)
     player->look=0;
     player->animation=0;
     player->direction=0;
+    player->input.fast=0;
+    player->elapsed=0;
     player->input.movement=0;
     player->pos_cercle.r=30;
     player->pos_box.w=CHAR_W;
@@ -125,7 +127,7 @@ void initvideo()
      SDL_Init(SDL_INIT_VIDEO);
         SDL_WM_SetIcon(icon,NULL);
                 SDL_WM_SetCaption("Manual of the forgotten",NULL);
-                TTF_Init();
+
 }
 //Initialize Menu Positions and Images
 void initmenu(MenuImage *assets)

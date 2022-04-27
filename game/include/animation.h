@@ -14,6 +14,8 @@ typedef struct
     int stopdisplay;
     int EOL;
     int level;
+    int firstplayer;
+    int lastplayer;
     int cinematic;
     int dropboss;
     int movement;

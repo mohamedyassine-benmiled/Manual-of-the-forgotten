@@ -13,21 +13,15 @@ typedef struct
 typedef struct
 {
     image img;
+    image an[2];
+    image an2;
     SDL_Surface *collision;
-    int scroll_x;
-    int scroll_y;
+    int i;
+    int elapsed;
     Mix_Music *son;
 } Background;
 
-typedef struct
-{
-    image bg;
-    image pp[4];
-    image enemy[10];
-    int scroll_x;
-    int scroll_y;
-    int level;
-} Minimap;
+
 typedef struct 
 {
     image Window;
@@ -102,6 +96,7 @@ typedef struct
     image back[2]; 
 } playimage;
 
+
 void menurefresh(MenuImage *assets,SDL_Surface *screen);
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);
 void audiorefresh(audioimage *assets,SDL_Surface *screen,int audio);
@@ -115,4 +110,5 @@ void freebackground(Background assets);
 void freeaudio(audioimage assets);
 void freecheck(CheckImage assets);
 int hoverbutton(int x,int y, image img );
+
 #endif // IMAGE_H

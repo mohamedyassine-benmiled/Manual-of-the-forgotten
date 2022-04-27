@@ -41,5 +41,6 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run);
 int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int *run);
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run);
 int audio(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run);
+int playmenu(SDL_Surface *screen,int *run,int state);
 
 #endif // MENU_H

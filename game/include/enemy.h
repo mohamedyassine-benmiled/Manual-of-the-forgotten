@@ -11,6 +11,7 @@ SDL_Rect position2;
 SDL_Rect rpos ;
 Box pos_box;
 int right , left ;
+int elapsed;
 int mouvement ;
 int posMax ;
 int posMin ;

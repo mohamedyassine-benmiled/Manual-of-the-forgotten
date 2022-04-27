@@ -16,7 +16,7 @@ typedef struct Cercle
 int x,y;
 int r;
 }Cercle;
-SDL_Color getpixel(SDL_Surface *pSurface,int x,int y);
+
 
 
 #endif // COLLISION_H_INCLUDED

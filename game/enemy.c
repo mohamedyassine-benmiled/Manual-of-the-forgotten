@@ -42,72 +42,78 @@ void initennemy (Enemy *enemi)
 
 void deplacement_enemy (Enemy *enemi )
 {
-	if(enemi->position.x==enemi->posMax)
-	{
-		enemi->right=0;
-		enemi->left=1;
-	}
-		if(enemi->position.x==enemi->posMin)
-	{
-		enemi->right=1;
-		enemi->left=0;
 
-	}
-	if(enemi->right)
-	if(enemi->position.x<=enemi->posMax)
-	{
-			(enemi->position.x)+=5;
-		
-	}
-	
-	if(enemi->left)
-		if(enemi->position.x>enemi->posMin)
-		{
+        if(enemi->position.x==enemi->posMax)
+        {
+            enemi->right=0;
+            enemi->left=1;
+        }
+            if(enemi->position.x==enemi->posMin)
+        {
+            enemi->right=1;
+            enemi->left=0;
 
-		(enemi->position.x)-=5;
-			
-		}
-	
+        }
+        if(enemi->right)
+        if(enemi->position.x<=enemi->posMax)
+        {
+                (enemi->position.x)+=5;
+            
+        }
+        
+        if(enemi->left)
+            if(enemi->position.x>enemi->posMin)
+            {
+
+            (enemi->position.x)-=5;
+                
+            }
+
 
 }
 void animationenemy(Enemy *enemi)
 {
-    //Run Right
-    if ((enemi->right) && (enemi->mouvement==1))
+    enemi->elapsed++;
+    if (enemi->elapsed==5)
     {
-        if (!(enemi->look==SPRITEXE0_Run))
-        enemi->animation=0;
-        enemi->look=SPRITEXE0_Run;
-        enemi->animation++;
+        //Run Right
+        if ((enemi->right) && (enemi->mouvement==1))
+        {
+            if (!(enemi->look==SPRITEXE0_Run))
+            enemi->animation=0;
+            enemi->look=SPRITEXE0_Run;
+            enemi->animation++;
 
-        if (enemi->animation>=(SPRITEYE0_Run/2)+1)
-        {
-        enemi->animation=0;
+            if (enemi->animation>=(SPRITEYE0_Run/2)+1)
+            {
+            enemi->animation=0;
+            }
+            enemi->spritestate=enemi->animation;
+            return;
         }
-        enemi->spritestate=enemi->animation;
-        return;
+        else
+        //Run Left
+        if ((enemi->left) && (enemi->mouvement==1))
+        {
+            if (!(enemi->look==SPRITEXE0_Run))
+            enemi->animation=0;
+            enemi->look=SPRITEXE0_Run;
+            enemi->animation--;
+            if (enemi->animation<(SPRITEYE0_Run/2)+1)
+            {
+            enemi->animation=SPRITEYE0_Run;
+            }
+            enemi->spritestate=enemi->animation;
+            return;
+        }
     }
-    else
-    //Run Left
-    if ((enemi->left) && (enemi->mouvement==1))
+    if (enemi->elapsed>=5)
     {
-        if (!(enemi->look==SPRITEXE0_Run))
-        enemi->animation=0;
-        enemi->look=SPRITEXE0_Run;
-        enemi->animation--;
-        if (enemi->animation<(SPRITEYE0_Run/2)+1)
-        {
-        enemi->animation=SPRITEYE0_Run;
-        }
-        enemi->spritestate=enemi->animation;
-        return;
+        enemi->elapsed=0;
     }
      
 }
-int relative_x( Background *bg , SDL_Rect position)
-{
-    return (position.x-bg->img.pos2.x);
-}
+
 void rpos_enemy (Enemy *enemi , Background *bg )
 {
     enemi->rpos.x=relative_x(bg,enemi->position); 

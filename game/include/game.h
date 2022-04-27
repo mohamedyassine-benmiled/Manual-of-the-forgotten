@@ -11,6 +11,16 @@
 #include "animation.h"
 #include "character.h"
 
+
+typedef struct
+{
+    image bg,score;
+    Character player[4];
+    Enemy enemy[10];
+    int elapsed;
+    int level;
+} Minimap;
+
 typedef struct
 {
     Character player[4];
@@ -24,7 +34,6 @@ int game(SDL_Surface *screen,int run);
 SDL_Color getpixel(SDL_Surface *psurface,int x,int y);
 int collisionparfaite(SDL_Surface *psurface,Game p);
 void initBack (Game *b);
-void initBackMasque (Game *m);
 void afficheBack (Game b, SDL_Surface *ecran);
-
+int relative_x( Background *bg , SDL_Rect position);
 #endif // GAME_H

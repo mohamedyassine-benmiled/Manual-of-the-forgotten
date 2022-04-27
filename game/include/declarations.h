@@ -10,13 +10,14 @@
 #define CHAR_W 124
 //Variables
 #define SPEED 12
-#define GRAVITY 9
-#define JUMP_POWER 16
-#define maxJmpH 96
+#define GRAVITY 10
+#define JUMP_POWER 40
+#define maxJmpH 200
 #define RELOAD 1000
 #define MAX_ITEMS 4
 #define START_y 499
 #define START_x 100
+#define MINIMAP 20
 //Sprites Player[0]
 #define SPRITEXP0_Run 3
 #define SPRITEXP0_Walk 1
@@ -35,6 +36,27 @@
 #define SPRITEYE0_Walk 0
 #define SPRITEYE0_Jump 0
 #define SPRITEYE0_Idle 0
+
+typedef struct
+{
+    //Movement
+    int up;
+    int down;
+    int right;
+    int left;
+    int startJump;
+    int jumpHeight;
+    int reset;
+    int fix;
+    int movement;
+    //Attacks
+    int a1; //ATTACK1
+    int a2; //ATTACK2
+    int sj; //SPECIAL JUMP
+    //Cheats for developer testing
+    int ih;
+    int fast;
+    } Input;
 
 
 #endif

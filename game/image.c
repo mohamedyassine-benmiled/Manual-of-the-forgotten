@@ -8,6 +8,15 @@
 #include "include/declarations.h"
 #include "include/config.h"
 #include "include/enemy.h"
+#include "include/minimap.h"
+//Init to remove warnings
+void gamerefresh(Game *g,SDL_Surface *screen);
+void animationback(Background *bg);
+void scrolling (Game *g);
+void initminimap(Minimap *assets);
+void updateminimap(Game *g);
+void animation(Character *player);
+void animationback2(Background *bg);
 
 //Showing Game Images in the right position
 void gamerefresh(Game *g,SDL_Surface *screen)
@@ -21,7 +30,8 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     scrolling(g);
     animation(&g->player[0]);
-   
+   animationback(&g->bg);
+    animationback2(&g->bg);
         g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
         g->player[0].src_pos.y=CHAR_H*g->player[0].look;
         g->player[0].src_pos.h=CHAR_H;
@@ -39,11 +49,25 @@ void gamerefresh(Game *g,SDL_Surface *screen)
         g->enemy[0].position2.h=CHAR_H;
         g->enemy[0].position2.w=CHAR_W;
     showgame(g->bg.img,screen);
+    updateminimap(g);
+    SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+
+    showgame(g->minimap.bg,screen);
+    SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
+    SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
+    SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos);
+    show(g->bg.an[0],screen);
+    show(g->bg.an[1],screen);
+    if (g->bg.i)
+    show(g->bg.an2,screen);
+
+
 
     rpos_enemy (&g->enemy[0],&g->bg) ;
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
     SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos);	
+        show(g->minimap.score,screen);
     /* Fixing fps */
     elapsed = SDL_GetTicks()-lasttime;
     if (elapsed<1000/FPS)
