@@ -30,6 +30,8 @@ void initennemy (Enemy *enemi)
     enemi->position2.y=0;
     enemi->position2.w=90;
     enemi->position2.h=90;
+    enemi->pos_box.w=90;
+    enemi->pos_box.h=90;
     enemi->right =0;
     enemi->left=0;
     enemi->posMax=3000;
@@ -122,10 +124,7 @@ void animationenemy(Enemy *enemi)
     }
      
 }
-int relative_x( Background *bg , SDL_Rect position)
-{
-    return (position.x-bg->img.pos2.x);
-}
+
 void rpos_enemy (Enemy *enemi , Background *bg )
 {
     enemi->rpos.x=relative_x(bg,enemi->position); 

@@ -37,6 +37,8 @@ void initplayer(Character *player)
     player->elapsed=0;
     player->input.movement=0;
     player->pos_cercle.r=30;
+    player->pos_box.w=CHAR_W;
+    player->pos_box.h=CHAR_H;
     player->speed=SPEED;
     player->input.right=0;
     player->input.left=0;
