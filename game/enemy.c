@@ -1,3 +1,13 @@
+/**
+ * @file enemy.c
+ * @author ILYES CHAABANI (you@domain.com)
+ * @brief ENEMY FUNCTION / mvt /collision / ATTACK 
+ * @version 0.1
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -26,7 +36,7 @@ void initennemy (Enemy *enemi)
     enemi->posMax=3000;
     enemi->posMin=2500;
     enemi->mouvement=1;
-    enemi->reset=0;
+    enemi->reset=0; 
     enemi->look=0;
     enemi->spritestate=0;
     enemi->animation=0;
