@@ -1,3 +1,13 @@
+/**
+ * @file declarations.h
+ * @author TMOF Team
+ * @brief Global Constants
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef DEC
 #define DEC
 

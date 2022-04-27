@@ -1,4 +1,13 @@
-
+/**
+ * @file collision.c
+ * @author Wael Bechraoui
+ * @brief Collision Perfect Pixel
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "include/collision.h"
 #include "include/game.h"
 #include "include/config.h"

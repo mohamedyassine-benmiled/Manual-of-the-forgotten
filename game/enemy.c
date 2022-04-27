@@ -1,3 +1,14 @@
+/**
+ * @file enemy.c
+ * @author Ilyes Chaabani
+ * @brief Enemy Animation and Movement
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>

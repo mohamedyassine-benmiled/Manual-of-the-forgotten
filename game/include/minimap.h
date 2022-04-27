@@ -1,3 +1,14 @@
+/**
+ * @file minimap.c
+ * @author Raed Bedouihch
+ * @brief Minimap Functions
+ * @version 0.1
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef MINIMAP_H
 #define MINIMAP_H
 

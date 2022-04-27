@@ -1,3 +1,15 @@
+/**
+ * @file character.c
+ * 
+ * @author Mohamed Yassine Ben Miled
+ * @brief Character Movement and Animation
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "include/character.h"
 #include "include/game.h"
 #include "include/declarations.h"

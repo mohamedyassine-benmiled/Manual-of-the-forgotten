@@ -1,3 +1,14 @@
+/**
+ * @file config.c
+ * @author TMOF Team
+ * @brief Config file
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "include/config.h"
 
 //Writing Config Values in config.cfg

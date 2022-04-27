@@ -1,3 +1,15 @@
+/**
+ * @file character.c
+ * 
+ * @author Mohamed Yassine Ben Miled
+ * @brief Character Movement and Animation
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef CHAR_H_INCLUDED
 #define CHAR_H_INCLUDED
 #include <SDL/SDL.h>
