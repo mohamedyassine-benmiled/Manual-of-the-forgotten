@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2022
  * 
  */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -22,6 +23,7 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run);
 void movement(Character *player,Background *bg,int x);
 void gamerefresh(Game *g,SDL_Surface *screen);
 void freegame(Game assets);
+
 void handlemovement(Game *g)
 {
         if (g->global.firstplayer==0)
@@ -32,6 +34,7 @@ void handlemovement(Game *g)
         {
         movement(&g->player[0],&g->bg,0);            
         }
+        
         if (g->global.firstplayer==1)
         {
         movement(&g->player[1],&g->bg,1);
@@ -40,6 +43,7 @@ void handlemovement(Game *g)
         {
         movement(&g->player[1],&g->bg,0);            
         }
+        
 }
 void handlescrolling(Game *g)
 {
@@ -63,7 +67,7 @@ void handlescrolling(Game *g)
 int game(SDL_Surface *screen,int run)
 {
     Game g;
-    
+
     initbackground(&g.bg);
     g.global.firstplayer=0;
     g.global.lastplayer=1;
@@ -72,7 +76,7 @@ int game(SDL_Surface *screen,int run)
     initminimap(&g.minimap);
     initennemy(&g.enemy[0]);
     SDL_Event event;
-    showgame(g.bg.img,screen);
+
     Mix_PlayMusic(g.bg.son, -1);
     SDL_Flip(screen);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
@@ -81,8 +85,8 @@ int game(SDL_Surface *screen,int run)
 
         run=handlegame(&g,&event,screen,run);
         handlemovement(&g);
-        gamerefresh(&g,screen);
         handlescrolling(&g);
+        gamerefresh(&g,screen);
 
     }
     freegame(g);
@@ -90,9 +94,7 @@ int game(SDL_Surface *screen,int run)
 return run;
 
 }
-
-
-int relative_x( Background *bg , SDL_Rect position)
+int relative_x(Background *bg , SDL_Rect position)
 {
     return (position.x-bg->img.pos2.x);
 }

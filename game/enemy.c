@@ -17,15 +17,17 @@
 #include "include/enemy.h"
 
 
-/*int spotted(Game *game, int i)
+/*
+int spotted(Game *game, int i)
 {
     return ((game->player->position.x+game->bg.scroll_x < game->enemy->position.x && game->enemy->behavior == -1) || (game->player->position.x+game->bg.scroll_x > game->enemy->position.x && game->enemy->direction == 1) ) ;
-}*/
+}
+*/
 void initennemy (Enemy *enemi)
 {
     enemi->image = IMG_Load("graphics/720/Spritesheet/Enemy.png");
 	enemi->position.x=2500;
-	enemi->position.y=START_y-10;
+	enemi->position.y=START_y+40;
     enemi->position2.x=0;
     enemi->position2.y=0;
     enemi->position2.w=90;
@@ -41,17 +43,19 @@ void initennemy (Enemy *enemi)
     enemi->look=0;
     enemi->spritestate=0;
     enemi->animation=0;
-    }
+}
 
-/*int deplacement_alea (int posmax,int posmin)
+/*
+int deplacement_alea (int posmax,int posmin)
 {
 	int pos;
 	srand(time(NULL));
 	pos=rand()%(posmax-posmin+1)+posmin;
 	return pos;
-}*/
+}
+*/
 
-void deplacement_enemy (Enemy *enemi )
+void deplacement_enemy (Enemy *enemi)
 {
 
         if(enemi->position.x==enemi->posMax)
@@ -79,7 +83,7 @@ void deplacement_enemy (Enemy *enemi )
             (enemi->position.x)-=5;
                 
             }
-
+    
 
 }
 void animationenemy(Enemy *enemi)
@@ -124,9 +128,9 @@ void animationenemy(Enemy *enemi)
     }
      
 }
-
-void rpos_enemy (Enemy *enemi , Background *bg )
+void rpos_enemy (Enemy *enemi , Background *bg)
 {
     enemi->rpos.x=relative_x(bg,enemi->position); 
     enemi->rpos.y=enemi->position.y; 
 }
+

@@ -11,6 +11,28 @@ int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 
 
+int bordercheck(Background *bg)
+{ 
+    if(bg->img.pos2.x<=0)
+    {
+        collisionleft=1;
+        collisionright=0;
+        return 0;
+        
+    }
+
+    if (bg->img.pos2.x>=6395-1280)
+    {
+        collisionleft=0;
+        collisionright=1;
+        return -1;
+    }
+    collisionleft=0;
+    collisionright=0;
+    return 1;
+}
+
+
 void initbackground(Background *assets)
 {
     
@@ -40,16 +62,6 @@ void initbackground(Background *assets)
 }
 
 
-
-
-
-
-/* Moved to image.c
-void showgame(image p,SDL_Surface *screen)
-{
-    SDL_BlitSurface(p.surface,&p.pos2,screen,&p.pos1);
-}
-*/
 
 void scrolling (Game *g)
 {

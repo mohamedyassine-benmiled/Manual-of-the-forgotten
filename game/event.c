@@ -34,15 +34,15 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             }  
                                         break;
                                         //On "m" Press : Go back to Menu
-                                        case (SDLK_m):
+                                        case SDLK_m:
                                             run=1;
                                         break;
                                         //On "o" press : Go to option
-                                        case (SDLK_o):
+                                        case SDLK_o:
                                             run=2;
                                         break;
                                         //On "p" press : Go to game
-                                        case (SDLK_r):
+                                        case SDLK_r:
                                             run=3;
                                         break;
                                         /*** Player[0] Handling ***/
@@ -52,7 +52,6 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             g->player[0].input.left=0;
                                         }
                                         break;
-
                                         case SDLK_LEFT:
                                         {
                                             g->player[0].input.left=1;
@@ -96,8 +95,9 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             g->player[1].input.fast=1;
                                         }
                                         break;
-                                        default:
-                                        break;
+                                    /*** Default Handling ***/
+                                    default:
+                                    break;
                                     }   
                                 
                                 if  ((*event).type==SDL_KEYUP)
@@ -146,7 +146,8 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                         {
                                             g->player[1].input.fast=0;
                                         }
-                                        break;                                    
+                                        break; 
+                                    /*** Default Handling ***/                                   
                                     default:
                                     break;
                                     }

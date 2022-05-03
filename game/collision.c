@@ -55,10 +55,9 @@ pos.y=y+h/2;
 int CollisionLeft(Character *player,Background *bg,SDL_Color rgb)
 {
 SDL_Color obstacle;
-int x,y,w,h;
+int x,y,h;
 	x=player->position.x+40;
 	y=player->position.y;
-	w=player->src_pos.w;
 	h=player->src_pos.h;
 SDL_Rect pos;
 
@@ -79,19 +78,15 @@ return collision;
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb)
 {
 SDL_Color obstacle;
-int x,y,w,h;
+int x,y,w;
 	x=player->position.x;
 	y=player->position.y-17;
 	w=player->src_pos.w;
-	h=player->src_pos.h;
 SDL_Rect pos;
-
-
 pos.x=x+w/2;
 pos.y=y;
 
 int collision=0;
-int i=0;
 obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
 if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
 collision=1;
@@ -115,7 +110,6 @@ pos.x=x+w/2;
 pos.y=y+h;
 
 int collision=0;
-int i=0;
 
 	obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
 if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))

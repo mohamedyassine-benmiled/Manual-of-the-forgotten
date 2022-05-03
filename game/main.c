@@ -26,7 +26,6 @@ int intro(SDL_Surface *screen);
 //Main Code
 int main (int argc , char *argv[])
 {
-  int score=100;
   FILE *f;
 //Definition MenuGame
   MenuGame mainmenu;

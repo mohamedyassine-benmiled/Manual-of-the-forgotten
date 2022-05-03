@@ -20,29 +20,9 @@ int CollisionRight(Character *player,Background *bg,SDL_Color rgb);
 int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb);
+int bordercheck(Background *bg);
 
 
-
-int bordercheck(Background *bg)
-{ 
-    if(bg->img.pos2.x<=0)
-    {
-        collisionleft=1;
-        collisionright=0;
-        return 0;
-        
-    }
-
-    if (bg->img.pos2.x>=6395-1280)
-    {
-        collisionleft=0;
-        collisionright=1;
-        return -1;
-    }
-    collisionleft=0;
-    collisionright=0;
-    return 1;
-}
 
 void animation(Character *player)
 {
@@ -51,12 +31,13 @@ void animation(Character *player)
         {
             if (!(player->look==SPRITEXP0_Jump))
                 player->animation=0;
+
             player->look=SPRITEXP0_Jump;
             player->animation++;
 
             if (player->animation>=(SPRITEYP0_Jump/2)+1)
             {
-            player->animation=0;
+                player->animation=0;
             }
             player->spritestate=player->animation;
             return;
@@ -196,11 +177,14 @@ void movement(Character *player,Background *bg,int x)
         /* Left Fast */
         else if (((player->input.left)&&(player->input.fast))&&(!CollisionLeft(player,bg,rgb)))
         {
-
                 player->position.x-=2*SPEED;
+
                 if (player->position.x<0)
+                {
                     player->position.x+=2*SPEED;
-                    player->direction=1;
+                }
+
+                player->direction=1;
         //OLD CENTER CAMERA
         /*
         if (!center_camera(player,x))
@@ -218,10 +202,8 @@ void movement(Character *player,Background *bg,int x)
         
         else 
         /* Right */
-
         if ((player->input.right)&&(!CollisionRight(player,bg,rgb)))
         {
-          
                 if (player->position.x<config.resolution_w/2)
                 {
                     player->position.x+=SPEED;
