@@ -21,19 +21,7 @@ int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb);
 
-int center_camera(Character *player,int x)
-{
-    settings config;
-    get_config(&config);
-    if (x)
-    {
-    return (player->position.x+32>config.resolution_w/2 && player->position.x-32<config.resolution_w/2);
-    }
-    else
-    {
-        return 1;
-    }
-}
+
 
 int bordercheck(Background *bg)
 { 
@@ -191,7 +179,8 @@ void movement(Character *player,Background *bg,int x)
                     player->position.x+=SPEED*2;
                 }
                             player->direction=0;
-            
+        //OLD CENTER CAMERA
+        /*    
         if (!center_camera(player,x))
             {
                 if (player->position.x<config.resolution_w/2)
@@ -200,8 +189,10 @@ void movement(Character *player,Background *bg,int x)
                     bg->img.pos2.x-=SPEED*2;
                 }
             }
+            */
             player->input.movement=1;
         }
+        
         /* Left Fast */
         else if (((player->input.left)&&(player->input.fast))&&(!CollisionLeft(player,bg,rgb)))
         {
@@ -210,7 +201,8 @@ void movement(Character *player,Background *bg,int x)
                 if (player->position.x<0)
                     player->position.x+=2*SPEED;
                     player->direction=1;
-
+        //OLD CENTER CAMERA
+        /*
         if (!center_camera(player,x))
             {
                 if (player->position.x>config.resolution_w/2)
@@ -219,9 +211,11 @@ void movement(Character *player,Background *bg,int x)
                     bg->img.pos2.x+=2*SPEED;
                 }
             }
+            */
             player->input.movement=1;
 
         }
+        
         else 
         /* Right */
 
@@ -233,7 +227,8 @@ void movement(Character *player,Background *bg,int x)
                     player->position.x+=SPEED;
                 }
                 player->direction=0;
-            
+        //OLD CENTER CAMERA
+        /*
         if (!center_camera(player,x))
             {
                 if (player->position.x<config.resolution_w/2)
@@ -242,6 +237,7 @@ void movement(Character *player,Background *bg,int x)
                     bg->img.pos2.x-=SPEED;
                 }
             }
+            */
             player->input.movement=1;
         }
         
@@ -256,7 +252,8 @@ void movement(Character *player,Background *bg,int x)
                     player->position.x+=SPEED;
                 }
                 player->direction=1;
-
+        //OLD CENTER CAMERA
+        /*
         if (!center_camera(player,x))
             {
                 if (player->position.x>config.resolution_w/2)
@@ -265,6 +262,7 @@ void movement(Character *player,Background *bg,int x)
                     bg->img.pos2.x+=SPEED;
                 }
             }
+        */
             player->input.movement=1;
 
         }

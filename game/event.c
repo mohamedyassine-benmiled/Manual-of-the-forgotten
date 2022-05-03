@@ -16,12 +16,11 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
 
             if (SDL_PollEvent(event))
                 {
-                        switch ((*event).type)
-                            {
-                                case SDL_QUIT:
+
+                                if  ((*event).type==SDL_QUIT)
                                     run=0;
-                                break;
-                                case SDL_KEYDOWN:
+
+                                if  ((*event).type==SDL_KEYDOWN)
                                     switch ((*event).key.keysym.sym)
                                     {
                                         /*** Normal Screen Handling ***/
@@ -100,8 +99,8 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                         default:
                                         break;
                                     }   
-                                break;
-                                case SDL_KEYUP:
+                                
+                                if  ((*event).type==SDL_KEYUP)
                                 switch ((*event).key.keysym.sym)
                                     {
                                         /*** Player[0] Handling ***/
@@ -151,9 +150,9 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                     default:
                                     break;
                                     }
-                                break;
+                                
                             }
-                } 
+                 
         return run;
 }
 
