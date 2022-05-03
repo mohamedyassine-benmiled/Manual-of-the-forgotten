@@ -55,7 +55,7 @@ void initbackground(Background *assets)
         assets->an2.surface=IMG_Load("graphics/720/Gameanimation/pointdex.png");
         assets->an2.pos1.x=1046;
         assets->an2.pos1.y=356;
-
+        assets->an2.pos2.y=assets->an2.pos1.y;
 	 //Son
 	 	assets->son=Mix_LoadMUS("sfx/game.ogg");
 

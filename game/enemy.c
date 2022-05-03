@@ -130,7 +130,7 @@ void animationenemy(Enemy *enemi)
 }
 void rpos_enemy (Enemy *enemi , Background *bg)
 {
-    enemi->rpos.x=relative_x(bg,enemi->position); 
-    enemi->rpos.y=enemi->position.y; 
+    enemi->rpos[0].x=relative_x(bg,enemi->position); 
+    enemi->rpos[0].y=enemi->position.y; 
 }
 

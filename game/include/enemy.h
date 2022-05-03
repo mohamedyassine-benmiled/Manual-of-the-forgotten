@@ -18,7 +18,7 @@ typedef struct
 SDL_Surface *image;
 SDL_Rect position;
 SDL_Rect position2;
-SDL_Rect rpos ;
+SDL_Rect rpos[2];
 Box pos_box;
 int right , left ;
 int elapsed;

@@ -20,7 +20,7 @@ int collisionleft,collisionright;
 typedef struct
 {
     SDL_Surface *image;
-    SDL_Rect position, src_pos, relativePos;
+    SDL_Rect position, src_pos, rpos[2];
     Box pos_box;
     Cercle pos_cercle;
     int look, spritestate;
