@@ -27,7 +27,7 @@ typedef struct
     image an2;
     SDL_Surface *collision;
     int i;
-    int elapsed,elapsed2;
+    int elapsed;
     Mix_Music *son;
 } Background;
 

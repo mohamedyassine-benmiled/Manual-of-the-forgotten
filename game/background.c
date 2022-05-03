@@ -25,7 +25,6 @@ void initbackground(Background *assets)
         assets->img.pos2.x=0;
         assets->img.pos2.y=0;
         assets->elapsed=0;
-        assets->elapsed2=0;
         assets->an[0].surface=IMG_Load("graphics/720/Gameanimation/bird.png");
         assets->an[0].pos1.x=1280;
         assets->an[0].pos1.y=150;
@@ -129,19 +128,14 @@ void animationback(Background *bg)
 }
 void animationback2(Background *bg)
 {
-        bg->elapsed2++;
-        
-        if (bg->elapsed2<=50)
+
+        if (bg->elapsed!=100)
         {
                 bg->i=0;
         }
-        if (bg->elapsed2>50)
+        if ((bg->elapsed!=100) && (bg->elapsed>=200))
         {
                 bg->i=1;
-        }
-        if (bg->elapsed2==100)
-        {
-                bg->elapsed2=0;
         }
 }
 
