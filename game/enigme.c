@@ -17,7 +17,7 @@
 #include <SDL/SDL_mixer.h>
 #include "include/enigme.h"
 #include "include/text.h"
-#include "include/game.h"
+
 
 void init_enigme(Enigme *e )
 {
@@ -28,18 +28,32 @@ int check=0;
 int alea;
 int nbligne=0;
 int reponse;
+e->score=0;
 
-
-//text color
-t.textColor.r=0;
-t.textColor.g=0;
-t.textColor.b=0;
+//text color question
+t1.textColor.r=0;
+t1.textColor.g=0;
+t1.textColor.b=0;
+//text color response
+t2.textColor.r=0;
+t2.textColor.g=0;
+t2.textColor.b=0;
 
 
 f=fopen("enigmes","r");
+if(f!=NULL)
+{
+while(fscanf(f,"%s %s %s %s %d\n")!=EOF)
+{
+nbligne++;
+}
+fclose(f);
+}
+f=fopen("enigmes","r");
 
 srand(time(NULL));
-alea=rand()%4;
+alea=rand()%nbligne;
+nbligne=0;
 if(f!=NULL)
 {
 while(fscanf(f,"%s %s %s %s %d\n",e->question,e->rep1,e->rep2,e->rep3,&reponse)!=EOF)
@@ -53,33 +67,50 @@ if (nbligne == alea)
 }
 fclose(f);
 }
-
+else
+{
+    printf("\n Enigmes doesn't exist");
+}
 e->q.pos1.x=0;
 e->q.pos1.y=0;
-e->r1.pos1.x=0;
-e->r1.pos1.y=0;
-e->r2.pos1.x=0;
-e->r2.pos1.y=0;
-e->r3.pos1.x=0;
-e->r3.pos1.y=0;
+e->r1[0].pos1.x=0;
+e->r1[0].pos1.y=0;
+e->r2[0].pos1.x=0;
+e->r2[0].pos1.y=0;
+e->r3[0].pos1.x=0;
+e->r3[0].pos1.y=0;
+
+
+e->r1[1].pos1.x=0;
+e->r1[1].pos1.y=0;
+e->r2[1].pos1.x=0;
+e->r2[1].pos1.y=0;
+e->r3[1].pos1.x=0;
+e->r3[1].pos1.y=0;
+e->sc.pos1.x=0;
+e->sc.pos1.y=0;
 t1.font=TTF_OpenFont ("alagard.ttf",30);
 t2.font=TTF_OpenFont("alagard.ttf",20);
-SDL_Color black={0,0,0};
-SDL_Color white={255,255,255};
-e->q.surface=TTF_RenderText_Blended(t2.font,e->q,black);
-e->r1.surface=TTF_RenderText_Blended(t1.font,e->r1,white);
-e->r2.surface=TTF_RenderText_Blended(t1.font,e->r2,white);
-e->r3.surface=TTF_RenderText_Blended(t1.font,e->r3,white);
+e->q.surface=TTF_RenderText_Blended(t1.font,e->question,t1.textColor);
+e->r1[0].surface=TTF_RenderText_Blended(t1.font,e->rep1,t2.textColor);
+e->r2[0].surface=TTF_RenderText_Blended(t1.font,e->rep2,t2.textColor);
+e->r3[0].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
+t2.textColor.r=100;
+t2.textColor.g=100;
+t2.textColor.b=100;
+e->r1[1].surface=TTF_RenderText_Blended(t1.font,e->rep1,t2.textColor);
+e->r2[1].surface=TTF_RenderText_Blended(t1.font,e->rep2,t2.textColor);
+e->r3[1].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
  for(int i=0;i<4;i++)
     {
-    sprintf(logo,"graphics/1080/Logo/Logo%d.png",i);
-    assets->logo[i].surface=IMG_Load(logo);
-    assets->logo[i].pos1.x=619;
-    assets->logo[i].pos1.y=47;
+    sprintf(logo,"graphics/720/Logo/Logo%d.png",i);
+    e->animation[i].surface=IMG_Load(logo);
+    e->animation[i].pos1.x=619;
+    e->animation[i].pos1.y=47;
     }
 }
 //Score
-void Game_Score (image *s,int *score,int reponse)
+void Game_Score (image *sc,int *score,int reponse)
 {
         text t;
         
@@ -97,21 +128,20 @@ if (reponse==2)
 {
     *score+=10;
 }
-sprintf(t.texte,"Score: %d",score);
-s->surface=TTF_RenderText_Blended(t.font,t.texte,t.textColor);
+sprintf(t.texte,"Score: %d",*score);
+sc->surface=TTF_RenderText_Blended(t.font,t.texte,t.textColor);
 }
 
-void afficherenigme(Enigme e,SDL_Surface *screen)
+void afficherenigme(Enigme *e,SDL_Surface *screen)
 {
 show(e->q,screen);
-show(e->score,screen);
 show(e->r1[0],screen);
 show(e->r2[0],screen);
 show(e->r3[0],screen);
 }
 //Animation
 
-void animer(Enigme *e,SDL_Surface *screen)
+void animate_enigme(Enigme *e,SDL_Surface *screen)
 {
     e->elapsed++;
     if (e->elapsed==4)
@@ -122,43 +152,3 @@ void animer(Enigme *e,SDL_Surface *screen)
 }
 
 
-int sauvegarder(Game *g)
-{
-    FILE *f=NULL;
-    f=fopen("save/savefile","w");
-    if (f!=NULL)
-    {
-        fprintf(f,"[Game SaveFile]\n");
-        fprintf(f,"player.health=%d\n",g->player[0].health);
-        fprintf(f,"player.life=%d\n",g->player[0].life);
-        fprintf(f,"checkpoint=%d\n",g->global.checkpoint);
-        fprintf(f,"score=%d\n",g->player[0].score);
-        fprintf(f,"level=%d\n",g->global.level);
-        fclose(f);
-        return 0;
-    }
-    else
-    {
-        return -1;
-    }
-}
-int charger(Game *g)
-{
-    FILE *f=NULL;
-    f=fopen("save/savefile","w");
-    if (f!=NULL)
-    {
-        fscanf(f,"[Game SaveFile]\n");
-        fscanf(f,"player.health=%d\n",g->player[0].health);
-        fscanf(f,"player.life=%d\n",g->player[0].life);
-        fscanf(f,"checkpoint=%d\n",g->global.checkpoint);
-        fscanf(f,"score=%d\n",g->player[0].score);
-        fscanf(f,"level=%d\n",g->global.level);
-        fclose(f);
-        return 0;
-    }
-    else
-    {
-        return -1;
-    }
-}
