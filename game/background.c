@@ -141,11 +141,11 @@ void animationback(Background *bg)
 void animationback2(Background *bg)
 {
 
-        if (bg->elapsed!=100)
+        if ((bg->elapsed%30)==0)
         {
                 bg->i=0;
         }
-        if ((bg->elapsed!=100) && (bg->elapsed>=200))
+        else
         {
                 bg->i=1;
         }

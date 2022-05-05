@@ -34,7 +34,6 @@ void enemyrefresh(Enemy *enemi)
 void BlitGame(Game *g,SDL_Surface *screen)
 {
     showgame(g->bg.img,screen);
-    SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     showgame(g->minimap.bg,screen);
     show(g->bg.an[0],screen);
     show(g->bg.an[1],screen);
@@ -75,7 +74,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     rpos_enemy(&g->enemy[0],&g->bg);
 
     playerrefresh(&g->player[0]);
-    playerrefresh(&g->player[1]);
+
     enemyrefresh(&g->enemy[0]);
     
     updateminimap(g);

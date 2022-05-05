@@ -275,6 +275,12 @@ void movement(Character *player,Background *bg,int x)
                 player->input.jumpHeight=0;
                 player->input.movement=3;
             }
+            if (CollisionTop(player,bg,rgb))
+            {
+                player->input.startJump=0;
+                player->input.jumpHeight=maxJmpH;
+                player->input.movement=3;
+            }
         }
         player->position.y+=GRAVITY;
         

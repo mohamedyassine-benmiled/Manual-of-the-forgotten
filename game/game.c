@@ -34,7 +34,7 @@ void handlemovement(Game *g)
         {
         movement(&g->player[0],&g->bg,0);            
         }
-        
+        /*
         if (g->global.firstplayer==1)
         {
         movement(&g->player[1],&g->bg,1);
@@ -43,7 +43,7 @@ void handlemovement(Game *g)
         {
         movement(&g->player[1],&g->bg,0);            
         }
-        
+        */
 }
 void handlescrolling(Game *g)
 {
@@ -66,31 +66,31 @@ void handlescrolling(Game *g)
 }
 int game(SDL_Surface *screen,int run)
 {
-    Game g;
+    Game g[2];
 
-    initbackground(&g.bg);
-    g.global.firstplayer=0;
-    g.global.lastplayer=1;
-    initplayer(&g.player[0]);
-    initplayer(&g.player[1]);
-    initminimap(&g.minimap);
-    initennemy(&g.enemy[0]);
+    initbackground(&g[0].bg);
+    g[0].global.firstplayer=0;
+    g[0].global.lastplayer=1;
+    initplayer(&g[0].player[0]);
+    initplayer(&g[1].player[0]);
+    initminimap(&g[0].minimap);
+    initennemy(&g[0].enemy[0]);
     SDL_Event event;
 
-    Mix_PlayMusic(g.bg.son, -1);
+    Mix_PlayMusic(g[0].bg.son, -1);
     SDL_Flip(screen);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
     {
 
-        run=handlegame(&g,&event,screen,run);
-        handlemovement(&g);
-        handlescrolling(&g);
-        gamerefresh(&g,screen);
+        run=handlegame(&g[0],&event,screen,run);
+        handlemovement(&g[0]);
+        //handlescrolling(&g[0]);
+        gamerefresh(&g[0],screen);
 
     }
-    freegame(g);
-    freebackground(g.bg);
+    freegame(g[0]);
+    freebackground(g[0].bg);
 return run;
 
 }
