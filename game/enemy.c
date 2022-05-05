@@ -129,3 +129,38 @@ void rpos_enemy (Enemy *enemi , Background *bg )
     enemi->rpos.x=relative_x(bg,enemi->position); 
     enemi->rpos.y=enemi->position.y; 
 }
+void MoveIA(Enemy *ennemi, Character player, int *state , int posO)
+{
+
+int distance;
+ennemi->direction=0;
+  if(ennemi->position.x>=player.position.x)
+    distance=ennemi->position.x-player.position.x;
+  else
+    distance=player.position.x-ennemi->position.x;
+if(distance<50)
+*state=1;
+else 
+*state=0;
+    if(distance<200)
+      {
+        if(ennemi->position.x>=player.position.x)
+          ennemi->direction=0;
+        else
+          ennemi->direction=1;
+      }
+      else
+    {  if(ennemi->posMin>=ennemi->position.x)
+          ennemi->direction=1;
+      if(ennemi->posMax<=ennemi->position.x)
+        ennemi->direction=0;
+	}
+      if(ennemi->direction==1)
+      {
+        ennemi->postion.x+=5;
+      }
+      if(ennemi->direction==0)
+      {
+        ennemi->postion.x-=5;
+      }
+}
