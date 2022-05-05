@@ -72,24 +72,26 @@ e->surfacereponse2=TTF_RenderText_Blended(t.font,e->rep2,white);
 e->surfacereponse3=TTF_RenderText_Blended(t.font,e->rep3,white);
 }
 //Score
-void Game_Score (int score)
+void Game_Score (image *s,int *score,int response)
 {
         text t;
+        
 //text color
 t.textColor.r=0;
 t.textColor.g=0;
 t.textColor.b=0;
-t.font=TTF_OpenFont("Trajan Pro.ttf",20);
-SDL_Surface *surface_score=NULL;
+t.font=TTF_OpenFont("alagard.ttf",20);
+if (reponse==1)
+{
+    *score-=10;
+}
 
-SDL_Color blue={0,0,155};
-SDL_Color green={0,200,0};
-
-surface_score=TTF_RenderText_Blended(t.font,"score :",blue);
-SDL_Rect position_score; 
-
-position_score.x=50;
-position_score.y=80;
+if (reponse==2)
+{
+    *score+=10;
+}
+sprintf(t.texte,"Score: %d",score);
+s->surface=TTF_RenderText_Blended(t.font,t.texte,t.textColor);
 }
 
 void afficherenigme(enigme e,SDL_Surface *screen)
@@ -98,7 +100,6 @@ SDL_BlitSurface(e.surfacequestion,NULL,screen,&e.posquestion);
 SDL_BlitSurface(e.surfacereponse1,NULL,screen,&e.posreponse1);
 SDL_BlitSurface(e.surfacereponse2,NULL,screen,&e.posreponse2);
 SDL_BlitSurface(e.surfacereponse3,NULL,screen,&e.posreponse3);
-SDL_Flip(screen);
 }
 //Animation
 /*
