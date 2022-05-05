@@ -17,6 +17,7 @@
 #include <SDL/SDL_mixer.h>
 #include "include/enigme.h"
 #include "include/text.h"
+#include "include/game.h"
 
 void init_enigme(enigme *e )
 {
@@ -72,7 +73,7 @@ e->surfacereponse2=TTF_RenderText_Blended(t.font,e->rep2,white);
 e->surfacereponse3=TTF_RenderText_Blended(t.font,e->rep3,white);
 }
 //Score
-void Game_Score (image *s,int *score,int response)
+void Game_Score (image *s,int *score,int reponse)
 {
         text t;
         
@@ -94,17 +95,64 @@ sprintf(t.texte,"Score: %d",score);
 s->surface=TTF_RenderText_Blended(t.font,t.texte,t.textColor);
 }
 
-void afficherenigme(enigme e,SDL_Surface *screen)
+void afficherenigme(Enigme e,SDL_Surface *screen)
 {
-SDL_BlitSurface(e.surfacequestion,NULL,screen,&e.posquestion);
-SDL_BlitSurface(e.surfacereponse1,NULL,screen,&e.posreponse1);
-SDL_BlitSurface(e.surfacereponse2,NULL,screen,&e.posreponse2);
-SDL_BlitSurface(e.surfacereponse3,NULL,screen,&e.posreponse3);
+show(e->q,screen);
+show(e->score,screen);
+show(e->r1[0],screen);
+show(e->r2[0],screen);
+show(e->r3[0],screen);
 }
 //Animation
-/*
-void animer(enigme *e,SDL_Rect *pos_sprite,int j)
+
+void animer(Enigme *e,SDL_Surface *screen)
 {
-pos_sprite->x=j*pos_sprite->w;
+    e->elapsed++;
+    if (e->elapsed==4)
+    {
+        e->elapsed=0;
+    }
+    show(e->animation[e->elapsed],screen);
 }
-*/
+
+
+int sauvegarder(Game *g)
+{
+    FILE *f=NULL;
+    f=fopen("save/savefile","w");
+    if (f!=NULL)
+    {
+        fprintf(f,"[Game SaveFile]\n");
+        fprintf(f,"player.health=%d\n",g->player[0].health);
+        fprintf(f,"player.life=%d\n",g->player[0].life);
+        fprintf(f,"checkpoint=%d\n",g->global.checkpoint);
+        fprintf(f,"score=%d\n",g->player[0].score);
+        fprintf(f,"level=%d\n",g->global.level);
+        fclose(f);
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
+}
+int charger(Game *g)
+{
+    FILE *f=NULL;
+    f=fopen("save/savefile","w");
+    if (f!=NULL)
+    {
+        fscanf(f,"[Game SaveFile]\n");
+        fscanf(f,"player.health=%d\n",g->player[0].health);
+        fscanf(f,"player.life=%d\n",g->player[0].life);
+        fscanf(f,"checkpoint=%d\n",g->global.checkpoint);
+        fscanf(f,"score=%d\n",g->player[0].score);
+        fscanf(f,"level=%d\n",g->global.level);
+        fclose(f);
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
+}

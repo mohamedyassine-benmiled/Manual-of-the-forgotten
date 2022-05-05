@@ -27,6 +27,7 @@ typedef struct
     int firstplayer;
     int lastplayer;
     int cinematic;
+    int checkpoint;
     int dropboss;
     int movement;
 } States;

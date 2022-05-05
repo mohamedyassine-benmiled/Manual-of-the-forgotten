@@ -27,6 +27,7 @@ typedef struct
     int animation;
     int life, died;
     int elapsed;
+    int score;
     /* Variables */
     int health, direction, speed, atk;
     /* Inputs */
