@@ -23,6 +23,7 @@ image r2[2];
 image r3[2];
 image sc;
 image animation[4];
+image bg;
 int elapsed;
 }Enigme;
 void init_enigme(Enigme *e);
