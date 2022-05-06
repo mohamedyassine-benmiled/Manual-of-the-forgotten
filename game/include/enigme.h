@@ -12,15 +12,20 @@
 typedef struct 
 {
 char question[100];
+char question2[100];
 char rep1[100];
 char rep2[100];
 char rep3[100];
 int rep;
+int repuser;
 int score;
 image q;
+image q2;
 image r1[2];
 image r2[2];
 image r3[2];
+image correct;
+image incorrect;
 image sc;
 image animation[4];
 image bg;

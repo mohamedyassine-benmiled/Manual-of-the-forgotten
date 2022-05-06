@@ -20,11 +20,7 @@
 //Check
 int check(SDL_Surface *screen,int *run,int state)
 {
-    Enigme e;
-    init_enigme(&e);
-
     //
-    
     int x,y;
     CheckImage assets;
     initcheck(&assets);
@@ -47,8 +43,7 @@ int check(SDL_Surface *screen,int *run,int state)
         //Init Loop
         while (check==3)
         {
-            afficherenigme(&e,screen);
-            SDL_Flip(screen);
+
             while (SDL_PollEvent(&event))
             {
             switch(event.type)

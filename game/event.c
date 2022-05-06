@@ -11,6 +11,68 @@
 
 #include "include/game.h"
 
+int handleenigme(Enigme *e,SDL_Event *event,SDL_Surface *screen,int run)
+{
+
+            if (SDL_PollEvent(event))
+                {
+                switch ((*event).type)
+                            {
+                                case SDL_QUIT:
+                                    run=0;
+                                break;
+                                case SDL_KEYDOWN:
+                                    switch ((*event).key.keysym.sym)
+                                    {
+                                        /*** Normal Screen Handling ***/
+                                        //On Escape Press : Quit Check
+                                        case (SDLK_ESCAPE):
+                                            if (check(screen,&run,0))
+                                            run=0; 
+                                            else
+                                            {
+                                                    afficherenigme(e,screen);
+                                            }  
+                                        break;
+                                        //On "A" Press : Go back to Menu
+                                        case (SDLK_a):
+                                            if (e->rep==1)
+                                            {
+                                                e->repuser=2;
+                                            }
+                                            else
+                                            {
+                                                e->repuser=1;
+                                            }
+                                        break;
+                                        //On "B" press : Go to option
+                                        case (SDLK_b):
+                                            if (e->rep==2)
+                                            {
+                                                e->repuser=2;
+                                            }
+                                            else
+                                            {
+                                                e->repuser=1;
+                                            }
+                                        break;
+                                        //On "C" press : Go to game
+                                        case (SDLK_c):
+                                            if (e->rep==3)
+                                            {
+                                                e->repuser=2;
+                                            }
+                                            else
+                                            {
+                                                e->repuser=1;
+                                            }
+                                        break;
+                                    }
+                            }        
+                }
+                return run;
+}
+
 int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
 {
 

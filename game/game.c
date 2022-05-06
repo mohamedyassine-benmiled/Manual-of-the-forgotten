@@ -13,6 +13,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
+
 //Init to remove warnings
 void initbackground(Background *assets);
 void initminimap(Minimap *assets);
@@ -78,7 +79,9 @@ int game(SDL_Surface *screen,int run)
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
     {
-
+            printf("\n%d",g.player[0].position.x+g.bg.img.pos2.x);
+        if (g.player[0].position.x+g.bg.img.pos2.x>=5764)
+        run=enigmestart(screen,run,&g.player[0].score);
         run=handlegame(&g,&event,screen,run);
         handlemovement(&g);
         gamerefresh(&g,screen);

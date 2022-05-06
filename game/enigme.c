@@ -46,6 +46,7 @@ f=fopen("enigme/enigmes","r");
 srand(time(NULL));
 alea=rand()%4;
 nbligne=0;
+e->elapsed=0;
 if(f!=NULL)
 {
 while(fscanf(f,"%s %s %s %s %d\n",e->question,e->rep1,e->rep2,e->rep3,&e->rep)!=EOF)
@@ -68,14 +69,16 @@ printf("\n%d %s %s %s %s",nbligne,e->question,e->rep1,e->rep2,e->rep3);
 e->bg.surface= IMG_Load("graphics/720/enigme/bg.png");
 e->bg.pos1.x=310;
 e->bg.pos1.y=112;
-e->q.pos1.x=416;
-e->q.pos1.y=272;
-e->r1[0].pos1.x=399;
-e->r1[0].pos1.y=382;
-e->r2[0].pos1.x=584;
-e->r2[0].pos1.y=382;
-e->r3[0].pos1.x=766;
-e->r3[0].pos1.y=382;
+e->q.pos1.x=385;
+e->q.pos1.y=300;
+e->q2.pos1.x=550;
+e->q2.pos1.y=350;
+e->r1[0].pos1.x=400;
+e->r1[0].pos1.y=420;
+e->r2[0].pos1.x=600;
+e->r2[0].pos1.y=420;
+e->r3[0].pos1.x=800;
+e->r3[0].pos1.y=420;
 
 
 e->r1[1].pos1.x=399;
@@ -88,8 +91,10 @@ e->sc.pos1.x=379;
 e->sc.pos1.y=524;
 t1.font=TTF_OpenFont ("ttf/alagard.ttf",30);
 t2.font=TTF_OpenFont("ttf/alagard.ttf",20);
-
+strcpy(e->question2,"");
+fixtext(e->question,e->question2);
 e->q.surface=TTF_RenderText_Blended(t1.font,e->question,t1.textColor);
+e->q2.surface=TTF_RenderText_Blended(t1.font,e->question2,t1.textColor);
 e->r1[0].surface=TTF_RenderText_Blended(t1.font,e->rep1,t2.textColor);
 e->r2[0].surface=TTF_RenderText_Blended(t1.font,e->rep2,t2.textColor);
 e->r3[0].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
@@ -101,11 +106,76 @@ e->r2[1].surface=TTF_RenderText_Blended(t1.font,e->rep2,t2.textColor);
 e->r3[1].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
  for(int i=0;i<4;i++)
     {
-    sprintf(logo,"graphics/720/Logo/Logo%d.png",i);
+    sprintf(logo,"graphics/720/enigme/Logo%d.png",i);
     e->animation[i].surface=IMG_Load(logo);
-    e->animation[i].pos1.x=532;
-    e->animation[i].pos1.y=203;
+    e->animation[i].pos1.x=512;
+    e->animation[i].pos1.y=150;
     }
+}
+void fixtext(char text[],char text2[])
+{
+    if (strlen(text)>38)
+    {
+        for (int i=38;i>0;i--)
+        {
+            if (text[i]=='-')
+            {
+                int k=0;
+                for (int j=i;j<strlen(text);j++)
+                {
+
+                    text2[k]=text[j];
+                    k++;
+                }
+                text2[k]='\0';
+                text[i]='\0';
+                break;
+            }
+        }
+    }
+    for (int i=0;i<strlen(text);i++)
+    {
+        if (text[i]=='-')
+            text[i]=' ';
+
+    }
+    for (int i=0;i<strlen(text2);i++)
+    {
+        if (text2[i]=='-')
+            text2[i]=' ';
+
+    }
+}
+
+int enigmestart(SDL_Surface *screen,int run,int *score)
+{
+        SDL_Event event;
+
+        Enigme e;
+        e.repuser=0;
+        init_enigme(&e);
+        Game_Score(&e.sc,score,0);
+        run++;
+        
+        while(run==4)
+        {
+                
+                run=handleenigme(&e,&event,screen,run);
+                Game_Score(&e.sc,score,e.repuser);
+                afficherenigme(&e,screen);
+                animate_enigme(&e,screen);
+                SDL_Flip(screen);
+                if (e.repuser==2)
+                {
+                    run=3;
+                }
+                else
+                {
+                    e.repuser=0;
+                }
+        }
+        return run;
+
 }
 //Score
 void Game_Score (image *sc,int *score,int reponse)
@@ -116,7 +186,7 @@ void Game_Score (image *sc,int *score,int reponse)
 t.textColor.r=0;
 t.textColor.g=0;
 t.textColor.b=0;
-t.font=TTF_OpenFont("alagard.ttf",20);
+t.font=TTF_OpenFont("ttf/alagard.ttf",20);
 if (reponse==1)
 {
     *score-=10;
@@ -133,7 +203,9 @@ sc->surface=TTF_RenderText_Blended(t.font,t.texte,t.textColor);
 void afficherenigme(Enigme *e,SDL_Surface *screen)
 {
 show(e->bg,screen);
+show(e->sc,screen);
 show(e->q,screen);
+show(e->q2,screen);
 show(e->r1[0],screen);
 show(e->r2[0],screen);
 show(e->r3[0],screen);
