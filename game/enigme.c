@@ -71,24 +71,26 @@ else
 {
     printf("\n Enigmes doesn't exist");
 }
-e->q.pos1.x=0;
-e->q.pos1.y=0;
-e->r1[0].pos1.x=0;
-e->r1[0].pos1.y=0;
-e->r2[0].pos1.x=0;
-e->r2[0].pos1.y=0;
-e->r3[0].pos1.x=0;
-e->r3[0].pos1.y=0;
+e->bg.pos1.x=310;
+e->bg.pos1.y=112;
+e->q.pos1.x=416;
+e->q.pos1.y=272;
+e->r1[0].pos1.x=399;
+e->r1[0].pos1.y=382;
+e->r2[0].pos1.x=584;
+e->r2[0].pos1.y=382;
+e->r3[0].pos1.x=766;
+e->r3[0].pos1.y=382;
 
 
-e->r1[1].pos1.x=0;
-e->r1[1].pos1.y=0;
-e->r2[1].pos1.x=0;
-e->r2[1].pos1.y=0;
-e->r3[1].pos1.x=0;
-e->r3[1].pos1.y=0;
-e->sc.pos1.x=0;
-e->sc.pos1.y=0;
+e->r1[1].pos1.x=399;
+e->r1[1].pos1.y=382;
+e->r2[1].pos1.x=584;
+e->r2[1].pos1.y=382;
+e->r3[1].pos1.x=766;
+e->r3[1].pos1.y=382;
+e->sc.pos1.x=379;
+e->sc.pos1.y=524;
 t1.font=TTF_OpenFont ("alagard.ttf",30);
 t2.font=TTF_OpenFont("alagard.ttf",20);
 e->q.surface=TTF_RenderText_Blended(t1.font,e->question,t1.textColor);
@@ -105,8 +107,8 @@ e->r3[1].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
     {
     sprintf(logo,"graphics/720/Logo/Logo%d.png",i);
     e->animation[i].surface=IMG_Load(logo);
-    e->animation[i].pos1.x=619;
-    e->animation[i].pos1.y=47;
+    e->animation[i].pos1.x=532;
+    e->animation[i].pos1.y=203;
     }
 }
 //Score
