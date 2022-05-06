@@ -40,25 +40,18 @@ t2.textColor.g=0;
 t2.textColor.b=0;
 
 
-f=fopen("enigmes","r");
-if(f!=NULL)
-{
-while(fscanf(f,"%s %s %s %s %d\n")!=EOF)
-{
-nbligne++;
-}
-fclose(f);
-}
-f=fopen("enigmes","r");
+
+f=fopen("enigme/enigmes","r");
 
 srand(time(NULL));
-alea=rand()%nbligne;
+alea=rand()%4;
 nbligne=0;
 if(f!=NULL)
 {
-while(fscanf(f,"%s %s %s %s %d\n",e->question,e->rep1,e->rep2,e->rep3,&reponse)!=EOF)
+while(fscanf(f,"%s %s %s %s %d\n",e->question,e->rep1,e->rep2,e->rep3,&e->rep)!=EOF)
 {
 nbligne++;
+printf("\n%d %s %s %s %s",nbligne,e->question,e->rep1,e->rep2,e->rep3);
 if (nbligne == alea)
 {
     break;
@@ -71,6 +64,8 @@ else
 {
     printf("\n Enigmes doesn't exist");
 }
+printf("\n%d %s %s %s %s",nbligne,e->question,e->rep1,e->rep2,e->rep3);
+e->bg.surface= IMG_Load("graphics/720/enigme/bg.png");
 e->bg.pos1.x=310;
 e->bg.pos1.y=112;
 e->q.pos1.x=416;
@@ -91,8 +86,9 @@ e->r3[1].pos1.x=766;
 e->r3[1].pos1.y=382;
 e->sc.pos1.x=379;
 e->sc.pos1.y=524;
-t1.font=TTF_OpenFont ("alagard.ttf",30);
-t2.font=TTF_OpenFont("alagard.ttf",20);
+t1.font=TTF_OpenFont ("ttf/alagard.ttf",30);
+t2.font=TTF_OpenFont("ttf/alagard.ttf",20);
+
 e->q.surface=TTF_RenderText_Blended(t1.font,e->question,t1.textColor);
 e->r1[0].surface=TTF_RenderText_Blended(t1.font,e->rep1,t2.textColor);
 e->r2[0].surface=TTF_RenderText_Blended(t1.font,e->rep2,t2.textColor);
@@ -136,6 +132,7 @@ sc->surface=TTF_RenderText_Blended(t.font,t.texte,t.textColor);
 
 void afficherenigme(Enigme *e,SDL_Surface *screen)
 {
+show(e->bg,screen);
 show(e->q,screen);
 show(e->r1[0],screen);
 show(e->r2[0],screen);
