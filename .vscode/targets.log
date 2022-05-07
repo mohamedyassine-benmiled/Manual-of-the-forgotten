@@ -6,15 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-# Make data base, printed on Mon Apr 11 14:41:02 2022
-=======
-# Make data base, printed on Mon Apr 11 16:33:11 2022
->>>>>>> Stashed changes
-=======
-# Make data base, printed on Wed Apr 13 11:13:19 2022
->>>>>>> Stashed changes
+# Make data base, printed on Fri Apr 29 06:26:16 2022
 
 # Variables
 
@@ -61,11 +53,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/bin/dbus-update-activation-environment
 # environment
-<<<<<<< Updated upstream
-JOURNAL_STREAM = 8:36369
-=======
-JOURNAL_STREAM = 8:35353
->>>>>>> Stashed changes
+JOURNAL_STREAM = 8:35599
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -87,17 +75,9 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 29)
 DEL = del
 # environment
-<<<<<<< Updated upstream
-MANAGERPID = 1406
-=======
 MANAGERPID = 1376
->>>>>>> Stashed changes
 # environment
-<<<<<<< Updated upstream
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a4dce97d-ac83-4d4d-b56b-46f841b75cc9.sock
-=======
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2da1b4d2-a76e-4b12-97be-872bce5833aa.sock
->>>>>>> Stashed changes
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-0e3dfeeb-f2f2-480c-8254-31cbd5ae79b3.sock
 # environment
 VSCODE_CWD = /home/osboxes
 # default
@@ -109,11 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # makefile (from 'Makefile', line 24)
 DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
 # environment
-<<<<<<< Updated upstream
-SESSION_MANAGER = local/osboxes:@/tmp/.ICE-unix/1668,unix/osboxes:/tmp/.ICE-unix/1668
-=======
-SESSION_MANAGER = local/osboxes:@/tmp/.ICE-unix/1626,unix/osboxes:/tmp/.ICE-unix/1626
->>>>>>> Stashed changes
+SESSION_MANAGER = local/osboxes:@/tmp/.ICE-unix/1629,unix/osboxes:/tmp/.ICE-unix/1629
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -123,11 +99,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=b4b7d0f0-2d78-4271-ba69-dd8de35921a0&iid=b4b7d0f0-2d78-4271-ba69-dd8de35921a0&sid=b4b7d0f0-2d78-4271-ba69-dd8de35921a0","uploadToServer":true}
 # environment
-<<<<<<< Updated upstream
-INVOCATION_ID = 538f9c8c954b4fa698c653ab5bcac5b0
-=======
-INVOCATION_ID = 1a47ff1d8b114e0780c83be07479d3d1
->>>>>>> Stashed changes
+INVOCATION_ID = 9afdd7ab20b14e258e1d1cf5c0dfafaa
 # makefile (from 'Makefile', line 8)
 LDFLAGS = -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer -lm -lsmpeg
 # default
@@ -137,11 +109,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-<<<<<<< Updated upstream
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2235
-=======
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2583
->>>>>>> Stashed changes
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2201
 # automatic
 %F = $(notdir $%)
 # environment
@@ -155,11 +123,7 @@ PWD = /home/osboxes/Documents/GitHub/Game-Project2022
 # default
 .LOADED := 
 # environment
-<<<<<<< Updated upstream
-SSH_AGENT_PID = 1620
-=======
-SSH_AGENT_PID = 1587
->>>>>>> Stashed changes
+SSH_AGENT_PID = 1586
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = Unity
 # environment
@@ -202,11 +166,6 @@ LOCAL_GIT_DIRECTORY = /usr/lib/github-desktop/resources/app/git
 CC = gcc
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
-<<<<<<< Updated upstream
-=======
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-0596fedd-e071-4754-9c27-57e7a43010d5.sock
->>>>>>> Stashed changes
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -278,15 +237,7 @@ EXE = .exe
 # environment
 LANG = C
 # environment
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-VSCODE_PID = 2564
-=======
-VSCODE_PID = 5128
->>>>>>> Stashed changes
-=======
-VSCODE_PID = 2583
->>>>>>> Stashed changes
+VSCODE_PID = 4178
 # variable set hash-table stats:
 # Load=114/1024=11%, Rehash=0, Collisions=27/156=17%
 
@@ -296,27 +247,14 @@ VSCODE_PID = 2583
 
 # Directories
 
-# . (device 2051, inode 2755542): 16 files, no impossibilities.
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-# game (device 2051, inode 2883661): 15 files, no impossibilities.
+# . (device 2051, inode 2755542): 20 files, no impossibilities.
+# game (device 2051, inode 2883661): 22 files, no impossibilities.
 
-# 31 files, no impossibilities in 2 directories.
-=======
-# game (device 2051, inode 2883661): 16 files, no impossibilities.
-
-# 32 files, no impossibilities in 2 directories.
->>>>>>> Stashed changes
-=======
-# game (device 2051, inode 2883661): 16 files, no impossibilities.
-
-# 32 files, no impossibilities in 2 directories.
->>>>>>> Stashed changes
+# 42 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 obj/%.o: game/%.c
- 
 #  recipe to execute (from 'Makefile', line 45):
 	-mkdir obj
 	$(CC) $(CXXFLAGS) -o $@ -c $<
@@ -338,46 +276,14 @@ obj/text.o:
 #  File has not been updated.
 
 # Not a target:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 obj/sound.o:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-book: obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o
-=======
-game/enigme.c:
-#  Implicit rule search has been done.
  
-#  Last modified 2022-04-11 16:33:10.575742418
-=======
-game/enigme.c:
-#  Implicit rule search has been done.
- 
-#  Last modified 2022-04-13 11:13:16.805519983
->>>>>>> Stashed changes
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-obj/sound.o:
-<<<<<<< Updated upstream
-#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-book: obj/enigme.o obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o
->>>>>>> Stashed changes
+book: obj/background.o obj/enigme.o obj/sound.o obj/init.o obj/character.o obj/config.o obj/game.o obj/animation.o obj/event.o obj/main.o obj/collision.o obj/menu.o obj/enemy.o obj/minimap.o obj/image.o obj/text.o obj/intro.o
 #  Implicit rule search has not been done.
-=======
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-book: obj/enigme.o obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o
-#  Implicit rule search has not been done.
->>>>>>> Stashed changes
 #  Last modified 2022-03-21 11:12:22.835278181
 #  File has been updated.
 #  Needs to be updated (-q is set).
@@ -401,29 +307,13 @@ all: book
 #  File has not been updated.
 
 # Not a target:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-game/init.c:
+game/background.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-04-11 14:40:32.066866658
+#  Last modified 2022-04-29 06:23:12.029879042
 #  File has been updated.
 #  Successfully updated.
-=======
-obj/intro.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
-obj/collision.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
->>>>>>> Stashed changes
-
-# Not a target:
-=======
->>>>>>> Stashed changes
 obj/intro.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -449,6 +339,12 @@ Makefile:
 #  Successfully updated.
 
 # Not a target:
+obj/minimap.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 obj/animation.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -468,40 +364,12 @@ cleanw:
 #  recipe to execute (from 'Makefile', line 64):
 	$(DEL) $(WDELOBJ) $(DEP) $(APPNAME)$(EXE)
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-obj/enigme.o: game/enigme.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'enigme'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/enigme.o
-# automatic
-# % := 
-# automatic
-# * := enigme
-# automatic
-# + := game/enigme.c
-# automatic
-# | := 
-# automatic
-# < := game/enigme.c
-# automatic
-# ^ := game/enigme.c
-# automatic
-# ? := game/enigme.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
-#  recipe to execute (from 'Makefile', line 45):
-	-mkdir obj
-	$(CC) $(CXXFLAGS) -o $@ -c $<
+# Not a target:
+obj/enigme.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
->>>>>>> Stashed changes
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
@@ -530,6 +398,34 @@ cleandepw:
 #  recipe to execute (from 'Makefile', line 69):
 	$(DEL) $(DEP)
 
+obj/background.o: game/background.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'background'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/background.o
+# automatic
+# % := 
+# automatic
+# * := background
+# automatic
+# + := game/background.c
+# automatic
+# | := 
+# automatic
+# < := game/background.c
+# automatic
+# ^ := game/background.c
+# automatic
+# ? := game/background.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 45):
+	-mkdir obj
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -539,47 +435,23 @@ clean:
 	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
 	
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-obj/init.o: game/init.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'init'
-#  Last modified 2022-03-21 11:12:21.459281403
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/init.o
-# automatic
-# % := 
-# automatic
-# * := init
-# automatic
-# + := game/init.c
-# automatic
-# | := 
-# automatic
-# < := game/init.c
-# automatic
-# ^ := game/init.c
-# automatic
-# ? := game/init.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
-#  recipe to execute (from 'Makefile', line 45):
-	-mkdir obj
-	$(CC) $(CXXFLAGS) -o $@ -c $<
-=======
-=======
->>>>>>> Stashed changes
 # Not a target:
 obj/init.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
+# Not a target:
+obj/event.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/character.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 obj/config.o:
@@ -587,45 +459,26 @@ obj/config.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+obj/enemy.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-# Load=22/1024=2%, Rehash=0, Collisions=0/60=0%
-=======
-# Load=23/1024=2%, Rehash=0, Collisions=0/62=0%
->>>>>>> Stashed changes
-=======
-# Load=23/1024=2%, Rehash=0, Collisions=0/62=0%
->>>>>>> Stashed changes
+# Load=28/1024=3%, Rehash=0, Collisions=0/72=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-# strcache buffers: 1 (0) / strings = 54 / storage = 482 B / avg = 8 B
-# current buf: size = 8162 B / used = 482 B / count = 54 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 71 / storage = 687 B / avg = 9 B
+# current buf: size = 8162 B / used = 687 B / count = 71 / avg = 9 B
 
-# strcache performance: lookups = 82 / hit rate = 34%
+# strcache performance: lookups = 99 / hit rate = 28%
 # hash-table stats:
-# Load=54/8192=1%, Rehash=0, Collisions=2/82=2%
-# Finished Make data base on Mon Apr 11 14:41:02 2022
-=======
-=======
->>>>>>> Stashed changes
-# strcache buffers: 1 (0) / strings = 56 / storage = 508 B / avg = 9 B
-# current buf: size = 8162 B / used = 508 B / count = 56 / avg = 9 B
-
-# strcache performance: lookups = 84 / hit rate = 33%
-# hash-table stats:
-# Load=56/8192=1%, Rehash=0, Collisions=2/84=2%
-<<<<<<< Updated upstream
-# Finished Make data base on Mon Apr 11 16:33:11 2022
->>>>>>> Stashed changes
-=======
-# Finished Make data base on Wed Apr 13 11:13:19 2022
->>>>>>> Stashed changes
+# Load=71/8192=1%, Rehash=0, Collisions=2/99=2%
+# Finished Make data base on Fri Apr 29 06:26:16 2022
 
  

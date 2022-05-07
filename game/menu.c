@@ -43,6 +43,7 @@ int check(SDL_Surface *screen,int *run,int state)
         //Init Loop
         while (check==3)
         {
+
             while (SDL_PollEvent(&event))
             {
             switch(event.type)
@@ -92,6 +93,7 @@ int check(SDL_Surface *screen,int *run,int state)
         }
             //Return Result
             return check;
+    
 }
 
 //Menu

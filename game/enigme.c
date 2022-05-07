@@ -18,92 +18,208 @@
 #include "include/enigme.h"
 #include "include/text.h"
 
-void init_enigme(enigme *e )
+
+void init_enigme(Enigme *e )
 {
-    text t;
-//text color
-t.textColor.r=0;
-t.textColor.g=0;
-t.textColor.b=0;
-TTF_Font *fontquest;
+FILE *f=NULL;
+text t1, t2 ;
+char logo [50];
 int check=0;
 int alea;
 int nbligne=0;
-
 int reponse;
-FILE *f=NULL;
-f=fopen("enigmes","r");
-if(f!=NULL)
-{
-while(fscanf(f,"%s %s %s %s %d\n",e->question,e->rep1,e->rep2,e->rep3,&reponse)!=EOF)
-{
-nbligne++;
-}
-fclose(f);
-}
+e->score=0;
+
+//text color question
+t1.textColor.r=0;
+t1.textColor.g=0;
+t1.textColor.b=0;
+//text color response
+t2.textColor.r=0;
+t2.textColor.g=0;
+t2.textColor.b=0;
+
+
+
+f=fopen("enigme/enigmes","r");
+
 srand(time(NULL));
 alea=rand()%4;
-f=fopen("enigme","r");
+nbligne=0;
+e->elapsed=0;
 if(f!=NULL)
 {
-while(fscanf(f,"%s %s %s %s %d\n",e->question,e->rep1,e->rep2,e->rep3)!=EOF)
+while(fscanf(f,"%s %s %s %s %d\n",e->question,e->rep1,e->rep2,e->rep3,&e->rep)!=EOF)
 {
-check++;
-if(check==alea){break;}
+nbligne++;
+printf("\n%d %s %s %s %s",nbligne,e->question,e->rep1,e->rep2,e->rep3);
+if (nbligne == alea)
+{
+    break;
+}
+
 }
 fclose(f);
 }
-//Affichage
-e->posquestion.x=50;
-e->posquestion.y=20;
-e->posreponse1.x=400;
-e->posreponse1.y=50;
-e->posreponse2.x=400;
-e->posreponse2.y=100;
-e->posreponse3.x=400;
-e->posreponse3.y=150;
-fontquest=TTF_OpenFont ("Trajan Pro.ttf",30);
-t.font=TTF_OpenFont("Trajan Pro.ttf",20);
-SDL_Color black={0,0,0};
-SDL_Color white={255,255,255};
-e->surfacequestion=TTF_RenderText_Blended(fontquest,e->question,black);
-e->surfacereponse1=TTF_RenderText_Blended(t.font,e->rep1,white);
-e->surfacereponse2=TTF_RenderText_Blended(t.font,e->rep2,white);
-e->surfacereponse3=TTF_RenderText_Blended(t.font,e->rep3,white);
+else
+{
+    printf("\n Enigmes doesn't exist");
+}
+printf("\n%d %s %s %s %s",nbligne,e->question,e->rep1,e->rep2,e->rep3);
+e->bg.surface= IMG_Load("graphics/720/enigme/bg.png");
+e->bg.pos1.x=310;
+e->bg.pos1.y=112;
+e->q.pos1.x=385;
+e->q.pos1.y=300;
+e->q2.pos1.x=550;
+e->q2.pos1.y=350;
+e->r1[0].pos1.x=400;
+e->r1[0].pos1.y=420;
+e->r2[0].pos1.x=600;
+e->r2[0].pos1.y=420;
+e->r3[0].pos1.x=800;
+e->r3[0].pos1.y=420;
+
+
+e->r1[1].pos1.x=399;
+e->r1[1].pos1.y=382;
+e->r2[1].pos1.x=584;
+e->r2[1].pos1.y=382;
+e->r3[1].pos1.x=766;
+e->r3[1].pos1.y=382;
+e->sc.pos1.x=379;
+e->sc.pos1.y=524;
+t1.font=TTF_OpenFont ("ttf/alagard.ttf",30);
+t2.font=TTF_OpenFont("ttf/alagard.ttf",20);
+strcpy(e->question2,"");
+fixtext(e->question,e->question2);
+e->q.surface=TTF_RenderText_Blended(t1.font,e->question,t1.textColor);
+e->q2.surface=TTF_RenderText_Blended(t1.font,e->question2,t1.textColor);
+e->r1[0].surface=TTF_RenderText_Blended(t1.font,e->rep1,t2.textColor);
+e->r2[0].surface=TTF_RenderText_Blended(t1.font,e->rep2,t2.textColor);
+e->r3[0].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
+t2.textColor.r=100;
+t2.textColor.g=100;
+t2.textColor.b=100;
+e->r1[1].surface=TTF_RenderText_Blended(t1.font,e->rep1,t2.textColor);
+e->r2[1].surface=TTF_RenderText_Blended(t1.font,e->rep2,t2.textColor);
+e->r3[1].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
+ for(int i=0;i<4;i++)
+    {
+    sprintf(logo,"graphics/720/enigme/Logo%d.png",i);
+    e->animation[i].surface=IMG_Load(logo);
+    e->animation[i].pos1.x=512;
+    e->animation[i].pos1.y=150;
+    }
+}
+void fixtext(char text[],char text2[])
+{
+    if (strlen(text)>38)
+    {
+        for (int i=38;i>0;i--)
+        {
+            if (text[i]=='-')
+            {
+                int k=0;
+                for (int j=i;j<strlen(text);j++)
+                {
+
+                    text2[k]=text[j];
+                    k++;
+                }
+                text2[k]='\0';
+                text[i]='\0';
+                break;
+            }
+        }
+    }
+    for (int i=0;i<strlen(text);i++)
+    {
+        if (text[i]=='-')
+            text[i]=' ';
+
+    }
+    for (int i=0;i<strlen(text2);i++)
+    {
+        if (text2[i]=='-')
+            text2[i]=' ';
+
+    }
+}
+
+int enigmestart(SDL_Surface *screen,int run,int *score)
+{
+        SDL_Event event;
+
+        Enigme e;
+        e.repuser=0;
+        init_enigme(&e);
+        Game_Score(&e.sc,score,0);
+        run++;
+        
+        while(run==4)
+        {
+                
+                run=handleenigme(&e,&event,screen,run);
+                Game_Score(&e.sc,score,e.repuser);
+                afficherenigme(&e,screen);
+                animate_enigme(&e,screen);
+                SDL_Flip(screen);
+                if (e.repuser==2)
+                {
+                    run=3;
+                }
+                else
+                {
+                    e.repuser=0;
+                }
+        }
+        return run;
+
 }
 //Score
-void Game_Score (int score)
+void Game_Score (image *sc,int *score,int reponse)
 {
         text t;
+        
 //text color
 t.textColor.r=0;
 t.textColor.g=0;
 t.textColor.b=0;
-t.font=TTF_OpenFont("Trajan Pro.ttf",20);
-SDL_Surface *surface_score=NULL;
-
-SDL_Color blue={0,0,155};
-SDL_Color green={0,200,0};
-
-surface_score=TTF_RenderText_Blended(t.font,"score :",blue);
-SDL_Rect position_score; 
-
-position_score.x=50;
-position_score.y=80;
+t.font=TTF_OpenFont("ttf/alagard.ttf",20);
+if (reponse==1)
+{
+    *score-=10;
 }
 
-void afficherenigme(enigme e,SDL_Surface *screen)
+if (reponse==2)
 {
-SDL_BlitSurface(e.surfacequestion,NULL,screen,&e.posquestion);
-SDL_BlitSurface(e.surfacereponse1,NULL,screen,&e.posreponse1);
-SDL_BlitSurface(e.surfacereponse2,NULL,screen,&e.posreponse2);
-SDL_BlitSurface(e.surfacereponse3,NULL,screen,&e.posreponse3);
-SDL_Flip(screen);
+    *score+=10;
+}
+sprintf(t.texte,"Score: %d",*score);
+sc->surface=TTF_RenderText_Blended(t.font,t.texte,t.textColor);
+}
+
+void afficherenigme(Enigme *e,SDL_Surface *screen)
+{
+show(e->bg,screen);
+show(e->sc,screen);
+show(e->q,screen);
+show(e->q2,screen);
+show(e->r1[0],screen);
+show(e->r2[0],screen);
+show(e->r3[0],screen);
 }
 //Animation
-/*
-void animer(enigme *e,SDL_Rect *pos_sprite,int j)
+
+void animate_enigme(Enigme *e,SDL_Surface *screen)
 {
-pos_sprite->x=j*pos_sprite->w;
+    e->elapsed++;
+    if (e->elapsed==4)
+    {
+        e->elapsed=0;
+    }
+    show(e->animation[e->elapsed],screen);
 }
-*/
+
+

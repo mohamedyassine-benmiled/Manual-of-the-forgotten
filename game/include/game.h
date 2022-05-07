@@ -20,7 +20,7 @@
 #include "enemy.h"
 #include "animation.h"
 #include "character.h"
-
+#include "enigme.h"
 
 typedef struct
 {
