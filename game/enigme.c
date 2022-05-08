@@ -74,8 +74,8 @@ e->q.pos1.x=385;
 e->q.pos1.y=300;
 e->q2.pos1.x=550;
 e->q2.pos1.y=350;
-e->time.pos1.x=600;
-e->time.pos1.y=600;
+e->time.pos1.x=479;
+e->time.pos1.y=524;
 e->r1[0].pos1.x=400;
 e->r1[0].pos1.y=420;
 e->r2[0].pos1.x=600;
@@ -207,9 +207,9 @@ void timeenigme(Enigme *e)
     
     t.font=TTF_OpenFont("ttf/alagard.ttf",30);
     sprintf(c,"Time : %d",e->elapsed/30);
-    t.textColor.r=207;
-    t.textColor.g=175;
-    t.textColor.b=70;
+    t.textColor.r=0;
+    t.textColor.g=0;
+    t.textColor.b=0;
     strcpy(t.texte,c);
     if (!(e->time.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)))
      { 
