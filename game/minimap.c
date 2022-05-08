@@ -38,17 +38,30 @@ g->minimap.enemy[0].rpos[0].x=g->enemy[0].rpos[0].x*20/100+g->minimap.bg.pos1.x;
 g->minimap.enemy[0].rpos[0].y=g->enemy[0].rpos[0].y*20/100+g->minimap.bg.pos1.y;
 g->global.elapsed++;
     //color
-    sprintf(c,"Score : %d",g->player[0].score);
+    sprintf(c,"Score : %d",g->player[0].score);                    
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
+
 
     strcpy(t.texte,c);
 t.font=TTF_OpenFont("ttf/alagard.ttf",30);
 if (!(g->minimap.score.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)))
 {
     printf("Wow an error ? I love this : %s",TTF_GetError());
-};
+};  
+sprintf(c,"Time : %d",g->global.elapsed/30);
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    strcpy(t.texte,c);
+    if (!(g->minimap.time.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)))
+     { 
+         printf("Wow an error ? I love this : %s",TTF_GetError());
+      };
+
+
+
 TTF_CloseFont(t.font);
 }
 
@@ -68,6 +81,10 @@ void initminimap(Minimap *assets)
     //Score
     assets->score.pos1.x=5;
     assets->score.pos1.y=0;
+    //time
+    assets->time.pos1.x=5;
+    assets->time.pos1.y=50;
+
 
 }
 

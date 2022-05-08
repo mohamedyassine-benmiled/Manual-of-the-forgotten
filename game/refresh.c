@@ -41,11 +41,14 @@ void BlitGame(Game *g,SDL_Surface *screen)
     SDL_BlitSurface(g->bg.an2.surface,NULL,screen,&g->bg.an2.pos2);
     SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
     //SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
+    if ((g->minimap.enemy[0].rpos[0].x >= g->minimap.bg.pos1.x)&&(g->minimap.enemy[0].rpos[0].x<g->minimap.bg.pos1.x+g->minimap.bg.pos2.w))
+
     SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos[0]);
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
     SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos[0]);	
     show(g->minimap.score,screen);
+    show(g->minimap.time,screen);
 }
 
 void BoxGame(Game *g)

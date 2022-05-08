@@ -24,7 +24,7 @@
 
 typedef struct
 {
-    image bg,score;
+    image bg,score,time;
     Character player[4];
     Enemy enemy[10];
     int level;
