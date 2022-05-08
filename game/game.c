@@ -70,9 +70,9 @@ int game(SDL_Surface *screen,int run)
 
     initbackground(&g[0].bg);
     g[0].global.firstplayer=0;
-    g[0].global.lastplayer=1;
+    g[0].global.lastplayer=0;
     initplayer(&g[0].player[0]);
-    initplayer(&g[1].player[0]);
+    //initplayer(&g[1].player[0]);
     initminimap(&g[0].minimap);
     initennemy(&g[0].enemy[0]);
     SDL_Event event;
