@@ -1,12 +1,15 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/osboxes/Documents/GitHub/Game-Project2022'
 mkdir obj
-<<<<<<< Updated upstream
-=======
+gcc -std=c11 -Wall -g -o obj/background.o -c game/background.c
+mkdir obj
 gcc -std=c11 -Wall -g -o obj/enigme.o -c game/enigme.c
 mkdir obj
->>>>>>> Stashed changes
+gcc -std=c11 -Wall -g -o obj/sound.o -c game/sound.c
+mkdir obj
 gcc -std=c11 -Wall -g -o obj/init.o -c game/init.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/character.o -c game/character.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/config.o -c game/config.c
 mkdir obj
@@ -14,23 +17,23 @@ gcc -std=c11 -Wall -g -o obj/game.o -c game/game.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/animation.o -c game/animation.c
 mkdir obj
-gcc -std=c11 -Wall -g -o obj/menu.o -c game/menu.c
+gcc -std=c11 -Wall -g -o obj/event.o -c game/event.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/main.o -c game/main.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/collision.o -c game/collision.c
 mkdir obj
-gcc -std=c11 -Wall -g -o obj/sound.o -c game/sound.c
+gcc -std=c11 -Wall -g -o obj/menu.o -c game/menu.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/enemy.o -c game/enemy.c
+mkdir obj
+gcc -std=c11 -Wall -g -o obj/minimap.o -c game/minimap.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/image.o -c game/image.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/text.o -c game/text.c
 mkdir obj
 gcc -std=c11 -Wall -g -o obj/intro.o -c game/intro.c
-<<<<<<< Updated upstream
-gcc -std=c11 -Wall -g -o book obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer -lm -lsmpeg
-=======
-gcc -std=c11 -Wall -g -o book obj/enigme.o obj/init.o obj/config.o obj/game.o obj/animation.o obj/menu.o obj/main.o obj/collision.o obj/sound.o obj/image.o obj/text.o obj/intro.o -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer -lm -lsmpeg
->>>>>>> Stashed changes
+gcc -std=c11 -Wall -g -o book obj/background.o obj/enigme.o obj/sound.o obj/init.o obj/character.o obj/config.o obj/game.o obj/animation.o obj/event.o obj/main.o obj/collision.o obj/menu.o obj/enemy.o obj/minimap.o obj/image.o obj/text.o obj/intro.o -lSDL -lSDL_ttf -lSDL_image -lSDL_mixer -lm -lsmpeg
 make: Leaving directory '/home/osboxes/Documents/GitHub/Game-Project2022'
  

@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
+#include "include/game.h"
 #include "include/config.h"
 
 //Writing Config Values in config.cfg
@@ -26,7 +26,6 @@ int write_config(settings *config)
         fprintf(config->f,"audio=%d\n",config->audio);
         fclose(config->f);
         return 0;
-
     }
     else
     {
@@ -52,4 +51,45 @@ int get_config(settings *config)
     else
         return -1;
 
+}
+
+int write_save(Game *g)
+{
+    FILE *f=NULL;
+    f=fopen("save/savefile","w");
+    if (f!=NULL)
+    {
+        fprintf(f,"[Game SaveFile]\n");
+        fprintf(f,"player.health=%d\n",g->player[0].health);
+        fprintf(f,"player.life=%d\n",g->player[0].life);
+        fprintf(f,"checkpoint=%d\n",g->global.checkpoint);
+        fprintf(f,"score=%d\n",g->player[0].score);
+        fprintf(f,"level=%d\n",g->global.level);
+        fclose(f);
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
+}
+int get_save(Game *g)
+{
+    FILE *f=NULL;
+    f=fopen("save/savefile","w");
+    if (f!=NULL)
+    {
+        fscanf(f,"[Game SaveFile]\n");
+        fscanf(f,"player.health=%d\n",g->player[0].health);
+        fscanf(f,"player.life=%d\n",g->player[0].life);
+        fscanf(f,"checkpoint=%d\n",g->global.checkpoint);
+        fscanf(f,"score=%d\n",g->player[0].score);
+        fscanf(f,"level=%d\n",g->global.level);
+        fclose(f);
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
 }
