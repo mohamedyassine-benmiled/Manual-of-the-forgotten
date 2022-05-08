@@ -72,8 +72,9 @@ int game(SDL_Surface *screen,int run)
     initbackground(&g[0].bg);
     g[0].global.firstplayer=0;
     g[0].global.lastplayer=0;
+    g[0].global.elapsed=0;
     initplayer(&g[0].player[0]);
-    //initplayer(&g[1].player[0]);
+    initplayer(&g[1].player[0]);
     initminimap(&g[0].minimap);
     initennemy(&g[0].enemy[0]);
     SDL_Event event;
@@ -83,7 +84,7 @@ int game(SDL_Surface *screen,int run)
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
     {
-            printf("\n%d",g[0].player[0].position.x+g[0].bg.img.pos2.x);
+        printf("\n%d",g[0].player[0].position.x+g[0].bg.img.pos2.x);
         if (g[0].player[0].position.x+g[0].bg.img.pos2.x>=5764)
         run=enigmestart(screen,run,&g[0].player[0].score);
         run=handlegame(&g[0],&event,screen,run);

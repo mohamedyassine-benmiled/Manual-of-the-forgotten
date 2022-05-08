@@ -30,6 +30,7 @@ typedef struct
     int checkpoint;
     int dropboss;
     int movement;
+    int elapsed;
 } States;
 
 

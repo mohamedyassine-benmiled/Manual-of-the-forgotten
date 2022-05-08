@@ -36,8 +36,9 @@ g->minimap.player[1].position.x=g->player[1].position.x*20/100+g->minimap.bg.pos
 g->minimap.player[1].position.y=g->player[1].position.y*20/100+g->minimap.bg.pos1.y;
 g->minimap.enemy[0].rpos[0].x=g->enemy[0].rpos[0].x*20/100+g->minimap.bg.pos1.x;
 g->minimap.enemy[0].rpos[0].y=g->enemy[0].rpos[0].y*20/100+g->minimap.bg.pos1.y;
+g->global.elapsed++;
     //color
-    sprintf(c,"Score : %d",g->minimap.elapsed);
+    sprintf(c,"Score : %d",g->player[0].score);
     t.textColor.r=207;
     t.textColor.g=175;
     t.textColor.b=70;
@@ -60,7 +61,6 @@ void initminimap(Minimap *assets)
         assets->bg.surface=IMG_Load("graphics/720/Level/Levelminimap1_0.png");
         assets->bg.pos1.x=500;
         assets->bg.pos1.y=100;
-        assets->elapsed=0;
     //Player
 	assets->player[0].image=IMG_Load("graphics/720/Minimap/player.png");
 	assets->player[1].image=IMG_Load("graphics/720/Minimap/player.png");	

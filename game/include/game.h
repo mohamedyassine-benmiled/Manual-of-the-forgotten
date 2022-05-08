@@ -27,7 +27,6 @@ typedef struct
     image bg,score;
     Character player[4];
     Enemy enemy[10];
-    int elapsed;
     int level;
 } Minimap;
 

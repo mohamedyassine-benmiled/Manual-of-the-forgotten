@@ -29,6 +29,7 @@ image incorrect;
 image sc;
 image animation[4];
 image bg;
+int animelapsed;
 int elapsed;
 }Enigme;
 void init_enigme(Enigme *e);

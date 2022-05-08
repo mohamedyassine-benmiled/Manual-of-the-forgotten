@@ -46,6 +46,7 @@ f=fopen("enigme/enigmes","r");
 srand(time(NULL));
 alea=rand()%4;
 nbligne=0;
+e->animelapsed=0;
 e->elapsed=0;
 if(f!=NULL)
 {
@@ -147,36 +148,6 @@ void fixtext(char text[],char text2[])
     }
 }
 
-int enigmestart(SDL_Surface *screen,int run,int *score)
-{
-        SDL_Event event;
-
-        Enigme e;
-        e.repuser=0;
-        init_enigme(&e);
-        Game_Score(&e.sc,score,0);
-        run++;
-        
-        while(run==4)
-        {
-                
-                run=handleenigme(&e,&event,screen,run);
-                Game_Score(&e.sc,score,e.repuser);
-                afficherenigme(&e,screen);
-                animate_enigme(&e,screen);
-                SDL_Flip(screen);
-                if (e.repuser==2)
-                {
-                    run=3;
-                }
-                else
-                {
-                    e.repuser=0;
-                }
-        }
-        return run;
-
-}
 //Score
 void Game_Score (image *sc,int *score,int reponse)
 {
@@ -209,17 +180,49 @@ show(e->q2,screen);
 show(e->r1[0],screen);
 show(e->r2[0],screen);
 show(e->r3[0],screen);
+show(e->animation[e->animelapsed],screen);
 }
 //Animation
 
 void animate_enigme(Enigme *e,SDL_Surface *screen)
 {
-    e->elapsed++;
-    if (e->elapsed==4)
+    e->animelapsed++;
+    if (e->animelapsed==4)
     {
-        e->elapsed=0;
+        e->animelapsed=0;
     }
-    show(e->animation[e->elapsed],screen);
+
 }
 
+
+int enigmestart(SDL_Surface *screen,int run,int *score)
+{
+        SDL_Event event;
+
+        Enigme e;
+        e.repuser=0;
+        init_enigme(&e);
+        Game_Score(&e.sc,score,0);
+        run++;
+        
+        while(run==4)
+        {
+                
+                run=handleenigme(&e,&event,screen,run);
+                Game_Score(&e.sc,score,e.repuser);
+                afficherenigme(&e,screen);
+                animate_enigme(&e,screen);
+                SDL_Flip(screen);
+                if (e.repuser==2)
+                {
+                    run=3;
+                }
+                else
+                {
+                    e.repuser=0;
+                }
+        }
+        return run;
+
+}
 
