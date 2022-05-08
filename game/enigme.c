@@ -17,7 +17,7 @@
 #include <SDL/SDL_mixer.h>
 #include "include/enigme.h"
 #include "include/text.h"
-
+#include "include/declarations.h"
 
 void init_enigme(Enigme *e )
 {
@@ -198,7 +198,8 @@ void animate_enigme(Enigme *e,SDL_Surface *screen)
 int enigmestart(SDL_Surface *screen,int run,int *score)
 {
         SDL_Event event;
-
+        unsigned int elapsed;
+        unsigned int lasttime;
         Enigme e;
         e.repuser=0;
         init_enigme(&e);
@@ -207,7 +208,7 @@ int enigmestart(SDL_Surface *screen,int run,int *score)
         
         while(run==4)
         {
-                
+                lasttime = SDL_GetTicks();
                 run=handleenigme(&e,&event,screen,run);
                 Game_Score(&e.sc,score,e.repuser);
                 afficherenigme(&e,screen);
@@ -221,6 +222,11 @@ int enigmestart(SDL_Surface *screen,int run,int *score)
                 {
                     e.repuser=0;
                 }
+                    /* Fixing fps */
+                    elapsed = SDL_GetTicks()-lasttime;
+                if (elapsed<1000/FPS)
+                SDL_Delay(1000/FPS-elapsed);
+                SDL_Flip(screen);
         }
         return run;
 
