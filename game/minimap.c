@@ -26,14 +26,14 @@ void updateminimap(Game *g)
 {
         text t;
         char c[50];
-g->minimap.bg.pos2.w=g->bg.img.pos2.w*MINIMAP/100;
+g->minimap.bg.pos2.w=(g->bg.img.pos2.w*MINIMAP/100)+500;
 g->minimap.bg.pos2.h=g->bg.img.pos2.h*MINIMAP/100;
 g->minimap.bg.pos2.x=g->bg.img.pos2.x*MINIMAP/100;
 g->minimap.bg.pos2.y=g->bg.img.pos2.y*MINIMAP/100; //position background
 g->minimap.player[0].position.x=g->player[0].position.x*20/100+g->minimap.bg.pos1.x;
 g->minimap.player[0].position.y=g->player[0].position.y*20/100+g->minimap.bg.pos1.y;
-g->minimap.player[1].position.x=g->player[1].position.x*20/100+g->minimap.bg.pos1.x;
-g->minimap.player[1].position.y=g->player[1].position.y*20/100+g->minimap.bg.pos1.y;
+//g->minimap.player[1].position.x=g->player[1].position.x*20/100+g->minimap.bg.pos1.x;
+//g->minimap.player[1].position.y=g->player[1].position.y*20/100+g->minimap.bg.pos1.y;
 g->minimap.enemy[0].rpos[0].x=g->enemy[0].rpos[0].x*20/100+g->minimap.bg.pos1.x;
 g->minimap.enemy[0].rpos[0].y=g->enemy[0].rpos[0].y*20/100+g->minimap.bg.pos1.y;
 g->global.elapsed++;
@@ -59,7 +59,7 @@ void initminimap(Minimap *assets)
 
      //Background
         assets->bg.surface=IMG_Load("graphics/720/Level/Levelminimap1_0.png");
-        assets->bg.pos1.x=500;
+        assets->bg.pos1.x=250;
         assets->bg.pos1.y=100;
     //Player
 	assets->player[0].image=IMG_Load("graphics/720/Minimap/player.png");

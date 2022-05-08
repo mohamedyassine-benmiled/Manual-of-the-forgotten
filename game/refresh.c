@@ -40,7 +40,7 @@ void BlitGame(Game *g,SDL_Surface *screen)
     if (g->bg.i)
     SDL_BlitSurface(g->bg.an2.surface,NULL,screen,&g->bg.an2.pos2);
     SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
-    SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
+    //SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
     SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos[0]);
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);

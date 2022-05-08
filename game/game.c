@@ -74,7 +74,7 @@ int game(SDL_Surface *screen,int run)
     g[0].global.lastplayer=0;
     g[0].global.elapsed=0;
     initplayer(&g[0].player[0]);
-    initplayer(&g[1].player[0]);
+    //initplayer(&g[1].player[0]);
     initminimap(&g[0].minimap);
     initennemy(&g[0].enemy[0]);
     SDL_Event event;
@@ -90,7 +90,7 @@ int game(SDL_Surface *screen,int run)
         run=handlegame(&g[0],&event,screen,run);
         handlemovement(&g[0]);
         gamerefresh(&g[0],screen);
-        handlescrolling(&g[0]);
+        //handlescrolling(&g[0]);
 
     }
     freegame(g[0]);
