@@ -21,6 +21,7 @@ int repuser;
 int score;
 image q;
 image q2;
+image time;
 image r1[2];
 image r2[2];
 image r3[2];

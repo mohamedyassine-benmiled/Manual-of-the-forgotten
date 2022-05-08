@@ -74,6 +74,8 @@ e->q.pos1.x=385;
 e->q.pos1.y=300;
 e->q2.pos1.x=550;
 e->q2.pos1.y=350;
+e->time.pos1.x=600;
+e->time.pos1.y=600;
 e->r1[0].pos1.x=400;
 e->r1[0].pos1.y=420;
 e->r2[0].pos1.x=600;
@@ -181,18 +183,42 @@ show(e->r1[0],screen);
 show(e->r2[0],screen);
 show(e->r3[0],screen);
 show(e->animation[e->animelapsed],screen);
+show(e->time,screen);
 }
 //Animation
 
-void animate_enigme(Enigme *e,SDL_Surface *screen)
+void animate_enigme(Enigme *e)
 {
-    e->animelapsed++;
+    e->animelapsed++;     
+
+
     if (e->animelapsed==4)
     {
         e->animelapsed=0;
     }
 
 }
+
+void timeenigme(Enigme *e) 
+{
+    text t ;
+    char c [50];
+    e->elapsed++;
+    
+    t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+    sprintf(c,"Time : %d",e->elapsed/30);
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    strcpy(t.texte,c);
+    if (!(e->time.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)))
+     { 
+         printf("Wow an error ? I love this : %s",TTF_GetError());
+      };
+    TTF_CloseFont(t.font);
+
+}
+
 
 
 int enigmestart(SDL_Surface *screen,int run,int *score)
@@ -211,8 +237,9 @@ int enigmestart(SDL_Surface *screen,int run,int *score)
                 lasttime = SDL_GetTicks();
                 run=handleenigme(&e,&event,screen,run);
                 Game_Score(&e.sc,score,e.repuser);
+                animate_enigme(&e);
+                timeenigme(&e);
                 afficherenigme(&e,screen);
-                animate_enigme(&e,screen);
                 SDL_Flip(screen);
                 if (e.repuser==2)
                 {
