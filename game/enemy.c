@@ -13,9 +13,48 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
-#include "include/enemy.h"
 
+void followplayer(Character *player, Enemy *enemy)
+{
+    if ((player->position.x-enemy->rpos.x)<0)
+    {
+        enemy->left=1;
+        enemy->right=0;
+    }
+    if ((player->position.x-enemy->rpos.x)>=0)
+    {
+        enemy->right=1;
+        enemy->left=0;
+    }
+    if ((enemy->left) && ((player->position.x-enemy->rpos.x)<0))
+    {
+        enemy->position.x-=5;
+    }
+    
+    if ((enemy->right) && ((player->position.x-enemy->rpos.x)>=0))
+    {
+        enemy->position.x+=5;
+    }
+}
 
+int spotted(Character *player, Enemy *enemy)
+{
+    if ((player->position.x-enemy->rpos.x)<0)
+    {
+        if ((enemy->left) && (enemy->rpos.x-player->position.x<=350))
+        {
+            return 1;
+        }
+    }
+    if ((player->position.x-enemy->rpos.x)>=0)
+    {
+        if ((enemy->right) && (player->position.x-enemy->rpos.x<=350))
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
 /*
 int spotted(Game *game, int i)
 {
@@ -33,8 +72,9 @@ void initennemy (Enemy *enemi)
     enemi->position2.h=90;
     enemi->pos_box.w=90;
     enemi->pos_box.h=90;
-    enemi->right =0;
+    enemi->right=0;
     enemi->left=0;
+    enemi->spotted=0;
     enemi->posMax=3000;
     enemi->posMin=2500;
     enemi->mouvement=1;
@@ -54,7 +94,7 @@ int deplacement_alea (int posmax,int posmin)
 }
 */
 
-void deplacement_enemy (Enemy *enemi)
+void deplacementalea_enemy (Enemy *enemi)
 {
 
         if(enemi->position.x==enemi->posMax)
@@ -83,6 +123,24 @@ void deplacement_enemy (Enemy *enemi)
                 
             }
     
+
+}
+void deplacement_enemy (Game *g) //DEPLACEMENT IA
+{
+    if (spotted(&g->player[0],&g->enemy[0]))
+    {
+        g->enemy[0].spotted=1;
+    }
+    if (!g->enemy[0].spotted)
+        deplacementalea_enemy(&g->enemy[0]);
+    else
+    {
+        followplayer(&g->player[0],&g->enemy[0]);
+        if ((g->enemy[0].rpos.x-g->player[0].position.x>=1280) || (g->player[0].position.x-g->enemy[0].rpos.x>=500))
+        {
+             initennemy (&g->enemy[0]);
+        }
+    }
 
 }
 void animationenemy(Enemy *enemi)
@@ -129,7 +187,7 @@ void animationenemy(Enemy *enemi)
 }
 void rpos_enemy (Enemy *enemi , Background *bg)
 {
-    enemi->rpos[0].x=relative_x(bg,enemi->position); 
-    enemi->rpos[0].y=enemi->position.y; 
+    enemi->rpos.x=relative_x(bg,enemi->position); 
+    enemi->rpos.y=enemi->position.y; 
 }
 

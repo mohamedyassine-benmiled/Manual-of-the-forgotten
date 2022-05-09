@@ -18,18 +18,18 @@ typedef struct
 SDL_Surface *image;
 SDL_Rect position;
 SDL_Rect position2;
-SDL_Rect rpos[2];
+SDL_Rect rpos;
 Box pos_box;
 int right , left ;
 int elapsed;
 int mouvement ;
 int posMax ;
 int posMin ;
+int spotted;
 int reset ; 
 int look, spritestate;
 int animation ;
 int direction ;  
 }Enemy;
-void deplacement_enemy (Enemy *enemi );
 void animationenemy(Enemy *enemi);
 #endif // ENEMY_H
