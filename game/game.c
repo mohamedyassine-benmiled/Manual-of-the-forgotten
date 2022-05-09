@@ -87,6 +87,7 @@ int game(SDL_Surface *screen,int run)
         printf("\n%d",g[0].player[0].position.x+g[0].bg.img.pos2.x);
         if (g[0].player[0].position.x+g[0].bg.img.pos2.x>=5764)
         run=enigmestart(screen,run,&g[0].player[0].score);
+                movementarduino(&g);
         run=handlegame(&g[0],&event,screen,run);
         handlemovement(&g[0]);
         gamerefresh(&g[0],screen);
