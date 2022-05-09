@@ -11,6 +11,28 @@ int CollisionLeft(Character *player,Background *bg,SDL_Color rgb);
 int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 
 
+int bordercheck(Background *bg)
+{ 
+    if(bg->img.pos2.x<=0)
+    {
+        collisionleft=1;
+        collisionright=0;
+        return 0;
+        
+    }
+
+    if (bg->img.pos2.x>=6395-1280)
+    {
+        collisionleft=0;
+        collisionright=1;
+        return -1;
+    }
+    collisionleft=0;
+    collisionright=0;
+    return 1;
+}
+
+
 void initbackground(Background *assets)
 {
     
@@ -33,23 +55,13 @@ void initbackground(Background *assets)
         assets->an2.surface=IMG_Load("graphics/720/Gameanimation/pointdex.png");
         assets->an2.pos1.x=1046;
         assets->an2.pos1.y=356;
-
+        assets->an2.pos2.y=assets->an2.pos1.y;
 	 //Son
 	 	assets->son=Mix_LoadMUS("sfx/game.ogg");
 
 }
 
 
-
-
-
-
-/* Moved to image.c
-void showgame(image p,SDL_Surface *screen)
-{
-    SDL_BlitSurface(p.surface,&p.pos2,screen,&p.pos1);
-}
-*/
 
 void scrolling (Game *g)
 {
@@ -60,7 +72,6 @@ void scrolling (Game *g)
     int x = bordercheck(&g->bg);
     int i = g->global.firstplayer;
     int j = g->global.lastplayer;
-    printf("\n%d",g->player[j].position.x);
         if (!(g->player[j].position.x==4))
         {
         if (x!=-1)
@@ -129,11 +140,11 @@ void animationback(Background *bg)
 void animationback2(Background *bg)
 {
 
-        if (bg->elapsed!=100)
+        if ((bg->elapsed%30)==0)
         {
                 bg->i=0;
         }
-        if ((bg->elapsed!=100) && (bg->elapsed>=200))
+        else
         {
                 bg->i=1;
         }

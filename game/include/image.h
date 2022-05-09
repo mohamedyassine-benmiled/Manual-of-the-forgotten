@@ -1,3 +1,13 @@
+/**
+ * @file image.h
+ * @author TMOF Team
+ * @brief Image Structures and functions
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef IMAGE_H
 #define IMAGE_H
 #include <SDL/SDL_image.h>

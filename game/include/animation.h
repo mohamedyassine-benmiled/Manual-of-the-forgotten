@@ -1,3 +1,13 @@
+/**
+ * @file animation.h
+ * @author TMOF Team
+ * @brief States and button hover
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef ANIMATION_H
 #define ANIMATION_H
 #include <stdbool.h>
@@ -17,8 +27,10 @@ typedef struct
     int firstplayer;
     int lastplayer;
     int cinematic;
+    int checkpoint;
     int dropboss;
     int movement;
+    int elapsed;
 } States;
 
 

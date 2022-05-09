@@ -1,3 +1,13 @@
+/**
+ * @file menu.h
+ * @author TMOF Team
+ * @brief Menu Functions
+ * @version 0.1
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef MENU_H
 #define MENU_H
 
