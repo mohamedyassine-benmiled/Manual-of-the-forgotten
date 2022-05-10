@@ -1,3 +1,13 @@
+/**
+ * @file game.h
+ * @author TMOF Team
+ * @brief Game Management
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef GAME_H
 #define GAME_H
 #include <stdbool.h>
@@ -10,14 +20,13 @@
 #include "enemy.h"
 #include "animation.h"
 #include "character.h"
-
+#include "enigme.h"
 
 typedef struct
 {
-    image bg,score;
+    image bg,score,time;
     Character player[4];
     Enemy enemy[10];
-    int elapsed;
     int level;
 } Minimap;
 

@@ -1,3 +1,13 @@
+/**
+ * @file init.c
+ * @author TMOF Team
+ * @brief Initializing Initial Values
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -27,6 +37,8 @@ void initplayer(Character *player)
     player->elapsed=0;
     player->input.movement=0;
     player->pos_cercle.r=30;
+    player->pos_box.w=CHAR_W;
+    player->pos_box.h=CHAR_H;
     player->speed=SPEED;
     player->input.right=0;
     player->input.left=0;

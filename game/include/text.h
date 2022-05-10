@@ -1,3 +1,13 @@
+/**
+ * @file text.h
+ * @author TMOF Team
+ * @brief Text
+ * @version 0.1
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef TEXT_H
 #define TEXT_H
 

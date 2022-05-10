@@ -1,4 +1,13 @@
-
+/**
+ * @file collision.c
+ * @author Wael Bechraoui
+ * @brief Collision Perfect Pixel
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "include/collision.h"
 #include "include/game.h"
 #include "include/config.h"
@@ -46,10 +55,9 @@ pos.y=y+h/2;
 int CollisionLeft(Character *player,Background *bg,SDL_Color rgb)
 {
 SDL_Color obstacle;
-int x,y,w,h;
+int x,y,h;
 	x=player->position.x+40;
 	y=player->position.y;
-	w=player->src_pos.w;
 	h=player->src_pos.h;
 SDL_Rect pos;
 
@@ -70,19 +78,15 @@ return collision;
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb)
 {
 SDL_Color obstacle;
-int x,y,w,h;
+int x,y,w;
 	x=player->position.x;
 	y=player->position.y-17;
 	w=player->src_pos.w;
-	h=player->src_pos.h;
 SDL_Rect pos;
-
-
 pos.x=x+w/2;
 pos.y=y;
 
 int collision=0;
-int i=0;
 obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
 if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
 collision=1;
@@ -106,7 +110,6 @@ pos.x=x+w/2;
 pos.y=y+h;
 
 int collision=0;
-int i=0;
 
 	obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
 if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
@@ -116,9 +119,14 @@ collision=1;
 return collision;
 }
 
-int collision_box(Box b1, Box b2)
+
+
+int collision_box(Box *b1,Box *b2)
 {
-    return(b1.x > b2.x-8 && b1.x < b2.x+8);
+if((b1->x > b2->x+b2->w)|| (b1->x + b1->w < b2->x) || (b1->y + b1->h < b2->y) || (b1->y > b2->y+b2->h))
+{
+return 0;
 }
-
-
+else
+return 1;
+}

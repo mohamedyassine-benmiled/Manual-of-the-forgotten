@@ -1,3 +1,14 @@
+/**
+ * @file main.c
+ * @author TMOF Team
+ * @brief Main File Project
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -51,6 +62,7 @@ if (config.fullscreen)
     screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE);
     SDL_WM_ToggleFullScreen(screenmenu);
     screenmenu = SDL_SetVideoMode(config.resolution_w,config.resolution_h,32,SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_FULLSCREEN);
+    
 }
 else
 {

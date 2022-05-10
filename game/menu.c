@@ -1,3 +1,13 @@
+/**
+ * @file menu.c
+ * @author TMOF Team
+ * @brief Menu Functions
+ * @version 0.1
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -33,6 +43,7 @@ int check(SDL_Surface *screen,int *run,int state)
         //Init Loop
         while (check==3)
         {
+
             while (SDL_PollEvent(&event))
             {
             switch(event.type)
@@ -82,6 +93,7 @@ int check(SDL_Surface *screen,int *run,int state)
         }
             //Return Result
             return check;
+    
 }
 
 //Menu
