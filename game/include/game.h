@@ -20,7 +20,6 @@
 #include "enemy.h"
 #include "animation.h"
 #include "character.h"
-#include "enigme.h"
 
 typedef struct
 {
@@ -40,7 +39,7 @@ typedef struct
     States global;
 } Game;
 
-int game(SDL_Surface *screen,int run);
+int game(SDL_Surface *screen,int run,int state);
 SDL_Color getpixel(SDL_Surface *psurface,int x,int y);
 int collisionparfaite(SDL_Surface *psurface,Game p);
 void initBack (Game *b);

@@ -17,7 +17,7 @@
 #include <SDL/SDL_mixer.h>
 #include "include/enigme.h"
 #include "include/text.h"
-
+#include "include/game.h"
 
 void init_enigme(Enigme *e )
 {

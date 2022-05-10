@@ -10,7 +10,7 @@
  */
 
 #include "include/game.h"
-
+#include "include/enigme.h"
 int handleenigme(Enigme *e,SDL_Event *event,SDL_Surface *screen,int run)
 {
 

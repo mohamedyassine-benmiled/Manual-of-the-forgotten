@@ -32,6 +32,7 @@ int main (int argc , char *argv[])
   MenuGame mainmenu;
   OptionGame optionmenu;
   settings config;
+  int state;
 //Definition Screens
  SDL_Surface *screenmenu = NULL ;
 //Initialize on Menu
@@ -82,7 +83,7 @@ while(run)
 switch (run)
   {
     case 1://Menu Run
-        run=menu(&mainmenu,screenmenu,run);
+        run=menu(&mainmenu,screenmenu,run,&state);
     break;
     case 2://Menu Option
         run=options(&optionmenu,screenmenu,run);
@@ -95,7 +96,7 @@ switch (run)
           {
         printf("[-] %s", Mix_GetError());
           }
-        run=game(screenmenu,run);
+        run=game(screenmenu,run,state);
     break;
 
   }
