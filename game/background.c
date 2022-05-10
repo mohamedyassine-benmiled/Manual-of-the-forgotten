@@ -60,8 +60,7 @@ void scrolling (Game *g)
     int x = bordercheck(&g->bg);
     int i = g->global.firstplayer;
     int j = g->global.lastplayer;
-    printf("\n%d",g->player[j].position.x);
-        if (!(g->player[j].position.x==4))
+        if (!(g->player[j].position.x==4+(SCREENDIF*g->global.screen)))
         {
         if (x!=-1)
         {
@@ -75,7 +74,7 @@ void scrolling (Game *g)
                 // }
         }
         }
-        if (!(g->player[i].position.x==1276))
+        if (!(g->player[i].position.x==1276+(SCREENDIF*g->global.screen)))
         if (x!=0)
         {
                 if((g->player[j].input.left) &&(!CollisionLeft(&g->player[j],&g->bg,rgb)))

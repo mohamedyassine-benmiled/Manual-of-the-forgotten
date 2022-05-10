@@ -1,3 +1,13 @@
+/**
+ * @file declarations.h
+ * @author TMOF Team
+ * @brief Global Constants
+ * @version 0.5
+ * @date 2022-04-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef DEC
 #define DEC
 
@@ -15,8 +25,9 @@
 #define maxJmpH 200
 #define RELOAD 1000
 #define MAX_ITEMS 4
-#define START_y 499
+#define START_y 449
 #define START_x 100
+#define SCREENDIF 960
 #define MINIMAP 20
 //Sprites Player[0]
 #define SPRITEXP0_Run 3
