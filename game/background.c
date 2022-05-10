@@ -42,7 +42,7 @@ void initbackground(Background *assets)
         assets->collision=IMG_Load("graphics/720/Level/Levelcollision1_0.png");
         assets->img.pos1.x=0;
         assets->img.pos1.y=0;
-        assets->img.pos2.w=1280;
+        assets->img.pos2.w=SCREENDIF;
         assets->img.pos2.h=720;
         assets->img.pos2.x=0;
         assets->img.pos2.y=0;
@@ -151,9 +151,19 @@ void animationback2(Background *bg)
 }
 
 
+void fixposition1(Game *g)
+{
 
+    g->bg.img.pos1.x=g->bg.img.pos1.x+(SCREENDIF*g->global.screen);
+    printf("\n %d",g->bg.img.pos1.x);
+    g->player[0].position.x=g->player[0].position.x+(SCREENDIF*g->global.screen);
+        printf("\n %d",g->player[0].position.x);
+}
 
-
+void fixposition2(Game *g)
+{
+        g->enemy[0].rpos.x=g->enemy[0].rpos.x+(SCREENDIF*g->global.screen);
+}
 
 
 

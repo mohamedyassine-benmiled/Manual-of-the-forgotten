@@ -18,7 +18,17 @@
 #include <SDL/SDL_ttf.h>
 #include "include/init.h"
 #include <string.h>
-
+void initgame(Game *g)
+{
+    initbackground(&g->bg);
+    g->global.firstplayer=0;
+    g->global.lastplayer=0;
+    g->global.elapsed=0;
+    initplayer(&g->player[0]);
+    initminimap(&g->minimap);
+    initennemy(&g->enemy[0]);
+    fixposition1(g);
+}
 //Initialize Player
 void initplayer(Character *player)
 {

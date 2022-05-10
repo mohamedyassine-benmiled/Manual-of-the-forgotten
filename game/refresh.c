@@ -45,7 +45,7 @@ void BlitGame(Game *g,SDL_Surface *screen)
 
     SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos);
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
-    SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
+    if (g->enemy[0].rpos.x<=g->bg.img.pos2.w+g->bg.img.pos1.x)
     SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos);	
     show(g->minimap.score,screen);
     show(g->minimap.time,screen);
@@ -75,7 +75,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     g->bg.an2.pos2.x=relative_x(&g->bg,g->bg.an2.pos1);
     rpos_enemy(&g->enemy[0],&g->bg);
-
+    fixposition2(g);
     playerrefresh(&g->player[0]);
 
     enemyrefresh(&g->enemy[0]);

@@ -155,7 +155,7 @@ void movement(Character *player,Background *bg,int x)
         if (((player->input.right)&&(player->input.fast))&&(!CollisionRight(player,bg,rgb)))
         {
           
-                if (player->position.x<config.resolution_w/2)
+                if (player->position.x<((bg->img.pos2.w+bg->img.pos1.x))/2)
                 {
                     player->position.x+=SPEED*2;
                 }
@@ -179,7 +179,7 @@ void movement(Character *player,Background *bg,int x)
         {
                 player->position.x-=2*SPEED;
 
-                if (player->position.x<0)
+                if (player->position.x<0+bg->img.pos1.x)
                 {
                     player->position.x+=2*SPEED;
                 }
@@ -204,7 +204,7 @@ void movement(Character *player,Background *bg,int x)
         /* Right */
         if ((player->input.right)&&(!CollisionRight(player,bg,rgb)))
         {
-                if (player->position.x<config.resolution_w/2)
+                if (player->position.x<((bg->img.pos2.w+bg->img.pos1.x))/2)
                 {
                     player->position.x+=SPEED;
                 }
@@ -229,7 +229,7 @@ void movement(Character *player,Background *bg,int x)
         {
 
                 player->position.x-=SPEED;
-                if (player->position.x<0)
+                if (player->position.x<0+bg->img.pos1.x)
                 {
                     player->position.x+=SPEED;
                 }

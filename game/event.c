@@ -73,12 +73,11 @@ int handleenigme(Enigme *e,SDL_Event *event,SDL_Surface *screen,int run)
                 return run;
 }
 
-int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
+int handlegame(Game *g,Game *g2,SDL_Event *event,SDL_Surface *screen,int run)
 {
 
             if (SDL_PollEvent(event))
                 {
-
                                 if  ((*event).type==SDL_QUIT)
                                     run=0;
 
@@ -93,6 +92,7 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                             else
                                             {
                                                     showgame(g->bg.img,screen);
+                                                    showgame(g2->bg.img,screen);
                                             }  
                                         break;
                                         //On "m" Press : Go back to Menu
@@ -135,26 +135,26 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                         /*** Player[1] Handling ***/
                                         case SDLK_d:
                                         {
-                                            g->player[1].input.right=1;
-                                            g->player[1].input.left=0;
+                                            g2->player[0].input.right=1;
+                                            g2->player[0].input.left=0;
                                         }
                                         break;
 
                                         case SDLK_a:
                                         {
-                                            g->player[1].input.left=1;
-                                            g->player[1].input.right=0;
+                                            g2->player[0].input.left=1;
+                                            g2->player[0].input.right=0;
                                         }
                                         break;
 
                                         case SDLK_w:
                                         {
-                                            g->player[1].input.up=1;
+                                            g2->player[0].input.up=1;
                                         }
                                         break;
                                         case SDLK_x:
                                         {
-                                            g->player[1].input.fast=1;
+                                            g2->player[0].input.fast=1;
                                         }
                                         break;
                                     /*** Default Handling ***/
@@ -191,22 +191,22 @@ int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
                                         /*** Player[1] Handling ***/
                                         case SDLK_d:
                                         {
-                                            g->player[1].input.right=0;
+                                            g2->player[0].input.right=0;
                                         }
                                         break;
                                         case SDLK_a:
                                         {
-                                            g->player[1].input.left=0;
+                                            g2->player[0].input.left=0;
                                         }
                                         break;
                                         case SDLK_w:
                                         {
-                                            g->player[1].input.up=0;
+                                            g2->player[0].input.up=0;
                                         }
                                         break;    
                                         case SDLK_x:
                                         {
-                                            g->player[1].input.fast=0;
+                                            g2->player[0].input.fast=0;
                                         }
                                         break; 
                                     /*** Default Handling ***/                                   

@@ -191,10 +191,3 @@ void rpos_enemy (Enemy *enemi , Background *bg)
     enemi->rpos.y=enemi->position.y; 
 }
 
-void fixposition(Game *g)
-{
-    g->enemy[0].rpos.x=g->enemy[0].rpos.x+(SCREENDIF*g->global.screen);
-    g->bg.img.pos1.x=SCREENDIF*g->global.screen;
-    g->player[0].position.x=g->player[0].position.x+SCREENDIF*g->global.screen;
-    
-}

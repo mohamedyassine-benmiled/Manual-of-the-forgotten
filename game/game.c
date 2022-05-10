@@ -20,7 +20,6 @@ void initbackground(Background *assets);
 void initminimap(Minimap *assets);
 void initplayer(Character *player);
 void updateminimap(Game *g);
-int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run);
 void movement(Character *player,Background *bg,int x);
 void gamerefresh(Game *g,SDL_Surface *screen);
 void freegame(Game assets);
@@ -68,15 +67,10 @@ void handlescrolling(Game *g)
 int game(SDL_Surface *screen,int run)
 {
     Game g[2];
-
-    initbackground(&g[0].bg);
-    g[0].global.firstplayer=0;
-    g[0].global.lastplayer=0;
-    g[0].global.elapsed=0;
-    initplayer(&g[0].player[0]);
-    //initplayer(&g[1].player[0]);
-    initminimap(&g[0].minimap);
-    initennemy(&g[0].enemy[0]);
+        g[0].global.screen=0;
+        g[1].global.screen=1;
+        initgame(&g[0]);
+        initgame(&g[1]);
     SDL_Event event;
 
     Mix_PlayMusic(g[0].bg.son, -1);
@@ -84,12 +78,16 @@ int game(SDL_Surface *screen,int run)
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
     {
-        printf("\n%d",g[0].player[0].position.x+g[0].bg.img.pos2.x);
-        if (g[0].player[0].position.x+g[0].bg.img.pos2.x>=5764)
+        //printf("\n%d",g[0].player[0].position.x+g[0].bg.img.pos2.x);
+        if (g[0].player[0].position.x+g[0].bg.img.pos2.x>=5764-(SCREENDIF*g[0].global.screen))
         run=enigmestart(screen,run,&g[0].player[0].score);
-        run=handlegame(&g[0],&event,screen,run);
+        if (g[1].player[0].position.x+g[1].bg.img.pos2.x>=5764-(SCREENDIF*g[1].global.screen))
+        run=enigmestart(screen,run,&g[0].player[0].score);
+        run=handlegame(&g[0],&g[1],&event,screen,run);
         handlemovement(&g[0]);
+        handlemovement(&g[1]);
         gamerefresh(&g[0],screen);
+        gamerefresh(&g[1],screen);
         //handlescrolling(&g[0]);
 
     }
