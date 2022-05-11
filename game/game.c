@@ -68,12 +68,12 @@ void handlescrolling(Game *g)
 int game(SDL_Surface *screen,int run,int state)
 {
     Game g;
-    
     initbackground(&g.bg);
     g.global.firstplayer=0;
     g.global.lastplayer=0;
     g.global.checkpoint=5;
     g.global.level=1;
+    g.global.elapsed=0;
     initplayer(&g.player[0]);
     //initplayer(&g.player[1]);
     initminimap(&g.minimap);
@@ -92,8 +92,21 @@ int game(SDL_Surface *screen,int run,int state)
     while(run==3)
     {
             printf("\n%d",g.player[0].position.x+g.bg.img.pos2.x);
+
         if (g.player[0].position.x+g.bg.img.pos2.x>=5764)
+        {
         run=enigmestart(screen,run,&g.player[0].score);
+                if (run==3)
+                {
+                        writescore(g.player[0].score);
+                        run=1;
+                }
+                if (run==5)
+                {
+                        get_save(&g);
+                        run=3;
+                }
+        }
         run=handlegame(&g,&event,screen,run);
         if (run == 0)
         {
@@ -103,9 +116,10 @@ int game(SDL_Surface *screen,int run,int state)
         gamerefresh(&g,screen);
         //handlescrolling(&g);
 
+
     }
-    freegame(g[0]);
-    freebackground(g[0].bg);
+    freegame(g);
+    freebackground(g.bg);
 return run;
 
 }

@@ -100,3 +100,33 @@ int get_save(Game *g)
         return -1;
     }
 }
+
+void writescore(int score)
+{
+    int ps=0;
+    FILE *f=NULL;
+    f=fopen("save/score","r");
+    if (f!=NULL)
+    {
+        fscanf(f,"Score=%d\n",&ps);
+        fclose(f);
+    }
+
+    if (ps<score)
+    {
+            f=fopen("save/score","w");
+            if (f!=NULL)
+        {
+            {
+                    fprintf(f,"Score=%d\n",score);
+                        fclose(f);
+                                return 0;
+            }
+        }
+
+    }
+            return -1;
+
+
+
+}

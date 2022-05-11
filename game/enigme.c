@@ -253,8 +253,13 @@ int enigmestart(SDL_Surface *screen,int run,int *score)
                     elapsed = SDL_GetTicks()-lasttime;
                 if (elapsed<1000/FPS)
                 SDL_Delay(1000/FPS-elapsed);
+                
                 SDL_Flip(screen);
-        }
+                if (*score<0)
+                {
+                    run = 5;
+                }
+                    }
         return run;
 
 }

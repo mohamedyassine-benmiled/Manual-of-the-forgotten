@@ -28,64 +28,6 @@ void updateminimap(Game *g);
 void animation(Character *player);
 void animationback2(Background *bg);
 
-//Showing Game Images in the right position
-void gamerefresh(Game *g,SDL_Surface *screen)
-{
-    settings config;
-    get_config(&config);
-    unsigned int elapsed;
-    unsigned int lasttime = SDL_GetTicks();
-    deplacement_enemy(&g->enemy[0]);
-    
-
-    scrolling(g);
-    animation(&g->player[0]);
-   animationback(&g->bg);
-    animationback2(&g->bg);
-        g->player[0].src_pos.x=CHAR_W*g->player[0].spritestate;
-        g->player[0].src_pos.y=CHAR_H*g->player[0].look;
-        g->player[0].src_pos.h=CHAR_H;
-        g->player[0].src_pos.w=CHAR_W;
-        
-    // animation(&g->player[1]);
-    //     g->player[1].src_pos.x=CHAR_W*g->player[1].spritestate;
-    //     g->player[1].src_pos.y=CHAR_H*g->player[1].look;
-    //     g->player[1].src_pos.h=CHAR_H;
-    //     g->player[1].src_pos.w=CHAR_W;
-
-    animationenemy (&g->enemy[0]);
-        g->enemy[0].position2.x=CHAR_W*g->enemy[0].spritestate;
-        g->enemy[0].position2.y=CHAR_H*g->enemy[0].look;
-        g->enemy[0].position2.h=CHAR_H;
-        g->enemy[0].position2.w=CHAR_W;
-    showgame(g->bg.img,screen);
-    updateminimap(g);
-    SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
-
-    showgame(g->minimap.bg,screen);
-    SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
-    //SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
-    SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos);
-    show(g->bg.an[0],screen);
-    show(g->bg.an[1],screen);
-    if (g->bg.i)
-    show(g->bg.an2,screen);
-
-
-
-    rpos_enemy (&g->enemy[0],&g->bg) ;
-    g->enemy[0].pos_box.x=g->enemy[0].rpos.x;
-    g->enemy[0].pos_box.y=g->enemy[0].rpos.y;
-    g->player[0].pos_box.x=g->player[0].position.x;
-    g->player[0].pos_box.y=g->player[0].position.y;
-    if (collision_box(&g->enemy[0].pos_box,&g->player[0].pos_box))
-    {
-         g->player[0].position.x-=100;
-    }
-    SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
-    //SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
-    SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos);	
-        show(g->minimap.score,screen);
 
 //Showing Graphics Images to refresh screen
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen)

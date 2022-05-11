@@ -211,6 +211,10 @@ while (SDL_PollEvent(&event)) {
                                 show(assets.logo[i],screen);
                            }  
                     break;
+                    //Tic Tac Toe
+                    case (SDLK_t):
+                        starttic(screen);
+                        break;
                     //On "o" press : Go to option
                     case (SDLK_o):
                         run=2;
