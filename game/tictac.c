@@ -5,7 +5,7 @@
 
     int i, square;    
 int vrai=0;
-   char board[ 8 ], whoWon = ' ';
+   char board[ 9 ], whoWon = ' ';
    int currentPlayer = 0;
 void starttic(SDL_Surface *screen)
 {
@@ -66,7 +66,7 @@ SDL_PollEvent(&event);
 	switch(event.type) 
 	{
 case SDL_QUIT : 
-done = 1 ; 
+done = 0 ; 
 break ; 
 
 case SDL_KEYDOWN:
