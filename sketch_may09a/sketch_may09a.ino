@@ -9,14 +9,15 @@ int left =0;
 int jump =0;
 void setup() {
   // put your setup code here, to run once:
+  pinMode(buttonR, INPUT_PULLUP); // BUTTON R CONNECTED INPUT
+  pinMode(buttonL, INPUT_PULLUP); // BUTTON L CONNECTED INPUT
+  pinMode(buttonJ, INPUT_PULLUP); // BUTTON J CONNECTED INPUT
   pinMode(LED1,OUTPUT);// LED ONE CONNECTED TO PIN ? 
   pinMode(LED2,OUTPUT); //  LED TWO CONNECTED TO PIN ? 
   Serial.begin(9600);
   digitalWrite(LED1,LOW); // INITIATE LED ONE TO OFF 
   digitalWrite(LED2,LOW); // INITIATE LED TWO TO OFF 
-  pinMode(buttonR, INPUT_PULLUP); // BUTTON R CONNECTED INPUT
-  pinMode(buttonL, INPUT_PULLUP); // BUTTON L CONNECTED INPUT
-  pinMode(buttonJ, INPUT_PULLUP); // BUTTON J CONNECTED INPUT
+
 }
 
 void loop() {
@@ -42,7 +43,8 @@ else {
 
   }
   // traitement des deux diodes led
-
+if(Serial.available()>0)
+{
   BYTE=Serial.read();// on va lire l'information venant du SDL (une collision par exemple)
   if(BYTE=='1') //(Si la collision du coté droite on reçoi 1 alors on allume la première diode qui est sur la pin 13)
   {
@@ -61,6 +63,6 @@ else {// c'est à dire pas de collision on reçoi 0
     digitalWrite(LED2,LOW);
     Serial.println("no collision \n");
   }
-
+}
 
 }
