@@ -46,7 +46,7 @@ typedef struct
 } OptionGame;
 
 int check(SDL_Surface *screen,int *run,int state);
-int menu(MenuGame *menugame,SDL_Surface *screen,int run);
+int menu(MenuGame *menugame,SDL_Surface *screen,int run,int *state);
 int options(OptionGame *optiongame,SDL_Surface *screen,int run);
 int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int *run);
 int graphics(OptionGame *optiongame,OptionImage *assets,SDL_Surface *screen,int run);

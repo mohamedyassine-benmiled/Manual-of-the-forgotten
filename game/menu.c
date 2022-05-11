@@ -95,9 +95,18 @@ int check(SDL_Surface *screen,int *run,int state)
             return check;
     
 }
-
+int fileexist(char c[])
+{
+    FILE *f=NULL;
+    f=fopen(c,"r");
+    if (f!=NULL)
+    {
+        return 1;
+    }
+    return 0;
+}
 //Menu
-int menu(MenuGame *menugame,SDL_Surface *screen,int run)
+int menu(MenuGame *menugame,SDL_Surface *screen,int run,int *state)
 {
     //Initiating config
         settings config;
@@ -106,6 +115,8 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run)
       int x,y,i,j,k;
     SDL_Event event;
         MenuImage assets;
+        int saveexist=fileexist("save/savefile");
+        *state =0;
     //Showing Menu
         initmenu(&assets);
         menurefresh(&assets,screen);
@@ -206,7 +217,7 @@ while (SDL_PollEvent(&event)) {
                     break;
                     //On "p" press : Go to game
                     case (SDLK_p):
-                        if (playmenu(screen,&run,0))
+                        if (*state=playmenu(screen,&run,saveexist))
                         {
                         run=3;
                         }
@@ -288,7 +299,7 @@ while (SDL_PollEvent(&event)) {
                 //If click on play go to game
                     if(hoverbutton(x,y,assets.play[1]))
                     {
-                        if (playmenu(screen,&run,0))
+                        if (*state=playmenu(screen,&run,saveexist))
                                 {
                                 run=3;
                                 }
@@ -1060,6 +1071,10 @@ int playmenu(SDL_Surface *screen,int *run,int state)
             if (hoverbutton(x,y,assets.back[0]))
             {
                 check=0;
+            }
+            if (hoverbutton(x,y,assets.cont[0]))
+            {
+                check=2;
             }
 
       }  
