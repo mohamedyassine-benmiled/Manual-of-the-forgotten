@@ -12,6 +12,7 @@ typedef struct
     SDL_Surface *image;
     SDL_Rect position, src_pos, relativePos;
     Cercle pos_cercle;
+    char name[];
     int look, spritestate;
     int animation;
     int life, died;

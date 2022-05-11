@@ -7,6 +7,92 @@
 #include "include/init.h"
 #include "include/game.h"
 #include "include/animation.h"
+//Write your name
+int checkname(SDL_Surface *screen,int *run,char name[])
+{
+        //
+    char placeholder[] = "-----";
+    int x,y;
+    int state=0;
+    CheckNameImage assets;
+    initcheckname(&assets);
+    show(assets.Window,screen);
+    //If 0 Quit else 1 Apply
+
+
+
+    SDL_Event event;
+        int check=3;
+        //Init Loop
+        while (check==3)
+        {
+        if (state)
+        {
+            show(assets.Apply[1],screen);
+        }
+        else
+        {
+            show(assets.Apply[0],screen);
+        }
+            while (SDL_PollEvent(&event))
+            {
+            switch(event.type)
+            {
+            case SDL_QUIT:
+                *run=0;
+                check=0;
+                break;
+            case SDL_MOUSEMOTION:
+            SDL_GetMouseState(&x,&y);
+            //If hover on yes
+            if (state)
+            if (hoverbutton(x,y,assets.Apply[0]))
+            {
+                show(assets.Apply[2],screen);
+            }
+            else
+            {
+                show(assets.Apply[1],screen);
+            }          
+            //If hover on no
+            if (hoverbutton(x,y,assets.Cancel[0]))
+            {
+                show(assets.Cancel[1],screen);
+            }
+            else
+            {
+                show(assets.Cancel[0],screen);
+            }
+            break;
+            case SDL_MOUSEBUTTONUP:
+            SDL_GetMouseState(&x,&y);
+            //If Click on yes
+            if (hoverbutton(x,y,assets.Apply[0]))
+            {
+                check=1;
+            }
+            //If Click on no
+            if (hoverbutton(x,y,assets.Cancel[0]))
+            {
+                check=0;
+            }
+            case SDL_KEYDOWN:
+                if (state != 5)
+                {
+                    strcpy(name,SDL_GetKeyName(event->key.keysym.sym)[0]);
+                    placeholder[state]=SDL_GetKeyName(event->key.keysym.sym)[0];
+                }
+            break; //ou dima yemchi
+      }  
+            }
+            //Update Screen
+            updatetext(placeholder,&assets->ph);
+            SDL_Flip(screen);
+        }
+            //Return Result
+            return check;
+    
+}
 //Check
 int check(SDL_Surface *screen,int *run,int state)
 {
