@@ -14,11 +14,15 @@ void collisionarduino(Game *g)
     if (CollisionLeft(&g->player[0],&g->bg,rgb))
     {
         arduinoWriteData(0);
+        return;
     }
     if (CollisionRight(&g->player[0],&g->bg,rgb))
     {
         arduinoWriteData(1);
+        return;
     }
+    arduinoWriteData(69);
+    return;
 
 }
 
