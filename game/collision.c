@@ -45,7 +45,7 @@ pos.x=x+w;
 pos.y=y+h/2;
 	int collision=0;
 
-	obstacle=GetPixel(bg->collision,pos.x+(bg->img.pos2.x+bg->img.pos1.x),pos.y);
+	obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
 
 	if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
 	collision=1;
@@ -67,7 +67,7 @@ pos.y=y+h/2;
 
 
 int collision=0;
-obstacle=GetPixel(bg->collision,pos.x+(bg->img.pos2.x-bg->img.pos1.x),pos.y);
+obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
 if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
 collision=1;
 

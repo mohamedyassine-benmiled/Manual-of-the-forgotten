@@ -85,7 +85,7 @@ void scrolling (Game *g)
                 // }
         }
         
-        if (!(g->player[i].position.x==1276+(SCREENDIF*g->global.screen)))
+        if (!(g->player[i].position.x==638+(SCREENDIF*g->global.screen)))
 
                 if((g->player[j].input.left) &&(!CollisionLeft(&g->player[j],&g->bg,rgb)))
                 {          
