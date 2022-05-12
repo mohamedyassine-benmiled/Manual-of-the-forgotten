@@ -92,6 +92,7 @@ g[1].global.screen=1;
                 get_save(&g[0]);
                 get_save(&g[1]);
         }
+        fixposition1(g[1]);
     SDL_Event event;
     showgame(g[0].bg.img,screen);
         showgame(g[1].bg.img,screen);
