@@ -18,7 +18,7 @@
 #include <SDL/SDL_ttf.h>
 #include "include/init.h"
 #include <string.h>
-void initgame(Game *g)
+void initgame(Game *g,int state)
 {
     initbackground(&g->bg);
     g->global.firstplayer=0;
@@ -27,6 +27,10 @@ void initgame(Game *g)
     initplayer(&g->player[0]);
     initminimap(&g->minimap);
     initennemy(&g->enemy[0]);
+        if (state==2)
+        {
+                get_save(g);
+        }
     fixposition1(g);
 }
 //Initialize Player

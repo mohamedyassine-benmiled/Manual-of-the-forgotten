@@ -69,13 +69,12 @@ void scrolling (Game *g)
      rgb.r=0;
     rgb.g=0;
     rgb.b=0;
-    int x = bordercheck(&g->bg);
+    int x = 0;
     int i = g->global.firstplayer;
     int j = g->global.lastplayer;
         if (!(g->player[j].position.x==4+(SCREENDIF*g->global.screen)))
         {
-        if (x!=-1)
-        {
+
                 if ((g->player[i].input.right)&&(!CollisionRight(&g->player[i],&g->bg,rgb)))
                 {
                         g->bg.img.pos2.x+=SPEED;          
@@ -85,15 +84,14 @@ void scrolling (Game *g)
                 //         g->player[j].position.x=relative_x(&g->bg,g->player[j].position);
                 // }
         }
-        }
+        
         if (!(g->player[i].position.x==1276+(SCREENDIF*g->global.screen)))
-        if (x!=0)
-        {
+
                 if((g->player[j].input.left) &&(!CollisionLeft(&g->player[j],&g->bg,rgb)))
                 {          
                         g->bg.img.pos2.x-=SPEED; 
                 }
-        }
+        
 
 /*
 
@@ -158,6 +156,7 @@ void fixposition1(Game *g)
     printf("\n %d",g->bg.img.pos1.x);
     g->player[0].position.x=g->player[0].position.x+(SCREENDIF*g->global.screen);
         printf("\n %d",g->player[0].position.x);
+         g->minimap.bg.pos1.x=g->minimap.bg.pos1.x+(SCREENDIF*g->global.screen);
 }
 
 void fixposition2(Game *g)

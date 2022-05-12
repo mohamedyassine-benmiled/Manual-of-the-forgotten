@@ -81,18 +81,10 @@ g[1].global.screen=1;
     g[1].global.checkpoint=5;
     g[1].global.level=1;
     g[1].global.elapsed=0;
-    initplayer(&g[0].player[0]);
-    initminimap(&g[0].minimap);
-    initennemy(&g[0].enemy[0]);
-        initplayer(&g[1].player[0]);
-    initminimap(&g[1].minimap);
-    initennemy(&g[1].enemy[0]);
-        if (state==2)
-        {
-                get_save(&g[0]);
-                get_save(&g[1]);
-        }
-        fixposition1(g[1]);
+initgame(&g[0],state);
+initgame(&g[1],state);
+
+
     SDL_Event event;
     showgame(g[0].bg.img,screen);
         showgame(g[1].bg.img,screen);
