@@ -49,7 +49,7 @@ pos.y=y+h/2;
 
 	if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
 	collision=1;
-	return collision;
+	return 0;
 }
 
 int CollisionLeft(Character *player,Background *bg,SDL_Color rgb)
@@ -72,7 +72,7 @@ if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
 collision=1;
 
 
-return collision;
+return 0;
 }
 
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb)

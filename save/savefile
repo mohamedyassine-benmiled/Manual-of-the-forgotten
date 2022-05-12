@@ -1,8 +1,8 @@
 [Game SaveFile]
 player.health=0
 player.life=3
-player.x=328
+player.x=196
 player.y=489
-background.x=348
+background.x=96
 background.y=0
 score=0
