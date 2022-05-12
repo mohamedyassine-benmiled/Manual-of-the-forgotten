@@ -76,7 +76,7 @@ g[1].global.screen=1;
     g[0].global.checkpoint=5;
     g[0].global.level=1;
     g[0].global.elapsed=0;
-g[1].global.firstplayer=0;
+    g[1].global.firstplayer=0;
     g[1].global.lastplayer=0;
     g[1].global.checkpoint=5;
     g[1].global.level=1;
@@ -89,10 +89,12 @@ g[1].global.firstplayer=0;
     initennemy(&g[1].enemy[0]);
         if (state==2)
         {
-                get_save(&g);
+                get_save(&g[0]);
+                get_save(&g[1]);
         }
     SDL_Event event;
     showgame(g[0].bg.img,screen);
+        showgame(g[1].bg.img,screen);
     Mix_PlayMusic(g[0].bg.son, -1);
     SDL_Flip(screen);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
