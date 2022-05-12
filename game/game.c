@@ -67,7 +67,8 @@ void handlescrolling(Game *g)
 int game(SDL_Surface *screen,int run,int state)
 {
     Game g[2];
-    initbackground(&g.bg);
+    initbackground(&g[0].bg);
+        initbackground(&g[1].bg);
 g[0].global.screen=0;
 g[1].global.screen=1;
     g[0].global.firstplayer=0;
@@ -80,19 +81,19 @@ g[1].global.firstplayer=0;
     g[1].global.checkpoint=5;
     g[1].global.level=1;
     g[1].global.elapsed=0;
-    initplayer(&g.player[0]);
-    //initplayer(&g.player[1]);
-    initminimap(&g.minimap);
-    initennemy(&g.enemy[0]);
+    initplayer(&g[0].player[0]);
+    initminimap(&g[0].minimap);
+    initennemy(&g[0].enemy[0]);
+        initplayer(&g[1].player[0]);
+    initminimap(&g[1].minimap);
+    initennemy(&g[1].enemy[0]);
         if (state==2)
         {
                 get_save(&g);
         }
     SDL_Event event;
-            printf("\nThis is background.y %d",g.bg.img.pos2.y);
-            printf("\nThis is background.x %d",g.bg.img.pos2.x);
-    showgame(g.bg.img,screen);
-    Mix_PlayMusic(g.bg.son, -1);
+    showgame(g[0].bg.img,screen);
+    Mix_PlayMusic(g[0].bg.son, -1);
     SDL_Flip(screen);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
@@ -140,8 +141,10 @@ g[1].global.firstplayer=0;
 
 
     }
-    freegame(g);
-    freebackground(g.bg);
+    freegame(g[0]);
+    freebackground(g[0].bg);
+        freegame(g[1]);
+    freebackground(g[1].bg);
 return run;
 
 }
