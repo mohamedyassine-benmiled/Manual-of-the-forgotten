@@ -20,7 +20,6 @@ void initbackground(Background *assets);
 void initminimap(Minimap *assets);
 void initplayer(Character *player);
 void updateminimap(Game *g);
-int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run);
 void movement(Character *player,Background *bg,int x);
 void gamerefresh(Game *g,SDL_Surface *screen);
 void freegame(Game assets);
@@ -67,13 +66,20 @@ void handlescrolling(Game *g)
 }
 int game(SDL_Surface *screen,int run,int state)
 {
-    Game g;
+    Game g[2];
     initbackground(&g.bg);
-    g.global.firstplayer=0;
-    g.global.lastplayer=0;
-    g.global.checkpoint=5;
-    g.global.level=1;
-    g.global.elapsed=0;
+g[0].global.screen=0;
+g[1].global.screen=1;
+    g[0].global.firstplayer=0;
+    g[0].global.lastplayer=0;
+    g[0].global.checkpoint=5;
+    g[0].global.level=1;
+    g[0].global.elapsed=0;
+g[1].global.firstplayer=0;
+    g[1].global.lastplayer=0;
+    g[1].global.checkpoint=5;
+    g[1].global.level=1;
+    g[1].global.elapsed=0;
     initplayer(&g.player[0]);
     //initplayer(&g.player[1]);
     initminimap(&g.minimap);
@@ -91,29 +97,45 @@ int game(SDL_Surface *screen,int run,int state)
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
     {
-            printf("\n%d",g.player[0].position.x+g.bg.img.pos2.x);
 
-        if (g.player[0].position.x+g.bg.img.pos2.x>=5764)
+
+        if (g[0].player[0].position.x+g[0].bg.img.pos2.x>=5764-(SCREENDIF*g[0].global.screen))
         {
-        run=enigmestart(screen,run,&g.player[0].score);
+        run=enigmestart(screen,run,&g[0].player[0].score);
                 if (run==3)
                 {
-                        writescore(g.player[0].score);
+                        writescore(g[0].player[0].score);
                         run=1;
                 }
                 if (run==5)
                 {
-                        get_save(&g);
+                        get_save(&g[0]);
                         run=3;
                 }
         }
-        run=handlegame(&g,&event,screen,run);
+        if (g[1].player[0].position.x+g[1].bg.img.pos2.x>=5764-(SCREENDIF*g[1].global.screen))
+                {
+        run=enigmestart(screen,run,&g[1].player[0].score);
+                if (run==3)
+                {
+                        writescore(g[1].player[0].score);
+                        run=1;
+                }
+                if (run==5)
+                {
+                        get_save(&g[1]);
+                        run=3;
+                }
+        }
+        run=handlegame(&g[0],&g[1],&event,screen,run);
         if (run == 0)
         {
-                write_save(&g);
+                write_save(&g[0]);
         }
-        handlemovement(&g);
-        gamerefresh(&g,screen);
+        handlemovement(&g[0]);
+        handlemovement(&g[1]);
+        gamerefresh(&g[0],screen);
+        gamerefresh(&g[1],screen);
         //handlescrolling(&g);
 
 

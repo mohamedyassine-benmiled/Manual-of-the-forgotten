@@ -27,8 +27,8 @@ void enemyrefresh(Enemy *enemi)
         enemi->position2.y=CHAR_H*enemi->look;
         enemi->position2.h=CHAR_H;
         enemi->position2.w=CHAR_W;
-        enemi->pos_box.x=enemi->rpos[0].x;
-        enemi->pos_box.y=enemi->rpos[0].y;
+        enemi->pos_box.x=enemi->rpos.x;
+        enemi->pos_box.y=enemi->rpos.y;
 }
 
 void BlitGame(Game *g,SDL_Surface *screen)
@@ -41,12 +41,12 @@ void BlitGame(Game *g,SDL_Surface *screen)
     SDL_BlitSurface(g->bg.an2.surface,NULL,screen,&g->bg.an2.pos2);
     SDL_BlitSurface(g->minimap.player[0].image,NULL,screen,&g->minimap.player[0].position);
     //SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
-    if ((g->minimap.enemy[0].rpos[0].x >= g->minimap.bg.pos1.x)&&(g->minimap.enemy[0].rpos[0].x<g->minimap.bg.pos1.x+g->minimap.bg.pos2.w))
+    if ((g->minimap.enemy[0].rpos.x >= g->minimap.bg.pos1.x)&&(g->minimap.enemy[0].rpos.x<g->minimap.bg.pos1.x+g->minimap.bg.pos2.w))
 
-    SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos[0]);
+    SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos);
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
-    SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
-    SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos[0]);	
+    if (g->enemy[0].rpos.x<=g->bg.img.pos2.w+g->bg.img.pos1.x)
+    SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos);	
     show(g->minimap.score,screen);
     show(g->minimap.time,screen);
 }
@@ -66,7 +66,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     unsigned int elapsed;
     unsigned int lasttime = SDL_GetTicks();
 
-    deplacement_enemy(&g->enemy[0]);
+    deplacement_enemy(g);
 
     scrolling(g);
 
@@ -75,7 +75,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     g->bg.an2.pos2.x=relative_x(&g->bg,g->bg.an2.pos1);
     rpos_enemy(&g->enemy[0],&g->bg);
-
+    fixposition2(g);
     playerrefresh(&g->player[0]);
 
     enemyrefresh(&g->enemy[0]);

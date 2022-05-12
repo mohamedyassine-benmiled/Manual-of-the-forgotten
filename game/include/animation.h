@@ -31,6 +31,7 @@ typedef struct
     int dropboss;
     int movement;
     int elapsed;
+    int screen;
 } States;
 
 
