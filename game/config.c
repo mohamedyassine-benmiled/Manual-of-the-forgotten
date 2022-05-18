@@ -90,7 +90,7 @@ int get_save(Game *g)
         fscanf(f,"background.x=%d\n",&x);
         fscanf(f,"background.y=%d\n",&y);
         g->bg.img.pos2.x=x;
-        g->bg.img.pos2.x=y;
+        g->bg.img.pos2.y=y;
         fscanf(f,"score=%d\n",&g->player[0].score);
         fclose(f);
         return 0;
