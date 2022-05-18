@@ -62,9 +62,11 @@ int write_save(Game *g)
         fprintf(f,"[Game SaveFile]\n");
         fprintf(f,"player.health=%d\n",g->player[0].health);
         fprintf(f,"player.life=%d\n",g->player[0].life);
-        fprintf(f,"checkpoint=%d\n",g->global.checkpoint);
+        fprintf(f,"player.x=%d\n",g->player[0].position.x);
+        fprintf(f,"player.y=%d\n",g->player[0].position.y);
+        fprintf(f,"background.x=%d\n",g->bg.img.pos2.x);
+        fprintf(f,"background.y=%d\n",g->bg.img.pos2.y);
         fprintf(f,"score=%d\n",g->player[0].score);
-        fprintf(f,"level=%d\n",g->global.level);
         fclose(f);
         return 0;
     }
@@ -75,16 +77,21 @@ int write_save(Game *g)
 }
 int get_save(Game *g)
 {
+    int x,y;
     FILE *f=NULL;
-    f=fopen("save/savefile","w");
+    f=fopen("save/savefile","r");
     if (f!=NULL)
     {
         fscanf(f,"[Game SaveFile]\n");
-        fscanf(f,"player.health=%d\n",g->player[0].health);
-        fscanf(f,"player.life=%d\n",g->player[0].life);
-        fscanf(f,"checkpoint=%d\n",g->global.checkpoint);
-        fscanf(f,"score=%d\n",g->player[0].score);
-        fscanf(f,"level=%d\n",g->global.level);
+        fscanf(f,"player.health=%d\n",&g->player[0].health);
+        fscanf(f,"player.life=%d\n",&g->player[0].life);
+        fscanf(f,"player.x=%d\n",&g->player[0].position.x);
+        fscanf(f,"player.y=%d\n",&g->player[0].position.y);
+        fscanf(f,"background.x=%d\n",&x);
+        fscanf(f,"background.y=%d\n",&y);
+        g->bg.img.pos2.x=x;
+        g->bg.img.pos2.x=y;
+        fscanf(f,"score=%d\n",&g->player[0].score);
         fclose(f);
         return 0;
     }
@@ -92,4 +99,34 @@ int get_save(Game *g)
     {
         return -1;
     }
+}
+
+void writescore(int score)
+{
+    int ps=0;
+    FILE *f=NULL;
+    f=fopen("save/score","r");
+    if (f!=NULL)
+    {
+        fscanf(f,"Score=%d\n",&ps);
+        fclose(f);
+    }
+
+    if (ps<score)
+    {
+            f=fopen("save/score","w");
+            if (f!=NULL)
+        {
+            {
+                    fprintf(f,"Score=%d\n",score);
+                        fclose(f);
+                                return 0;
+            }
+        }
+
+    }
+            return -1;
+
+
+
 }

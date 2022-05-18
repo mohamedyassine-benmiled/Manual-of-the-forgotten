@@ -15,6 +15,7 @@
         "sdl_ttf.h": "c",
         "config.h": "c",
         "declarations.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "tictac.h": "c"
     }
 }
