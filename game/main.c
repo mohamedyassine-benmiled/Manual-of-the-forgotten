@@ -33,6 +33,7 @@ int main (int argc , char *argv[])
   settings config;
 //Definition Screens
  SDL_Surface *screenmenu = NULL ;
+ system("stty -F /dev/ttyUSB0 9600 -parenb cs8 -cstopb");
 //Initialize on Menu
  int run = 1 ;
  //Check if config file exits else create it
