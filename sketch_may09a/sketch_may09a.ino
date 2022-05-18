@@ -29,18 +29,23 @@ void loop() {
   jump = digitalRead(buttonJ);
 if(right==1){
   Serial.write(1);
-  Serial.println("Moving Right cause thats gay"); 
+  Serial.println("Moving Right"); 
 
     }
 else if(left==1){
   Serial.write(2);
-  Serial.println("Moving Left cause thats straight"); 
+  Serial.println("Moving Left"); 
  
   }
-else {
+else if(jump==1){
+  Serial.write(3);
+  Serial.println("Jumping"); 
+ 
+  }
+  else
+{
   Serial.write(0);
-  Serial.println("No move means you're in between");  
-
+  Serial.println("No move");  
   }
   // traitement des deux diodes led
 if(Serial.available()>0)

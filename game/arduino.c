@@ -21,7 +21,7 @@ void collisionarduino(Game *g)
         arduinoWriteData(1);
         return;
     }
-    arduinoWriteData(69);
+    arduinoWriteData(5);
     return;
 
 }
@@ -35,15 +35,22 @@ void movementarduino(Game *g)
     {
         g->player[0].input.right=1;
     }
+    else
     if (x==2)
     {
         g->player[0].input.left=1;
     }
+    else
     if (x==3)
     {
         g->player[0].input.startJump=1;
     }
-
+    else
+    {
+        g->player[0].input.startJump=0;
+        g->player[0].input.left=0;
+        g->player[0].input.right=0;
+    }
 }
 
 int arduinoWriteData(int x)
