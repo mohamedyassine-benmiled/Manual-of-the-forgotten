@@ -60,13 +60,22 @@ int write_save(Game *g)
     if (f!=NULL)
     {
         fprintf(f,"[Game SaveFile]\n");
+        fprintf(f,"player.nbplayers=%d\n",g->global.nbplayers);
         fprintf(f,"player.health=%d\n",g->player[0].health);
         fprintf(f,"player.life=%d\n",g->player[0].life);
         fprintf(f,"player.x=%d\n",g->player[0].position.x);
         fprintf(f,"player.y=%d\n",g->player[0].position.y);
+        fprintf(f,"score=%d\n",g->player[0].score);
         fprintf(f,"background.x=%d\n",g->bg.img.pos2.x);
         fprintf(f,"background.y=%d\n",g->bg.img.pos2.y);
-        fprintf(f,"score=%d\n",g->player[0].score);
+        if (g->global.nbplayers==2)
+        {
+            fprintf(f,"player.health=%d\n",g->player[1].health);
+            fprintf(f,"player.life=%d\n",g->player[1].life);
+            fprintf(f,"player.x=%d\n",g->player[1].position.x);
+            fprintf(f,"player.y=%d\n",g->player[1].position.y);
+            fprintf(f,"score=%d\n",g->player[1].score);
+        }
         fclose(f);
         return 0;
     }
@@ -83,15 +92,25 @@ int get_save(Game *g)
     if (f!=NULL)
     {
         fscanf(f,"[Game SaveFile]\n");
+        fscanf(f,"player.nbplayers=%d\n",&g->global.nbplayers);
         fscanf(f,"player.health=%d\n",&g->player[0].health);
         fscanf(f,"player.life=%d\n",&g->player[0].life);
         fscanf(f,"player.x=%d\n",&g->player[0].position.x);
         fscanf(f,"player.y=%d\n",&g->player[0].position.y);
+        fscanf(f,"score=%d\n",&g->player[0].score);
         fscanf(f,"background.x=%d\n",&x);
         fscanf(f,"background.y=%d\n",&y);
+        if (g->global.nbplayers==2)
+        {
+            fscanf(f,"player.health=%d\n",&g->player[1].health);
+            fscanf(f,"player.life=%d\n",&g->player[1].life);
+            fscanf(f,"player.x=%d\n",&g->player[1].position.x);
+            fscanf(f,"player.y=%d\n",&g->player[1].position.y);
+            fscanf(f,"score=%d\n",&g->player[1].score);
+        }
         g->bg.img.pos2.x=x;
         g->bg.img.pos2.y=y;
-        fscanf(f,"score=%d\n",&g->player[0].score);
+
         fclose(f);
         return 0;
     }

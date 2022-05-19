@@ -116,6 +116,7 @@ int menu(MenuGame *menugame,SDL_Surface *screen,int run,int *state)
     SDL_Event event;
         MenuImage assets;
         int saveexist=fileexist("save/savefile");
+        int player=1;
         *state =0;
     //Showing Menu
         initmenu(&assets);
@@ -217,15 +218,46 @@ while (SDL_PollEvent(&event)) {
                     break;
                     //On "p" press : Go to game
                     case (SDLK_p):
-                        if (*state=playmenu(screen,&run,saveexist))
-                        {
-                        run=3;
-                        }
-                        else
-                        {
-                            menurefresh(&assets,screen);
-                            show(assets.play[1],screen);
-                        }  
+                            player=1;
+                            if ((*state=playmenu(screen,&run,saveexist)) && ((player==1)||(player==2)))
+                                {
+                                    if (*state==2)
+                                    {
+                                        run=3;
+                                    }
+                                    else if (*state==1)
+                                    {
+                                        player=checkplaymenu(screen,&run);
+                                        if (player==1)
+                                        {
+                                            *state=1;
+                                        }
+                                        else if (player==2)
+                                        {
+                                            *state=3;
+                                        }
+                                        else
+                                        {
+
+                                        menurefresh(&assets,screen);
+                                        show(assets.cbook[j],screen);
+                                        show(assets.logo[i],screen);
+                                        show(assets.play[1],screen);
+                                        }
+                                    }
+                                                                            if (*state==3)
+                                        {
+                                            run=3;
+                                        }
+                                }
+                                else
+                                {
+
+                                    menurefresh(&assets,screen);
+                                    show(assets.cbook[j],screen);
+                                    show(assets.logo[i],screen);
+                                    show(assets.play[1],screen);
+                                }  
                     break;
                     //On "f" press : Go fullscreen or windowed
                     case (SDLK_f):
@@ -299,12 +331,49 @@ while (SDL_PollEvent(&event)) {
                 //If click on play go to game
                     if(hoverbutton(x,y,assets.play[1]))
                     {
-                        if (*state=playmenu(screen,&run,saveexist))
+                        player=1;
+                 if ((*state=playmenu(screen,&run,saveexist)) && ((player==1)||(player==2)))
                                 {
-                                run=3;
+                                    if (*state==2)
+                                    {
+                                        run=3;
+                                    }
+                                    else if (*state==1)
+                                    {
+                                        player=checkplaymenu(screen,&run);
+                                        if (player==1)
+                                        {
+                                            *state=1;
+                                        }
+                                        else if (player==2)
+                                        {
+                                            *state=3;
+                                        }
+                                        else
+                                        {
+                                        menurefresh(&assets,screen);
+                                        show(assets.cbook[j],screen);
+                                        show(assets.logo[i],screen);
+                                        show(assets.play[1],screen);
+                                        }
+
+                                    }
+                                    else
+                                    {
+
+                                        menurefresh(&assets,screen);
+                                        show(assets.cbook[j],screen);
+                                        show(assets.logo[i],screen);
+                                        show(assets.play[1],screen);
+                                        }
+                                        if ((*state==3)||(*state==1))
+                                        {
+                                            run=3;
+                                        }
                                 }
                                 else
                                 {
+
                                     menurefresh(&assets,screen);
                                     show(assets.play[1],screen);
                                 }  
@@ -1075,6 +1144,90 @@ int playmenu(SDL_Surface *screen,int *run,int state)
             if (hoverbutton(x,y,assets.cont[0]))
             {
                 check=2;
+            }
+
+      }  
+            }
+            //Update Screen
+            SDL_Flip(screen);
+        }
+            //Return Result
+            return check;
+}
+
+int checkplaymenu(SDL_Surface *screen,int *run)
+{
+    //
+    int x,y;
+    checkplayimage assets;
+    initcheckplayer(&assets);
+    show(assets.playerwindow,screen);
+    //
+    show(assets.player[0].dark,screen);
+    show(assets.player[1].dark,screen);
+    show(assets.player[2].dark,screen);
+    show(assets.player[3].dark,screen);
+    show(assets.back[0],screen);
+    SDL_Event event;
+        int check=3;
+        //Init Loop
+        while (check==3)
+        {
+            while (SDL_PollEvent(&event))
+            {
+            switch(event.type)
+            {
+            case SDL_QUIT:
+                *run=0;
+                check=0;
+                break;
+            case SDL_MOUSEMOTION:
+            SDL_GetMouseState(&x,&y);
+            //If hover on yes
+            if (hoverbutton(x,y,assets.player[0].dark))
+            {
+                show(assets.player[0].bright,screen);
+            }
+            else
+            {
+                show(assets.player[0].dark,screen);
+            }          
+            //If hover on no
+            if (hoverbutton(x,y,assets.player[1].dark))
+            {
+                show(assets.player[1].bright,screen);
+            }
+            else
+            {
+                show(assets.player[1].dark,screen);
+            }          
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                show(assets.back[1],screen);
+            }
+            else
+            {
+                show(assets.back[0],screen);
+            }          
+            
+            
+            
+            break;
+            case SDL_MOUSEBUTTONUP:
+            SDL_GetMouseState(&x,&y);
+            //If Click on yes
+            if (hoverbutton(x,y,assets.player[0].dark))
+            {
+                check=1;
+            }
+            //If Click on no
+            if (hoverbutton(x,y,assets.player[1].dark))
+            {
+                check=2;
+            }
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                check=0;
             }
 
       }  

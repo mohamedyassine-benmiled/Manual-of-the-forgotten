@@ -1135,5 +1135,61 @@ else
 printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
 }
 
+void initcheckplayer (checkplayimage *assets)
+{
+        settings config;
+        get_config(&config);
+        text t ;
+if (config.resolution_h==1080)
+{
 
+}
+else
+if (config.resolution_h==720)
+{
+           t.font=TTF_OpenFont("ttf/alagard.ttf",43);
+
+    assets->playerwindow.surface=IMG_Load("graphics/720/Checkplayer/CheckWindow.png");
+        assets->playerwindow.pos1.x=140;
+        assets->playerwindow.pos1.y=60;
+
+    strcpy(t.texte,"Return");
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70;
+    assets->back[0].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[0].pos1.x=570;
+    assets->back[0].pos1.y=540;
+    assets->back[0].pos2=assets->back[0].pos1;
+    assets->back[0].pos2.w=162;
+    assets->back[0].pos2.h=42;
+     t.textColor.r=225;
+    t.textColor.g=255;
+    t.textColor.b=36;
+    assets->back[1].surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor);
+    assets->back[1].pos1=assets->back[0].pos1;
+    assets->back[1].pos2=assets->back[0].pos2;
+
+    for (int i=0;i<4;i++)
+    {
+        assets->player[i].dark.surface=IMG_Load("graphics/720/Checkplayer/Player.png");
+        assets->player[i].bright.surface=IMG_Load("graphics/720/Checkplayer/Player.png");
+        assets->player[i].bright.pos1.x=206+(i*22)+(206*i);
+        assets->player[i].bright.pos1.y=208;
+        assets->player[i].bright.pos2=assets->player[i].bright.pos1;
+        assets->player[i].bright.pos2.w=200;
+        assets->player[i].bright.pos2.h=300;
+        assets->player[i].dark.pos1.x=206+(i*22)+(206*i);
+        assets->player[i].dark.pos1.y=208;
+        assets->player[i].dark.pos2=assets->player[i].dark.pos1;
+        assets->player[i].dark.pos2.w=200;
+        assets->player[i].dark.pos2.h=300;
+    }
+
+       TTF_CloseFont(t.font);
+}
+else
+
+printf("\nError : Incorrect Resolution , Delete config.cfg and restart the game.");
+}
 

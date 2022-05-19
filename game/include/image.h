@@ -105,7 +105,19 @@ typedef struct
     image cont[3];
     image back[2]; 
 } playimage;
+typedef struct 
+{
+    /* data */
+    image dark;
+    image bright;
+} boxplayer;
 
+typedef struct 
+{   
+    image playerwindow;
+    boxplayer player[4];
+    image back[2];
+} checkplayimage;
 
 void menurefresh(MenuImage *assets,SDL_Surface *screen);
 void graphicsrefresh(graphicimage *assets,SDL_Surface *screen,int fullscreen);

@@ -21,6 +21,7 @@
 typedef struct 
 {
     /* data */
+    int nbplayers;
     int stopdisplay;
     int EOL;
     int level;

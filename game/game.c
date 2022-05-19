@@ -35,7 +35,8 @@ void handlemovement(Game *g)
         {
         movement(&g->player[0],&g->bg,0);            
         }
-        /*
+        if (g->global.nbplayers==2)
+        {
         if (g->global.firstplayer==1)
         {
         movement(&g->player[1],&g->bg,1);
@@ -44,10 +45,13 @@ void handlemovement(Game *g)
         {
         movement(&g->player[1],&g->bg,0);            
         }
-        */
+        }
+        
 }
 void handlescrolling(Game *g)
 {
+        if (g->global.nbplayers==2)
+        {
         if (g->player[0].position.x>g->player[1].position.x)
         {
                 g->global.firstplayer=0;
@@ -64,6 +68,7 @@ void handlescrolling(Game *g)
         {
                 g->global.lastplayer=0;
         }
+        }
 }
 int game(SDL_Surface *screen,int run,int state)
 {
@@ -74,8 +79,22 @@ int game(SDL_Surface *screen,int run,int state)
     g.global.checkpoint=5;
     g.global.level=1;
     g.global.elapsed=0;
-    initplayer(&g.player[0]);
-    //initplayer(&g.player[1]);
+    if (state==3)
+        {
+                g.global.nbplayers=2;
+                        g.global.lastplayer=1;
+        }
+        else
+        {
+                g.global.nbplayers=1;
+
+        }
+        if (state==2)
+        {
+                get_save(&g);
+        }
+        for (int i=0;i<g.global.nbplayers;i++)
+        initplayer(&g.player[i]);
     initminimap(&g.minimap);
     initennemy(&g.enemy[0]);
         if (state==2)
@@ -83,22 +102,19 @@ int game(SDL_Surface *screen,int run,int state)
                 get_save(&g);
         }
     SDL_Event event;
-            printf("\nThis is background.y %d",g.bg.img.pos2.y);
-            printf("\nThis is background.x %d",g.bg.img.pos2.x);
     showgame(g.bg.img,screen);
     Mix_PlayMusic(g.bg.son, -1);
     SDL_Flip(screen);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     while(run==3)
     {
-            printf("\n%d",g.player[0].position.x+g.bg.img.pos2.x);
 
-        if (g.player[0].position.x+g.bg.img.pos2.x>=5764)
+        if (g.player[g.global.firstplayer].position.x+g.bg.img.pos2.x>=5764)
         {
-        run=enigmestart(screen,run,&g.player[0].score);
+        run=enigmestart(screen,run,&g.player[g.global.firstplayer].score);
                 if (run==3)
                 {
-                        writescore(g.player[0].score);
+                        writescore(g.player[g.global.firstplayer].score);
                         run=1;
                 }
                 if (run==5)
@@ -114,7 +130,7 @@ int game(SDL_Surface *screen,int run,int state)
         }
         handlemovement(&g);
         gamerefresh(&g,screen);
-        //handlescrolling(&g);
+        handlescrolling(&g);
 
 
     }
