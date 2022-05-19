@@ -211,10 +211,6 @@ while (SDL_PollEvent(&event)) {
                                 show(assets.logo[i],screen);
                            }  
                     break;
-                    //Tic Tac Toe
-                    case (SDLK_t):
-                        starttic(screen);
-                        break;
                     //On "o" press : Go to option
                     case (SDLK_o):
                         run=2;
@@ -403,7 +399,7 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
     //Update
     SDL_Flip(screen);
     }
-    return res;
+    return 0;
     
 }
 
