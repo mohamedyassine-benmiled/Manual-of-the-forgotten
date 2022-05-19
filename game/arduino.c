@@ -29,7 +29,7 @@ void collisionarduino(Game *g)
 void movementarduino(Game *g)
 {
     int x=0;
-    arduinoReadData(x);
+    arduinoReadData(&x);
     printf("\n%d",x);
     if (x==1)
     {
