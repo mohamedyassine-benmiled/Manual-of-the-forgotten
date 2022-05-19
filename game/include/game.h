@@ -34,6 +34,7 @@ typedef struct
     Character player[4];
     Enemy enemy[10];
     Background bg;
+    Health health[4];
     Minimap minimap;
     States global;
 } Game;

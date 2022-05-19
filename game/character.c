@@ -22,8 +22,6 @@ int CollisionGround(Character *player,Background *bg,SDL_Color rgb);
 int CollisionTop(Character *player,Background *bg,SDL_Color rgb);
 int bordercheck(Background *bg);
 
-
-
 void animation(Character *player)
 {
     player->elapsed++;

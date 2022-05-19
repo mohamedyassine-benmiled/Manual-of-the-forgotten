@@ -9,6 +9,7 @@ void animationback2(Background *bg);
 void rpos_enemy (Enemy *enemi,Background *bg);
 int collision_box(Box *b1,Box *b2);
 
+
 void playerrefresh(Character *player)
 {
         animation(player);
@@ -45,30 +46,63 @@ void BlitGame(Game *g,SDL_Surface *screen)
     SDL_BlitSurface(g->minimap.player[1].image,NULL,screen,&g->minimap.player[1].position);
     if ((g->minimap.enemy[0].rpos.x >= g->minimap.bg.pos1.x)&&(g->minimap.enemy[0].rpos.x<g->minimap.bg.pos1.x+g->minimap.bg.pos2.w))
     SDL_BlitSurface(g->minimap.enemy[0].image,NULL,screen,&g->minimap.enemy[0].rpos);
+    if (!g->player[0].death)
+    {
     SDL_BlitSurface(g->player[0].image,&g->player[0].src_pos,screen,&g->player[0].position);
+    }
+    else
+    {
+        g->global.lastplayer=1;
+        g->global.firstplayer=1;
+    }
+    if (!g->player[1].death)
+    {
     SDL_BlitSurface(g->player[1].image,&g->player[1].src_pos,screen,&g->player[1].position);
+    }
+    else
+    {
+        g->global.lastplayer=0;
+        g->global.firstplayer=0;
+    }
     SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos);	
+    for (int i=0;i<g->global.nbplayers;i++)
+    {
+        g->health[i].l=g->player[i].life;
+        show(g->health[i].life,screen);
+        for (int j=0;j<g->player[i].health;j++)
+        {
+            show(g->health[i].heart[j],screen);
+        }
+
+    }
     show(g->minimap.score,screen);
     show(g->minimap.time,screen);
 }
 
 void BoxGame(Game *g)
 {
-    if (collision_box(&g->enemy[0].pos_box,&g->player[0].pos_box))
+    int collision=-1;
+    for (int i=0;i<g->global.nbplayers;i++)
+    {
+        if ((collision_box(&g->enemy[0].pos_box,&g->player[i].pos_box))&&(!g->player[i].death))
+        {
+            collision=i;
+        }
+    }
+    if ((collision==0)||(collision==1))
     {
         if (g->enemy[0].attack==2)
         {
             g->enemy[0].attack=0;
-            g->player[0].health--;
-            printf("\nHealth : %d",g->player[0].health);
-            if (g->player[0].health==0)
+            g->player[collision].health--;
+            if (g->player[collision].health==0)
             {
-                g->player[0].death=1;
+                g->player[collision].death=1;
             }
-            if (g->player[0].direction==0)
-            g->player[0].position.x-=50;
-            if (g->player[0].direction==1)
-            g->player[0].position.x+=50;
+            if (g->player[collision].direction==0)
+            g->player[collision].position.x-=50;
+            if (g->player[collision].direction==1)
+            g->player[collision].position.x+=50;
         }
         else
         if(g->enemy[0].attack==0)
@@ -83,21 +117,29 @@ void BoxGame(Game *g)
         if (g->enemy[0].attack==2)
         {
             g->enemy[0].attack=0;
-            printf("\nAttack Dodged");
         }
     }
+    
 }
 
 void deathrefresh(Game *g)
 {
-    if (g->player[0].death)
+    int death=0;
+    for (int i=0;i<g->global.nbplayers;i++)
+    if ((g->player[i].death))
+    {
+        death++;
+    }
+    if (death==g->global.nbplayers)
     {
         get_save(g);
-        g->player[0].death=0;
-        g->player[0].life--;
+        for (int i=0;i<g->global.nbplayers;i++)
+        {
+        g->player[i].death=0;
+        g->player[i].life--;
+        }
         write_save(g);
     }
-
 }
 void gamerefresh(Game *g,SDL_Surface *screen)
 {
@@ -107,7 +149,10 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     unsigned int lasttime = SDL_GetTicks();
     deathrefresh(g);
     deplacement_enemy(g);
-
+    for (int i=0;i<g->global.nbplayers;i++)
+    {
+    initlife(&g->health[i],i);
+    }
     scrolling(g);
 
     animationback(&g->bg);

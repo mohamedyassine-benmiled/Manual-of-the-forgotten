@@ -29,6 +29,7 @@ typedef struct
     int death;
     int elapsed;
     int score;
+    int player;
     /* Variables */
     int health, direction, speed, atk;
     /* Inputs */

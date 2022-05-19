@@ -83,7 +83,7 @@ void initennemy (Enemy *enemi)
     enemi->pos_box.h=90;
     enemi->right=0;
     enemi->left=0;
-    enemi->spotted=0;
+    enemi->spotted=-1;
     enemi->posMax=3000;
     enemi->posMin=2500;
     enemi->attack=0;
@@ -137,21 +137,24 @@ void deplacementalea_enemy (Enemy *enemi)
 }
 void deplacement_enemy (Game *g) //DEPLACEMENT IA
 {
-    if (spotted(&g->player[0],&g->enemy[0]))
+    for (int i=0;i<g->global.nbplayers;i++)
     {
-        g->enemy[0].spotted=1;
+    if ((spotted(&g->player[i],&g->enemy[0]))&&(!g->player[i].death))
+    {
+        g->enemy[0].spotted=i;
+    }
     }
     if (g->enemy[0].attack)
     {
         animateattack(&g->enemy[0]);
     }
     else
-    if (!g->enemy[0].spotted)
+    if (g->enemy[0].spotted==-1)
         deplacementalea_enemy(&g->enemy[0]);
     else
     {
-        followplayer(&g->player[0],&g->enemy[0]);
-        if ((g->enemy[0].rpos.x-g->player[0].position.x>=1280) || (g->player[0].position.x-g->enemy[0].rpos.x>=500))
+        followplayer(&g->player[g->enemy[0].spotted],&g->enemy[0]);
+        if ((g->enemy[0].rpos.x-g->player[g->enemy[0].spotted].position.x>=1280) || (g->player[g->enemy[0].spotted].position.x-g->enemy[0].rpos.x>=500))
         {
              initennemy (&g->enemy[0]);
         }

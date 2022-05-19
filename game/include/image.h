@@ -111,7 +111,13 @@ typedef struct
     image dark;
     image bright;
 } boxplayer;
-
+typedef struct
+{
+    image heart[3];
+    image life;
+    int l;
+    int nbplayers;
+} Health;
 typedef struct 
 {   
     image playerwindow;

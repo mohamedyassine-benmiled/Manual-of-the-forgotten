@@ -18,7 +18,62 @@
 #include <SDL/SDL_ttf.h>
 #include "include/init.h"
 #include <string.h>
+void initlife(Health *health,int player)
+{
+    text t;
+    sprintf(t.texte,"Life : %d",health->l);   
+    t.textColor.r=207;
+    t.textColor.g=175;
+    t.textColor.b=70; 
+    t.font=TTF_OpenFont("ttf/alagard.ttf",30);
+    if (!(health->life.surface=TTF_RenderText_Solid (t.font,t.texte,t.textColor)))
+    {
+        printf("Wow an error ? I love this : %s",TTF_GetError());
+    };  
+    if (player==0)
+    {
+    health->life.pos1.x=5;
+    health->life.pos1.y=100;
+    }
+    else
+    {
+        health->life.pos1.x=1185;
+        health->life.pos1.y=100;
+    }
+    TTF_CloseFont(t.font);
 
+}
+void inithealth(Health *health,int player)
+{
+    if (player==0)
+    {
+
+            health->heart[0].surface=IMG_Load("graphics/720/Play/heart.png");
+            health->heart[0].pos1.y=150;
+            health->heart[0].pos1.x=0;
+
+        for (int j=1;j<3;j++)
+        {
+            health->heart[j].surface=IMG_Load("graphics/720/Play/heart.png");
+            health->heart[j].pos1.y=150;
+            health->heart[j].pos1.x=health->heart[j-1].pos1.x+70;
+        }
+    }
+    else
+    {
+
+            health->heart[0].surface=IMG_Load("graphics/720/Play/heart.png");
+            health->heart[0].pos1.y=150;
+            health->heart[0].pos1.x=1230;
+    
+        for (int j=1;j<3;j++)
+        {
+            health->heart[j].surface=IMG_Load("graphics/720/Play/heart.png");
+            health->heart[j].pos1.y=150;
+            health->heart[j].pos1.x=health->heart[j-1].pos1.x-70;
+        }
+    }
+}
 //Initialize Player
 void initplayer(Character *player)
 {
@@ -26,7 +81,8 @@ void initplayer(Character *player)
     get_config(&config);
     /* character principal */
     player->image=IMG_Load("graphics/720/Spritesheet/Zelda.png");
-    player->position.x=START_x;
+    printf("\nPlayer : %d",player->player);
+    player->position.x=START_x+(START_x*player->player);
     player->position.y=START_y;
     player->life=3;
     player->health=3;

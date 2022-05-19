@@ -29,20 +29,24 @@ void handlemovement(Game *g)
 {
         if (g->global.firstplayer==0)
         {
+        if (!g->player[0].death)
         movement(&g->player[0],&g->bg,1);
         }
         else
         {
+        if (!g->player[0].death)
         movement(&g->player[0],&g->bg,0);            
         }
         if (g->global.nbplayers==2)
         {
         if (g->global.firstplayer==1)
         {
+        if (!g->player[1].death)
         movement(&g->player[1],&g->bg,1);
         }
         else
         {
+        if (!g->player[1].death)
         movement(&g->player[1],&g->bg,0);            
         }
 
@@ -51,20 +55,24 @@ void handlemovement(Game *g)
 }
 void handlescrolling(Game *g)
 {
-        if (g->global.nbplayers==2)
+        if ((g->global.nbplayers==2) && (!g->player[0].death) && (!g->player[1].death))
         {
+        
         if (g->player[0].position.x>g->player[1].position.x)
         {
                 g->global.firstplayer=0;
         }
+        
         if (g->player[1].position.x>g->player[0].position.x)
         {
                 g->global.firstplayer=1;
         }
+        
         if (g->player[1].position.x<g->player[0].position.x)
         {
                 g->global.lastplayer=1;
         }
+        
         if (g->player[0].position.x<g->player[1].position.x)
         {
                 g->global.lastplayer=0;
@@ -95,9 +103,14 @@ int game(SDL_Surface *screen,int run,int state)
                 get_save(&g);
         }
         for (int i=0;i<g.global.nbplayers;i++)
+        {
+        g.player[i].player=i;
         initplayer(&g.player[i]);
+        }
     initminimap(&g.minimap);
     initennemy(&g.enemy[0]);
+    for (int i=0;i<g.global.nbplayers;i++)
+        inithealth(&g.health[i],i);
         if (state==2)
         {
                 get_save(&g);
@@ -135,7 +148,8 @@ int game(SDL_Surface *screen,int run,int state)
                 write_save(&g);
         }
         handlemovement(&g);
-        if (g.player[0].life==0)
+        for (int i=0;i<g.global.nbplayers;i++)
+        if (g.player[i].life==0)
         {
                 run = 1;
         }
