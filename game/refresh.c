@@ -22,6 +22,7 @@ void playerrefresh(Character *player)
 
 void enemyrefresh(Enemy *enemi)
 {
+    if (!enemi->attack)
         animationenemy (enemi);
         enemi->position2.x=CHAR_W*enemi->spritestate;
         enemi->position2.y=CHAR_H*enemi->look;
@@ -55,7 +56,8 @@ void BoxGame(Game *g)
 {
     if (collision_box(&g->enemy[0].pos_box,&g->player[0].pos_box))
     {
-         printf("\nCOLLISION WITH ENEMY MADAFAKA");
+         g->enemy[0].attack=1;
+         g->enemy[0].elapsed=0;
     }
 }
 
@@ -65,7 +67,14 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     get_config(&config);
     unsigned int elapsed;
     unsigned int lasttime = SDL_GetTicks();
-
+    if ((g->enemy[0].attack==2) && (collision_box(&g->enemy[0].pos_box,&g->player[0].pos_box)))
+        {
+            g->player[0].health-=1;
+            if (g->enemy[0].left)
+            g->player[0].position.x-=50;
+            if (g->enemy[0].right)
+            g->player[0].position.x+=50;
+        }
     deplacement_enemy(g);
 
     scrolling(g);

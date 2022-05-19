@@ -28,6 +28,7 @@ int posMin ;
 int spotted;
 int reset ; 
 int look, spritestate;
+int attack;
 int animation ;
 int direction ;  
 }Enemy;

@@ -26,6 +26,9 @@ int bordercheck(Background *bg);
 
 void animation(Character *player)
 {
+    player->elapsed++;
+        if (player->elapsed==3)
+    {
         //Jump Right
         if ((player->input.fix) && (player->direction==0))
         {
@@ -135,8 +138,11 @@ void animation(Character *player)
             player->spritestate=player->animation;
             return;
         }
-
-
+    }
+    if (player->elapsed>=3)
+    {
+        player->elapsed=0;
+    }
 }
 
 void movement(Character *player,Background *bg,int x)
@@ -275,12 +281,7 @@ void movement(Character *player,Background *bg,int x)
                 player->input.jumpHeight=0;
                 player->input.movement=3;
             }
-            if (CollisionTop(player,bg,rgb))
-            {
-                player->input.startJump=0;
-                player->input.jumpHeight=maxJmpH;
-                player->input.movement=3;
-            }
+
         }
         player->position.y+=GRAVITY;
         

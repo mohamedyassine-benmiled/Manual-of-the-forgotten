@@ -13,7 +13,10 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "include/game.h"
+void animateattack(Enemy *enemy)
+{
 
+}
 void followplayer(Character *player, Enemy *enemy)
 {
     if ((player->position.x-enemy->rpos.x)<0)
@@ -131,6 +134,11 @@ void deplacement_enemy (Game *g) //DEPLACEMENT IA
     {
         g->enemy[0].spotted=1;
     }
+    if (g->enemy[0].attack)
+    {
+        animateattack(&g->enemy[0]);
+    }
+    else
     if (!g->enemy[0].spotted)
         deplacementalea_enemy(&g->enemy[0]);
     else
