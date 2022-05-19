@@ -75,10 +75,24 @@ int handleenigme(Enigme *e,SDL_Event *event,SDL_Surface *screen,int run)
 
 int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run)
 {
-
+int arduino;
             if (SDL_PollEvent(event))
                 {
-
+                            arduinoReadData(&arduino);
+                            switch (arduino)
+                                {
+                                    case (1):
+                                        g->player[0].input.right=1;
+                                        break;
+                                    case (2):
+                                        g->player[0].input.left=1;
+                                        break;
+                                    case (3):
+                                        g->player[0].input.startJump=1;
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 if  ((*event).type==SDL_QUIT)
                                     run=0;
 
