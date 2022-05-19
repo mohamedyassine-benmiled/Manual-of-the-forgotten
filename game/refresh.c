@@ -157,7 +157,7 @@ void gamerefresh(Game *g,SDL_Surface *screen)
 
     animationback(&g->bg);
     animationback2(&g->bg);
-
+    collisionarduino(g);
     g->bg.an2.pos2.x=relative_x(&g->bg,g->bg.an2.pos1);
     rpos_enemy(&g->enemy[0],&g->bg);
 

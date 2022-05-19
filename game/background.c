@@ -15,20 +15,20 @@ int bordercheck(Background *bg)
 { 
     if(bg->img.pos2.x<=0)
     {
-        collisionleft=1;
-        collisionright=0;
+        bg->collisionleft=1;
+        bg->collisionright=0;
         return 0;
         
     }
 
     if (bg->img.pos2.x>=6395-1280)
     {
-        collisionleft=0;
-        collisionright=1;
+        bg->collisionleft=0;
+        bg->collisionright=1;
         return -1;
     }
-    collisionleft=0;
-    collisionright=0;
+    bg->collisionleft=0;
+    bg->collisionright=0;
     return 1;
 }
 

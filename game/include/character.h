@@ -15,7 +15,7 @@
 #include "collision.h"
 #include "declarations.h"
 
-int collisionleft,collisionright;
+
 
 typedef struct
 {
@@ -40,5 +40,5 @@ typedef struct
     //Input input;
     Input input;
 }Character;
-int arduinocollision();
+
 #endif // CHAR_H_INCLUDED
