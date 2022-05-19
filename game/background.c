@@ -72,7 +72,7 @@ void scrolling (Game *g)
     int x = bordercheck(&g->bg);
     int i = g->global.firstplayer;
     int j = g->global.lastplayer;
-    printf("\n%d %d",g->player[j].position.x,g->player[i].position.x);
+
         if ((g->global.nbplayers==2)&&!(g->player[j].position.x==4))
         {
         if ((!g->player[j].input.movement) && (g->player[i].input.movement))
