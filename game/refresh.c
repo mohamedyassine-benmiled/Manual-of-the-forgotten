@@ -55,7 +55,7 @@ void BoxGame(Game *g)
 {
     if (collision_box(&g->enemy[0].pos_box,&g->player[0].pos_box))
     {
-         g->player[0].position.x-=100;
+         printf("\nCOLLISION WITH ENEMY MADAFAKA");
     }
 }
 
