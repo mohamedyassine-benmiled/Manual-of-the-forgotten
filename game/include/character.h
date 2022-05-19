@@ -26,6 +26,7 @@ typedef struct
     int look, spritestate;
     int animation;
     int life, died;
+    int death;
     int elapsed;
     int score;
     /* Variables */

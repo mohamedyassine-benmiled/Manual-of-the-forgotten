@@ -56,25 +56,56 @@ void BoxGame(Game *g)
 {
     if (collision_box(&g->enemy[0].pos_box,&g->player[0].pos_box))
     {
+        if (g->enemy[0].attack==2)
+        {
+            g->enemy[0].attack=0;
+            g->player[0].health--;
+            printf("\nHealth : %d",g->player[0].health);
+            if (g->player[0].health==0)
+            {
+                g->player[0].death=1;
+            }
+            if (g->player[0].direction==0)
+            g->player[0].position.x-=50;
+            if (g->player[0].direction==1)
+            g->player[0].position.x+=50;
+        }
+        else
+        if(g->enemy[0].attack==0)
+        {
          g->enemy[0].attack=1;
          g->enemy[0].elapsed=0;
+        }
+
+    }
+    else
+    {
+        if (g->enemy[0].attack==2)
+        {
+            g->enemy[0].attack=0;
+            printf("\nAttack Dodged");
+        }
     }
 }
 
+void deathrefresh(Game *g)
+{
+    if (g->player[0].death)
+    {
+        get_save(g);
+        g->player[0].death=0;
+        g->player[0].life--;
+        write_save(g);
+    }
+
+}
 void gamerefresh(Game *g,SDL_Surface *screen)
 {
     settings config;
     get_config(&config);
     unsigned int elapsed;
     unsigned int lasttime = SDL_GetTicks();
-    if ((g->enemy[0].attack==2) && (collision_box(&g->enemy[0].pos_box,&g->player[0].pos_box)))
-        {
-            g->player[0].health-=1;
-            if (g->enemy[0].left)
-            g->player[0].position.x-=50;
-            if (g->enemy[0].right)
-            g->player[0].position.x+=50;
-        }
+    deathrefresh(g);
     deplacement_enemy(g);
 
     scrolling(g);

@@ -15,6 +15,12 @@
 #include "include/game.h"
 void animateattack(Enemy *enemy)
 {
+    enemy->elapsed++;
+    if (enemy->elapsed==50)
+    {
+        enemy->elapsed=0;
+        enemy->attack=2;
+    }
 
 }
 void followplayer(Character *player, Enemy *enemy)
@@ -80,6 +86,7 @@ void initennemy (Enemy *enemi)
     enemi->spotted=0;
     enemi->posMax=3000;
     enemi->posMin=2500;
+    enemi->attack=0;
     enemi->mouvement=1;
     enemi->reset=0; 
     enemi->look=0;

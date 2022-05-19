@@ -102,6 +102,11 @@ int game(SDL_Surface *screen,int run,int state)
         {
                 get_save(&g);
         }
+        else
+        if (state)
+        {
+                write_save(&g);
+        }
     SDL_Event event;
     showgame(g.bg.img,screen);
     Mix_PlayMusic(g.bg.son, -1);
@@ -130,6 +135,10 @@ int game(SDL_Surface *screen,int run,int state)
                 write_save(&g);
         }
         handlemovement(&g);
+        if (g.player[0].life==0)
+        {
+                run = 1;
+        }
         gamerefresh(&g,screen);
         handlescrolling(&g);
 

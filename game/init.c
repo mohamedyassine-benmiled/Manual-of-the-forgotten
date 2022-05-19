@@ -29,10 +29,12 @@ void initplayer(Character *player)
     player->position.x=START_x;
     player->position.y=START_y;
     player->life=3;
+    player->health=3;
     player->spritestate=0;
     player->look=0;
     player->animation=0;
     player->direction=0;
+    player->death=0;
     player->input.fast=0;
     player->elapsed=0;
     player->input.movement=0;
