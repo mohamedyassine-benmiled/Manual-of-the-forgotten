@@ -45,6 +45,7 @@ void handlemovement(Game *g)
         {
         movement(&g->player[1],&g->bg,0);            
         }
+
         }
         
 }
