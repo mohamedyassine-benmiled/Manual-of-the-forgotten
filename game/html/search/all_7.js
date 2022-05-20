@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['huffmancodetable_26',['HUFFMANCODETABLE',['../d2/d6e/structHUFFMANCODETABLE.html',1,'']]]
+  ['health_28',['Health',['../de/d9f/structHealth.html',1,'']]],
+  ['huffmancodetable_29',['HUFFMANCODETABLE',['../d2/d6e/structHUFFMANCODETABLE.html',1,'']]]
 ];

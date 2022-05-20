@@ -89,6 +89,9 @@ Include dependency graph for game.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a83f26d840403184238d2126ea2fe4b62"><td class="memItemLeft" align="right" valign="top"><a id="a83f26d840403184238d2126ea2fe4b62"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>inithealth</b> (<a class="el" href="../../de/d9f/structHealth.html">Health</a> *health, int player)</td></tr>
+<tr class="separator:a83f26d840403184238d2126ea2fe4b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6254da519b88c711b53014d8ebafc8eb"><td class="memItemLeft" align="right" valign="top"><a id="a6254da519b88c711b53014d8ebafc8eb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>initbackground</b> (<a class="el" href="../../d3/dba/structBackground.html">Background</a> *assets)</td></tr>
 <tr class="separator:a6254da519b88c711b53014d8ebafc8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,9 +104,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initplayer</b> (<a cl
 <tr class="memitem:a4f1223b7a33ca3abfe7e1a5a4b95757c"><td class="memItemLeft" align="right" valign="top"><a id="a4f1223b7a33ca3abfe7e1a5a4b95757c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>updateminimap</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> *g)</td></tr>
 <tr class="separator:a4f1223b7a33ca3abfe7e1a5a4b95757c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb14f768523b4a0ecb9905cbd52fd68b"><td class="memItemLeft" align="right" valign="top"><a id="afb14f768523b4a0ecb9905cbd52fd68b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writescore</b> (int score)</td></tr>
+<tr class="separator:afb14f768523b4a0ecb9905cbd52fd68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab98cc041281d6e890a4d61a7ced409ee"><td class="memItemLeft" align="right" valign="top"><a id="ab98cc041281d6e890a4d61a7ced409ee"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>handlegame</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> *g, SDL_Event *event, SDL_Surface *screen, int run)</td></tr>
 <tr class="separator:ab98cc041281d6e890a4d61a7ced409ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad72cdf0bb28fbda2c2d0ae10463bf05e"><td class="memItemLeft" align="right" valign="top"><a id="ad72cdf0bb28fbda2c2d0ae10463bf05e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>enigmestart</b> (SDL_Surface *screen, int run, int *score)</td></tr>
+<tr class="separator:ad72cdf0bb28fbda2c2d0ae10463bf05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae752703e16ecd6941c297dce055b2abb"><td class="memItemLeft" align="right" valign="top"><a id="ae752703e16ecd6941c297dce055b2abb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>movement</b> (<a class="el" href="../../d2/ddd/structCharacter.html">Character</a> *player, <a class="el" href="../../d3/dba/structBackground.html">Background</a> *bg, int x)</td></tr>
 <tr class="separator:ae752703e16ecd6941c297dce055b2abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,15 +122,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>gamerefresh</b> (<a c
 <tr class="memitem:af0a1b2bf08cbd9b4871093037307b315"><td class="memItemLeft" align="right" valign="top"><a id="af0a1b2bf08cbd9b4871093037307b315"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>freegame</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> assets)</td></tr>
 <tr class="separator:af0a1b2bf08cbd9b4871093037307b315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae1264098bfc7f98bca307be3a4e584"><td class="memItemLeft" align="right" valign="top"><a id="a7ae1264098bfc7f98bca307be3a4e584"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>get_save</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> *g)</td></tr>
+<tr class="separator:a7ae1264098bfc7f98bca307be3a4e584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc3be33be230e8080adf83cef69b488"><td class="memItemLeft" align="right" valign="top"><a id="a4dc3be33be230e8080adf83cef69b488"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>write_save</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> *g)</td></tr>
+<tr class="separator:a4dc3be33be230e8080adf83cef69b488"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d8fcd43b06777cf39fa5cae990d5fa4"><td class="memItemLeft" align="right" valign="top"><a id="a7d8fcd43b06777cf39fa5cae990d5fa4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handlemovement</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> *g)</td></tr>
 <tr class="separator:a7d8fcd43b06777cf39fa5cae990d5fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26be1829cbc0bf60cf032f202f0a4b9f"><td class="memItemLeft" align="right" valign="top"><a id="a26be1829cbc0bf60cf032f202f0a4b9f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handlescrolling</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> *g)</td></tr>
 <tr class="separator:a26be1829cbc0bf60cf032f202f0a4b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4075a63471fd87ef5c14dde7d9825845"><td class="memItemLeft" align="right" valign="top"><a id="a4075a63471fd87ef5c14dde7d9825845"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>game</b> (SDL_Surface *screen, int run)</td></tr>
-<tr class="separator:a4075a63471fd87ef5c14dde7d9825845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0d59a868a85b991a77296855fe952c"><td class="memItemLeft" align="right" valign="top"><a id="a8f0d59a868a85b991a77296855fe952c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>game</b> (SDL_Surface *screen, int run, int state)</td></tr>
+<tr class="separator:a8f0d59a868a85b991a77296855fe952c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2771cc123a15e5105223257c8a9b094"><td class="memItemLeft" align="right" valign="top"><a id="aa2771cc123a15e5105223257c8a9b094"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>relative_x</b> (<a class="el" href="../../d3/dba/structBackground.html">Background</a> *bg, SDL_Rect position)</td></tr>
 <tr class="separator:aa2771cc123a15e5105223257c8a9b094"><td class="memSeparator" colspan="2">&#160;</td></tr>

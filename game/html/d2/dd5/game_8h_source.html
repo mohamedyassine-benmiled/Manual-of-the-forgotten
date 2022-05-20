@@ -85,42 +85,42 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/d87/animation_8h.html">animation.h</a>&quot;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d26/character_8h.html">character.h</a>&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d7/daa/structMinimap.html">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../de/d68/structimage.html">image</a> bg,score;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../d2/ddd/structCharacter.html">Character</a> player[4];</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../d9/d6c/structEnemy.html">Enemy</a> enemy[10];</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> elapsed;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> level;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <a class="code" href="../../d7/daa/structMinimap.html">Minimap</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../de/de9/structGame.html">   34</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../d2/ddd/structCharacter.html">Character</a> player[4];</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../d9/d6c/structEnemy.html">Enemy</a> enemy[10];</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d3/dba/structBackground.html">Background</a> bg;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d7/daa/structMinimap.html">Minimap</a> minimap;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="../../d0/d5f/structStates.html">States</a> global;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="../../de/de9/structGame.html">Game</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> game(SDL_Surface *screen,<span class="keywordtype">int</span> run);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;SDL_Color getpixel(SDL_Surface *psurface,<span class="keywordtype">int</span> x,<span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">int</span> collisionparfaite(SDL_Surface *psurface,<a class="code" href="../../de/de9/structGame.html">Game</a> p);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> initBack (<a class="code" href="../../de/de9/structGame.html">Game</a> *b);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> afficheBack (<a class="code" href="../../de/de9/structGame.html">Game</a> b, SDL_Surface *ecran);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">int</span> relative_x( <a class="code" href="../../d3/dba/structBackground.html">Background</a> *bg , SDL_Rect position);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif // GAME_H</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d7/daa/structMinimap.html">   24</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="../../de/d68/structimage.html">image</a> bg,score,time;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d2/ddd/structCharacter.html">Character</a> player[4];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../d9/d6c/structEnemy.html">Enemy</a> enemy[10];</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> level;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;} <a class="code" href="../../d7/daa/structMinimap.html">Minimap</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../de/de9/structGame.html">   32</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../d2/ddd/structCharacter.html">Character</a> player[4];</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../d9/d6c/structEnemy.html">Enemy</a> enemy[10];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../d3/dba/structBackground.html">Background</a> bg;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../de/d9f/structHealth.html">Health</a> health[4];</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d7/daa/structMinimap.html">Minimap</a> minimap;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d0/d5f/structStates.html">States</a> global;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;} <a class="code" href="../../de/de9/structGame.html">Game</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">int</span> game(SDL_Surface *screen,<span class="keywordtype">int</span> run,<span class="keywordtype">int</span> state);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;SDL_Color getpixel(SDL_Surface *psurface,<span class="keywordtype">int</span> x,<span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> collisionparfaite(SDL_Surface *psurface,<a class="code" href="../../de/de9/structGame.html">Game</a> p);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> initBack (<a class="code" href="../../de/de9/structGame.html">Game</a> *b);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> afficheBack (<a class="code" href="../../de/de9/structGame.html">Game</a> b, SDL_Surface *ecran);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">int</span> relative_x( <a class="code" href="../../d3/dba/structBackground.html">Background</a> *bg , SDL_Rect position);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif // GAME_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aanimation_8h_html"><div class="ttname"><a href="../../dd/d87/animation_8h.html">animation.h</a></div><div class="ttdoc">States and button hover.</div></div>
+<div class="ttc" id="astructHealth_html"><div class="ttname"><a href="../../de/d9f/structHealth.html">Health</a></div><div class="ttdef"><b>Definition:</b> image.h:115</div></div>
 <div class="ttc" id="amenu_8h_html"><div class="ttname"><a href="../../d3/d54/menu_8h.html">menu.h</a></div><div class="ttdoc">Menu Functions.</div></div>
-<div class="ttc" id="astructMinimap_html"><div class="ttname"><a href="../../d7/daa/structMinimap.html">Minimap</a></div><div class="ttdef"><b>Definition:</b> game.h:25</div></div>
+<div class="ttc" id="astructMinimap_html"><div class="ttname"><a href="../../d7/daa/structMinimap.html">Minimap</a></div><div class="ttdef"><b>Definition:</b> game.h:24</div></div>
 <div class="ttc" id="astructCharacter_html"><div class="ttname"><a href="../../d2/ddd/structCharacter.html">Character</a></div><div class="ttdef"><b>Definition:</b> character.h:20</div></div>
 <div class="ttc" id="astructimage_html"><div class="ttname"><a href="../../de/d68/structimage.html">image</a></div><div class="ttdef"><b>Definition:</b> image.h:16</div></div>
 <div class="ttc" id="ainit_8h_html"><div class="ttname"><a href="../../d8/dc0/init_8h.html">init.h</a></div><div class="ttdoc">Initializing Initial Values.</div></div>
 <div class="ttc" id="aenemy_8h_html"><div class="ttname"><a href="../../d7/dfd/enemy_8h.html">enemy.h</a></div><div class="ttdoc">Enemy Animation and Movement.</div></div>
 <div class="ttc" id="acharacter_8h_html"><div class="ttname"><a href="../../dc/d26/character_8h.html">character.h</a></div><div class="ttdoc">Character Movement and Animation.</div></div>
-<div class="ttc" id="astructGame_html"><div class="ttname"><a href="../../de/de9/structGame.html">Game</a></div><div class="ttdef"><b>Definition:</b> game.h:34</div></div>
+<div class="ttc" id="astructGame_html"><div class="ttname"><a href="../../de/de9/structGame.html">Game</a></div><div class="ttdef"><b>Definition:</b> game.h:32</div></div>
 <div class="ttc" id="aimage_8h_html"><div class="ttname"><a href="../../d5/db2/image_8h.html">image.h</a></div><div class="ttdoc">Image Structures and functions.</div></div>
 <div class="ttc" id="astructBackground_html"><div class="ttname"><a href="../../d3/dba/structBackground.html">Background</a></div><div class="ttdef"><b>Definition:</b> image.h:23</div></div>
 <div class="ttc" id="astructStates_html"><div class="ttname"><a href="../../d0/d5f/structStates.html">States</a></div><div class="ttdef"><b>Definition:</b> animation.h:21</div></div>

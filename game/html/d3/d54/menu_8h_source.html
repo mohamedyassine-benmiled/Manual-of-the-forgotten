@@ -100,7 +100,7 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../d5/d28/structOptionImage.html">OptionImage</a> assets;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> graphics;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">int</span> audio;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> keybinds;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d8/de5/structkeybinds.html">keybinds</a>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> hover;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> sound;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> menu;</div>
@@ -110,7 +110,7 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="../../d8/def/structOptionGame.html">OptionGame</a>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">int</span> check(SDL_Surface *screen,<span class="keywordtype">int</span> *run,<span class="keywordtype">int</span> state);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> menu(<a class="code" href="../../d7/d56/structMenuGame.html">MenuGame</a> *menugame,SDL_Surface *screen,<span class="keywordtype">int</span> run);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> menu(<a class="code" href="../../d7/d56/structMenuGame.html">MenuGame</a> *menugame,SDL_Surface *screen,<span class="keywordtype">int</span> run,<span class="keywordtype">int</span> *state);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">int</span> options(<a class="code" href="../../d8/def/structOptionGame.html">OptionGame</a> *optiongame,SDL_Surface *screen,<span class="keywordtype">int</span> run);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">int</span> listres(<a class="code" href="../../d8/def/structOptionGame.html">OptionGame</a> *optiongame,<a class="code" href="../../d6/d90/structgraphicimage.html">graphicimage</a> *assets,SDL_Surface *screen,<span class="keywordtype">int</span> *run);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> graphics(<a class="code" href="../../d8/def/structOptionGame.html">OptionGame</a> *optiongame,<a class="code" href="../../d5/d28/structOptionImage.html">OptionImage</a> *assets,SDL_Surface *screen,<span class="keywordtype">int</span> run);</div>
@@ -121,11 +121,12 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructOptionGame_html"><div class="ttname"><a href="../../d8/def/structOptionGame.html">OptionGame</a></div><div class="ttdef"><b>Definition:</b> menu.h:34</div></div>
 <div class="ttc" id="astructMusic_html"><div class="ttname"><a href="../../dd/dc2/structMusic.html">Music</a></div><div class="ttdef"><b>Definition:</b> sound.h:22</div></div>
-<div class="ttc" id="astructOptionImage_html"><div class="ttname"><a href="../../d5/d28/structOptionImage.html">OptionImage</a></div><div class="ttdef"><b>Definition:</b> image.h:57</div></div>
+<div class="ttc" id="astructOptionImage_html"><div class="ttname"><a href="../../d5/d28/structOptionImage.html">OptionImage</a></div><div class="ttdef"><b>Definition:</b> image.h:58</div></div>
 <div class="ttc" id="astructMenuGame_html"><div class="ttname"><a href="../../d7/d56/structMenuGame.html">MenuGame</a></div><div class="ttdef"><b>Definition:</b> menu.h:22</div></div>
+<div class="ttc" id="astructkeybinds_html"><div class="ttname"><a href="../../d8/de5/structkeybinds.html">keybinds</a></div><div class="ttdef"><b>Definition:</b> config.h:29</div></div>
 <div class="ttc" id="aimage_8h_html"><div class="ttname"><a href="../../d5/db2/image_8h.html">image.h</a></div><div class="ttdoc">Image Structures and functions.</div></div>
 <div class="ttc" id="asound_8h_html"><div class="ttname"><a href="../../d9/d88/sound_8h.html">sound.h</a></div><div class="ttdoc">Sound Functions.</div></div>
-<div class="ttc" id="astructgraphicimage_html"><div class="ttname"><a href="../../d6/d90/structgraphicimage.html">graphicimage</a></div><div class="ttdef"><b>Definition:</b> image.h:70</div></div>
+<div class="ttc" id="astructgraphicimage_html"><div class="ttname"><a href="../../d6/d90/structgraphicimage.html">graphicimage</a></div><div class="ttdef"><b>Definition:</b> image.h:71</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

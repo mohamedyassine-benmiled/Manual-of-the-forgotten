@@ -74,14 +74,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> Animation and Movement.  
+<p>ENEMY FUNCTION / mvt /collision / ATTACK.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;SDL/SDL.h&gt;</code><br />
 <code>#include &lt;SDL/SDL_image.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/dd5/game_8h_source.html">include/game.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d7/dfd/enemy_8h_source.html">include/enemy.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for enemy.c:</div>
 <div class="dyncontent">
@@ -90,12 +89,24 @@ Include dependency graph for enemy.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a41c905385ad47f3139b622afe29942a8"><td class="memItemLeft" align="right" valign="top"><a id="a41c905385ad47f3139b622afe29942a8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>animateattack</b> (<a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> *enemy)</td></tr>
+<tr class="separator:a41c905385ad47f3139b622afe29942a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7cc8e83a9a7586f16bee0e5da4de4f"><td class="memItemLeft" align="right" valign="top"><a id="a9f7cc8e83a9a7586f16bee0e5da4de4f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>followplayer</b> (<a class="el" href="../../d2/ddd/structCharacter.html">Character</a> *player, <a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> *enemy, <a class="el" href="../../d3/dba/structBackground.html">Background</a> *bg)</td></tr>
+<tr class="separator:a9f7cc8e83a9a7586f16bee0e5da4de4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70a2e0eda7fa87db0b350bbd882141ad"><td class="memItemLeft" align="right" valign="top"><a id="a70a2e0eda7fa87db0b350bbd882141ad"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>spotted</b> (<a class="el" href="../../d2/ddd/structCharacter.html">Character</a> *player, <a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> *enemy)</td></tr>
+<tr class="separator:a70a2e0eda7fa87db0b350bbd882141ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a2a3ef75cc62d4360aae6d17ab5522b"><td class="memItemLeft" align="right" valign="top"><a id="a5a2a3ef75cc62d4360aae6d17ab5522b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>initennemy</b> (<a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> *enemi)</td></tr>
 <tr class="separator:a5a2a3ef75cc62d4360aae6d17ab5522b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a917cd7ed859fc873c215bc895a71a83c"><td class="memItemLeft" align="right" valign="top"><a id="a917cd7ed859fc873c215bc895a71a83c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deplacement_enemy</b> (<a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> *enemi)</td></tr>
-<tr class="separator:a917cd7ed859fc873c215bc895a71a83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bafebf44dc6f260c96439d2600016b1"><td class="memItemLeft" align="right" valign="top"><a id="a5bafebf44dc6f260c96439d2600016b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deplacementalea_enemy</b> (<a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> *enemi)</td></tr>
+<tr class="separator:a5bafebf44dc6f260c96439d2600016b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4a92ff49c8a07ff5cd5bc60d3765c57"><td class="memItemLeft" align="right" valign="top"><a id="aa4a92ff49c8a07ff5cd5bc60d3765c57"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deplacement_enemy</b> (<a class="el" href="../../de/de9/structGame.html">Game</a> *g)</td></tr>
+<tr class="separator:aa4a92ff49c8a07ff5cd5bc60d3765c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96af6ee40a45f2d3fb6941281d6894dd"><td class="memItemLeft" align="right" valign="top"><a id="a96af6ee40a45f2d3fb6941281d6894dd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>animationenemy</b> (<a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> *enemi)</td></tr>
 <tr class="separator:a96af6ee40a45f2d3fb6941281d6894dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -104,9 +115,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rpos_enemy</b> (<a cl
 <tr class="separator:a9477d5d003fce4da870d086ec2884f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="../../d9/d6c/structEnemy.html">Enemy</a> Animation and Movement. </p>
-<dl class="section author"><dt>Author</dt><dd>Ilyes Chaabani </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.5 </dd></dl>
+<div class="textblock"><p>ENEMY FUNCTION / mvt /collision / ATTACK. </p>
+<dl class="section author"><dt>Author</dt><dd>ILYES CHAABANI (<a href="#" onclick="location.href='mai'+'lto:'+'you'+'@d'+'oma'+'in'+'.co'+'m'; return false;">you@d<span style="display: none;">.nosp@m.</span>omai<span style="display: none;">.nosp@m.</span>n.com</a>) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2022-04-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022 </dd></dl>
 </div></div><!-- contents -->

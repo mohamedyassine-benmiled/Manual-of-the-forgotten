@@ -8,7 +8,7 @@ digraph "Minimap"
   Node2 [label="Enemy",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d6c/structEnemy.html",tooltip=" "];
   Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pos_box" ,fontname="Helvetica"];
   Node3 [label="Box",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/db3/structBox.html",tooltip=" "];
-  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" bg\nscore" ,fontname="Helvetica"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" bg\nscore\ntime" ,fontname="Helvetica"];
   Node4 [label="image",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d68/structimage.html",tooltip=" "];
   Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" player" ,fontname="Helvetica"];
   Node5 [label="Character",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/ddd/structCharacter.html",tooltip=" "];

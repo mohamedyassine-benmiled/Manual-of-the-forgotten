@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['playimage_115',['playimage',['../da/d2c/structplayimage.html',1,'']]]
+  ['optiongame_122',['OptionGame',['../d8/def/structOptionGame.html',1,'']]],
+  ['optionimage_123',['OptionImage',['../d5/d28/structOptionImage.html',1,'']]]
 ];

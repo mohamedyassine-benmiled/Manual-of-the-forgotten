@@ -4,5 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="States",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d5f/structStates.html",tooltip=" "];
+  Node0 [label="SMPEG_Filter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d8f/structSMPEG__Filter.html",tooltip=" "];
 }

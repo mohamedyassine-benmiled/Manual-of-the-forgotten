@@ -1,0 +1,12 @@
+digraph "checkplayimage"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="checkplayimage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" back\nplayerwindow" ,fontname="Helvetica"];
+  Node2 [label="image",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d68/structimage.html",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" player" ,fontname="Helvetica"];
+  Node3 [label="boxplayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d98/structboxplayer.html",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" dark\nbright" ,fontname="Helvetica"];
+}

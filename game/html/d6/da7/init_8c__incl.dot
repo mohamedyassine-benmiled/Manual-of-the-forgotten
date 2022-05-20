@@ -83,6 +83,7 @@ digraph "game/init.c"
   Node22 [label="config.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d16/config_8h.html",tooltip="Config file."];
   Node22 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node22 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
