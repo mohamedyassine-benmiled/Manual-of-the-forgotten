@@ -119,7 +119,29 @@ collision=1;
 return collision;
 }
 
+int CollisionGroundEnemy(Enemy *enemy,Background *bg,SDL_Color rgb)
+{
+SDL_Color obstacle;
+int x,y,w,h;
+	x=enemy->rpos.x;
+	y=enemy->rpos.y-17;
+	w=enemy->position2.w;
+	h=enemy->position2.h;
+SDL_Rect pos;
 
+
+pos.x=x+w/2;
+pos.y=y+h;
+
+int collision=0;
+
+	obstacle=GetPixel(bg->collision,pos.x+bg->img.pos2.x,pos.y);
+if((obstacle.r==rgb.r) && (obstacle.g==rgb.g) && (obstacle.b==rgb.b))
+collision=1;
+
+
+return collision;
+}
 
 int collision_box(Box *b1,Box *b2)
 {

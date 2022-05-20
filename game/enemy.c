@@ -23,8 +23,13 @@ void animateattack(Enemy *enemy)
     }
 
 }
-void followplayer(Character *player, Enemy *enemy)
+void followplayer(Character *player, Enemy *enemy, Background *bg)
 {
+    SDL_Color rgb;
+        rgb.r=0;
+    rgb.g=0;
+    rgb.b=0;
+
     if ((player->position.x-enemy->rpos.x)<0)
     {
         enemy->left=1;
@@ -44,6 +49,7 @@ void followplayer(Character *player, Enemy *enemy)
     {
         enemy->position.x+=5;
     }
+    
 }
 
 int spotted(Character *player, Enemy *enemy)
@@ -74,7 +80,7 @@ void initennemy (Enemy *enemi)
 {
     printf("\nEnemy : %d",enemi->enemy);
     enemi->image = IMG_Load("graphics/720/Spritesheet/Enemy.png");
-	enemi->position.x=1500+(enemi->enemy*1000);
+	enemi->position.x=1500+(enemi->enemy*850);
 	enemi->position.y=START_y+40;
     enemi->position2.x=0;
     enemi->position2.y=0;
@@ -85,7 +91,7 @@ void initennemy (Enemy *enemi)
     enemi->right=0;
     enemi->left=0;
     enemi->spotted=-1;
-    enemi->posMax=enemi->position.x+250;
+    enemi->posMax=enemi->position.x+100;
     enemi->posMin=enemi->position.x;
     enemi->attack=0;
     enemi->mouvement=1;
@@ -156,7 +162,7 @@ void deplacement_enemy (Game *g) //DEPLACEMENT IA
         deplacementalea_enemy(&g->enemy[j]);
     else
     {
-        followplayer(&g->player[g->enemy[j].spotted],&g->enemy[j]);
+        followplayer(&g->player[g->enemy[j].spotted],&g->enemy[j],&g->bg);
         if ((g->enemy[j].rpos.x-g->player[g->enemy[j].spotted].position.x>=1280) || (g->player[g->enemy[j].spotted].position.x-g->enemy[j].rpos.x>=500))
         {
              initennemy (&g->enemy[j]);
