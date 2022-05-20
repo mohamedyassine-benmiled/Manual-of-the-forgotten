@@ -18,16 +18,53 @@
 #include "include/enigme.h"
 #include "include/text.h"
 #include "include/declarations.h"
+int handleenigme(Enigme *e,SDL_Event *event,SDL_Surface *screen,int run);
+
+void srand(unsigned int seed);
+time_t time( time_t *second );
+
+void fixtext(char text[],char text2[])
+{
+    if (strlen(text)>38)
+    {
+        for (int i=38;i>0;i--)
+        {
+            if (text[i]=='-')
+            {
+                int k=0;
+                for (int j=i;j<strlen(text);j++)
+                {
+
+                    text2[k]=text[j];
+                    k++;
+                }
+                text2[k]='\0';
+                text[i]='\0';
+                break;
+            }
+        }
+    }
+    for (int i=0;i<strlen(text);i++)
+    {
+        if (text[i]=='-')
+            text[i]=' ';
+
+    }
+    for (int i=0;i<strlen(text2);i++)
+    {
+        if (text2[i]=='-')
+            text2[i]=' ';
+
+    }
+}
 
 void init_enigme(Enigme *e )
 {
 FILE *f=NULL;
 text t1, t2 ;
 char logo [50];
-int check=0;
 int alea;
 int nbligne=0;
-int reponse;
 e->score=0;
 
 //text color question
@@ -113,40 +150,6 @@ e->r3[1].surface=TTF_RenderText_Blended(t1.font,e->rep3,t2.textColor);
     e->animation[i].surface=IMG_Load(logo);
     e->animation[i].pos1.x=512;
     e->animation[i].pos1.y=150;
-    }
-}
-void fixtext(char text[],char text2[])
-{
-    if (strlen(text)>38)
-    {
-        for (int i=38;i>0;i--)
-        {
-            if (text[i]=='-')
-            {
-                int k=0;
-                for (int j=i;j<strlen(text);j++)
-                {
-
-                    text2[k]=text[j];
-                    k++;
-                }
-                text2[k]='\0';
-                text[i]='\0';
-                break;
-            }
-        }
-    }
-    for (int i=0;i<strlen(text);i++)
-    {
-        if (text[i]=='-')
-            text[i]=' ';
-
-    }
-    for (int i=0;i<strlen(text2);i++)
-    {
-        if (text2[i]=='-')
-            text2[i]=' ';
-
     }
 }
 

@@ -100,7 +100,7 @@ int CollisionGround(Character *player,Background *bg,SDL_Color rgb)
 SDL_Color obstacle;
 int x,y,w,h;
 	x=player->position.x;
-	y=player->position.y-17;
+	y=player->position.y-25;
 	w=player->src_pos.w;
 	h=player->src_pos.h;
 SDL_Rect pos;

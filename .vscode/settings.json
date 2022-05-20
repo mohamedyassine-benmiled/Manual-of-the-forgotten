@@ -16,6 +16,7 @@
         "config.h": "c",
         "declarations.h": "c",
         "stdbool.h": "c",
-        "tictac.h": "c"
+        "tictac.h": "c",
+        "enigme.h": "c"
     }
 }

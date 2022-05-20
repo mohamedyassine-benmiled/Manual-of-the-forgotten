@@ -25,11 +25,6 @@ void animateattack(Enemy *enemy)
 }
 void followplayer(Character *player, Enemy *enemy, Background *bg)
 {
-    SDL_Color rgb;
-        rgb.r=0;
-    rgb.g=0;
-    rgb.b=0;
-
     if ((player->position.x-enemy->rpos.x)<0)
     {
         enemy->left=1;

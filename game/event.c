@@ -8,9 +8,10 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
+int arduinoReadData(int *x);
 #include "include/game.h"
 #include "include/enigme.h"
+void afficherenigme(Enigme *e,SDL_Surface *screen);
 int handleenigme(Enigme *e,SDL_Event *event,SDL_Surface *screen,int run)
 {
 
@@ -66,6 +67,8 @@ int handleenigme(Enigme *e,SDL_Event *event,SDL_Surface *screen,int run)
                                             {
                                                 e->repuser=1;
                                             }
+                                        break;
+                                        default:
                                         break;
                                     }
                             }        

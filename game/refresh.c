@@ -1,5 +1,7 @@
 #include "include/refresh.h"
 void gamerefresh(Game *g,SDL_Surface *screen);
+int get_save(Game *g);
+int write_save(Game *g);
 void animationback(Background *bg);
 void scrolling (Game *g);
 void initminimap(Minimap *assets);
@@ -8,7 +10,9 @@ void animation(Character *player);
 void animationback2(Background *bg);
 void rpos_enemy (Enemy *enemi,Background *bg);
 int collision_box(Box *b1,Box *b2);
-
+void deplacement_enemy (Game *g);
+void initlife(Health *health,int player);
+void collisionarduino(Game *g);
 
 void playerrefresh(Character *player)
 {
@@ -25,12 +29,12 @@ void enemyrefresh(Enemy *enemi)
 {
     if (!enemi->attack)
         animationenemy (enemi);
-        enemi->position2.x=CHAR_W*enemi->spritestate;
-        enemi->position2.y=CHAR_H*enemi->look;
-        enemi->position2.h=CHAR_H;
-        enemi->position2.w=CHAR_W;
-        enemi->pos_box.x=enemi->rpos.x;
-        enemi->pos_box.y=enemi->rpos.y;
+    enemi->position2.x=CHAR_W*enemi->spritestate;
+    enemi->position2.y=CHAR_H*enemi->look;
+    enemi->position2.h=CHAR_H;
+    enemi->position2.w=CHAR_W;
+    enemi->pos_box.x=enemi->rpos.x;
+    enemi->pos_box.y=enemi->rpos.y;
 }
 
 void BlitGame(Game *g,SDL_Surface *screen)
@@ -132,9 +136,15 @@ void deathrefresh(Game *g)
 {
     int death=0;
     for (int i=0;i<g->global.nbplayers;i++)
+    {
+        if (g->player[i].position.y>=590)
+        {
+            g->player[i].death=1;
+        }
     if ((g->player[i].death))
     {
         death++;
+    }
     }
     if (death==g->global.nbplayers)
     {
@@ -160,7 +170,6 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     initlife(&g->health[i],i);
     }
     scrolling(g);
-
     animationback(&g->bg);
     animationback2(&g->bg);
     collisionarduino(g);

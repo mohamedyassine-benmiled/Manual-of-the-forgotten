@@ -17,6 +17,183 @@
 #include "include/init.h"
 #include "include/game.h"
 #include "include/animation.h"
+void initcheckplayer (checkplayimage *assets);
+// play 
+int playmenu(SDL_Surface *screen,int *run,int state)
+{
+    //
+    int x,y;
+    playimage assets;
+    initplay(&assets);
+    show(assets.playwindow,screen);
+    //
+    if (state)
+        {
+            show(assets.cont[0],screen);
+        }
+        else
+        {
+            show(assets.cont[2],screen);
+        }
+    //
+    show(assets.newgame[0],screen);
+    show(assets.back[0],screen);
+
+    SDL_Event event;
+        int check=3;
+        //Init Loop
+        while (check==3)
+        {
+            while (SDL_PollEvent(&event))
+            {
+            switch(event.type)
+            {
+            case SDL_QUIT:
+                *run=0;
+                check=0;
+                break;
+            case SDL_MOUSEMOTION:
+            SDL_GetMouseState(&x,&y);
+            //If hover on yes
+            if (hoverbutton(x,y,assets.newgame[0]))
+            {
+                show(assets.newgame[1],screen);
+            }
+            else
+            {
+                show(assets.newgame[0],screen);
+            }          
+            //If hover on no
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                show(assets.back[1],screen);
+            }
+            else
+            {
+                show(assets.back[0],screen);
+            }
+            if (state)
+            {
+                if (hoverbutton(x,y,assets.cont[0]))
+            {
+                show(assets.cont[1],screen);
+            }
+            else
+            {
+                show(assets.cont[0],screen);
+            } 
+            }
+            
+            break;
+            case SDL_MOUSEBUTTONUP:
+            SDL_GetMouseState(&x,&y);
+            //If Click on yes
+            if (hoverbutton(x,y,assets.newgame[0]))
+            {
+                check=1;
+            }
+            //If Click on no
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                check=0;
+            }
+            if (hoverbutton(x,y,assets.cont[0]))
+            {
+                check=2;
+            }
+
+      }  
+            }
+            //Update Screen
+            SDL_Flip(screen);
+        }
+            //Return Result
+            return check;
+}
+
+int checkplaymenu(SDL_Surface *screen,int *run)
+{
+    //
+    int x,y;
+    checkplayimage assets;
+    initcheckplayer(&assets);
+    show(assets.playerwindow,screen);
+    //
+    show(assets.player[0].dark,screen);
+    show(assets.player[1].dark,screen);
+    show(assets.player[2].dark,screen);
+    show(assets.player[3].dark,screen);
+    show(assets.back[0],screen);
+    SDL_Event event;
+        int check=3;
+        //Init Loop
+        while (check==3)
+        {
+            while (SDL_PollEvent(&event))
+            {
+            switch(event.type)
+            {
+            case SDL_QUIT:
+                *run=0;
+                check=0;
+                break;
+            case SDL_MOUSEMOTION:
+            SDL_GetMouseState(&x,&y);
+            //If hover on yes
+            if (hoverbutton(x,y,assets.player[0].dark))
+            {
+                show(assets.player[0].bright,screen);
+            }
+            else
+            {
+                show(assets.player[0].dark,screen);
+            }          
+            //If hover on no
+            if (hoverbutton(x,y,assets.player[1].dark))
+            {
+                show(assets.player[1].bright,screen);
+            }
+            else
+            {
+                show(assets.player[1].dark,screen);
+            }          
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                show(assets.back[1],screen);
+            }
+            else
+            {
+                show(assets.back[0],screen);
+            }          
+            
+            
+            
+            break;
+            case SDL_MOUSEBUTTONUP:
+            SDL_GetMouseState(&x,&y);
+            //If Click on yes
+            if (hoverbutton(x,y,assets.player[0].dark))
+            {
+                check=1;
+            }
+            //If Click on no
+            if (hoverbutton(x,y,assets.player[1].dark))
+            {
+                check=2;
+            }
+            if (hoverbutton(x,y,assets.back[0]))
+            {
+                check=0;
+            }
+
+      }  
+            }
+            //Update Screen
+            SDL_Flip(screen);
+        }
+            //Return Result
+            return check;
+}
 //Check
 int check(SDL_Surface *screen,int *run,int state)
 {
@@ -465,10 +642,11 @@ int listres(OptionGame *optiongame,graphicimage *assets,SDL_Surface *screen,int 
           }
           break;
       }  
+      res=0;
     //Update
     SDL_Flip(screen);
     }
-    return 0;
+    return res;
     
 }
 
@@ -1061,180 +1239,4 @@ int options(OptionGame *optiongame,SDL_Surface *screen,int run)
     //Delay after running animation
     SDL_Delay(500);
 return run;
-}
-// play 
-int playmenu(SDL_Surface *screen,int *run,int state)
-{
-    //
-    int x,y;
-    playimage assets;
-    initplay(&assets);
-    show(assets.playwindow,screen);
-    //
-    if (state)
-        {
-            show(assets.cont[0],screen);
-        }
-        else
-        {
-            show(assets.cont[2],screen);
-        }
-    //
-    show(assets.newgame[0],screen);
-    show(assets.back[0],screen);
-
-    SDL_Event event;
-        int check=3;
-        //Init Loop
-        while (check==3)
-        {
-            while (SDL_PollEvent(&event))
-            {
-            switch(event.type)
-            {
-            case SDL_QUIT:
-                *run=0;
-                check=0;
-                break;
-            case SDL_MOUSEMOTION:
-            SDL_GetMouseState(&x,&y);
-            //If hover on yes
-            if (hoverbutton(x,y,assets.newgame[0]))
-            {
-                show(assets.newgame[1],screen);
-            }
-            else
-            {
-                show(assets.newgame[0],screen);
-            }          
-            //If hover on no
-            if (hoverbutton(x,y,assets.back[0]))
-            {
-                show(assets.back[1],screen);
-            }
-            else
-            {
-                show(assets.back[0],screen);
-            }
-            if (state)
-            {
-                if (hoverbutton(x,y,assets.cont[0]))
-            {
-                show(assets.cont[1],screen);
-            }
-            else
-            {
-                show(assets.cont[0],screen);
-            } 
-            }
-            
-            break;
-            case SDL_MOUSEBUTTONUP:
-            SDL_GetMouseState(&x,&y);
-            //If Click on yes
-            if (hoverbutton(x,y,assets.newgame[0]))
-            {
-                check=1;
-            }
-            //If Click on no
-            if (hoverbutton(x,y,assets.back[0]))
-            {
-                check=0;
-            }
-            if (hoverbutton(x,y,assets.cont[0]))
-            {
-                check=2;
-            }
-
-      }  
-            }
-            //Update Screen
-            SDL_Flip(screen);
-        }
-            //Return Result
-            return check;
-}
-
-int checkplaymenu(SDL_Surface *screen,int *run)
-{
-    //
-    int x,y;
-    checkplayimage assets;
-    initcheckplayer(&assets);
-    show(assets.playerwindow,screen);
-    //
-    show(assets.player[0].dark,screen);
-    show(assets.player[1].dark,screen);
-    show(assets.player[2].dark,screen);
-    show(assets.player[3].dark,screen);
-    show(assets.back[0],screen);
-    SDL_Event event;
-        int check=3;
-        //Init Loop
-        while (check==3)
-        {
-            while (SDL_PollEvent(&event))
-            {
-            switch(event.type)
-            {
-            case SDL_QUIT:
-                *run=0;
-                check=0;
-                break;
-            case SDL_MOUSEMOTION:
-            SDL_GetMouseState(&x,&y);
-            //If hover on yes
-            if (hoverbutton(x,y,assets.player[0].dark))
-            {
-                show(assets.player[0].bright,screen);
-            }
-            else
-            {
-                show(assets.player[0].dark,screen);
-            }          
-            //If hover on no
-            if (hoverbutton(x,y,assets.player[1].dark))
-            {
-                show(assets.player[1].bright,screen);
-            }
-            else
-            {
-                show(assets.player[1].dark,screen);
-            }          
-            if (hoverbutton(x,y,assets.back[0]))
-            {
-                show(assets.back[1],screen);
-            }
-            else
-            {
-                show(assets.back[0],screen);
-            }          
-            
-            
-            
-            break;
-            case SDL_MOUSEBUTTONUP:
-            SDL_GetMouseState(&x,&y);
-            //If Click on yes
-            if (hoverbutton(x,y,assets.player[0].dark))
-            {
-                check=1;
-            }
-            //If Click on no
-            if (hoverbutton(x,y,assets.player[1].dark))
-            {
-                check=2;
-            }
-            if (hoverbutton(x,y,assets.back[0]))
-            {
-                check=0;
-            }
-
-      }  
-            }
-            //Update Screen
-            SDL_Flip(screen);
-        }
-            //Return Result
-            return check;
 }

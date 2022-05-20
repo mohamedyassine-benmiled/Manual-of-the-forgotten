@@ -1,9 +1,0 @@
-[Game SaveFile]
-player.nbplayers=1
-player.health=3
-player.life=3
-player.x=100
-player.y=449
-score=0
-background.x=0
-background.y=0

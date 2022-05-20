@@ -16,15 +16,19 @@
 #include "include/game.h"
 
 //Init to remove warnings
+void inithealth(Health *health,int player);
 void initbackground(Background *assets);
 void initminimap(Minimap *assets);
 void initplayer(Character *player);
 void updateminimap(Game *g);
+void writescore(int score);
 int handlegame(Game *g,SDL_Event *event,SDL_Surface *screen,int run);
+int enigmestart(SDL_Surface *screen,int run,int *score);
 void movement(Character *player,Background *bg,int x);
 void gamerefresh(Game *g,SDL_Surface *screen);
 void freegame(Game assets);
-
+int get_save(Game *g);
+int write_save(Game *g);
 void handlemovement(Game *g)
 {
         if (g->global.firstplayer==0)
@@ -116,7 +120,8 @@ int game(SDL_Surface *screen,int run,int state)
         }
     for (int i=0;i<g.global.nbplayers;i++)
         inithealth(&g.health[i],i);
-        if (state==2)
+
+if (state==2)
         {
                 get_save(&g);
         }
