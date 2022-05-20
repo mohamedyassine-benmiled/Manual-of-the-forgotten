@@ -1198,6 +1198,7 @@ void initcheckplayer (checkplayimage *assets)
         settings config;
         get_config(&config);
         text t ;
+        char c[50];
 if (config.resolution_h==1080)
 {
 
@@ -1230,18 +1231,19 @@ if (config.resolution_h==720)
 
     for (int i=0;i<4;i++)
     {
-        assets->player[i].dark.surface=IMG_Load("graphics/720/Checkplayer/Player.png");
-        assets->player[i].bright.surface=IMG_Load("graphics/720/Checkplayer/Player.png");
+        sprintf(c,"graphics/720/Checkplayer/Player%d.png",i);
+        assets->player[i].dark.surface=IMG_Load(c);
+        assets->player[i].bright.surface=IMG_Load(c);
         assets->player[i].bright.pos1.x=206+(i*22)+(206*i);
-        assets->player[i].bright.pos1.y=208;
+        assets->player[i].bright.pos1.y=271;
         assets->player[i].bright.pos2=assets->player[i].bright.pos1;
         assets->player[i].bright.pos2.w=200;
-        assets->player[i].bright.pos2.h=300;
+        assets->player[i].bright.pos2.h=200;
         assets->player[i].dark.pos1.x=206+(i*22)+(206*i);
-        assets->player[i].dark.pos1.y=208;
+        assets->player[i].dark.pos1.y=271;
         assets->player[i].dark.pos2=assets->player[i].dark.pos1;
         assets->player[i].dark.pos2.w=200;
-        assets->player[i].dark.pos2.h=300;
+        assets->player[i].dark.pos2.h=200;
     }
 
        TTF_CloseFont(t.font);

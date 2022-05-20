@@ -25,6 +25,7 @@ int elapsed;
 int mouvement ;
 int posMax ;
 int posMin ;
+int enemy;
 int spotted;
 int reset ; 
 int look, spritestate;

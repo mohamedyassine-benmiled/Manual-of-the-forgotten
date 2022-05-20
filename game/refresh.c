@@ -64,7 +64,10 @@ void BlitGame(Game *g,SDL_Surface *screen)
         g->global.lastplayer=0;
         g->global.firstplayer=0;
     }
-    SDL_BlitSurface(g->enemy[0].image,&g->enemy[0].position2,screen,&g->enemy[0].rpos);	
+    for (int i=0;i<g->global.nbenemies;i++)
+    {
+    SDL_BlitSurface(g->enemy[i].image,&g->enemy[i].position2,screen,&g->enemy[i].rpos);	
+    }
     for (int i=0;i<g->global.nbplayers;i++)
     {
         g->health[i].l=g->player[i].life;
@@ -81,19 +84,22 @@ void BlitGame(Game *g,SDL_Surface *screen)
 
 void BoxGame(Game *g)
 {
-    int collision=-1;
+    int collision;
+    for (int j=0;j<g->global.nbenemies;j++)
+    {
+        collision=-1;
     for (int i=0;i<g->global.nbplayers;i++)
     {
-        if ((collision_box(&g->enemy[0].pos_box,&g->player[i].pos_box))&&(!g->player[i].death))
+        if ((collision_box(&g->enemy[j].pos_box,&g->player[i].pos_box))&&(!g->player[i].death))
         {
             collision=i;
         }
     }
     if ((collision==0)||(collision==1))
     {
-        if (g->enemy[0].attack==2)
+        if (g->enemy[j].attack==2)
         {
-            g->enemy[0].attack=0;
+            g->enemy[j].attack=0;
             g->player[collision].health--;
             if (g->player[collision].health==0)
             {
@@ -105,21 +111,21 @@ void BoxGame(Game *g)
             g->player[collision].position.x+=50;
         }
         else
-        if(g->enemy[0].attack==0)
+        if(g->enemy[j].attack==0)
         {
-         g->enemy[0].attack=1;
-         g->enemy[0].elapsed=0;
+         g->enemy[j].attack=1;
+         g->enemy[j].elapsed=0;
         }
 
     }
     else
     {
-        if (g->enemy[0].attack==2)
+        if (g->enemy[j].attack==2)
         {
-            g->enemy[0].attack=0;
+            g->enemy[j].attack=0;
         }
     }
-    
+    }
 }
 
 void deathrefresh(Game *g)
@@ -159,13 +165,16 @@ void gamerefresh(Game *g,SDL_Surface *screen)
     animationback2(&g->bg);
     collisionarduino(g);
     g->bg.an2.pos2.x=relative_x(&g->bg,g->bg.an2.pos1);
-    rpos_enemy(&g->enemy[0],&g->bg);
+        for (int i=0;i<g->global.nbenemies;i++)
+    rpos_enemy(&g->enemy[i],&g->bg);
 
     playerrefresh(&g->player[0]);
         if (g->global.nbplayers==2)
             playerrefresh(&g->player[1]);
-    enemyrefresh(&g->enemy[0]);
-    
+    for (int i=0;i<g->global.nbenemies;i++)
+    {
+    enemyrefresh(&g->enemy[i]);
+    }
     updateminimap(g);
     
     BoxGame(g);

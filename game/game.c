@@ -86,6 +86,7 @@ int game(SDL_Surface *screen,int run,int state)
     g.global.firstplayer=0;
     g.global.lastplayer=0;
     g.global.checkpoint=5;
+    g.global.nbenemies=5;
     g.global.level=1;
     g.global.elapsed=0;
     if (state==3)
@@ -108,7 +109,11 @@ int game(SDL_Surface *screen,int run,int state)
         initplayer(&g.player[i]);
         }
     initminimap(&g.minimap);
-    initennemy(&g.enemy[0]);
+    for (int i=0;i<g.global.nbenemies;i++)
+        {
+                g.enemy[i].enemy=i;
+                initennemy(&g.enemy[i]);
+        }
     for (int i=0;i<g.global.nbplayers;i++)
         inithealth(&g.health[i],i);
         if (state==2)
